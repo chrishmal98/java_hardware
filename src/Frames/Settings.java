@@ -247,7 +247,7 @@ public class Settings extends javax.swing.JFrame {
         jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 240, 60));
 
         jButton12.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\new_customer_mini.png")); // NOI18N
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_customer_mini.png"))); // NOI18N
         jButton12.setText("New Customer");
         jButton12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -260,7 +260,7 @@ public class Settings extends javax.swing.JFrame {
         jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
 
         jButton13.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\report__icon_mini.png")); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report__icon_mini.png"))); // NOI18N
         jButton13.setText("reports");
         jButton13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -367,6 +367,12 @@ public class Settings extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
             }
         });
         jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -566,18 +572,6 @@ public class Settings extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton11ActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        Customer customer = new Customer();
-        customer.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton12ActionPerformed
-
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        Reports report = new Reports();
-        report.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton13ActionPerformed
-
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
         // TODO add your handling code here:
         this.dispose();
@@ -667,6 +661,7 @@ public class Settings extends javax.swing.JFrame {
 
     private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
         if (evt.getKeyCode() == 32 && jTable1.getSelectedRow() != -1) {
+            System.err.println("1111111");
             try {
                 int newPrice = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter New Price"));
 
@@ -824,6 +819,37 @@ public class Settings extends javax.swing.JFrame {
         }
       
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        Customer customer = new Customer();
+        customer.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        Reports report = new Reports();
+        report.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+ if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+   System.err.println("1111111");
+            try {
+                int newPrice = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter New Price"));
+
+                DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+                int selectedRow = jTable1.getSelectedRow();
+                txt_id.setText(dtm.getValueAt(selectedRow, 0).toString());
+                txt_name.setText(dtm.getValueAt(selectedRow, 1).toString());
+                txt_Oprice.setText(dtm.getValueAt(selectedRow, 4).toString());
+                txt_nPrice.setText(newPrice + "");
+                jButton2.grabFocus();
+            } catch (Exception e) {
+                JOptionPane.showConfirmDialog(this, "Invalid Option", "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+            }
+ }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

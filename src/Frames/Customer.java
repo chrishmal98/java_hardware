@@ -38,10 +38,6 @@ public class Customer extends javax.swing.JFrame {
         jLayeredPane2 = new javax.swing.JLayeredPane();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel9 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txt_fname = new javax.swing.JTextField();
@@ -62,6 +58,10 @@ public class Customer extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         male_option = new javax.swing.JRadioButton();
+        jPanel4 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -86,18 +86,18 @@ public class Customer extends javax.swing.JFrame {
         txt_cus = new javax.swing.JTextField();
         jButton14 = new javax.swing.JButton();
         lbl_error = new javax.swing.JLabel();
-        jPanel13 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButton10 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -111,24 +111,6 @@ public class Customer extends javax.swing.JFrame {
         jLayeredPane2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
-
-        jPanel4.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton3.setText("jButton3");
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 210, 50));
-
-        jButton4.setText("Save");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
-
-        jButton5.setText("jButton3");
-        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 210, 50));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -219,31 +201,40 @@ public class Customer extends javax.swing.JFrame {
         male_option.setText("Male");
         jPanel2.add(male_option, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 520, -1, 35));
 
+        jPanel4.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton3.setText("jButton3");
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 210, 50));
+
+        jButton4.setText("Save");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 210, 50));
+
+        jButton5.setText("jButton3");
+        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 210, 50));
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 2136, Short.MAX_VALUE)
-            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1060, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1070, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
-            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel9Layout.createSequentialGroup()
-                            .addGap(619, 619, 619)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("New", jPanel9);
@@ -356,49 +347,47 @@ public class Customer extends javax.swing.JFrame {
         lbl_error.setForeground(new java.awt.Color(255, 0, 51));
         jPanel11.add(lbl_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 170, 20));
 
-        jPanel13.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
-        jPanel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
-        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel8.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton11.setText("jButton3");
-        jPanel13.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 210, 50));
+        jButton8.setText("jButton3");
+        jPanel8.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 210, 50));
 
-        jButton12.setText("Update");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        jButton9.setText("Update");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                jButton9ActionPerformed(evt);
             }
         });
-        jPanel13.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
+        jPanel8.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
 
-        jButton13.setText("jButton3");
-        jPanel13.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 210, 50));
+        jButton11.setText("jButton3");
+        jPanel8.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 210, 50));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1070, Short.MAX_VALUE)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 1060, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 10, Short.MAX_VALUE))
             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel10Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 1070, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addGap(0, 615, Short.MAX_VALUE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel10Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel10Layout.createSequentialGroup()
-                            .addGap(619, 619, 619)
-                            .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 75, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Update", jPanel10);
@@ -471,31 +460,31 @@ public class Customer extends javax.swing.JFrame {
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 240, 60));
 
-        jButton8.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\new_customer_mini.png")); // NOI18N
-        jButton8.setText("New Customer");
-        jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton8.setIconTextGap(30);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jButton15.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_customer_mini.png"))); // NOI18N
+        jButton15.setText("New Customer");
+        jButton15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton15.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton15.setIconTextGap(30);
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jButton15ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
+        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
 
-        jButton9.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\report__icon_mini.png")); // NOI18N
-        jButton9.setText("reports");
-        jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton9.setIconTextGap(30);
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        jButton16.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report__icon_mini.png"))); // NOI18N
+        jButton16.setText("reports");
+        jButton16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton16.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton16.setIconTextGap(30);
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                jButton16ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 240, 60));
+        jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 240, 60));
 
         jLayeredPane2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 261, 738));
 
@@ -643,51 +632,9 @@ public class Customer extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        Customer customer = new Customer();
-        customer.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        Reports report = new Reports();
-        report.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton9ActionPerformed
-
     private void txt_fname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fname1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_fname1ActionPerformed
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        String id = lbl_cusid1.getText();
-        String fname = txt_fname1.getText();
-        String lname = txt_lname1.getText();
-        String nic = txt_nic1.getText();
-        String mob = txt_mob1.getText();
-
-        String email = txt_email1.getText();
-        String addres = jTextArea2.getText();
-        String sex = male_option1.isSelected() ? "Male" : "Female";
-
-        try {
-
-            DB.iud("UPDATE customer SET  mobile ='"+mob+"', fname ='"+fname+"', lname ='"+lname+"', nic ='"+nic+"', email ='"+email+"', address ='"+addres+"', gender ='"+sex+"' WHERE id = '"+id+"'");
-            JOptionPane.showMessageDialog(this, "Update sucsussfull... !");
-
-            txt_fname1.setText(null);
-            txt_lname1.setText(null);
-            txt_nic1.setText(null);
-            txt_mob1.setText(null);
-            txt_email1.setText(null);
-            jTextArea2.setText(null);
-            male_option1.setSelected(true);
-            txt_cus.setText(null);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_jButton12ActionPerformed
 
     private void txt_cusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cusActionPerformed
         if (!txt_cus.getText().isEmpty()) {
@@ -757,6 +704,22 @@ public class Customer extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton14ActionPerformed
 
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        Customer customer = new Customer();
+        customer.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        Reports report = new Reports();
+        report.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -812,9 +775,9 @@ public class Customer extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -846,13 +809,13 @@ public class Customer extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;

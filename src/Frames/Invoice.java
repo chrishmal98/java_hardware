@@ -25,7 +25,7 @@ import javax.swing.ListCellRenderer;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import org.dom4j.tree.DefaultComment;
-
+import java.text.DecimalFormat;
 /**
  *
  * @author Chrishmal Rodrigo
@@ -570,6 +570,7 @@ public class Invoice extends javax.swing.JFrame {
         jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 240, 60));
 
         jButton12.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_customer_mini.png"))); // NOI18N
         jButton12.setText("New Customer");
         jButton12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -582,6 +583,7 @@ public class Invoice extends javax.swing.JFrame {
         jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
 
         jButton13.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report__icon_mini.png"))); // NOI18N
         jButton13.setText("reports");
         jButton13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -837,7 +839,7 @@ public class Invoice extends javax.swing.JFrame {
         jComboBox1.removeAllItems();
         unitPrice = 0.0;
         uniteIndex = 0;
-        availableQty = 0.0 ;
+        availableQty = 0.0;
 
     }//GEN-LAST:event_txt_subtotActionPerformed
 
@@ -915,14 +917,31 @@ public class Invoice extends javax.swing.JFrame {
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             while (count >= 1) {
                 String stock_id = dtm2.getValueAt(0, 1).toString();
-                double uprice = Double.parseDouble(dtm2.getValueAt(0, 3).toString());
-                double dprice = Double.parseDouble(dtm2.getValueAt(0, 4).toString());
-                double qty = Double.parseDouble(dtm2.getValueAt(0, 5).toString());
-                double itm_total = Double.parseDouble(dtm2.getValueAt(0, 6).toString());
-
+                String unite = dtm2.getValueAt(0,3).toString();
+                double qty = Double.parseDouble(dtm2.getValueAt(0, 4).toString());
+                double uprice = Double.parseDouble(dtm2.getValueAt(0, 5).toString());
+                double dprice = Double.parseDouble(dtm2.getValueAt(0, 6).toString());
+                
+                double itm_total = Double.parseDouble(dtm2.getValueAt(0, 7).toString());
+                String unite_no = unite.substring(unite.length()-2, unite.length()-1);
+                unite = unite.substring(0, unite.length()-3);
+                if(unite_no != "0"){
+                    ResultSet search = DB.search("SELECT sub_unite FROM sub_item WHERE sub_unite_name = '"+unite+"'");
+                if(search.next()){
+                
+                    double x = search.getDouble("sub_unite");
+                    
+                qty = qty / x;
+                }
+                }
+                
+                String itm_id[] = stock_id.split("-");    
                 double itm_discount = uprice - dprice;
                 DB.iud("UPDATE stock SET qty = qty - '" + qty + "' WHERE stock_id = '" + stock_id + "' ");
-                DB.iud("INSERT INTO invoice_details VALUES('" + invoice + "', '" + stock_id + "', '" + itm_discount + "','" + qty + "', '" + itm_total + "' )");
+                
+                DB.iud("UPDATE quntity SET qty = qty - '" + qty + "' WHERE item_id = '" + itm_id[0] + "' ");
+                
+                DB.iud("INSERT INTO invoice_details VALUES('" + invoice + "', '" + stock_id + "', '" + itm_discount + "','" + qty + "','" + unite + "', '" + itm_total + "' )");
                 count--;
                 dtm2.removeRow(0);
 
@@ -973,7 +992,7 @@ public class Invoice extends javax.swing.JFrame {
             }
         }
 
-        System.out.println(evt.getKeyCode());
+       
     }//GEN-LAST:event_txt_searchKeyPressed
 
     private void jList1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jList1KeyPressed
@@ -990,7 +1009,9 @@ public class Invoice extends javax.swing.JFrame {
                     ResultSet search = DB.search("SELECT stock_id,selling_price,expdate,qty FROM stock WHERE item_id = '" + item + "' AND status = 1 ");
 
                     DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-
+                    DecimalFormat df = new DecimalFormat("0.00");
+                    
+                    
                     dtm.setRowCount(0);
                     while (search.next()) {
 
@@ -999,7 +1020,7 @@ public class Invoice extends javax.swing.JFrame {
                         v.add(itmName[0]);
                         v.add(search.getString("selling_price"));
                         v.add(search.getString("expdate"));
-                        String qty = search.getString("qty");
+                        String qty = df.format(search.getDouble("qty"));
                         availableQty = Double.parseDouble(qty);
                         v.add(qty);
                         dtm.addRow(v);
@@ -1108,102 +1129,19 @@ public class Invoice extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
+
         if (button_number < 7) {
             dlm.addElement(button_number + "");
-
             jList3.setModel(dlm);
             jList3.setSelectedIndex(button_number - 1);
-
-            TabData.setCount(oldIndex);
-
-            TabData.setCus_num(txt_customer.getText());
-            TabData.setCus_name(txt_customerName.getText());
-
-            DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
-            if (jTable1.isRowSelected(jTable1.getSelectedRow())) {
-                int row = jTable1.getSelectedRow();
-                TabData.setT1_id(dtm1.getValueAt(row, 0).toString());
-                TabData.setT1_itemName(dtm1.getValueAt(row, 1).toString());
-                TabData.setT1_sprice(dtm1.getValueAt(row, 2).toString());
-                TabData.setT1_exp(dtm1.getValueAt(row, 3).toString());
-                TabData.setT1_onHand(dtm1.getValueAt(row, 4).toString());
-            } else {
-                TabData.setT1_id(null);
-                TabData.setT1_itemName(null);
-                TabData.setT1_sprice(null);
-                TabData.setT1_exp(null);
-                TabData.setT1_onHand(null);
-            }
-
-            TabData.setTxt_id(txt_id.getText());
-            TabData.setTxt_discount(txt_dis.getText());
-            TabData.setTxt_dprice(txt_dPrice.getText());
-            TabData.setTxt_qty(txt_qty.getText());
-            TabData.setTxt_subtotal(txt_subtot.getText());
-            TabData.setTxt_warantyNum(txt_warantyno.getText());
-            int rowCount = jTable2.getRowCount();
-
-            DefaultTableModel dtm2 = (DefaultTableModel) jTable2.getModel();
-            Vector v1 = new Vector();
-            Vector v2 = new Vector();
-            Vector v3 = new Vector();
-            Vector v4 = new Vector();
-            Vector v5 = new Vector();
-            Vector v6 = new Vector();
-            Vector v7 = new Vector();
-            int index = 0;
-            while (rowCount > 0) {
-                v1.add(dtm2.getValueAt(index, 0));
-                v2.add(dtm2.getValueAt(index, 1));
-                v3.add(dtm2.getValueAt(index, 2));
-                v4.add(dtm2.getValueAt(index, 3));
-                v5.add(dtm2.getValueAt(index, 4));
-                v6.add(dtm2.getValueAt(index, 5));
-                v7.add(dtm2.getValueAt(index, 6));
-
-                rowCount--;
-                index++;
-            }
-
-            TabData.setT2_count(v1);
-            TabData.setT2_id(v2);
-            TabData.setT2_ItemName(v3);
-            TabData.setT2_uPrice(v4);
-            TabData.setT2_dprice(v5);
-            TabData.setT2_qty(v6);
-            TabData.setT2_tot(v7);
-
-            TabData.setSubtot(txt_inv_subtot.getText());
-            TabData.setDiscout(txt_inv_dis.getText());
-            TabData.setNettot(txt_inv_nettot.getText());
-            TabData.setPayment(txt_inv_payment.getText());
-            TabData.setBalance(txt_inv_balance.getText());
-
-            subtotal = 0.0;
-
-            txt_id.setText(null);
-            txt_dis.setText(null);
-            txt_dPrice.setText(null);
-            txt_qty.setText(null);
-            txt_subtot.setText(null);
-
-            dtm2.setRowCount(0);
-            dtm1.setRowCount(0);
-            txt_customer.setText(null);
-            txt_customerName.setText(null);
-            txt_search.setText(null);
-
-            txt_inv_balance.setText(null);
-            txt_inv_payment.setText(null);
-            txt_inv_nettot.setText(null);
-            txt_inv_dis.setText(null);
-            txt_inv_subtot.setText(null);
-            jComboBox1.removeAllItems();
-            txt_customer.grabFocus();
+            saveData();
             genarateInvoiceId();
             oldIndex = button_number - 1;
             button_number++;
         }
+        resetData();
+        txt_customer.grabFocus();
+
     }//GEN-LAST:event_jPanel9MouseClicked
 
     private void jList3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList3MouseClicked
@@ -1213,127 +1151,9 @@ public class Invoice extends javax.swing.JFrame {
             int index = value - 1;
             if (oldIndex != index) {
 
-                TabData.setCount(oldIndex);
-                TabData.setCus_num(txt_customer.getText());
-
-                TabData.setCus_name(txt_customerName.getText());
-
-                DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
-
-                if (jTable1.isRowSelected(jTable1.getSelectedRow())) {
-                    int row = jTable1.getSelectedRow();
-                    TabData.setT1_id(dtm1.getValueAt(row, 0).toString());
-                    TabData.setT1_itemName(dtm1.getValueAt(row, 1).toString());
-                    TabData.setT1_sprice(dtm1.getValueAt(row, 2).toString());
-                    TabData.setT1_exp(dtm1.getValueAt(row, 3).toString());
-                    TabData.setT1_onHand(dtm1.getValueAt(row, 4).toString());
-                } else {
-                    TabData.setT1_id(null);
-                    TabData.setT1_itemName(null);
-                    TabData.setT1_sprice(null);
-                    TabData.setT1_exp(null);
-                    TabData.setT1_onHand(null);
-                }
-
-                TabData.setTxt_id(txt_id.getText());
-                TabData.setTxt_discount(txt_dis.getText());
-                TabData.setTxt_dprice(txt_dPrice.getText());
-                TabData.setTxt_qty(txt_qty.getText());
-                TabData.setTxt_subtotal(txt_subtot.getText());
-                TabData.setTxt_warantyNum(txt_warantyno.getText());
-                int rowCount = jTable2.getRowCount();
-
-                DefaultTableModel dtm2 = (DefaultTableModel) jTable2.getModel();
-                Vector v1 = new Vector();
-                Vector v2 = new Vector();
-                Vector v3 = new Vector();
-                Vector v4 = new Vector();
-                Vector v5 = new Vector();
-                Vector v6 = new Vector();
-                Vector v7 = new Vector();
-                int tindex = 0;
-                while (rowCount > 0) {
-                    v1.add(dtm2.getValueAt(tindex, 0));
-                    v2.add(dtm2.getValueAt(tindex, 1));
-                    v3.add(dtm2.getValueAt(tindex, 2));
-                    v4.add(dtm2.getValueAt(tindex, 3));
-                    v5.add(dtm2.getValueAt(tindex, 4));
-                    v6.add(dtm2.getValueAt(tindex, 5));
-                    v7.add(dtm2.getValueAt(tindex, 6));
-
-                    rowCount--;
-                    tindex++;
-                }
-
-                TabData.setT2_count(v1);
-                TabData.setT2_id(v2);
-                TabData.setT2_ItemName(v3);
-                TabData.setT2_uPrice(v4);
-                TabData.setT2_dprice(v5);
-                TabData.setT2_qty(v6);
-                TabData.setT2_tot(v7);
-
-                TabData.setSubtot(txt_inv_subtot.getText());
-                TabData.setDiscout(txt_inv_dis.getText());
-                TabData.setNettot(txt_inv_nettot.getText());
-                TabData.setPayment(txt_inv_payment.getText());
-                TabData.setBalance(txt_inv_balance.getText());
-
-                dtm1.setRowCount(0);
-                dtm2.setRowCount(0);
-
-                txt_customer.setText(TabData.getCus_num(index));
-                txt_customerName.setText(TabData.getCus_name(index));
-
-                Vector b = new Vector();
-
-                b.add(TabData.getT1_id(index));
-
-                b.add(TabData.getT1_itemName(index));
-                b.add(TabData.getT1_sprice(index));
-                b.add(TabData.getT1_exp(index));
-                b.add(TabData.getT1_onHand(index));
-                if (b.firstElement() != null) {
-                    dtm1.addRow(b);
-                    jTable1.setRowSelectionInterval(0, 0);
-                }
-                txt_id.setText(TabData.getTxt_id(index));
-                txt_dis.setText(TabData.getTxt_discount(index));
-                txt_dPrice.setText(TabData.getTxt_dprice(index));
-                txt_qty.setText(TabData.getTxt_qty(index));
-                txt_subtot.setText(TabData.getTxt_subtotal(index));
-                txt_warantyno.setText(TabData.getTxt_warantyNum(index));
-
-                Vector b1 = (Vector) TabData.getT2_count(index);
-                Vector b2 = (Vector) TabData.getT2_id(index);
-                Vector b3 = (Vector) TabData.getT2_ItemName(index);
-                Vector b4 = (Vector) TabData.getT2_uPrice(index);
-                Vector b5 = (Vector) TabData.getT2_dprice(index);
-                Vector b6 = (Vector) TabData.getT2_qty(index);
-                Vector b7 = (Vector) TabData.getT2_tot(index);
-
-                int rowcount = 0;
-                while (b1.size() > rowcount) {
-                    System.out.println("hi");
-                    Vector rowmaker = new Vector();
-                    rowmaker.add(b1.elementAt(rowcount));
-                    rowmaker.add(b2.elementAt(rowcount));
-                    rowmaker.add(b3.elementAt(rowcount));
-                    rowmaker.add(b4.elementAt(rowcount));
-                    rowmaker.add(b5.elementAt(rowcount));
-                    rowmaker.add(b6.elementAt(rowcount));
-                    rowmaker.add(b7.elementAt(rowcount));
-                    rowcount++;
-                    dtm2.addRow(rowmaker);
-
-                }
-
-                txt_inv_subtot.setText(TabData.getSubtot(index));
-                txt_inv_dis.setText(TabData.getDiscout(index));
-                txt_inv_nettot.setText(TabData.getNettot(index));
-                txt_inv_payment.setText(TabData.getPayment(index));
-                txt_inv_balance.setText(TabData.getBalance(index));
-
+                saveData();
+                resetData();
+                dataRecall(index);
                 oldIndex = index;
             }
         }
@@ -1454,12 +1274,17 @@ public class Invoice extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
 
-        if (!txt_dis.getText().isEmpty()) {
+        
+       if (!txt_dis.getText().isEmpty()) {
+     
+        
             int unite_no = jComboBox1.getSelectedIndex();
             String unite = jComboBox1.getSelectedItem().toString();
+
             if (unite_no == 0) {
 
                 DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+               
                 int row = jTable1.getSelectedRow();
                 double price = Double.parseDouble(dtm.getValueAt(row, 2).toString());
                 double discount = Double.parseDouble(txt_dis.getText());
@@ -1467,15 +1292,21 @@ public class Invoice extends javax.swing.JFrame {
                 txt_dPrice.setText(disPrice + "");
 
             } else {
+
                 uniteIndex = unite_no;
                 try {
                     if (!unite.equals(null)) {
-                        ResultSet search = DB.search("SELECT selling_Price FROM sub_item WHERE sub_unite_name = '" + unite + "'");
+                        ResultSet search = DB.search("SELECT selling_Price,sub_unite FROM sub_item WHERE sub_unite_name = '" + unite + "'");
                         if (search.next()) {
                             int price = search.getInt("selling_Price");
+                            double sub_unite = search.getDouble("sub_unite");
+                            System.out.println("sub_unite --" + sub_unite);
+
+                         
                             unitPrice = price;
                             int discount = Integer.parseInt(txt_dis.getText());
                             txt_dPrice.setText((price - discount) + "");
+                            txt_subtot.setText("");
 
                         }
                     }
@@ -1483,10 +1314,10 @@ public class Invoice extends javax.swing.JFrame {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                }
+                txt_qty.grabFocus();
             }
-            txt_qty.grabFocus();
-        }
-
+       
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox1VetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_jComboBox1VetoableChange
@@ -1657,6 +1488,196 @@ public class Invoice extends javax.swing.JFrame {
         txt_inv_subtot.setText(subtot + "");
         subtotal = subtot;
 
+    }
+
+    void saveData() {
+//        if (button_number < 7) {
+//            dlm.addElement(button_number + "");
+//
+//            jList3.setModel(dlm);
+//            jList3.setSelectedIndex(button_number - 1);
+
+        TabData.setCount(oldIndex);
+
+        TabData.setCus_num(txt_customer.getText());
+        TabData.setCus_name(txt_customerName.getText());
+
+        DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
+        if (jTable1.isRowSelected(jTable1.getSelectedRow())) {
+            int row = jTable1.getSelectedRow();
+            TabData.setT1_id(dtm1.getValueAt(row, 0).toString());
+            TabData.setT1_itemName(dtm1.getValueAt(row, 1).toString());
+            TabData.setT1_sprice(dtm1.getValueAt(row, 2).toString());
+            TabData.setT1_exp(dtm1.getValueAt(row, 3).toString());
+            TabData.setT1_onHand(dtm1.getValueAt(row, 4).toString());
+        } else {
+            TabData.setT1_id(null);
+            TabData.setT1_itemName(null);
+            TabData.setT1_sprice(null);
+            TabData.setT1_exp(null);
+            TabData.setT1_onHand(null);
+        }
+
+        TabData.setTxt_id(txt_id.getText());
+        TabData.setTxt_discount(txt_dis.getText());
+        TabData.setTxt_dprice(txt_dPrice.getText());
+        TabData.setTxt_qty(txt_qty.getText());
+        TabData.setTxt_subtotal(txt_subtot.getText());
+        TabData.setTxt_warantyNum(txt_warantyno.getText());
+
+        if (jTable1.isRowSelected(jTable1.getSelectedRow())) {
+            TabData.setComboIndex(jComboBox1.getSelectedIndex());
+        }
+        int rowCount = jTable2.getRowCount();
+
+        DefaultTableModel dtm2 = (DefaultTableModel) jTable2.getModel();
+        Vector v1 = new Vector();
+        Vector v2 = new Vector();
+        Vector v3 = new Vector();
+        Vector v4 = new Vector();
+        Vector v5 = new Vector();
+        Vector v6 = new Vector();
+        Vector v7 = new Vector();
+        int index = 0;
+        while (rowCount > 0) {
+            v1.add(dtm2.getValueAt(index, 0));
+            v2.add(dtm2.getValueAt(index, 1));
+            v3.add(dtm2.getValueAt(index, 2));
+            v4.add(dtm2.getValueAt(index, 3));
+            v5.add(dtm2.getValueAt(index, 4));
+            v6.add(dtm2.getValueAt(index, 5));
+            v7.add(dtm2.getValueAt(index, 6));
+
+            rowCount--;
+            index++;
+        }
+
+        TabData.setT2_count(v1);
+        TabData.setT2_id(v2);
+        TabData.setT2_ItemName(v3);
+        TabData.setT2_uPrice(v4);
+        TabData.setT2_dprice(v5);
+        TabData.setT2_qty(v6);
+        TabData.setT2_tot(v7);
+
+        TabData.setSubtot(txt_inv_subtot.getText());
+        TabData.setDiscout(txt_inv_dis.getText());
+        TabData.setNettot(txt_inv_nettot.getText());
+        TabData.setPayment(txt_inv_payment.getText());
+        TabData.setBalance(txt_inv_balance.getText());
+//        }
+    }
+
+    void resetData() {
+
+        DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel dtm2 = (DefaultTableModel) jTable2.getModel();
+
+        subtotal = 0.0;
+
+        txt_id.setText(null);
+        txt_dis.setText(null);
+        txt_dPrice.setText(null);
+        txt_qty.setText(null);
+        txt_subtot.setText(null);
+
+        dtm2.setRowCount(0);
+        dtm1.setRowCount(0);
+        txt_customer.setText(null);
+        txt_customerName.setText(null);
+        txt_search.setText(null);
+
+        txt_inv_balance.setText(null);
+        txt_inv_payment.setText(null);
+        txt_inv_nettot.setText(null);
+        txt_inv_dis.setText(null);
+        txt_inv_subtot.setText(null);
+        jComboBox1.removeAllItems();
+
+    }
+
+    void dataRecall(int index) {
+        DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel dtm2 = (DefaultTableModel) jTable2.getModel();
+
+        txt_customer.setText(TabData.getCus_num(index));
+        txt_customerName.setText(TabData.getCus_name(index));
+
+        Vector b = new Vector();
+
+        b.add(TabData.getT1_id(index));
+
+        b.add(TabData.getT1_itemName(index));
+        b.add(TabData.getT1_sprice(index));
+        b.add(TabData.getT1_exp(index));
+        b.add(TabData.getT1_onHand(index));
+        if (b.firstElement() != null) {
+            dtm1.addRow(b);
+            jTable1.setRowSelectionInterval(0, 0);
+        }
+        txt_id.setText(TabData.getTxt_id(index));
+        txt_dis.setText(TabData.getTxt_discount(index));
+        txt_dPrice.setText(TabData.getTxt_dprice(index));
+        txt_qty.setText(TabData.getTxt_qty(index));
+        txt_subtot.setText(TabData.getTxt_subtotal(index));
+        txt_warantyno.setText(TabData.getTxt_warantyNum(index));
+        jComboBox1.removeAllItems();
+        if (jTable1.isRowSelected(jTable1.getSelectedRow())) {
+            comboRecall(TabData.getTxt_id(index), index);
+        }
+
+        Vector b1 = (Vector) TabData.getT2_count(index);
+        Vector b2 = (Vector) TabData.getT2_id(index);
+        Vector b3 = (Vector) TabData.getT2_ItemName(index);
+        Vector b4 = (Vector) TabData.getT2_uPrice(index);
+        Vector b5 = (Vector) TabData.getT2_dprice(index);
+        Vector b6 = (Vector) TabData.getT2_qty(index);
+        Vector b7 = (Vector) TabData.getT2_tot(index);
+
+        int rowcount = 0;
+        while (b1.size() > rowcount) {
+
+            Vector rowmaker = new Vector();
+            rowmaker.add(b1.elementAt(rowcount));
+            rowmaker.add(b2.elementAt(rowcount));
+            rowmaker.add(b3.elementAt(rowcount));
+            rowmaker.add(b4.elementAt(rowcount));
+            rowmaker.add(b5.elementAt(rowcount));
+            rowmaker.add(b6.elementAt(rowcount));
+            rowmaker.add(b7.elementAt(rowcount));
+            rowcount++;
+            dtm2.addRow(rowmaker);
+
+        }
+
+        txt_inv_subtot.setText(TabData.getSubtot(index));
+        txt_inv_dis.setText(TabData.getDiscout(index));
+        txt_inv_nettot.setText(TabData.getNettot(index));
+        txt_inv_payment.setText(TabData.getPayment(index));
+        txt_inv_balance.setText(TabData.getBalance(index));
+    }
+
+    void comboRecall(String id, int index) {
+        try {
+            String idArray[] = id.split("-");
+
+            ResultSet search1 = DB.search("SELECT mesure_unite FROM item WHERE id = '" + idArray[0] + "'");
+            ResultSet search2 = DB.search("SELECT sub_unite_name FROM sub_item WHERE item_id = '" + idArray[0] + "'");
+
+            if (search1.next()) {
+
+                jComboBox1.addItem(search1.getString("mesure_unite"));
+                while (search2.next()) {
+                    jComboBox1.addItem(search2.getString("sub_unite_name"));
+
+                }
+            }
+            jComboBox1.setSelectedIndex(TabData.getComboIndex(index));
+         
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

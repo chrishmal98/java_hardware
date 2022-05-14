@@ -92,8 +92,8 @@ public class GRN extends javax.swing.JFrame {
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -113,6 +113,11 @@ public class GRN extends javax.swing.JFrame {
         jList2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jList2MouseClicked(evt);
+            }
+        });
+        jList2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jList2KeyPressed(evt);
             }
         });
         jScrollPane2.setViewportView(jList2);
@@ -173,6 +178,9 @@ public class GRN extends javax.swing.JFrame {
 
         txt_search.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txt_search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_searchKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_searchKeyReleased(evt);
             }
@@ -237,11 +245,11 @@ public class GRN extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Item Id", "Item Name", "buying priice", "selling price", "Qty", "expire date", "waranty", "Total"
+                "Item Id", "Item Name", "buying priice", "selling price", "Qty", "expire date", "waranty", "Total", "Suplier id"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, false, false, false
+                false, false, false, false, true, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -262,6 +270,7 @@ public class GRN extends javax.swing.JFrame {
             jTable2.getColumnModel().getColumn(6).setResizable(false);
             jTable2.getColumnModel().getColumn(6).setPreferredWidth(50);
             jTable2.getColumnModel().getColumn(7).setResizable(false);
+            jTable2.getColumnModel().getColumn(8).setResizable(false);
         }
 
         jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 900, 170));
@@ -282,12 +291,22 @@ public class GRN extends javax.swing.JFrame {
         jPanel2.add(txt_sprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 140, 30));
 
         jButton1.setText("Remove All");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 220, 110, 30));
 
         jButton2.setText("Edite");
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 100, 110, 30));
 
         jButton6.setText("Remove");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 160, 110, 30));
 
         jButton7.setText("Edite");
@@ -448,31 +467,31 @@ public class GRN extends javax.swing.JFrame {
         });
         jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 240, 60));
 
-        jButton16.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton16.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\new_customer_mini.png")); // NOI18N
-        jButton16.setText("New Customer");
-        jButton16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton16.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton16.setIconTextGap(30);
-        jButton16.addActionListener(new java.awt.event.ActionListener() {
+        jButton18.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_customer_mini.png"))); // NOI18N
+        jButton18.setText("New Customer");
+        jButton18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton18.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton18.setIconTextGap(30);
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton16ActionPerformed(evt);
+                jButton18ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
+        jPanel1.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
 
-        jButton17.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton17.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\report__icon_mini.png")); // NOI18N
-        jButton17.setText("reports");
-        jButton17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton17.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton17.setIconTextGap(30);
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
+        jButton19.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report__icon_mini.png"))); // NOI18N
+        jButton19.setText("reports");
+        jButton19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton19.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton19.setIconTextGap(30);
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
+                jButton19ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 240, 60));
+        jPanel1.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 240, 60));
 
         jLayeredPane2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 261, 738));
 
@@ -537,7 +556,8 @@ public class GRN extends javax.swing.JFrame {
             int rowCount = jTable2.getRowCount();
             System.out.println("row count = " + rowCount);
             String grn_id = lbl_grnid.getText();
-            DB.iud("INSERT INTO grn values('" + grn_id + "',now(),'" + subtotal + "','" + lbl_suplier.getText() + "','" + Common.SystemData.getSystemUser() + "')");
+            String sup_id = dtm1.getValueAt(0, 8).toString();
+            DB.iud("INSERT INTO grn values('" + grn_id + "',now(),'" + subtotal + "','" + sup_id + "','" + Common.SystemData.getSystemUser() + "')");
             while (rowCount > 0) {
                 System.out.println("row count = " + rowCount);
                 String item_id = dtm1.getValueAt(0, 0).toString();
@@ -562,14 +582,16 @@ public class GRN extends javax.swing.JFrame {
 
                 } else {
                     DB.iud("INSERT INTO stock VALUES('" + stock_id + "','" + item_id + "','" + bprice + "','" + sprice + "','" + expdate + "','" + qty + "','" + Common.SystemData.getSystemUser() + "',1)");
-                    DB.iud("INSERT INTO stock_details VALUES('" + count + "', '" + stock_id + "','" + qty + "',now(),'" + grn_id + "','new stock')");
+                    DB.iud("INSERT INTO grn_details VALUES('" + count + "', '" + stock_id + "','" + qty + "',now(),'" + grn_id + "','new stock')");
                 }
+                DB.iud("UPDATE quntity SET qty = qty + '" + qty + "' WHERE item_id = '" + item_id + "'");
                 dtm1.removeRow(0);
                 --rowCount;
             }
             subtotal = 0;
             lbl_subtotal.setText(subtotal + "");
             JOptionPane.showMessageDialog(this, "all is well");
+            lbl_suplier.setText(null);
             genarateGrnId();
         } catch (Exception e) {
             e.printStackTrace();
@@ -601,6 +623,7 @@ public class GRN extends javax.swing.JFrame {
             String itemid = txt_itemId.getText();
             double bprice = Double.parseDouble(txt_bprice.getText());
             double sprice = Double.parseDouble(txt_sprice.getText());
+            String sup_id = lbl_suplier.getText();
             int qty = Integer.parseInt(txt_qty.getText());
             String expdate = "null";
             String w2 = "null";
@@ -627,6 +650,7 @@ public class GRN extends javax.swing.JFrame {
             v.add(sprice);
             v.add(qty);
             v.add(expdate);
+
             if (jSpinner1.isEnabled()) {
                 v.add(w1 + "-" + w2);
             } else {
@@ -634,6 +658,7 @@ public class GRN extends javax.swing.JFrame {
 
             }
             v.add(total);
+            v.add(sup_id);
             subtotal = subtotal + total;
             lbl_subtotal.setText(subtotal + "");
 
@@ -740,12 +765,12 @@ public class GRN extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void lbl_suplierPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lbl_suplierPropertyChange
-        DefaultTableModel dtm2 = (DefaultTableModel) jTable2.getModel();
-        int rowcount = jTable2.getRowCount();
-        for (int i = 0; rowcount > i; i++) {
-            dtm2.removeRow(0);
-
-        }
+//        DefaultTableModel dtm2 = (DefaultTableModel) jTable2.getModel();
+//        int rowcount = jTable2.getRowCount();
+//        for (int i = 0; rowcount > i; i++) {
+//            dtm2.removeRow(0);
+//
+//        }
     }//GEN-LAST:event_lbl_suplierPropertyChange
 
     private void txt_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyReleased
@@ -812,10 +837,18 @@ public class GRN extends javax.swing.JFrame {
     private void jList2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList2MouseClicked
         String selected_text = jList2.getSelectedValue();
         DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
-        if (lbl_suplier.getText().equals("")) {
+  int rowCount = jTable1.getRowCount();
+        if (rowCount >=1) {
+                while(rowCount > 0){
+                dtm1.removeRow(0); 
+                }
+                 lbl_suplier.setText("");
+                
+            }
 
             if (rad_itm.isSelected()) {
                 String item_id = selected_text.substring(selected_text.length() - 8, selected_text.length()).replace("-", "").trim();
+
                 try {
                     ResultSet set1 = DB.search("SELECT suplier, name FROM item WHERE id = '" + item_id + "' ");
                     if (set1.next()) {
@@ -824,6 +857,7 @@ public class GRN extends javax.swing.JFrame {
                         int dis = JOptionPane.showConfirmDialog(this, "Do you want to display all the items of suplier");
                         if (dis == JOptionPane.YES_OPTION) {
                             ResultSet set2 = DB.search("SELECT id, name FROM item WHERE suplier = '" + suplier + "' ");
+                            lbl_suplier.setText(suplier);
 
                             while (set2.next()) {
                                 String id = set2.getString("id");
@@ -846,6 +880,7 @@ public class GRN extends javax.swing.JFrame {
 
                         } else if (dis == JOptionPane.NO_OPTION) {
                             ResultSet rs_qty = DB.search("SELECT SUM(qty) as x FROM stock WHERE item_id = '" + item_id + "'");
+                            lbl_suplier.setText(suplier);
                             if (rs_qty.next()) {
                                 int onHand = rs_qty.getInt("x");
                                 Vector v = new Vector();
@@ -869,6 +904,7 @@ public class GRN extends javax.swing.JFrame {
 
             } else {
                 String sup_id = selected_text.substring(selected_text.length() - 8, selected_text.length()).replace("-", "").trim();
+                lbl_suplier.setText(sup_id);
                 try {
                     ResultSet set2 = DB.search("SELECT id, name FROM item WHERE suplier = '" + sup_id + "' ");
                     dtm1.setRowCount(0);
@@ -896,21 +932,21 @@ public class GRN extends javax.swing.JFrame {
                 }
 
             }
-
-        }
-        if (rad_itm.isSelected()) {
-            String item_id = selected_text.substring(selected_text.length() - 8, selected_text.length()).replace("-", "").trim();
-            try {
-                //   ResultSet set2 = DB.search("SELECT id, name FROM item WHERE id = '" + item_id + "' ");
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        } else {
-            String sup_id = selected_text.substring(selected_text.length() - 8, selected_text.length()).replace("-", "").trim();
-
-        }
+            txt_search.setText(null);
+        
+//        if (rad_itm.isSelected()) {
+//            String item_id = selected_text.substring(selected_text.length() - 8, selected_text.length()).replace("-", "").trim();
+//            try {
+//                //   ResultSet set2 = DB.search("SELECT id, name FROM item WHERE id = '" + item_id + "' ");
+//
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//
+//        } else {
+//            String sup_id = selected_text.substring(selected_text.length() - 8, selected_text.length()).replace("-", "").trim();
+//
+//        }
     }//GEN-LAST:event_jList2MouseClicked
 
     private void txt_bpriceVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_txt_bpriceVetoableChange
@@ -947,17 +983,158 @@ public class GRN extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton15ActionPerformed
 
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         Customer customer = new Customer();
         customer.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton16ActionPerformed
+    }//GEN-LAST:event_jButton18ActionPerformed
 
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-     Reports report = new Reports();
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        Reports report = new Reports();
         report.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton17ActionPerformed
+    }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void txt_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyPressed
+        if (jList2.isVisible()) {
+
+            if (evt.getKeyCode() == 40) {
+                jList2.grabFocus();
+                jList2.setSelectedIndex(0);
+            }
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_searchKeyPressed
+
+    private void jList2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jList2KeyPressed
+        if (evt.getKeyCode() == 10) {
+            
+            String selected_text = jList2.getSelectedValue();
+            DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
+            int rowCount = jTable1.getRowCount();
+            if (rowCount >=1) {
+                while(rowCount > 0){
+                dtm1.removeRow(0); 
+                }
+                               lbl_suplier.setText("");
+                
+            }
+                if (rad_itm.isSelected()) {
+                    String item_id = selected_text.substring(selected_text.length() - 8, selected_text.length()).replace("-", "").trim();
+
+                    try {
+                        ResultSet set1 = DB.search("SELECT suplier, name FROM item WHERE id = '" + item_id + "' ");
+                        if (set1.next()) {
+                            String suplier = set1.getString("suplier");
+                            String item_name = set1.getString("name");
+                            int dis = JOptionPane.showConfirmDialog(this, "Do you want to display all the items of suplier");
+                           
+                            if (dis == JOptionPane.YES_OPTION) {
+                                ResultSet set2 = DB.search("SELECT id, name FROM item WHERE suplier = '" + suplier + "' ");
+                                lbl_suplier.setText(suplier);
+
+                                while (set2.next()) {
+                                    String id = set2.getString("id");
+                                    String name = set2.getString("name");
+                                    ResultSet rs_qty = DB.search("SELECT SUM(qty) as x FROM stock WHERE item_id = '" + id + "'");
+                                    if (rs_qty.next()) {
+                                        int onHand = rs_qty.getInt("x");
+                                        Vector v = new Vector();
+
+                                        v.add(id);
+                                        v.add(name);
+                                        v.add(onHand);
+                                        v.add(0);
+
+                                        dtm1.addRow(v);
+                                        jScrollPane2.setVisible(false);
+
+                                    }
+                                }
+
+                            } else if (dis == JOptionPane.NO_OPTION) {
+                                ResultSet rs_qty = DB.search("SELECT SUM(qty) as x FROM stock WHERE item_id = '" + item_id + "'");
+                                lbl_suplier.setText(suplier);
+                                if (rs_qty.next()) {
+                                    int onHand = rs_qty.getInt("x");
+                                    Vector v = new Vector();
+
+                                    v.add(item_id);
+                                    v.add(item_name);
+                                    v.add(onHand);
+                                    v.add(0);
+
+                                    dtm1.addRow(v);
+                                    jScrollPane2.setVisible(false);
+                                }
+
+                            }
+
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                } else {
+                    String sup_id = selected_text.substring(selected_text.length() - 8, selected_text.length()).replace("-", "").trim();
+                    lbl_suplier.setText(sup_id);
+                    try {
+                        ResultSet set2 = DB.search("SELECT id, name FROM item WHERE suplier = '" + sup_id + "' ");
+                        dtm1.setRowCount(0);
+                        while (set2.next()) {
+                            String id = set2.getString("id");
+                            String name = set2.getString("name");
+                            ResultSet rs_qty = DB.search("SELECT SUM(qty) as x FROM stock WHERE item_id = '" + id + "'");
+                            if (rs_qty.next()) {
+                                int onHand = rs_qty.getInt("x");
+                                Vector v = new Vector();
+
+                                v.add(id);
+                                v.add(name);
+                                v.add(onHand);
+                                v.add(0);
+
+                                dtm1.addRow(v);
+                                jScrollPane2.setVisible(false);
+
+                            }
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
+                txt_search.setText(null);
+            
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jList2KeyPressed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        int rowCount = jTable1.getRowCount();
+        if (rowCount > 1) {
+            DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
+            dtm1.removeRow(jTable1.getSelectedRow());
+            
+        }else if(rowCount == 1){
+            DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
+            dtm1.removeRow(jTable1.getSelectedRow());
+        lbl_suplier.setText("");
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+          int rowCount = jTable1.getRowCount();
+          while(rowCount > 0){
+            DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
+            dtm1.removeRow(0);
+            rowCount--;
+          } 
+                lbl_suplier.setText("");
+  
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1034,7 +1211,7 @@ public class GRN extends javax.swing.JFrame {
     private int genaratecount() {
         int count = 0;
         try {
-            ResultSet dataFetch = DB.search("SELECT COUNT('count') AS x FROM stock_details ");
+            ResultSet dataFetch = DB.search("SELECT COUNT('count') AS x FROM grn_details ");
             if (dataFetch.next()) {
                 count = dataFetch.getInt("x");
                 count++;
@@ -1061,10 +1238,10 @@ public class GRN extends javax.swing.JFrame {
                     oldStock = false;
                 } else {
                     count++;
-                    
+
                     int num = count;
                     while (num >= 1) {
-                        ResultSet search = DB.search("SELECT stock_id FROM stock WHERE cost_price = '" + bprice + "' AND selling_price = '" + sprice + "' AND expdate = '" + expdate + "' AND  stock_id = '" + item_id +"-st"+num+ "' AND status  = 1");
+                        ResultSet search = DB.search("SELECT stock_id FROM stock WHERE cost_price = '" + bprice + "' AND selling_price = '" + sprice + "' AND expdate = '" + expdate + "' AND  stock_id = '" + item_id + "-st" + num + "' AND status  = 1");
                         if (search.next()) {
                             System.out.println("update triger");
                             stockid = search.getString("stock_id");
@@ -1076,12 +1253,10 @@ public class GRN extends javax.swing.JFrame {
                             oldStock = false;
 
                         }
-                    --num;
+                        --num;
                     }
 
                 }
-
-                
 
             }
 
@@ -1100,8 +1275,8 @@ public class GRN extends javax.swing.JFrame {
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

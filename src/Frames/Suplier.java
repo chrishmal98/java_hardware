@@ -44,9 +44,9 @@ public class Suplier extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -192,27 +192,6 @@ public class Suplier extends javax.swing.JFrame {
         });
         jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 240, 60));
 
-        jButton8.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\new_customer_mini.png")); // NOI18N
-        jButton8.setText("New Customer");
-        jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton8.setIconTextGap(30);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
-
-        jButton9.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\report__icon_mini.png")); // NOI18N
-        jButton9.setText("reports");
-        jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton9.setIconTextGap(30);
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 240, 60));
-
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
         jButton10.setText("jButton10");
         jButton10.setContentAreaFilled(false);
@@ -222,6 +201,32 @@ public class Suplier extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 110));
+
+        jButton14.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_customer_mini.png"))); // NOI18N
+        jButton14.setText("New Customer");
+        jButton14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton14.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton14.setIconTextGap(30);
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
+
+        jButton15.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report__icon_mini.png"))); // NOI18N
+        jButton15.setText("reports");
+        jButton15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton15.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton15.setIconTextGap(30);
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 240, 60));
 
         jLayeredPane2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 261, 738));
 
@@ -342,7 +347,7 @@ public class Suplier extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton3.setText("jButton3");
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 210, 50));
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, 210, 50));
 
         jButton4.setText("Save");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -571,12 +576,6 @@ this.dispose();// TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-    Customer customer = new Customer();
-    customer.setVisible(true);
-    this.dispose();
-    }//GEN-LAST:event_jButton8ActionPerformed
-
     private void txt_fname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fname1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_fname1ActionPerformed
@@ -674,6 +673,18 @@ this.dispose();// TODO add your handling code here:
         }
     }//GEN-LAST:event_jList1KeyPressed
 
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        Customer customer = new Customer();
+        customer.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        Reports report = new Reports();
+        report.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton15ActionPerformed
+
     /**
      * et
      *
@@ -718,14 +729,14 @@ this.dispose();// TODO add your handling code here:
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -770,7 +781,7 @@ this.dispose();// TODO add your handling code here:
     private javax.swing.JTextField txt_company1;
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_email1;
-    private javax.swing.JTextField txt_fname;
+    public static javax.swing.JTextField txt_fname;
     private javax.swing.JTextField txt_fname1;
     private javax.swing.JTextField txt_lname;
     private javax.swing.JTextField txt_lname1;

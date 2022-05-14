@@ -16,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.apache.tools.ant.taskdefs.Sleep;
 
 /**
  *
@@ -57,8 +58,8 @@ public class ItemManagement extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         lbl_user_icon = new javax.swing.JLabel();
@@ -100,6 +101,8 @@ public class ItemManagement extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
+        txt_lowqty = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jList7 = new javax.swing.JList<>();
@@ -142,6 +145,8 @@ public class ItemManagement extends javax.swing.JFrame {
         txt_barcode2 = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox<>();
         lbl_msg = new javax.swing.JLabel();
+        txt_lowqty_u = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1366, 768));
@@ -243,31 +248,31 @@ public class ItemManagement extends javax.swing.JFrame {
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 240, 60));
 
-        jButton8.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\new_customer_mini.png")); // NOI18N
-        jButton8.setText("New Customer");
-        jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton8.setIconTextGap(30);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jButton15.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_customer_mini.png"))); // NOI18N
+        jButton15.setText("New Customer");
+        jButton15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton15.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton15.setIconTextGap(30);
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jButton15ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
+        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
 
-        jButton9.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\report__icon_mini.png")); // NOI18N
-        jButton9.setText("reports");
-        jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton9.setIconTextGap(30);
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        jButton16.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report__icon_mini.png"))); // NOI18N
+        jButton16.setText("reports");
+        jButton16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton16.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton16.setIconTextGap(30);
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                jButton16ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 240, 60));
+        jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 240, 60));
 
         jLayeredPane2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 261, 738));
 
@@ -278,7 +283,6 @@ public class ItemManagement extends javax.swing.JFrame {
         jLabel2.setText("Item Registraton");
         jPanel7.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 199, 40));
 
-        lbl_user_icon.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\admin_icon_mini.png")); // NOI18N
         lbl_user_icon.setText(" ");
         jPanel7.add(lbl_user_icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, -1, 40));
 
@@ -340,6 +344,11 @@ public class ItemManagement extends javax.swing.JFrame {
         jPanel9.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 81, 35));
 
         txt_name.setPreferredSize(new java.awt.Dimension(35, 0));
+        txt_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nameActionPerformed(evt);
+            }
+        });
         jPanel9.add(txt_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 250, 35));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -350,6 +359,11 @@ public class ItemManagement extends javax.swing.JFrame {
         txt_suplier.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_suplierMouseClicked(evt);
+            }
+        });
+        txt_suplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_suplierActionPerformed(evt);
             }
         });
         txt_suplier.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -370,6 +384,11 @@ public class ItemManagement extends javax.swing.JFrame {
         txt_catagory.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_catagoryMouseClicked(evt);
+            }
+        });
+        txt_catagory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_catagoryActionPerformed(evt);
             }
         });
         txt_catagory.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -415,7 +434,7 @@ public class ItemManagement extends javax.swing.JFrame {
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(lbl_image, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(btn_brows, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -450,6 +469,11 @@ public class ItemManagement extends javax.swing.JFrame {
                 txt_brandMouseClicked(evt);
             }
         });
+        txt_brand.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_brandActionPerformed(evt);
+            }
+        });
         txt_brand.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_brandKeyPressed(evt);
@@ -468,16 +492,16 @@ public class ItemManagement extends javax.swing.JFrame {
         jPanel9.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, 250, 35));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel15.setText("Warranty Availability");
-        jPanel9.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 510, 140, 35));
+        jLabel15.setText("Low quantity");
+        jPanel9.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 520, 140, 35));
 
         buttonGroup1.add(yes_Optioon);
         yes_Optioon.setText("yes");
-        jPanel9.add(yes_Optioon, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 510, -1, 35));
+        jPanel9.add(yes_Optioon, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 480, -1, 35));
 
         buttonGroup1.add(no_Option);
         no_Option.setText(" No");
-        jPanel9.add(no_Option, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 510, -1, 35));
+        jPanel9.add(no_Option, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 480, -1, 35));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
 
@@ -492,7 +516,7 @@ public class ItemManagement extends javax.swing.JFrame {
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_itmid, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(898, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -533,6 +557,17 @@ public class ItemManagement extends javax.swing.JFrame {
         jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 210, 50));
 
         jPanel9.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 1040, 70));
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel22.setText("Warranty Availability");
+        jPanel9.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 480, 140, 35));
+
+        txt_lowqty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_lowqtyActionPerformed(evt);
+            }
+        });
+        jPanel9.add(txt_lowqty, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 520, 110, 25));
 
         jTabbedPane2.addTab("New Item", jPanel9);
 
@@ -633,28 +668,28 @@ public class ItemManagement extends javax.swing.JFrame {
         jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 530, 87, 35));
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel19.setText("Warranty Availability");
-        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 530, 140, 35));
+        jLabel19.setText("Low quantity");
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 540, 140, 30));
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel20.setText("expiry date");
-        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 460, 140, 35));
+        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 440, 140, 35));
 
         buttonGroup5.add(no_Option2);
         no_Option2.setText(" No");
-        jPanel2.add(no_Option2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 460, -1, 35));
+        jPanel2.add(no_Option2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 440, -1, 35));
 
         buttonGroup5.add(yes_Optioon2);
         yes_Optioon2.setText("yes");
-        jPanel2.add(yes_Optioon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 460, -1, 35));
+        jPanel2.add(yes_Optioon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 440, -1, 35));
 
         buttonGroup4.add(yes_Optioon3);
         yes_Optioon3.setText("yes");
-        jPanel2.add(yes_Optioon3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 530, -1, 35));
+        jPanel2.add(yes_Optioon3, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 490, -1, 35));
 
         buttonGroup4.add(no_Option3);
         no_Option3.setText(" No");
-        jPanel2.add(no_Option3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 530, -1, 35));
+        jPanel2.add(no_Option3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 490, -1, 35));
 
         jLayeredPane3.setBorder(javax.swing.BorderFactory.createTitledBorder("Image"));
 
@@ -685,7 +720,7 @@ public class ItemManagement extends javax.swing.JFrame {
             .addGroup(jLayeredPane3Layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(lbl_image1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane3Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(btn_brows1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -802,6 +837,17 @@ public class ItemManagement extends javax.swing.JFrame {
         jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 250, 35));
         jPanel2.add(lbl_msg, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 290, 30));
 
+        txt_lowqty_u.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_lowqty_uActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txt_lowqty_u, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 540, 110, 30));
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel21.setText("Warranty Availability");
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 490, 140, 35));
+
         jTabbedPane2.addTab("Update", jPanel2);
 
         jLayeredPane2.setLayer(jTabbedPane2, javax.swing.JLayeredPane.POPUP_LAYER);
@@ -855,18 +901,6 @@ public class ItemManagement extends javax.swing.JFrame {
         item.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        Customer customer = new Customer();
-        customer.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        Reports report = new Reports();
-        report.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton9ActionPerformed
 
     private void txt_brandKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_brandKeyReleased
         // TODO add your handling code here:
@@ -1083,6 +1117,7 @@ public class ItemManagement extends javax.swing.JFrame {
         String barcode = txt_barcode.getText();
         String waranty = no_Option.isSelected() ? "0" : "1";
         String expiry = no_Option1.isSelected() ? "0" : "1";
+        int low_qty = Integer.parseInt(txt_lowqty.getText());
 
         try {
             if (brand == "") {
@@ -1104,17 +1139,35 @@ public class ItemManagement extends javax.swing.JFrame {
 
             System.out.print(supid);
             ResultSet set3 = DB.search("SELECT id FROM suplier WHERE id = '" + supid + "' ");
+            if (!set3.next()) {
+                Suplier sup = new Suplier();
+                Thread t = new Thread() {
+                    @Override
+                    public void run() {
 
-            if (!set2.next()) {
+                        sup.setVisible(true);
 
-                DB.iud("INSERT INTO item VALUES ('" + id + "','" + name + "','" + brand + "','" + path + "','" + barcode + "','" + catagory + "','" + supid + "','" + munite + "',1,'" + waranty + "','" + expiry + "')");
+                        txt_suplier.setText(null);
 
+                    }
+
+                };
+ JOptionPane.showMessageDialog(this, "save new suplier");
+                t.start();
+                sup.toFront();
+                sup.requestFocus();
+
+            } else {
+
+                DB.iud("INSERT INTO item VALUES ('" + id + "','" + name + "','" + brand + "','" + path + "','" + barcode + "','" + catagory + "','" + supid + "','" + munite + "',1,'" + waranty + "','" + expiry + "','" + low_qty + "')");
+                DB.iud("INSERT INTO quntity VALUES ('" + id + "','" + 0.0 + "')");
                 JOptionPane.showMessageDialog(this, "sucsussfull... !");
 
                 txt_name.setText(null);
                 txt_brand.setText(null);
                 txt_catagory.setText(null);
                 txt_suplier.setText(null);
+                txt_lowqty.setText(null);
                 jComboBox1.setSelectedIndex(0);
                 txt_barcode.setText(null);
                 no_Option.setSelected(true);
@@ -1122,10 +1175,7 @@ public class ItemManagement extends javax.swing.JFrame {
                 lbl_image.setIcon(null);
                 genarateItemId();
 
-            } else {
-                JOptionPane.showMessageDialog(this, " error in Suplier");
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1138,7 +1188,7 @@ public class ItemManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_catogory1MouseClicked
 
     private void txt_catogory1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_catogory1KeyPressed
-   if (evt.getKeyCode() == 40) {
+        if (evt.getKeyCode() == 40) {
             jList5.grabFocus();
 
             jList5.setSelectedIndex(0);
@@ -1147,7 +1197,7 @@ public class ItemManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_catogory1KeyPressed
 
     private void txt_catogory1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_catogory1KeyReleased
-   String catogory = txt_catogory1.getText();
+        String catogory = txt_catogory1.getText();
         try {
 
             ResultSet set1 = DB.search("SELECT name FROM catagory WHERE name LIKE '" + catogory + "%" + "' ");
@@ -1180,13 +1230,13 @@ public class ItemManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_jList4MouseClicked
 
     private void jList4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jList4KeyPressed
-   if (evt.getKeyCode() == 10) {
+        if (evt.getKeyCode() == 10) {
             jScrollPane4.setVisible(false);
             String sname = jList4.getSelectedValue();
             txt_brand3.setText(sname);
             txt_catogory1.grabFocus();
 
-        }      
+        }
     }//GEN-LAST:event_jList4KeyPressed
 
     private void jList5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList5MouseClicked
@@ -1200,7 +1250,7 @@ public class ItemManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_jList5MouseClicked
 
     private void jList5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jList5KeyPressed
-  if (evt.getKeyCode() == 10) {
+        if (evt.getKeyCode() == 10) {
             jScrollPane5.setVisible(false);
             String sname = jList5.getSelectedValue();
             txt_catogory1.setText(sname);
@@ -1210,7 +1260,7 @@ public class ItemManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_jList5KeyPressed
 
     private void jList6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList6MouseClicked
-      if (jList6.isSelectedIndex(jList6.getSelectedIndex())) {
+        if (jList6.isSelectedIndex(jList6.getSelectedIndex())) {
 
             txt_suplier2.setText(jList6.getSelectedValue());
 
@@ -1220,7 +1270,7 @@ public class ItemManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_jList6MouseClicked
 
     private void jList6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jList6KeyPressed
-if (evt.getKeyCode() == 10) {
+        if (evt.getKeyCode() == 10) {
             jScrollPane6.setVisible(false);
             String sname = jList6.getSelectedValue();
             txt_suplier2.setText(sname);
@@ -1253,6 +1303,7 @@ if (evt.getKeyCode() == 10) {
         String barcode = txt_barcode2.getText();
         String waranty = no_Option2.isSelected() ? "0" : "1";
         String expiry = no_Option3.isSelected() ? "0" : "1";
+        int low_qty = Integer.parseInt(txt_lowqty_u.getText());
 
         try {
             if (brand == "") {
@@ -1278,7 +1329,7 @@ if (evt.getKeyCode() == 10) {
 
             if (set3.next()) {
 
-                DB.iud("UPDATE item  SET name ='" + name + "', brand ='" + brand + "', image ='" + path1 + "', barcode ='" + barcode + "', catagory ='" + catagory + "', suplier ='" + supid + "', mesure_unite ='" + munite + "', waranty ='" + waranty + "', isexpire ='" + expiry + "' WHERE  id = '" + id + "'");
+                DB.iud("UPDATE item  SET name ='" + name + "', brand ='" + brand + "', image ='" + path1 + "', barcode ='" + barcode + "', catagory ='" + catagory + "', suplier ='" + supid + "', mesure_unite ='" + munite + "', waranty ='" + waranty + "', isexpire ='" + expiry + "', low_qty ='" + low_qty + "' WHERE  id = '" + id + "'");
 
                 JOptionPane.showMessageDialog(this, "Update sucsussfull... !");
 
@@ -1286,6 +1337,7 @@ if (evt.getKeyCode() == 10) {
                 txt_brand.setText(null);
                 txt_catagory.setText(null);
                 txt_suplier.setText(null);
+                txt_lowqty_u.setText(null);
                 jComboBox1.setSelectedIndex(0);
                 txt_barcode.setText(null);
                 no_Option.setSelected(true);
@@ -1419,7 +1471,7 @@ if (evt.getKeyCode() == 10) {
     }//GEN-LAST:event_txt_suplier2MouseClicked
 
     private void txt_suplier2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_suplier2KeyPressed
-      if (evt.getKeyCode() == 40) {
+        if (evt.getKeyCode() == 40) {
             jList6.grabFocus();
 
             jList6.setSelectedIndex(0);
@@ -1428,7 +1480,7 @@ if (evt.getKeyCode() == 10) {
     }//GEN-LAST:event_txt_suplier2KeyPressed
 
     private void txt_suplier2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_suplier2KeyReleased
-          String supname = txt_suplier2.getText();
+        String supname = txt_suplier2.getText();
         try {
 
             ResultSet set1 = DB.search("SELECT id, fname, company FROM suplier WHERE company LIKE '" + supname + "%" + "' ");
@@ -1462,7 +1514,7 @@ if (evt.getKeyCode() == 10) {
     }//GEN-LAST:event_txt_brand3MouseClicked
 
     private void txt_brand3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_brand3KeyPressed
-          if (evt.getKeyCode() == 40) {
+        if (evt.getKeyCode() == 40) {
             jList4.grabFocus();
 
             jList4.setSelectedIndex(0);
@@ -1471,7 +1523,7 @@ if (evt.getKeyCode() == 10) {
     }//GEN-LAST:event_txt_brand3KeyPressed
 
     private void txt_brand3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_brand3KeyReleased
-     String brand = txt_brand3.getText();
+        String brand = txt_brand3.getText();
         try {
 
             ResultSet set1 = DB.search("SELECT name FROM brand WHERE name LIKE '" + brand + "%" + "' ");
@@ -1504,7 +1556,7 @@ if (evt.getKeyCode() == 10) {
 
             String item = txt_search.getText();
 
-                   path1 = null;
+            path1 = null;
             txt_name1.setText(null);
             txt_brand3.setText(null);
             txt_catogory1.setText(null);
@@ -1515,7 +1567,7 @@ if (evt.getKeyCode() == 10) {
             no_Option3.setSelected(true);
 
             lbl_image1.setIcon(null);
-            
+
             try {
                 ResultSet search = DB.search("SELECT name,brand,image,barcode,suplier,mesure_unite,waranty,isexpire FROM item WHERE id = '" + item + "'");
                 if (search.next()) {
@@ -1556,6 +1608,43 @@ if (evt.getKeyCode() == 10) {
 
         }
     }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        Customer customer = new Customer();
+        customer.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        Reports report = new Reports();
+        report.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void txt_lowqty_uActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lowqty_uActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_lowqty_uActionPerformed
+
+    private void txt_lowqtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lowqtyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_lowqtyActionPerformed
+
+    private void txt_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nameActionPerformed
+       txt_brand.grabFocus();
+    }//GEN-LAST:event_txt_nameActionPerformed
+
+    private void txt_brandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_brandActionPerformed
+txt_catagory.grabFocus();        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_brandActionPerformed
+
+    private void txt_catagoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_catagoryActionPerformed
+        // TODO add your handling code here:
+        txt_suplier.grabFocus();
+    }//GEN-LAST:event_txt_catagoryActionPerformed
+
+    private void txt_suplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_suplierActionPerformed
+      jComboBox1.grabFocus();
+    }//GEN-LAST:event_txt_suplierActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1636,8 +1725,6 @@ if (evt.getKeyCode() == 10) {
         return image;
     }
 
-    
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_brows;
@@ -1655,14 +1742,14 @@ if (evt.getKeyCode() == 10) {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -1678,6 +1765,8 @@ if (evt.getKeyCode() == 10) {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1730,6 +1819,8 @@ if (evt.getKeyCode() == 10) {
     private javax.swing.JTextField txt_brand3;
     private javax.swing.JTextField txt_catagory;
     private javax.swing.JTextField txt_catogory1;
+    private javax.swing.JTextField txt_lowqty;
+    private javax.swing.JTextField txt_lowqty_u;
     private javax.swing.JTextField txt_name;
     private javax.swing.JTextField txt_name1;
     private javax.swing.JTextField txt_search;

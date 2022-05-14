@@ -21,6 +21,7 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
+    
     public Home() {
         initComponents();
         setDateAndTime();
@@ -130,7 +131,7 @@ public class Home extends javax.swing.JFrame {
         lbl_day.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(lbl_day, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, 160, 20));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frames/admin_icon.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/admin_icon.png"))); // NOI18N
         jLabel4.setText("Chrishmal Rodrigo");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 10, 240, 90));
 
@@ -138,7 +139,7 @@ public class Home extends javax.swing.JFrame {
         jLabel5.setText("Admin");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 60, 90, 20));
 
-        jLabel15.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\logo.png")); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 240, 100));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1370, 110));
@@ -223,42 +224,42 @@ public class Home extends javax.swing.JFrame {
         });
         getContentPane().add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 210, 40));
 
-        jButton17.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\grn_icon_1.png")); // NOI18N
+        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/grn_icon_1.png"))); // NOI18N
         jButton17.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
         jButton17.setContentAreaFilled(false);
         getContentPane().add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 210, 90));
 
-        jButton18.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\po_icon.png")); // NOI18N
+        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/po_icon.png"))); // NOI18N
         jButton18.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
         jButton18.setContentAreaFilled(false);
         getContentPane().add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 210, 90));
 
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\report__icon.png")); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report__icon.png"))); // NOI18N
         jButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
         jButton3.setContentAreaFilled(false);
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 190, 210, 90));
 
-        jButton13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\new_customer.png")); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_customer.png"))); // NOI18N
         jButton13.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
         jButton13.setContentAreaFilled(false);
         getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 210, 90));
 
-        jButton21.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\new_suplier_icon.png")); // NOI18N
+        jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon.png"))); // NOI18N
         jButton21.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
         jButton21.setContentAreaFilled(false);
         getContentPane().add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 210, 90));
 
-        jButton22.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\new_systemuser_icon.png")); // NOI18N
+        jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_systemuser_icon.png"))); // NOI18N
         jButton22.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
         jButton22.setContentAreaFilled(false);
         getContentPane().add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, 210, 90));
 
-        jButton23.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\new_employee_icon.png")); // NOI18N
+        jButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_employee_icon.png"))); // NOI18N
         jButton23.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
         jButton23.setContentAreaFilled(false);
         getContentPane().add(jButton23, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 410, 210, 90));
 
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\invoice_icon.png")); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/invoice_icon.png"))); // NOI18N
         jButton4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
         jButton4.setContentAreaFilled(false);
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 210, 90));
@@ -279,7 +280,7 @@ public class Home extends javax.swing.JFrame {
         });
         getContentPane().add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 500, 210, 40));
 
-        jButton27.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\new_item_icon.png")); // NOI18N
+        jButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_item_icon.png"))); // NOI18N
         jButton27.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
         jButton27.setContentAreaFilled(false);
         getContentPane().add(jButton27, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 410, 210, 90));
@@ -294,7 +295,7 @@ public class Home extends javax.swing.JFrame {
         });
         getContentPane().add(jButton28, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 280, 210, 40));
 
-        jButton29.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\settings_icon1.png")); // NOI18N
+        jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/settings_icon1.png"))); // NOI18N
         jButton29.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
         jButton29.setContentAreaFilled(false);
         jButton29.addActionListener(new java.awt.event.ActionListener() {
@@ -304,11 +305,11 @@ public class Home extends javax.swing.JFrame {
         });
         getContentPane().add(jButton29, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 190, 210, 90));
 
-        jButton30.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\log Out_icon.png")); // NOI18N
+        jButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/log Out_icon.png"))); // NOI18N
         jButton30.setContentAreaFilled(false);
         getContentPane().add(jButton30, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 660, 150, 60));
 
-        jButton31.setIcon(new javax.swing.ImageIcon("C:\\Users\\Chrishmal Rodrigo\\OneDrive\\Pictures\\hardware\\login_icon.png")); // NOI18N
+        jButton31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login_icon.png"))); // NOI18N
         jButton31.setContentAreaFilled(false);
         getContentPane().add(jButton31, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 150, 60));
 

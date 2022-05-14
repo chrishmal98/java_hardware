@@ -124,7 +124,7 @@ public class TESTING extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 130, 100, 90));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 100, 100, 90));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

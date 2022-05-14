@@ -30,6 +30,10 @@ public class TabData {
     private static String[] txt_qty = new String[7];
     private static String[] txt_subtotal = new String[7];
     private static String[] txt_warantyNum = new String[7];
+    private static int[] comboIndex = new int[7];
+
+  
+    
 
     private static Vector[] t2_count = new Vector[7];
     private static Vector[] t2_id = new Vector[7];
@@ -45,6 +49,10 @@ public class TabData {
     private static String[] payment = new String[7];
     private static String[] balance = new String[7];
     private static int count = 0;
+
+      public static int getComboIndex(int num) {
+        return comboIndex[num];
+    }
 
     public static String getCus_num(int num) {
         return cus_num[num];
@@ -148,6 +156,10 @@ public class TabData {
 
     public static int getCount() {
         return count;
+    }
+    
+    public static void setComboIndex(int num) {
+        comboIndex[count] = num;
     }
 
     public static void setCus_num(String num) {
