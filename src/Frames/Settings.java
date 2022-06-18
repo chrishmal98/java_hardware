@@ -24,8 +24,10 @@ public class Settings extends javax.swing.JFrame {
      */
     public Settings() {
         initComponents();
-        jScrollPane1.setVisible(false);
-        jScrollPane4.setVisible(false);
+
+        loadTable();
+        jTable1.getTableHeader().setFont(new java.awt.Font("Nunito", 0, 15));
+        jTable2.getTableHeader().setFont(new java.awt.Font("Nunito", 0, 15));
 
     }
 
@@ -65,45 +67,35 @@ public class Settings extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jButton10 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         txt_search = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         txt_nPrice = new javax.swing.JTextField();
-        txt_id = new javax.swing.JTextField();
         txt_Oprice = new javax.swing.JTextField();
-        txt_name = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        rad_brand = new javax.swing.JRadioButton();
+        rad_name = new javax.swing.JRadioButton();
+        rad_sup = new javax.swing.JRadioButton();
+        rad_cat = new javax.swing.JRadioButton();
+        rad_item = new javax.swing.JRadioButton();
+        rad_stock = new javax.swing.JRadioButton();
+        jLabel22 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         SMP_unite = new javax.swing.JTextField();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        Sub_list = new javax.swing.JList<>();
-        sub_ItmName = new javax.swing.JTextField();
-        Sub_Itm_id = new javax.swing.JTextField();
-        Sub_barcode = new javax.swing.JTextField();
         jTextField21 = new javax.swing.JTextField();
         jTextField22 = new javax.swing.JTextField();
         SMP_name = new javax.swing.JTextField();
@@ -114,9 +106,45 @@ public class Settings extends javax.swing.JFrame {
         sub_price_unite = new javax.swing.JTextField();
         Sub_price = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
+        btn_save1 = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        txt_search1 = new javax.swing.JTextField();
+        rad_name1 = new javax.swing.JRadioButton();
+        rad_cat1 = new javax.swing.JRadioButton();
+        rad_sup1 = new javax.swing.JRadioButton();
+        rad_brand1 = new javax.swing.JRadioButton();
+        jLabel25 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton16 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
+        jButton22 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
 
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel6.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 220, 30));
@@ -180,158 +208,31 @@ public class Settings extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
-        jButton10.setText("jButton10");
-        jButton10.setContentAreaFilled(false);
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 110));
-
-        jButton7.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/invoice_icon_mini.png"))); // NOI18N
-        jButton7.setText("Invoice");
-        jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton7.setIconTextGap(30);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 240, 60));
-
-        jButton8.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/po_icon_mini.png"))); // NOI18N
-        jButton8.setText("P O");
-        jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton8.setIconTextGap(30);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 240, 60));
-
-        jButton9.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
-        jButton9.setText("New Suplier");
-        jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton9.setIconTextGap(30);
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 240, 60));
-
-        jButton11.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_item_icon_mini.png"))); // NOI18N
-        jButton11.setText("New Item");
-        jButton11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton11.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton11.setIconTextGap(30);
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 240, 60));
-
-        jButton12.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_customer_mini.png"))); // NOI18N
-        jButton12.setText("New Customer");
-        jButton12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton12.setIconTextGap(30);
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
-
-        jButton13.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report__icon_mini.png"))); // NOI18N
-        jButton13.setText("reports");
-        jButton13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton13.setIconTextGap(30);
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 240, 60));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 261, 738));
-
-        jPanel3.setBackground(new java.awt.Color(0, 102, 204));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel5.setBackground(new java.awt.Color(0, 102, 204));
-        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel5MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel5MouseExited(evt);
-            }
-        });
-        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
-
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
-        jPanel5.add(jLabel12);
-
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 0, 60, 30));
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, -1));
-
-        jPanel7.setBackground(new java.awt.Color(102, 153, 255));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("Settings");
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(984, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 1110, 40));
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 204)));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
-        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTabbedPane1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        jTabbedPane1.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+        jTabbedPane1.setOpaque(true);
 
+        jPanel4.setBackground(java.awt.Color.white);
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel4.setLayout(null);
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txt_search.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+        txt_search.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
+        txt_search.setText("Search");
+        txt_search.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txt_search.setOpaque(false);
+        txt_search.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_searchFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_searchFocusLost(evt);
+            }
+        });
         txt_search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_searchKeyPressed(evt);
@@ -340,35 +241,27 @@ public class Settings extends javax.swing.JFrame {
                 txt_searchKeyReleased(evt);
             }
         });
-        jPanel4.add(txt_search);
-        txt_search.setBounds(350, 50, 290, 40);
+        jPanel4.add(txt_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 430, 40));
 
-        jList1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jList1KeyPressed(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jList1);
-
-        jPanel4.add(jScrollPane1);
-        jScrollPane1.setBounds(350, 90, 290, 110);
-
+        jTable1.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Stock Id", "Item Name", "On Hand", "expdate", "Price"
+                "Item ID", "Item Name", "On Hand", "Category", "Suplier", "Brand"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setGridColor(new java.awt.Color(153, 204, 255));
+        jTable1.setRowHeight(20);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -387,190 +280,608 @@ public class Settings extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(1).setPreferredWidth(300);
             jTable1.getColumnModel().getColumn(2).setResizable(false);
             jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(120);
             jTable1.getColumnModel().getColumn(4).setResizable(false);
+            jTable1.getColumnModel().getColumn(4).setPreferredWidth(150);
+            jTable1.getColumnModel().getColumn(5).setResizable(false);
+            jTable1.getColumnModel().getColumn(5).setPreferredWidth(120);
         }
 
-        jPanel4.add(jScrollPane2);
-        jScrollPane2.setBounds(80, 220, 810, 120);
+        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 940, 200));
 
+        txt_nPrice.setFont(new java.awt.Font("Nunito Black", 0, 14)); // NOI18N
+        txt_nPrice.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_nPrice.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         txt_nPrice.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel4.add(txt_nPrice);
-        txt_nPrice.setBounds(720, 450, 170, 30);
+        jPanel4.add(txt_nPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 530, 170, 30));
 
-        txt_id.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel4.add(txt_id);
-        txt_id.setBounds(90, 450, 170, 30);
-
+        txt_Oprice.setFont(new java.awt.Font("Nunito Black", 0, 14)); // NOI18N
+        txt_Oprice.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_Oprice.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         txt_Oprice.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel4.add(txt_Oprice);
-        txt_Oprice.setBounds(510, 450, 170, 30);
+        jPanel4.add(txt_Oprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 530, 170, 30));
 
-        txt_name.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel4.add(txt_name);
-        txt_name.setBounds(300, 450, 170, 30);
-
+        jLabel1.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("New Price");
-        jPanel4.add(jLabel1);
-        jLabel1.setBounds(720, 420, 170, 30);
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 560, 170, 30));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Id");
-        jPanel4.add(jLabel2);
-        jLabel2.setBounds(90, 420, 170, 30);
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Name");
-        jPanel4.add(jLabel4);
-        jLabel4.setBounds(300, 420, 170, 30);
-
+        jLabel5.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Old Price");
-        jPanel4.add(jLabel5);
-        jLabel5.setBounds(510, 420, 170, 30);
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 560, 170, 30));
 
+        jButton1.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton1.setText("Cancel");
-        jPanel4.add(jButton1);
-        jButton1.setBounds(620, 630, 160, 40);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 630, 160, 40));
 
+        jButton2.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton2.setText("Save");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2);
-        jButton2.setBounds(200, 630, 160, 40);
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 630, 160, 40));
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/magnifying-glass.png"))); // NOI18N
+        jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 90, 30, 30));
+
+        buttonGroup1.add(rad_brand);
+        rad_brand.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        rad_brand.setText("Brand");
+        rad_brand.setContentAreaFilled(false);
+        rad_brand.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rad_brandActionPerformed(evt);
+            }
+        });
+        jPanel4.add(rad_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 50, 93, 23));
+
+        buttonGroup1.add(rad_name);
+        rad_name.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        rad_name.setSelected(true);
+        rad_name.setText("Name");
+        rad_name.setContentAreaFilled(false);
+        jPanel4.add(rad_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 93, 23));
+
+        buttonGroup1.add(rad_sup);
+        rad_sup.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        rad_sup.setText("Suplier");
+        rad_sup.setContentAreaFilled(false);
+        rad_sup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rad_supActionPerformed(evt);
+            }
+        });
+        jPanel4.add(rad_sup, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 93, 23));
+
+        buttonGroup1.add(rad_cat);
+        rad_cat.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        rad_cat.setText("Category");
+        rad_cat.setContentAreaFilled(false);
+        jPanel4.add(rad_cat, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 93, 23));
+
+        buttonGroup3.add(rad_item);
+        rad_item.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+        rad_item.setText("By Item");
+        jPanel4.add(rad_item, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 90, 90, -1));
+
+        buttonGroup3.add(rad_stock);
+        rad_stock.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+        rad_stock.setSelected(true);
+        rad_stock.setText("By Stock");
+        jPanel4.add(rad_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 50, 90, -1));
+
+        jLabel22.setBackground(new java.awt.Color(106, 162, 186));
+        jLabel22.setFont(new java.awt.Font("Nunito Black", 0, 14)); // NOI18N
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("Price Change");
+        jLabel22.setOpaque(true);
+        jPanel4.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 30));
+
+        jTable3.setFont(new java.awt.Font("Nunito Black", 0, 14)); // NOI18N
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Stock ID", "Name", "Quntityl", "Exp Date", "Price"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable3MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable3);
+        if (jTable3.getColumnModel().getColumnCount() > 0) {
+            jTable3.getColumnModel().getColumn(0).setResizable(false);
+            jTable3.getColumnModel().getColumn(1).setResizable(false);
+            jTable3.getColumnModel().getColumn(1).setPreferredWidth(200);
+            jTable3.getColumnModel().getColumn(2).setResizable(false);
+            jTable3.getColumnModel().getColumn(3).setResizable(false);
+            jTable3.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 860, 110));
+
+        jLabel2.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
+        jLabel2.setText("Stocks");
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 100, 20));
+
+        jLabel4.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
+        jLabel4.setText("Items");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 100, 20));
 
         jTabbedPane1.addTab("Price Change", jPanel4);
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 984, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Item managemet", jPanel8);
-
+        jPanel9.setBackground(java.awt.Color.white);
         jPanel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel9.add(SMP_unite, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 50, 30));
 
-        Sub_list.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Sub_listKeyPressed(evt);
+        SMP_unite.setFont(new java.awt.Font("Nunito", 1, 15)); // NOI18N
+        SMP_unite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SMP_uniteActionPerformed(evt);
             }
         });
-        jScrollPane4.setViewportView(Sub_list);
-
-        jPanel9.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 250, 130));
-
-        sub_ItmName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                sub_ItmNameKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                sub_ItmNameKeyReleased(evt);
-            }
-        });
-        jPanel9.add(sub_ItmName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 250, 30));
-        jPanel9.add(Sub_Itm_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 250, 30));
-        jPanel9.add(Sub_barcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, 250, 30));
+        jPanel9.add(SMP_unite, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 560, 50, 30));
 
         jTextField21.setEditable(false);
+        jTextField21.setBackground(java.awt.Color.white);
+        jTextField21.setFont(new java.awt.Font("Nunito SemiBold", 0, 14)); // NOI18N
         jTextField21.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField21.setText("Main Mesure Point");
-        jPanel9.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 160, 30));
+        jTextField21.setText("Main Mesure Unit");
+        jTextField21.setBorder(null);
+        jPanel9.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, 160, 30));
 
         jTextField22.setEditable(false);
+        jTextField22.setBackground(java.awt.Color.white);
+        jTextField22.setFont(new java.awt.Font("Nunito SemiBold", 0, 14)); // NOI18N
         jTextField22.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField22.setText("Sub Mesure Point");
-        jPanel9.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 160, 30));
-        jPanel9.add(SMP_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 110, 30));
-        jPanel9.add(MMP_unite, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 50, 30));
-        jPanel9.add(MMP_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 110, 30));
+        jTextField22.setText("Sub Mesure Unit");
+        jTextField22.setBorder(null);
+        jTextField22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField22ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 530, 160, 30));
+
+        SMP_name.setFont(new java.awt.Font("Nunito", 1, 15)); // NOI18N
+        SMP_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SMP_nameActionPerformed(evt);
+            }
+        });
+        jPanel9.add(SMP_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 560, 110, 30));
+
+        MMP_unite.setFont(new java.awt.Font("Nunito", 1, 15)); // NOI18N
+        jPanel9.add(MMP_unite, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 560, 50, 30));
+
+        MMP_name.setFont(new java.awt.Font("Nunito", 1, 15)); // NOI18N
+        MMP_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MMP_nameActionPerformed(evt);
+            }
+        });
+        jPanel9.add(MMP_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 560, 110, 30));
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Rs:");
-        jPanel9.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 390, 40, 30));
+        jPanel9.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 560, 40, 30));
 
         jTextField26.setEditable(false);
+        jTextField26.setBackground(java.awt.Color.white);
+        jTextField26.setFont(new java.awt.Font("Nunito SemiBold", 0, 14)); // NOI18N
         jTextField26.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField26.setText("Price");
-        jPanel9.add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 330, 250, 30));
+        jTextField26.setBorder(null);
+        jPanel9.add(jTextField26, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 530, 250, 30));
 
+        sub_price_unite.setFont(new java.awt.Font("Nunito", 1, 15)); // NOI18N
         sub_price_unite.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 sub_price_uniteFocusGained(evt);
             }
         });
-        jPanel9.add(sub_price_unite, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 390, 100, 30));
-        jPanel9.add(Sub_price, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 390, 60, 30));
+        jPanel9.add(sub_price_unite, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 560, 100, 30));
+
+        Sub_price.setFont(new java.awt.Font("Nunito", 1, 15)); // NOI18N
+        jPanel9.add(Sub_price, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 560, 60, 30));
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("=");
-        jPanel9.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 40, 30));
+        jPanel9.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 560, 40, 30));
 
-        jButton3.setText("Save");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btn_save1.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
+        btn_save1.setText("Save");
+        btn_save1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btn_save1ActionPerformed(evt);
             }
         });
-        jPanel9.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 620, 190, 40));
+        jPanel9.add(btn_save1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 630, 640, 50));
 
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText(" unite name");
-        jPanel9.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, 110, 20));
+        jTable2.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
+            },
+            new String [] {
+                "Item ID", "Item Name", "On Hand", "Category", "Suplier", "Brand"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable2.setGridColor(new java.awt.Color(153, 204, 255));
+        jTable2.setRowHeight(20);
+        jTable2.getTableHeader().setReorderingAllowed(false);
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
+        jTable2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable2KeyPressed(evt);
+            }
+        });
+        jScrollPane5.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setPreferredWidth(300);
+            jTable2.getColumnModel().getColumn(2).setResizable(false);
+            jTable2.getColumnModel().getColumn(3).setResizable(false);
+            jTable2.getColumnModel().getColumn(3).setPreferredWidth(120);
+            jTable2.getColumnModel().getColumn(4).setResizable(false);
+            jTable2.getColumnModel().getColumn(4).setPreferredWidth(150);
+            jTable2.getColumnModel().getColumn(5).setResizable(false);
+            jTable2.getColumnModel().getColumn(5).setPreferredWidth(120);
+        }
+
+        jPanel9.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 940, 200));
+
+        txt_search1.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+        txt_search1.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
+        txt_search1.setText("Search");
+        txt_search1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txt_search1.setOpaque(false);
+        txt_search1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_search1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_search1FocusLost(evt);
+            }
+        });
+        txt_search1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_search1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_search1KeyReleased(evt);
+            }
+        });
+        jPanel9.add(txt_search1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 430, 40));
+
+        buttonGroup2.add(rad_name1);
+        rad_name1.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        rad_name1.setSelected(true);
+        rad_name1.setText("Name");
+        rad_name1.setContentAreaFilled(false);
+        jPanel9.add(rad_name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 93, 23));
+
+        buttonGroup2.add(rad_cat1);
+        rad_cat1.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        rad_cat1.setText("Category");
+        rad_cat1.setContentAreaFilled(false);
+        jPanel9.add(rad_cat1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 93, 23));
+
+        buttonGroup2.add(rad_sup1);
+        rad_sup1.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        rad_sup1.setText("Suplier");
+        rad_sup1.setContentAreaFilled(false);
+        rad_sup1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rad_sup1ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(rad_sup1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 50, 93, 23));
+
+        buttonGroup2.add(rad_brand1);
+        rad_brand1.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        rad_brand1.setText("Brand");
+        rad_brand1.setContentAreaFilled(false);
+        rad_brand1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rad_brand1ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(rad_brand1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, 93, 23));
+
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/magnifying-glass.png"))); // NOI18N
+        jPanel9.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 30, 30));
+
+        jLabel18.setBackground(new java.awt.Color(106, 162, 186));
+        jLabel18.setFont(new java.awt.Font("Nunito Black", 0, 14)); // NOI18N
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setText("unite");
-        jPanel9.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 50, 20));
+        jLabel18.setText("Mesure Unites ");
+        jLabel18.setOpaque(true);
+        jPanel9.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 30));
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Name", "Masure Unit  ", "Equation", "Price"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jTable4);
+        if (jTable4.getColumnModel().getColumnCount() > 0) {
+            jTable4.getColumnModel().getColumn(0).setResizable(false);
+            jTable4.getColumnModel().getColumn(0).setPreferredWidth(30);
+            jTable4.getColumnModel().getColumn(1).setResizable(false);
+            jTable4.getColumnModel().getColumn(1).setPreferredWidth(150);
+            jTable4.getColumnModel().getColumn(2).setResizable(false);
+            jTable4.getColumnModel().getColumn(2).setPreferredWidth(50);
+            jTable4.getColumnModel().getColumn(3).setResizable(false);
+            jTable4.getColumnModel().getColumn(3).setPreferredWidth(200);
+            jTable4.getColumnModel().getColumn(4).setResizable(false);
+            jTable4.getColumnModel().getColumn(4).setPreferredWidth(60);
+        }
+
+        jPanel9.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 860, 130));
+
+        jLabel17.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
+        jLabel17.setText("Mesure Units");
+        jPanel9.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 100, 20));
+
+        jLabel23.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
+        jLabel23.setText("Items");
+        jPanel9.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 100, 20));
+
+        jButton4.setText("Cancel");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 440, 70, 60));
+
+        jButton5.setText("Edite");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 370, 70, 60));
+
+        jLabel24.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
+        jLabel24.setText("Add New Mesure Unit");
+        jLabel24.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel9.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 940, 20));
+
+        jLabel26.setFont(new java.awt.Font("Nunito", 0, 11)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel26.setText("Rs");
+        jPanel9.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 590, 40, -1));
+
+        jLabel27.setFont(new java.awt.Font("Nunito", 0, 11)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel27.setText(" 1");
+        jPanel9.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 590, 50, -1));
+
+        jLabel28.setFont(new java.awt.Font("Nunito", 0, 11)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel28.setText("Kg");
+        jPanel9.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 590, 110, -1));
+
+        jLabel30.setFont(new java.awt.Font("Nunito", 0, 11)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel30.setText("g");
+        jPanel9.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 590, 110, -1));
+
+        jLabel31.setFont(new java.awt.Font("Nunito", 0, 11)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel31.setText("1 - g ");
+        jPanel9.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 590, 100, -1));
+
+        jLabel32.setFont(new java.awt.Font("Nunito", 0, 11)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel32.setText("50");
+        jPanel9.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 590, 60, -1));
+
+        jLabel33.setFont(new java.awt.Font("Nunito", 0, 11)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel33.setText("1000");
+        jPanel9.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 590, 50, -1));
 
         jTabbedPane1.addTab("Sub Item", jPanel9);
 
-        jPanel2.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 700));
+        jPanel2.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1106, 698));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 1106, 700));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 1106, 698));
+
+        jPanel7.setBackground(new java.awt.Color(106, 162, 186));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Nunito ExtraBold", 1, 24)); // NOI18N
+        jLabel3.setText("Item Management");
+        jPanel7.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 330, 29));
+
+        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 1106, 40));
+
+        jPanel10.setBackground(new java.awt.Color(16, 52, 166));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel5.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel5MouseExited(evt);
+            }
+        });
+        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        jLabel12.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(255, 0, 0)));
+        jPanel5.add(jLabel12);
+
+        jPanel10.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 0, 60, 30));
+
+        jLabel19.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/paint-brush.png"))); // NOI18N
+        jLabel19.setText("MELO HARDWARE & PAINT HOUSE");
+        jPanel10.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 3, 330, 25));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/heder_image-1.png"))); // NOI18N
+        jPanel10.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 30));
+
+        getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, -1));
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
+        jButton16.setBorderPainted(false);
+        jButton16.setContentAreaFilled(false);
+        jButton16.setFocusPainted(false);
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 110));
+
+        jButton17.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/invoice_icon_mini.png"))); // NOI18N
+        jButton17.setText("Invoice");
+        jButton17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton17.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton17.setIconTextGap(30);
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 240, 60));
+
+        jButton20.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/po_icon_mini.png"))); // NOI18N
+        jButton20.setText("P O");
+        jButton20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton20.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton20.setIconTextGap(30);
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 240, 60));
+
+        jButton21.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
+        jButton21.setText("New Suplier");
+        jButton21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton21.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton21.setIconTextGap(30);
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 240, 60));
+
+        jButton22.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_item_icon_mini.png"))); // NOI18N
+        jButton22.setText("New Item");
+        jButton22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton22.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton22.setIconTextGap(30);
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 240, 60));
+
+        jButton12.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_customer_mini.png"))); // NOI18N
+        jButton12.setText("New Customer");
+        jButton12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton12.setIconTextGap(30);
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
+
+        jButton13.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report__icon_mini.png"))); // NOI18N
+        jButton13.setText("Reports");
+        jButton13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton13.setIconTextGap(30);
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 240, 60));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 261, 738));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        Home home = new Home();
-        home.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Invoice invoice = new Invoice();
-        invoice.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        Po po = new Po();
-        po.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        Suplier suplier = new Suplier();
-        suplier.setVisible(true);
-        this.dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        ItemManagement item = new ItemManagement();
-        item.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
         // TODO add your handling code here:
@@ -578,247 +889,42 @@ public class Settings extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
-        jPanel5.setBackground(Color.red);
+        jPanel5.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
     }//GEN-LAST:event_jPanel5MouseEntered
 
     private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
-        jPanel5.setBackground(new java.awt.Color(0, 102, 204));
+
     }//GEN-LAST:event_jPanel5MouseExited
 
-    private void txt_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyReleased
-        String search_text = txt_search.getText();
-        try {
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        Home home = new Home();
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton16ActionPerformed
 
-            ResultSet set2 = DB.search("SELECT id, name FROM item WHERE name LIKE '" + "%" + search_text + "%" + "' ");
-            Vector v = new Vector();
-            jScrollPane1.setVisible(false);
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        Invoice invoice = new Invoice();
+        invoice.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton17ActionPerformed
 
-            while (set2.next()) {
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        Po po = new Po();
+        po.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton20ActionPerformed
 
-                jScrollPane1.setVisible(true);
-                String id = set2.getString("id");
-                String name = set2.getString("name");
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        Suplier suplier = new Suplier();
+        suplier.setVisible(true);
+        this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_jButton21ActionPerformed
 
-                String showname = name + "  -  " + id;
-                v.add(showname);
-                jList1.setListData(v);
-
-            }
-            if (txt_search.getText().equals("")) {
-                jScrollPane1.setVisible(false);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_searchKeyReleased
-
-    private void jList1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jList1KeyPressed
-        if (evt.getKeyCode() == 10) {
-            if (!jList1.isSelectionEmpty()) {
-                String value = jList1.getSelectedValue();
-                String[] itmName = jList1.getSelectedValue().split("  -  ");
-
-                txt_search.setText(value);
-                String item = itmName[1];
-                jScrollPane1.setVisible(false);
-
-                try {
-                    ResultSet search = DB.search("SELECT stock_id,selling_price,expdate,qty FROM stock WHERE item_id = '" + item + "' AND status = 1 ");
-
-                    DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-
-                    dtm.setRowCount(0);
-                    while (search.next()) {
-
-                        Vector v = new Vector();
-                        v.add(search.getString("stock_id"));
-                        v.add(itmName[0]);
-                        v.add(search.getString("qty"));
-                        v.add(search.getString("expdate"));
-                        v.add(search.getString("selling_price"));
-
-                        dtm.addRow(v);
-                        jTable1.grabFocus();
-                        jTable1.setRowSelectionInterval(0, 0);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_jList1KeyPressed
-
-    private void txt_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyPressed
-        if (jList1.isVisible()) {
-
-            if (evt.getKeyCode() == 40) {
-                jList1.grabFocus();
-                jList1.setSelectedIndex(0);
-            }
-        }
-    }//GEN-LAST:event_txt_searchKeyPressed
-
-    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
-        if (evt.getKeyCode() == 32 && jTable1.getSelectedRow() != -1) {
-            System.err.println("1111111");
-            try {
-                int newPrice = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter New Price"));
-
-                DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-                int selectedRow = jTable1.getSelectedRow();
-                txt_id.setText(dtm.getValueAt(selectedRow, 0).toString());
-                txt_name.setText(dtm.getValueAt(selectedRow, 1).toString());
-                txt_Oprice.setText(dtm.getValueAt(selectedRow, 4).toString());
-                txt_nPrice.setText(newPrice + "");
-                jButton2.grabFocus();
-            } catch (Exception e) {
-                JOptionPane.showConfirmDialog(this, "Invalid Option", "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-    }//GEN-LAST:event_jTable1KeyPressed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (!(txt_id.getText().isEmpty() && txt_name.getText().isEmpty() && txt_Oprice.getText().isEmpty() && txt_nPrice.getText().isEmpty())) {
-            try {
-                String id = txt_id.getText();
-                String price = txt_nPrice.getText();
-                DB.iud("UPDATE stock SET selling_price = '" + price + "' WHERE stock_id = '" + id + "'");
-                JOptionPane.showMessageDialog(this, "Sucsussfully updated");
-                int selectedRow = jTable1.getSelectedRow();
-                DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-                dtm.setValueAt(price, selectedRow, 4);
-                String expdate = dtm.getValueAt(selectedRow, 3).toString();
-                int rowCount = jTable1.getRowCount();
-                int count = 0;
-                while (rowCount > count) {
-
-                    String p = dtm.getValueAt(count, 4).toString();
-
-                    if (price.equals(p) && count != selectedRow) {
-
-                        String p1 = dtm.getValueAt(count, 3).toString();
-                        if (expdate.equals(p1)) {
-                            System.out.println("exp ok");
-                            int showConfirmDialog = JOptionPane.showConfirmDialog(this, "do you whant to combine thiese items");
-                            if (JOptionPane.OK_OPTION == showConfirmDialog) {
-                                int qty1 = Integer.parseInt(dtm.getValueAt(selectedRow, 2).toString());
-                                int qty2 = Integer.parseInt(dtm.getValueAt(count, 2).toString());
-                                String id2 = (dtm.getValueAt(count, 0).toString());
-
-                                int tot = qty1 + qty2;
-                                System.out.println(tot);
-                                DB.iud("UPDATE stock SET qty = '" + tot + "' WHERE stock_id = '" + id2 + "'");
-                                DB.iud("UPDATE stock SET status = 0 WHERE stock_id = '" + id + "'");
-                                dtm.setValueAt(tot, count, 2);
-                                dtm.removeRow(selectedRow);
-
-                                break;
-                            }
-                        }
-                    }
-
-                    count++;
-                }
-                txt_id.setText(null);
-                txt_name.setText(null);
-                txt_Oprice.setText(null);
-                txt_nPrice.setText(null);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void sub_ItmNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sub_ItmNameKeyReleased
-        String searchText = sub_ItmName.getText();
-        try {
-            ResultSet set2 = DB.search("SELECT id, name FROM item WHERE name LIKE '" + searchText + "%" + "' ");
-            Vector v = new Vector();
-            jScrollPane4.setVisible(false);
-
-            while (set2.next()) {
-
-                jScrollPane4.setVisible(true);
-                String id = set2.getString("id");
-                String name = set2.getString("name");
-
-                String showname = name + "  -  " + id;
-                v.add(showname);
-                Sub_list.setListData(v);
-
-            }
-            if (sub_ItmName.getText().equals("")) {
-                jScrollPane4.setVisible(false);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_sub_ItmNameKeyReleased
-
-    private void sub_ItmNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sub_ItmNameKeyPressed
-        if (Sub_list.isVisible()) {
-
-            if (evt.getKeyCode() == 40) {
-                Sub_list.grabFocus();
-                Sub_list.setSelectedIndex(0);
-            }
-        }
-
-    }//GEN-LAST:event_sub_ItmNameKeyPressed
-
-    private void Sub_listKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Sub_listKeyPressed
-        if (evt.getKeyCode() == 10) {
-            String selecteditem = Sub_list.getSelectedValue();
-            String[] id_name = selecteditem.split("-");
-
-            sub_ItmName.setText(id_name[0].trim());
-            Sub_Itm_id.setText(id_name[1].trim());
-            
-            try {
-                ResultSet search = DB.search("SELECT mesure_unite FROM item WHERE id = '"+id_name[1].trim()+"'");
-                if(search.next()){
-                MMP_unite.setText("1");
-                MMP_name.setText(search.getString("mesure_unite"));
-                SMP_unite.grabFocus();
-                }
-            } catch (Exception e) {
-            e.printStackTrace();
-            }
-            
-            jScrollPane4.setVisible(false);
-        }
-    }//GEN-LAST:event_Sub_listKeyPressed
-
-    private void sub_price_uniteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_sub_price_uniteFocusGained
-        // TODO add your handling code here:
-        sub_price_unite.setText("1 - "+ SMP_name.getText());
-        Sub_price.grabFocus();
-    }//GEN-LAST:event_sub_price_uniteFocusGained
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
-        if(sub_ItmName.getText().length()!= 0 && SMP_unite.getText().length()!= 0 && SMP_name.getText().length()!= 0 && sub_price_unite.getText().length()!= 0 && sub_price_unite.getText().length()!= 0){
-             try {
-                 String itemId = Sub_Itm_id.getText();
-                 String id = genarateSubId(itemId);
-                 
-               
-                 String subUnite = SMP_unite.getText();
-                 String name = SMP_name.getText();
-                 String price = Sub_price.getText();
-                 
-                 
-           DB.iud("INSERT INTO sub_item values('"+id+"','"+itemId+"','"+subUnite+"','"+name+"','"+price+"','"+SystemData.getSystemUser()+"')");
-                 JOptionPane.showMessageDialog(this, "sucsussfull");
-        } catch (Exception e) {
-        e.printStackTrace();
-        }
-        }
-      
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        ItemRegistration item = new ItemRegistration();
+        item.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         Customer customer = new Customer();
@@ -832,28 +938,616 @@ public class Settings extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton13ActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
- if (evt.getClickCount() == 2 && !evt.isConsumed()) {
-   System.err.println("1111111");
-            try {
-                int newPrice = Integer.parseInt(JOptionPane.showInputDialog(this, "Enter New Price"));
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        DefaultTableModel dtm = (DefaultTableModel) jTable3.getModel();
+        int selectedRow = jTable3.getSelectedRow();
+        if (rad_stock.isSelected()) {
+            if (!(txt_Oprice.getText().isEmpty() && txt_nPrice.getText().isEmpty())) {
 
-                DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-                int selectedRow = jTable1.getSelectedRow();
-                txt_id.setText(dtm.getValueAt(selectedRow, 0).toString());
-                txt_name.setText(dtm.getValueAt(selectedRow, 1).toString());
-                txt_Oprice.setText(dtm.getValueAt(selectedRow, 4).toString());
-                txt_nPrice.setText(newPrice + "");
-                jButton2.grabFocus();
+                try {
+                    String id = dtm.getValueAt(selectedRow, 0).toString();
+                    String price = txt_nPrice.getText();
+                    DB.iud("UPDATE stock SET selling_price = '" + price + "' WHERE stock_id = '" + id + "'");
+                    JOptionPane.showMessageDialog(this, "Sucsussfully updated");
+
+                    dtm.setValueAt(price, selectedRow, 4);
+                    String expdate = dtm.getValueAt(selectedRow, 3).toString();
+                    int rowCount = jTable3.getRowCount();
+                    int count = 0;
+                    while (rowCount > count) {
+
+                        String p = dtm.getValueAt(count, 4).toString();
+
+                        if (price.equals(p) && count != selectedRow) {
+
+                            String p1 = dtm.getValueAt(count, 3).toString();
+                            if (expdate.equals(p1)) {
+
+                                int showConfirmDialog = JOptionPane.showConfirmDialog(this, "do you whant to combine thiese items");
+                                if (JOptionPane.OK_OPTION == showConfirmDialog) {
+                                    double qty1 = Double.parseDouble(dtm.getValueAt(selectedRow, 2).toString());
+                                    double qty2 = Double.parseDouble(dtm.getValueAt(count, 2).toString());
+                                    String id2 = (dtm.getValueAt(count, 0).toString());
+
+                                    double tot = qty1 + qty2;
+
+                                    DB.iud("UPDATE stock SET qty = '" + tot + "' WHERE stock_id = '" + id2 + "'");
+                                    DB.iud("UPDATE stock SET status = 0 WHERE stock_id = '" + id + "'");
+                                    dtm.setValueAt(tot, count, 2);
+                                    dtm.removeRow(selectedRow);
+
+                                    break;
+                                }
+                            }
+                        }
+
+                        count++;
+                    }
+
+                    txt_Oprice.setText(price);
+                    txt_nPrice.setText(null);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        } else if (rad_item.isSelected()) {
+            try {
+                DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
+                int row1 = jTable1.getSelectedRow();
+                String id = dtm1.getValueAt(row1, 0).toString();
+                String price = txt_nPrice.getText();
+                DB.iud("UPDATE stock SET selling_price = '" + price + "' WHERE item_id = '" + id + "'");
+                JOptionPane.showMessageDialog(this, "Sucsussfully updated");
+                txt_Oprice.setText(price);
+                dtm.setValueAt(price, selectedRow, 4);
+                txt_nPrice.setText(null);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+        if (evt.getKeyCode() == 32 && jTable1.getSelectedRow() != -1) {
+
+            try {
+
             } catch (Exception e) {
                 JOptionPane.showConfirmDialog(this, "Invalid Option", "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
             }
- }
+        }
+    }//GEN-LAST:event_jTable1KeyPressed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel dtm1 = (DefaultTableModel) jTable3.getModel();
+        dtm1.setRowCount(0);
+
+        int selectedRow = jTable1.getSelectedRow();
+
+        String itemID = dtm.getValueAt(selectedRow, 0).toString();
+        String name = dtm.getValueAt(selectedRow, 1).toString();
+
+        try {
+            ResultSet search = DB.search("SELECT stock_id, expdate, qty, selling_price FROM stock WHERE item_id = '" + itemID + "' AND status = '1'");
+            while (search.next()) {
+                Vector v = new Vector();
+                v.add(search.getString("stock_id"));
+                v.add(name);
+                v.add(search.getString("qty"));
+                v.add(search.getString("expdate"));
+                v.add(search.getString("selling_price"));
+                dtm1.addRow(v);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void txt_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyReleased
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+
+        String text = txt_search.getText();
+
+        if (rad_name.isSelected()) {
+            dtm.setRowCount(0);
+            try {
+
+                ResultSet search = DB.search("SELECT item.name, item.brand, item.catagory, item.mesure_unite , suplier.company, stock.stock_id, stock.qty, stock.selling_price  FROM item INNER JOIN suplier ON item.suplier = suplier.id INNER JOIN stock ON stock.item_id = item.id  WHERE item.name LIKE '" + "%" + text + "%" + "'");
+
+                while (search.next()) {
+                    String id = search.getString("stock_id");
+                    String name = search.getString("name");
+                    String qty = search.getString("qty");
+                    String price = search.getString("selling_price");
+                    String brand = search.getString("brand");
+                    String category = search.getString("catagory");
+                    String m_unite = search.getString("mesure_unite");
+                    String company = search.getString("company");
+
+                    Vector v = new Vector();
+                    v.add(id);
+                    v.add(name);
+                    v.add(qty + " " + m_unite);
+                    v.add(price);
+                    v.add(category);
+                    v.add(company);
+                    v.add(brand);
+
+                    dtm.addRow(v);
+
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else if (rad_sup.isSelected()) {
+            dtm.setRowCount(0);
+            try {
+                ResultSet search = DB.search("SELECT item.name, item.brand, item.catagory, item.mesure_unite , suplier.company,stock.stock_id, stock.qty, stock.selling_price  FROM item INNER JOIN suplier ON item.suplier = suplier.id INNER JOIN stock ON stock.item_id = item.id WHERE suplier.company LIKE '" + "%" + text + "%" + "'");
+
+                while (search.next()) {
+                    String id = search.getString("stock_id");
+                    String name = search.getString("name");
+                    String qty = search.getString("qty");
+                    String price = search.getString("selling_price");
+                    String brand = search.getString("brand");
+                    String category = search.getString("catagory");
+                    String m_unite = search.getString("mesure_unite");
+                    String company = search.getString("company");
+
+                    Vector v = new Vector();
+                    v.add(id);
+                    v.add(name);
+                    v.add(qty + " " + m_unite);
+                    v.add(price);
+                    v.add(category);
+                    v.add(company);
+                    v.add(brand);
+
+                    dtm.addRow(v);
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+
+        } else if (rad_brand.isSelected()) {
+            dtm.setRowCount(0);
+            try {
+                ResultSet search = DB.search("SELECT item.name, item.brand, item.catagory, item.mesure_unite , suplier.company, stock.stock_id,stock.qty, stock.selling_price  FROM item INNER JOIN suplier ON item.suplier = suplier.id INNER JOIN stock ON stock.item_id = item.id  WHERE item.brand LIKE '" + "%" + text + "%" + "'");
+
+                while (search.next()) {
+                    String id = search.getString("stock_id");
+                    String name = search.getString("name");
+                    String qty = search.getString("qty");
+                    String price = search.getString("selling_price");
+                    String brand = search.getString("brand");
+                    String category = search.getString("catagory");
+                    String m_unite = search.getString("mesure_unite");
+                    String company = search.getString("company");
+
+                    Vector v = new Vector();
+                    v.add(id);
+                    v.add(name);
+                    v.add(qty + " " + m_unite);
+                    v.add(price);
+                    v.add(category);
+                    v.add(company);
+                    v.add(brand);
+
+                    dtm.addRow(v);
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+
+        } else if (rad_cat.isSelected()) {
+            dtm.setRowCount(0);
+            try {
+
+                ResultSet search = DB.search("SELECT item.name, item.brand, item.catagory, item.mesure_unite , suplier.company, stock.stock_id, stock.qty, stock.selling_price  FROM item INNER JOIN suplier ON item.suplier = suplier.id INNER JOIN stock ON stock.item_id = item.id  WHERE item.catagory LIKE '" + "%" + text + "%" + "'");
+
+                while (search.next()) {
+                    String id = search.getString("stock_id");
+                    String name = search.getString("name");
+                    String qty = search.getString("qty");
+                    String price = search.getString("selling_price");
+                    String brand = search.getString("brand");
+                    String category = search.getString("catagory");
+                    String m_unite = search.getString("mesure_unite");
+                    String company = search.getString("company");
+
+                    Vector v = new Vector();
+                    v.add(id);
+                    v.add(name);
+                    v.add(qty + " " + m_unite);
+                    v.add(price);
+                    v.add(category);
+                    v.add(company);
+                    v.add(brand);
+
+                    dtm.addRow(v);
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+
+        }       // TODO add your handling code here:       // TODO add your handling code here:
+    }//GEN-LAST:event_txt_searchKeyReleased
+
+    private void txt_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyPressed
+
+    }//GEN-LAST:event_txt_searchKeyPressed
+
+    private void rad_brandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rad_brandActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rad_brandActionPerformed
+
+    private void rad_supActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rad_supActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rad_supActionPerformed
+
+    private void txt_searchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_searchFocusGained
+        // TODO add your handling code here:
+        if (txt_search.getText().equals("Search")) {
+            txt_search.setText("");
+        }
+
+    }//GEN-LAST:event_txt_searchFocusGained
+
+    private void txt_searchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_searchFocusLost
+        // TODO add your handling code here:
+        if (txt_search.getCaretPosition() == 0) {
+            txt_search.setText("Search");
+
+        }
+    }//GEN-LAST:event_txt_searchFocusLost
+
+    private void rad_brand1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rad_brand1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rad_brand1ActionPerformed
+
+    private void rad_sup1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rad_sup1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rad_sup1ActionPerformed
+
+    private void txt_search1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search1KeyReleased
+        DefaultTableModel dtm = (DefaultTableModel) jTable2.getModel();
+
+        String text = txt_search1.getText();
+
+        if (rad_name1.isSelected()) {
+            dtm.setRowCount(0);
+            try {
+
+                ResultSet search = DB.search("SELECT item.name, item.brand, item.catagory, item.mesure_unite , suplier.company, stock.stock_id,stock.qty, stock.selling_price  FROM item INNER JOIN suplier ON item.suplier = suplier.id INNER JOIN stock ON stock.item_id = item.id  WHERE item.name LIKE '" + "%" + text + "%" + "'");
+
+                while (search.next()) {
+                    String id = search.getString("stock_id");
+                    String name = search.getString("name");
+                    String qty = search.getString("qty");
+                    String price = search.getString("selling_price");
+                    String brand = search.getString("brand");
+                    String category = search.getString("catagory");
+                    String m_unite = search.getString("mesure_unite");
+                    String company = search.getString("company");
+
+                    Vector v = new Vector();
+                    v.add(id);
+                    v.add(name);
+                    v.add(qty + " " + m_unite);
+                    v.add(price);
+                    v.add(category);
+                    v.add(company);
+                    v.add(brand);
+
+                    dtm.addRow(v);
+
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else if (rad_sup1.isSelected()) {
+            dtm.setRowCount(0);
+            try {
+                ResultSet search = DB.search("SELECT item.name, item.brand, item.catagory, item.mesure_unite , suplier.company, stock.stock_id,stock.qty, stock.selling_price  FROM item INNER JOIN suplier ON item.suplier = suplier.id INNER JOIN stock ON stock.item_id = item.id WHERE suplier.company LIKE '" + "%" + text + "%" + "'");
+
+                while (search.next()) {
+                    String id = search.getString("stock_id");
+                    String name = search.getString("name");
+                    String qty = search.getString("qty");
+                    String price = search.getString("selling_price");
+                    String brand = search.getString("brand");
+                    String category = search.getString("catagory");
+                    String m_unite = search.getString("mesure_unite");
+                    String company = search.getString("company");
+
+                    Vector v = new Vector();
+                    v.add(id);
+                    v.add(name);
+                    v.add(qty + " " + m_unite);
+                    v.add(price);
+                    v.add(category);
+                    v.add(company);
+                    v.add(brand);
+
+                    dtm.addRow(v);
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+
+        } else if (rad_brand1.isSelected()) {
+            dtm.setRowCount(0);
+            try {
+                ResultSet search = DB.search("SELECT item.name, item.brand, item.catagory, item.mesure_unite , suplier.company,stock.stock_id, stock.qty, stock.selling_price  FROM item INNER JOIN suplier ON item.suplier = suplier.id INNER JOIN stock ON stock.item_id = item.id  WHERE item.brand LIKE '" + "%" + text + "%" + "'");
+
+                while (search.next()) {
+                    String id = search.getString("stock_id");
+                    String name = search.getString("name");
+                    String qty = search.getString("qty");
+                    String price = search.getString("selling_price");
+                    String brand = search.getString("brand");
+                    String category = search.getString("catagory");
+                    String m_unite = search.getString("mesure_unite");
+                    String company = search.getString("company");
+
+                    Vector v = new Vector();
+                    v.add(id);
+                    v.add(name);
+                    v.add(qty + " " + m_unite);
+                    v.add(price);
+                    v.add(category);
+                    v.add(company);
+                    v.add(brand);
+
+                    dtm.addRow(v);
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+
+        } else if (rad_cat1.isSelected()) {
+            dtm.setRowCount(0);
+            try {
+
+                ResultSet search = DB.search("SELECT item.name, item.brand, item.catagory, item.mesure_unite , suplier.company, stock.stock_id, stock.qty, stock.selling_price  FROM item INNER JOIN suplier ON item.suplier = suplier.id INNER JOIN stock ON stock.item_id = item.id  WHERE item.catagory LIKE '" + "%" + text + "%" + "'");
+
+                while (search.next()) {
+                    String id = search.getString("stock_id");
+                    String name = search.getString("name");
+                    String qty = search.getString("qty");
+                    String price = search.getString("selling_price");
+                    String brand = search.getString("brand");
+                    String category = search.getString("catagory");
+                    String m_unite = search.getString("mesure_unite");
+                    String company = search.getString("company");
+
+                    Vector v = new Vector();
+                    v.add(id);
+                    v.add(name);
+                    v.add(qty + " " + m_unite);
+                    v.add(price);
+                    v.add(category);
+                    v.add(company);
+                    v.add(brand);
+
+                    dtm.addRow(v);
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+
+        }       // TODO add your ha
+    }//GEN-LAST:event_txt_search1KeyReleased
+
+    private void txt_search1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_search1KeyPressed
+
+    private void txt_search1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_search1FocusLost
+        if (txt_search1.getCaretPosition() == 0) {
+            txt_search1.setText("Search");
+        }
+    }//GEN-LAST:event_txt_search1FocusLost
+
+    private void txt_search1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_search1FocusGained
+        // TODO add your handling code here:
+        if (txt_search1.getText().equals("Search")) {
+            txt_search1.setText("");
+        }
+    }//GEN-LAST:event_txt_search1FocusGained
+
+    private void jTable2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable2KeyPressed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+
+        DefaultTableModel dtm = (DefaultTableModel) jTable2.getModel();
+        int row = jTable2.getSelectedRow();
+        String item_id = dtm.getValueAt(row, 0).toString();
+        if (row != -1) {
+            loadTable4(item_id);
+        }
+        // methana
+
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void btn_save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save1ActionPerformed
+
+        if (!(MMP_unite.getText().isEmpty() && MMP_name.getText().isEmpty() && SMP_unite.getText().isEmpty() && SMP_name.getText().isEmpty() && sub_price_unite.getText().isEmpty() && Sub_price.getText().isEmpty())) {
+            DefaultTableModel dtm = (DefaultTableModel) jTable2.getModel();
+
+            int row = jTable2.getSelectedRow();
+            if (btn_save1.getText().equals("Save")) {
+
+                try {
+                    String itemId = dtm.getValueAt(row, 0).toString();
+                    String id = genarateSubId(itemId);
+
+                    String subUnite = SMP_unite.getText();
+                    String name = SMP_name.getText();
+                    String price = Sub_price.getText();
+
+                    DB.iud("INSERT INTO sub_item values('" + id + "','" + itemId + "','" + subUnite + "','" + name + "','" + price + "','" + SystemData.getSystemUser() + "')");
+                    JOptionPane.showMessageDialog(this, "sucsussfull");
+
+                    MMP_name.setText("");
+                    MMP_unite.setText("");
+                    SMP_name.setText("");
+                    SMP_unite.setText("");
+                    Sub_price.setText("");
+                    sub_price_unite.setText("");
+
+                    String item_id = dtm.getValueAt(row, 0).toString();
+                    if (row != -1) {
+                        loadTable4(item_id);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (btn_save1.getText().equals("Update")) {
+                try {
+                    DefaultTableModel dtm1 = (DefaultTableModel) jTable4.getModel();
+                    int row1 = jTable4.getSelectedRow();
+                    String id = dtm1.getValueAt(row1, 0).toString();
+
+                    String subUnite = SMP_unite.getText();
+                    String name = SMP_name.getText();
+                    String price = Sub_price.getText();
+                    DB.iud("UPDATE sub_item SET sub_unite = '" + subUnite + "', sub_unite_name  = '" + name + "', selling_Price  = '" + price + "' WHERE sub_id ='" + id + "'");
+                    JOptionPane.showMessageDialog(this, "sucsussfull");
+
+                    MMP_name.setText("");
+                    MMP_unite.setText("");
+                    SMP_name.setText("");
+                    SMP_unite.setText("");
+                    Sub_price.setText("");
+                    sub_price_unite.setText("");
+                    btn_save1.setText("Save");
+
+                    String item_id = dtm.getValueAt(row, 0).toString();
+                    if (row != -1) {
+                        loadTable4(item_id);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+    }//GEN-LAST:event_btn_save1ActionPerformed
+
+    private void sub_price_uniteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_sub_price_uniteFocusGained
+        // TODO add your handling code here:
+        sub_price_unite.setText("1 - " + SMP_name.getText());
+        Sub_price.grabFocus();
+    }//GEN-LAST:event_sub_price_uniteFocusGained
+
+    private void jTextField22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField22ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField22ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+        DefaultTableModel dtm = (DefaultTableModel) jTable3.getModel();
+        int selectedRow = jTable3.getSelectedRow();
+        txt_Oprice.setText(dtm.getValueAt(selectedRow, 4).toString());
+        txt_nPrice.grabFocus();
+
+
+    }//GEN-LAST:event_jTable3MouseClicked
+
+    private void MMP_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMP_nameActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_MMP_nameActionPerformed
+
+    private void SMP_uniteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SMP_uniteActionPerformed
+        // TODO add your handling code here:
+        SMP_name.grabFocus();
+    }//GEN-LAST:event_SMP_uniteActionPerformed
+
+    private void SMP_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SMP_nameActionPerformed
+        // TODO add your handling code here:
+        String val1 = SMP_name.getText();
+        sub_price_unite.setText("1 - " + val1);
+        Sub_price.grabFocus();
+    }//GEN-LAST:event_SMP_nameActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel dtm = (DefaultTableModel) jTable4.getModel();
+        int row = jTable4.getSelectedRow();
+        if (row > 0) {
+
+            btn_save1.setText("Update");
+            String id = dtm.getValueAt(row, 0).toString();
+            try {
+                ResultSet search = DB.search("SELECT sub_item.sub_unite, sub_item.sub_unite_name, sub_item.selling_Price, item.mesure_unite FROM sub_item INNER JOIN item ON sub_item.item_id = item.id  WHERE sub_item.sub_id = '" + id + "'");
+                if (search.next()) {
+
+                    String main_name = search.getString("mesure_unite");
+                    String sub_name = search.getString("sub_unite_name");
+                    String unit = search.getString("sub_unite");
+                    String price = search.getString("selling_Price");
+
+                    MMP_unite.setText("1");
+                    MMP_name.setText(main_name);
+                    SMP_unite.setText(unit);
+                    SMP_name.setText(sub_name);
+                    sub_price_unite.setText("1 - " + sub_name);
+                    Sub_price.setText(price);
+
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if (btn_save1.getText().equals("Update")) {
+            btn_save1.setText("Save");
+            SMP_unite.setText("");
+            SMP_name.setText("");
+            sub_price_unite.setText("");
+            Sub_price.setText("");
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
-     */ 
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -862,7 +1556,7 @@ public class Settings extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -886,46 +1580,44 @@ public class Settings extends javax.swing.JFrame {
         });
     }
 
-    
-    
     private String genarateSubId(String id) {
         String subId = "";
         try {
-            ResultSet dataFetch = DB.search("select count('sub_id') as x from sub_item where sub_id like '"+id+"-Sub"+ "%"+"'");
+            ResultSet dataFetch = DB.search("select count('sub_id') as x from sub_item where sub_id like '" + id + "-Sub" + "%" + "'");
             if (dataFetch.next()) {
                 int count = Integer.parseInt(dataFetch.getString("x"));
                 count++;
-                 subId = id+"-Sub" + count;
-                txt_name.grabFocus();
-            
+                subId = id + "-Sub" + count;
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    return subId;
+        return subId;
     }
-    
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField MMP_name;
     private javax.swing.JTextField MMP_unite;
     private javax.swing.JTextField SMP_name;
     private javax.swing.JTextField SMP_unite;
-    private javax.swing.JTextField Sub_Itm_id;
-    private javax.swing.JTextField Sub_barcode;
-    private javax.swing.JList<String> Sub_list;
     private javax.swing.JTextField Sub_price;
+    private javax.swing.JButton btn_save1;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -936,31 +1628,47 @@ public class Settings extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -980,12 +1688,105 @@ public class Settings extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
-    private javax.swing.JTextField sub_ItmName;
+    private javax.swing.JRadioButton rad_brand;
+    private javax.swing.JRadioButton rad_brand1;
+    private javax.swing.JRadioButton rad_cat;
+    private javax.swing.JRadioButton rad_cat1;
+    private javax.swing.JRadioButton rad_item;
+    private javax.swing.JRadioButton rad_name;
+    private javax.swing.JRadioButton rad_name1;
+    private javax.swing.JRadioButton rad_stock;
+    private javax.swing.JRadioButton rad_sup;
+    private javax.swing.JRadioButton rad_sup1;
     private javax.swing.JTextField sub_price_unite;
     private javax.swing.JTextField txt_Oprice;
-    private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_nPrice;
-    private javax.swing.JTextField txt_name;
     private javax.swing.JTextField txt_search;
+    private javax.swing.JTextField txt_search1;
     // End of variables declaration//GEN-END:variables
+private void loadTable4(String item_id) {
+        try {
+
+            DefaultTableModel dtm1 = (DefaultTableModel) jTable4.getModel();
+            dtm1.setRowCount(0);
+            ResultSet search0 = DB.search("SELECT item.name, item.mesure_unite, stock.selling_price  FROM  item  INNER JOIN stock ON item.id = stock.item_id WHERE item.id = '" + item_id + "' ");
+            if (search0.next()) {
+                String mName = search0.getString("name");
+                String mUnite = search0.getString("mesure_unite");
+                String mPrice = search0.getString("selling_price");
+
+                Vector v = new Vector();
+                v.add("Main Unit");
+                v.add(mName);
+                v.add(mUnite);
+                v.add("1 " + mUnite + "  =  1 " + mUnite);
+                v.add("1 " + mUnite + " = Rs " + mPrice);
+                dtm1.addRow(v);
+
+                MMP_unite.setText("1");
+                MMP_name.setText(mUnite);
+                SMP_unite.grabFocus();
+
+                ResultSet search = DB.search("SELECT item.name, item.mesure_unite, sub_item.sub_id, sub_item.sub_unite, sub_item.sub_unite_name, sub_item.selling_Price FROM  sub_item  INNER JOIN item ON item.id = sub_item.item_id WHERE item.id = '" + item_id + "' ");
+                while (search.next()) {
+                    String id = search.getString("sub_id");
+                    String name = search.getString("name");
+                    String mp = search.getString("sub_unite_name");
+                    String unit = search.getString("sub_unite");
+                    String Price = search.getString("selling_Price");
+
+                    Vector v1 = new Vector();
+                    v1.add(id);
+                    v1.add(name);
+
+                    v1.add(mp);
+                    v1.add("1 " + mUnite + "  =  " + unit + " " + mp);
+                    v1.add("1 " + mp + " = Rs " + Price);
+
+                    dtm1.addRow(v1);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadTable() {
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel dtm2 = (DefaultTableModel) jTable2.getModel();
+
+        try {
+
+            ResultSet search = DB.search("SELECT item.id, item.name, item.brand, item.catagory, item.mesure_unite , suplier.company, quntity.qty  FROM item INNER JOIN suplier ON item.suplier = suplier.id INNER JOIN quntity ON quntity.item_id = item.id  ");
+
+            while (search.next()) {
+                String id = search.getString("id");
+                String name = search.getString("name");
+                String qty = search.getString("qty");
+
+                String brand = search.getString("brand");
+                String category = search.getString("catagory");
+                String m_unite = search.getString("mesure_unite");
+                String company = search.getString("company");
+
+                Vector v = new Vector();
+                v.add(id);
+                v.add(name);
+                v.add(qty + " " + m_unite);
+
+                v.add(category);
+                v.add(company);
+                v.add(brand);
+
+                dtm.addRow(v);
+                dtm2.addRow(v);
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }

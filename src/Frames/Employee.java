@@ -8,20 +8,28 @@ package Frames;
 import DB.DB;
 import java.awt.Color;
 import java.sql.ResultSet;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Chrishmal Rodrigo
+ * @author chris
  */
 public class Employee extends javax.swing.JFrame {
 
     /**
-     * Creates new form Employee
+     * Creates new form NewJFrame
      */
     public Employee() {
         initComponents();
         genarateEmployeeId();
+
+    }
+
+    Employee(String id) {
+        initComponents();
+        loadEmployee(id);
+
     }
 
     /**
@@ -33,7 +41,26 @@ public class Employee extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLayeredPane2 = new javax.swing.JLayeredPane();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
+        jButton10 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txt_fname = new javax.swing.JTextField();
@@ -51,166 +78,29 @@ public class Employee extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         lbl_empid = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        female_option = new javax.swing.JRadioButton();
         male_option = new javax.swing.JRadioButton();
-        jPanel4 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jButton10 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLayeredPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
-        jLayeredPane2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("First Name");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 81, 35));
-
-        txt_fname.setPreferredSize(new java.awt.Dimension(35, 0));
-        txt_fname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_fnameActionPerformed(evt);
-            }
-        });
-        jPanel2.add(txt_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 150, 35));
-
-        txt_lname.setPreferredSize(new java.awt.Dimension(35, 0));
-        jPanel2.add(txt_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 120, 150, 35));
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel13.setText("Last Name");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 81, 35));
-
-        txt_email.setPreferredSize(new java.awt.Dimension(35, 0));
-        jPanel2.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 440, 35));
-
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel17.setText("Email");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 81, 35));
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel15.setText("N I C");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 81, 35));
-
-        txt_nic.setPreferredSize(new java.awt.Dimension(35, 0));
-        jPanel2.add(txt_nic, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 150, 35));
-
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel16.setText("Mobile");
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 81, 35));
-
-        txt_mob.setPreferredSize(new java.awt.Dimension(35, 0));
-        jPanel2.add(txt_mob, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 200, 150, 35));
-
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel18.setText("Adress");
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 81, 35));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 440, 110));
-
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
-
-        jLabel20.setText("Employee Id :-");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_empid, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(940, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_empid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1106, 30));
-
-        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 34, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 589, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 29, 36, 591));
-
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel19.setText("Gender");
-        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 520, 81, 35));
-
-        jRadioButton1.setText("Female");
-        jPanel2.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 520, -1, 35));
-
-        male_option.setSelected(true);
-        male_option.setText("Male");
-        jPanel2.add(male_option, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 520, -1, 35));
-
-        jLayeredPane2.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 1106, 620));
-
-        jPanel4.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton3.setText("jButton3");
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
-
-        jButton4.setText("Save");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
-
-        jButton5.setText("jButton3");
-        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 210, 50));
-
-        jLayeredPane2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 689, 1106, 79));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
-        jButton10.setText("jButton10");
+        jButton10.setBorder(null);
+        jButton10.setBorderPainted(false);
         jButton10.setContentAreaFilled(false);
+        jButton10.setFocusPainted(false);
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -218,7 +108,7 @@ public class Employee extends javax.swing.JFrame {
         });
         jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 110));
 
-        jButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/invoice_icon_mini.png"))); // NOI18N
         jButton1.setText("Invoice");
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -231,7 +121,7 @@ public class Employee extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 240, 60));
 
-        jButton2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/po_icon_mini.png"))); // NOI18N
         jButton2.setText("P O");
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -244,7 +134,7 @@ public class Employee extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 240, 60));
 
-        jButton7.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton7.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
         jButton7.setText("New Suplier");
         jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -257,7 +147,7 @@ public class Employee extends javax.swing.JFrame {
         });
         jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 240, 60));
 
-        jButton6.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton6.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_item_icon_mini.png"))); // NOI18N
         jButton6.setText("New Item");
         jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -270,7 +160,7 @@ public class Employee extends javax.swing.JFrame {
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 240, 60));
 
-        jButton12.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton12.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_customer_mini.png"))); // NOI18N
         jButton12.setText("New Customer");
         jButton12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -283,7 +173,7 @@ public class Employee extends javax.swing.JFrame {
         });
         jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
 
-        jButton13.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton13.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report__icon_mini.png"))); // NOI18N
         jButton13.setText("reports");
         jButton13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -296,35 +186,12 @@ public class Employee extends javax.swing.JFrame {
         });
         jPanel1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 240, 60));
 
-        jLayeredPane2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 261, 738));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 261, 738));
 
-        jPanel7.setBackground(new java.awt.Color(102, 153, 255));
+        jPanel9.setBackground(new java.awt.Color(16, 52, 166));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("Employee Registration");
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(833, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addGap(0, 18, Short.MAX_VALUE)
-                .addComponent(jLabel3))
-        );
-
-        jLayeredPane2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 1106, 40));
-
-        jPanel3.setBackground(new java.awt.Color(0, 102, 204));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel5.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel5.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel5MouseClicked(evt);
@@ -340,69 +207,207 @@ public class Employee extends javax.swing.JFrame {
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        jLabel12.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(255, 0, 0)));
         jPanel5.add(jLabel12);
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 0, 60, 30));
+        jPanel9.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 0, 60, 30));
 
-        jLayeredPane2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, -1));
+        jLabel9.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/paint-brush.png"))); // NOI18N
+        jLabel9.setText("MELO HARDWARE & PAINT HOUSE");
+        jPanel9.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 3, 330, 25));
 
-        getContentPane().add(jLayeredPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 768));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/heder_image-1.png"))); // NOI18N
+        jPanel9.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 30));
+
+        getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, -1));
+
+        jPanel7.setBackground(new java.awt.Color(106, 162, 186));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Nunito ExtraBold", 1, 24)); // NOI18N
+        jLabel3.setText("Employee Registration");
+        jPanel7.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 330, 29));
+
+        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 1106, 40));
+
+        jPanel4.setBackground(java.awt.Color.white);
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton3.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
+        jButton3.setText("Search");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
+
+        jButton4.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
+        jButton4.setText("Save");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
+
+        jButton5.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
+        jButton5.setText("Reset");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 210, 50));
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 689, 1106, 79));
+
+        jPanel2.setBackground(java.awt.Color.white);
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Nunito Light", 0, 18)); // NOI18N
+        jLabel1.setText("First Name");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 110, 90, 35));
+
+        txt_fname.setFont(new java.awt.Font("Nunito Medium", 0, 16)); // NOI18N
+        txt_fname.setPreferredSize(new java.awt.Dimension(35, 0));
+        txt_fname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_fnameActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txt_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 150, 35));
+
+        txt_lname.setFont(new java.awt.Font("Nunito Medium", 0, 16)); // NOI18N
+        txt_lname.setPreferredSize(new java.awt.Dimension(35, 0));
+        jPanel2.add(txt_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 110, 150, 35));
+
+        jLabel13.setFont(new java.awt.Font("Nunito Light", 0, 18)); // NOI18N
+        jLabel13.setText("Last Name");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(751, 110, 100, 35));
+
+        txt_email.setFont(new java.awt.Font("Nunito Medium", 0, 16)); // NOI18N
+        txt_email.setPreferredSize(new java.awt.Dimension(35, 0));
+        jPanel2.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 440, 35));
+
+        jLabel17.setFont(new java.awt.Font("Nunito Light", 0, 18)); // NOI18N
+        jLabel17.setText("Email");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 270, 90, 35));
+
+        jLabel15.setFont(new java.awt.Font("Nunito Light", 0, 18)); // NOI18N
+        jLabel15.setText("N I C");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 190, 90, 35));
+
+        txt_nic.setFont(new java.awt.Font("Nunito Medium", 0, 16)); // NOI18N
+        txt_nic.setPreferredSize(new java.awt.Dimension(35, 0));
+        jPanel2.add(txt_nic, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 150, 35));
+
+        jLabel16.setFont(new java.awt.Font("Nunito Light", 0, 18)); // NOI18N
+        jLabel16.setText("Mobile");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(751, 190, 100, 35));
+
+        txt_mob.setFont(new java.awt.Font("Nunito Medium", 0, 16)); // NOI18N
+        txt_mob.setPreferredSize(new java.awt.Dimension(35, 0));
+        jPanel2.add(txt_mob, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 190, 150, 35));
+
+        jLabel18.setFont(new java.awt.Font("Nunito Light", 0, 18)); // NOI18N
+        jLabel18.setText("Adress");
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 350, 90, 35));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Nunito Medium", 0, 16)); // NOI18N
+        jTextArea1.setRows(2);
+        jTextArea1.setAutoscrolls(false);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 440, 110));
+
+        jPanel6.setBackground(java.awt.Color.white);
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
+
+        jLabel20.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+        jLabel20.setText("Employee ID :-");
+
+        lbl_empid.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_empid, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(922, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbl_empid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1106, 30));
+
+        jLabel19.setFont(new java.awt.Font("Nunito Light", 0, 18)); // NOI18N
+        jLabel19.setText("Gender");
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 510, 90, 35));
+
+        female_option.setBackground(java.awt.Color.white);
+        buttonGroup1.add(female_option);
+        female_option.setFont(new java.awt.Font("Nunito", 1, 14)); // NOI18N
+        female_option.setText("Female");
+        jPanel2.add(female_option, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, -1, 35));
+
+        male_option.setBackground(java.awt.Color.white);
+        buttonGroup1.add(male_option);
+        male_option.setFont(new java.awt.Font("Nunito", 1, 14)); // NOI18N
+        male_option.setSelected(true);
+        male_option.setText("Male");
+        jPanel2.add(male_option, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 510, -1, 35));
+
+        jPanel8.setBackground(java.awt.Color.white);
+        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton8.setText("jButton3");
+        jPanel8.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
+
+        jButton9.setText("Save");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
+
+        jButton11.setText("jButton3");
+        jPanel8.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 210, 50));
+
+        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 618, 1130, 79));
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/middle line.png"))); // NOI18N
+        jLabel8.setOpaque(true);
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 10, 430));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/contract.png"))); // NOI18N
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 180, 200));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 71, 1106, 620));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_fnameActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        String id = lbl_empid.getText();
-        String fname = txt_fname.getText();
-        String lname = txt_lname.getText();
-        String nic = txt_nic.getText();
-        String mob = txt_mob.getText();
-
-        String email = txt_email.getText();
-        String addres = jTextArea1.getText();
-        String sex = male_option.isSelected() ? "Male":"Female";
-
-        try {
-
-            DB.iud("INSERT INTO employee VALUES ('" + id + "','" + fname + "','" + lname + "','" + mob + "','" + nic + "','" + email + "','" + addres + "', '"+sex+"', 1 )");
-            JOptionPane.showMessageDialog(this, "sucsussfull... !");
-
-            txt_fname.setText(null);
-            txt_lname.setText(null);
-            txt_nic.setText(null);
-            txt_mob.setText(null);
-            txt_email.setText(null);
-            jTextArea1.setText(null);
-            male_option.setSelected(true);
-            genarateEmployeeId();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jPanel5MouseClicked
-
-    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
-        jPanel5.setBackground(Color.red);
-    }//GEN-LAST:event_jPanel5MouseEntered
-
-    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
-        jPanel5.setBackground(new java.awt.Color(0, 102, 204));
-    }//GEN-LAST:event_jPanel5MouseExited
-
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         Home home = new Home();
         home.setVisible(true);
- this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -424,7 +429,7 @@ public class Employee extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        ItemManagement item = new ItemManagement();
+        ItemRegistration item = new ItemRegistration();
         item.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -441,6 +446,119 @@ public class Employee extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton13ActionPerformed
 
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jPanel5MouseClicked
+
+    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
+        jPanel5.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+    }//GEN-LAST:event_jPanel5MouseEntered
+
+    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
+
+    }//GEN-LAST:event_jPanel5MouseExited
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+        String id = lbl_empid.getText();
+        String fname = txt_fname.getText();
+        String lname = txt_lname.getText();
+        String nic = txt_nic.getText();
+        String mob = txt_mob.getText();
+
+        String email = txt_email.getText();
+        String addres = jTextArea1.getText();
+        String sex = male_option.isSelected() ? "Male" : "Female";
+
+        if (jButton4.getText().equals("Save")) {
+            try {
+
+                DB.iud("INSERT INTO employee VALUES ('" + id + "','" + fname + "','" + lname + "','" + mob + "','" + nic + "','" + email + "','" + addres + "', '" + sex + "', 1 )");
+                JOptionPane.showMessageDialog(this, "sucsussfull... !");
+
+                txt_fname.setText(null);
+                txt_lname.setText(null);
+                txt_nic.setText(null);
+                txt_mob.setText(null);
+                txt_email.setText(null);
+                jTextArea1.setText(null);
+                male_option.setSelected(true);
+                genarateEmployeeId();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                DB.iud("UPDATE employee SET fname = '"+fname+"',lname = '"+lname+"',mobile = '"+mob+"',nic = '"+nic+"',email = '"+email+"',address = '"+addres+"' ,gender = '"+sex+"' WHERE id = '"+id+"'");
+          JOptionPane.showMessageDialog(this, "sucsussfull... !");
+                txt_fname.setText(null);
+                txt_lname.setText(null);
+                txt_nic.setText(null);
+                txt_mob.setText(null);
+                txt_email.setText(null);
+                jTextArea1.setText(null);
+                male_option.setSelected(true);
+                genarateEmployeeId();
+                jButton4.setText("Save");
+            } catch (Exception e) {
+            }
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void txt_fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_fnameActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        String id = lbl_empid.getText();
+        String fname = txt_fname.getText();
+        String lname = txt_lname.getText();
+        String nic = txt_nic.getText();
+        String mob = txt_mob.getText();
+
+        String email = txt_email.getText();
+        String addres = jTextArea1.getText();
+        String sex = male_option.isSelected() ? "Male" : "Female";
+
+        try {
+
+            DB.iud("INSERT INTO employee VALUES ('" + id + "','" + fname + "','" + lname + "','" + mob + "','" + nic + "','" + email + "','" + addres + "', '" + sex + "', 1 )");
+            JOptionPane.showMessageDialog(this, "sucsussfull... !");
+
+            txt_fname.setText(null);
+            txt_lname.setText(null);
+            txt_nic.setText(null);
+            txt_mob.setText(null);
+            txt_email.setText(null);
+            jTextArea1.setText(null);
+            male_option.setSelected(true);
+            genarateEmployeeId();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+EmployeeSearch emp = new EmployeeSearch();
+emp.setVisible(true);
+this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+     txt_fname.setText(null);
+                txt_lname.setText(null);
+                txt_nic.setText(null);
+                txt_mob.setText(null);
+                txt_email.setText(null);
+                jTextArea1.setText(null);
+                male_option.setSelected(true);
+                genarateEmployeeId();
+                jButton4.setText("Save");       // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -452,7 +570,7 @@ public class Employee extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -467,6 +585,7 @@ public class Employee extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Employee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -476,8 +595,7 @@ public class Employee extends javax.swing.JFrame {
         });
     }
 
-      
-     private void genarateEmployeeId() {
+    private void genarateEmployeeId() {
         try {
             ResultSet dataFetch = DB.search("select count('id') as x from employee");
             if (dataFetch.next()) {
@@ -490,10 +608,39 @@ public class Employee extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-     
+
+    void loadEmployee(String id) {
+        try {
+            ResultSet search = DB.search("SELECT * FROM employee WHERE id = '" + id + "'");
+            if (search.next()) {
+                lbl_empid.setText(search.getString("id"));
+                txt_fname.setText(search.getString("fname"));
+                txt_lname.setText(search.getString("lname"));
+                txt_mob.setText(search.getString("mobile"));
+                txt_nic.setText(search.getString("nic"));
+                txt_email.setText(search.getString("email"));
+                jTextArea1.setText(search.getString("address"));
+                String gender = search.getString("gender");
+                if (gender.equals("Male")) {
+                    male_option.setSelected(true);
+
+                } else {
+                    female_option.setSelected(true);
+                }
+                jButton3.setText("Search");
+                jButton4.setText("Update");
+            }
+        } catch (Exception e) {
+        }
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton female_option;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
@@ -502,7 +649,10 @@ public class Employee extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
@@ -512,16 +662,17 @@ public class Employee extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLayeredPane jLayeredPane2;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbl_empid;

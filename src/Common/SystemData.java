@@ -10,7 +10,35 @@ package Common;
  * @author Chrishmal Rodrigo
  */
 public class SystemData {
-   private static String systemUser = "SYS1";
+
+    private static String systemUser = "SYS1";
+    private static String name = "Chrish";
+    private static String utype = "Admin";
+    private static String code ;
+
+    public static String getCode() {
+        return code;
+    }
+
+    public static void setCode(String code) {
+        SystemData.code = code;
+    }
+
+    public static String getName() {
+        return name;
+    }
+
+    public static void setName(String name) {
+        SystemData.name = name;
+    }
+
+    public static String getUtype() {
+        return utype;
+    }
+
+    public static void setUtype(String utype) {
+        SystemData.utype = utype;
+    }
 
     public static String getSystemUser() {
         return systemUser;
@@ -20,6 +48,4 @@ public class SystemData {
         SystemData.systemUser = systemUser;
     }
 
-  
-   
 }

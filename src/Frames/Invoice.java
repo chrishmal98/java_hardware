@@ -107,23 +107,29 @@ public class Invoice extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jButton10 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton16 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
+        jButton22 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
 
         jScrollPane4.setViewportView(jList2);
 
@@ -134,9 +140,11 @@ public class Invoice extends javax.swing.JFrame {
         jLayeredPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
         jLayeredPane2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setBackground(java.awt.Color.white);
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jList1.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jList1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jList1MouseClicked(evt);
@@ -172,7 +180,10 @@ public class Invoice extends javax.swing.JFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
 
-        jLabel20.setText("Invoice Id :-");
+        jLabel20.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        jLabel20.setText("Invoice ID :-");
+
+        lbl_invoiceid.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -180,10 +191,10 @@ public class Invoice extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_invoiceid, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(921, Short.MAX_VALUE))
+                .addContainerGap(948, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,6 +204,7 @@ public class Invoice extends javax.swing.JFrame {
 
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1106, 30));
 
+        txt_customer.setFont(new java.awt.Font("Nunito", 0, 13)); // NOI18N
         txt_customer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_customerActionPerformed(evt);
@@ -200,6 +212,7 @@ public class Invoice extends javax.swing.JFrame {
         });
         jPanel2.add(txt_customer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 140, 30));
 
+        txt_dis.setFont(new java.awt.Font("Nunito", 0, 13)); // NOI18N
         txt_dis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_disActionPerformed(evt);
@@ -207,12 +220,13 @@ public class Invoice extends javax.swing.JFrame {
         });
         jPanel2.add(txt_dis, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 100, 30));
 
+        jTable1.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id", "Item Name", "Selling price", "Expiry", "On Hand"
+                "ID", "Item Name", "Selling price", "Expiry", "On Hand"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -245,21 +259,29 @@ public class Invoice extends javax.swing.JFrame {
         }
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 1030, 110));
+
+        txt_customerName.setFont(new java.awt.Font("Nunito", 0, 13)); // NOI18N
         jPanel2.add(txt_customerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 140, 30));
 
+        jLabel1.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Discount");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 100, -1));
+
+        txt_dPrice.setFont(new java.awt.Font("Nunito", 0, 13)); // NOI18N
         jPanel2.add(txt_dPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 100, 30));
 
+        jLabel2.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Discounted Price");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 100, -1));
 
+        jLabel4.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Unite");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 100, -1));
 
+        txt_qty.setFont(new java.awt.Font("Nunito", 0, 13)); // NOI18N
         txt_qty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_qtyActionPerformed(evt);
@@ -267,6 +289,7 @@ public class Invoice extends javax.swing.JFrame {
         });
         jPanel2.add(txt_qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 240, 100, 30));
 
+        txt_subtot.setFont(new java.awt.Font("Nunito", 0, 13)); // NOI18N
         txt_subtot.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txt_subtotFocusGained(evt);
@@ -284,16 +307,18 @@ public class Invoice extends javax.swing.JFrame {
         });
         jPanel2.add(txt_subtot, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 240, 100, 30));
 
+        jLabel5.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Sub Total");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 220, 100, -1));
 
+        jTable2.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Count", "Id", "Item Name", "Unite", "Qty", "Unit Price ", "Discounted Price", "Total"
+                "Count", "ID", "Item Name", "Unite", "Qty", "Unit Price ", "Discounted Price", "Total"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -320,17 +345,21 @@ public class Invoice extends javax.swing.JFrame {
         }
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 910, 200));
+
+        txt_inv_nettot.setFont(new java.awt.Font("Nunito Black", 0, 19)); // NOI18N
         jPanel2.add(txt_inv_nettot, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 550, 120, 30));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Nunito ExtraBold", 0, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Net Total");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, 120, 20));
 
+        jLabel9.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Payment");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 530, 120, 20));
 
+        txt_inv_payment.setFont(new java.awt.Font("Nunito", 1, 14)); // NOI18N
         txt_inv_payment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_inv_paymentActionPerformed(evt);
@@ -338,12 +367,14 @@ public class Invoice extends javax.swing.JFrame {
         });
         jPanel2.add(txt_inv_payment, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 550, 120, 30));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Nunito ExtraBold", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 0, 0));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Balance");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 530, 120, 20));
 
-        txt_inv_balance.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txt_inv_balance.setFont(new java.awt.Font("Nunito Black", 0, 19)); // NOI18N
+        txt_inv_balance.setForeground(new java.awt.Color(255, 0, 0));
         txt_inv_balance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_inv_balanceActionPerformed(evt);
@@ -351,6 +382,7 @@ public class Invoice extends javax.swing.JFrame {
         });
         jPanel2.add(txt_inv_balance, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 550, 120, 30));
 
+        txt_inv_dis.setFont(new java.awt.Font("Nunito", 1, 14)); // NOI18N
         txt_inv_dis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_inv_disActionPerformed(evt);
@@ -358,46 +390,55 @@ public class Invoice extends javax.swing.JFrame {
         });
         jPanel2.add(txt_inv_dis, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 550, 120, 30));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Dicount");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 530, 120, 20));
+
+        txt_inv_subtot.setFont(new java.awt.Font("Nunito Black", 0, 19)); // NOI18N
         jPanel2.add(txt_inv_subtot, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 120, 30));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Nunito ExtraBold", 0, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Sub Total");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 120, 20));
+
+        txt_warantyno.setFont(new java.awt.Font("Nunito", 0, 13)); // NOI18N
         jPanel2.add(txt_warantyno, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 240, 100, 30));
 
+        jLabel6.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Warranty Number");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 220, 100, -1));
 
+        jButton1.setFont(new java.awt.Font("Nunito", 1, 13)); // NOI18N
         jButton1.setText("Remove all");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 450, 90, 30));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 450, 100, 30));
 
+        jButton2.setFont(new java.awt.Font("Nunito", 1, 13)); // NOI18N
         jButton2.setText("Edite");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 310, 90, 30));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 310, 100, 30));
 
+        jButton6.setFont(new java.awt.Font("Nunito", 1, 13)); // NOI18N
         jButton6.setText("Remove");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 380, 90, 30));
+        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 380, 100, 30));
 
+        txt_search.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         txt_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_searchActionPerformed(evt);
@@ -413,6 +454,7 @@ public class Invoice extends javax.swing.JFrame {
         });
         jPanel2.add(txt_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 310, 30));
 
+        txt_customerName1.setFont(new java.awt.Font("Nunito", 0, 13)); // NOI18N
         txt_customerName1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_customerName1KeyPressed(evt);
@@ -421,8 +463,10 @@ public class Invoice extends javax.swing.JFrame {
         jPanel2.add(txt_customerName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 50, 140, 30));
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("Id");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 100, -1));
+        jLabel13.setText("Barcode");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 30, 140, 20));
+
+        txt_id.setFont(new java.awt.Font("Nunito", 0, 13)); // NOI18N
         jPanel2.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 100, 30));
 
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
@@ -445,6 +489,7 @@ public class Invoice extends javax.swing.JFrame {
 
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 30, 36, 50));
 
+        jComboBox1.setFont(new java.awt.Font("Nunito", 0, 13)); // NOI18N
         jComboBox1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jComboBox1FocusLost(evt);
@@ -467,16 +512,34 @@ public class Invoice extends javax.swing.JFrame {
         });
         jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 100, 30));
 
+        jLabel14.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Qty");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 220, 100, -1));
 
+        jLabel17.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("ID");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 100, -1));
+
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("Mobile");
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 140, 20));
+
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("Customer Name");
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 140, 20));
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/magnifying-glass.png"))); // NOI18N
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, 30, 30));
+
         jLayeredPane2.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 1106, 620));
 
-        jPanel4.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        jPanel4.setBackground(java.awt.Color.white);
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton3.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton3.setText("Cancel");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -485,6 +548,7 @@ public class Invoice extends javax.swing.JFrame {
         });
         jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
 
+        jButton4.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton4.setText("Save");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -493,6 +557,7 @@ public class Invoice extends javax.swing.JFrame {
         });
         jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
 
+        jButton5.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton5.setText("Clear");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -503,73 +568,118 @@ public class Invoice extends javax.swing.JFrame {
 
         jLayeredPane2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 689, 1106, 79));
 
+        jPanel10.setBackground(new java.awt.Color(16, 52, 166));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel5.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel5MouseExited(evt);
+            }
+        });
+        jPanel5.setLayout(new java.awt.GridLayout());
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        jLabel12.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(255, 0, 0)));
+        jPanel5.add(jLabel12);
+
+        jPanel10.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 0, 60, 30));
+
+        jLabel15.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/paint-brush.png"))); // NOI18N
+        jLabel15.setText("MELO HARDWARE & PAINT HOUSE");
+        jPanel10.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 3, 330, 25));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/heder_image-1.png"))); // NOI18N
+        jPanel10.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 30));
+
+        jLayeredPane2.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, -1));
+
+        jPanel7.setBackground(new java.awt.Color(106, 162, 186));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Nunito ExtraBold", 1, 24)); // NOI18N
+        jLabel3.setText("Invoice");
+        jPanel7.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 330, 29));
+
+        jLayeredPane2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 1106, 40));
+
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
-        jButton10.setText("jButton10");
-        jButton10.setContentAreaFilled(false);
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
+        jButton16.setBorderPainted(false);
+        jButton16.setContentAreaFilled(false);
+        jButton16.setFocusPainted(false);
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                jButton16ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 110));
+        jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 110));
 
-        jButton7.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/invoice_icon_mini.png"))); // NOI18N
-        jButton7.setText("Invoice");
-        jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton7.setIconTextGap(30);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jButton17.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/invoice_icon_mini.png"))); // NOI18N
+        jButton17.setText("Invoice");
+        jButton17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton17.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton17.setIconTextGap(30);
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jButton17ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 240, 60));
+        jPanel1.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 240, 60));
 
-        jButton8.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/po_icon_mini.png"))); // NOI18N
-        jButton8.setText("P O");
-        jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton8.setIconTextGap(30);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jButton20.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/po_icon_mini.png"))); // NOI18N
+        jButton20.setText("P O");
+        jButton20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton20.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton20.setIconTextGap(30);
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jButton20ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 240, 60));
+        jPanel1.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 240, 60));
 
-        jButton9.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
-        jButton9.setText("New Suplier");
-        jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton9.setIconTextGap(30);
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        jButton21.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
+        jButton21.setText("New Suplier");
+        jButton21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton21.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton21.setIconTextGap(30);
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                jButton21ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 240, 60));
+        jPanel1.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 240, 60));
 
-        jButton11.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_item_icon_mini.png"))); // NOI18N
-        jButton11.setText("New Item");
-        jButton11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton11.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton11.setIconTextGap(30);
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        jButton22.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_item_icon_mini.png"))); // NOI18N
+        jButton22.setText("New Item");
+        jButton22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton22.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton22.setIconTextGap(30);
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                jButton22ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 240, 60));
+        jPanel1.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 240, 60));
 
-        jButton12.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton12.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_customer_mini.png"))); // NOI18N
         jButton12.setText("New Customer");
         jButton12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -582,9 +692,9 @@ public class Invoice extends javax.swing.JFrame {
         });
         jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
 
-        jButton13.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton13.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report__icon_mini.png"))); // NOI18N
-        jButton13.setText("reports");
+        jButton13.setText("Reports");
         jButton13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton13.setIconTextGap(30);
@@ -597,72 +707,11 @@ public class Invoice extends javax.swing.JFrame {
 
         jLayeredPane2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 261, 738));
 
-        jPanel7.setBackground(new java.awt.Color(102, 153, 255));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("Invoice ");
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(984, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
-        );
-
-        jLayeredPane2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 1110, 40));
-
-        jPanel3.setBackground(new java.awt.Color(0, 102, 204));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel5.setBackground(new java.awt.Color(0, 102, 204));
-        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel5MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel5MouseExited(evt);
-            }
-        });
-        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
-
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
-        jPanel5.add(jLabel12);
-
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 0, 60, 30));
-
-        jLayeredPane2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, -1));
-
         getContentPane().add(jLayeredPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 768));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
-        jPanel5.setBackground(new java.awt.Color(0, 102, 204));
-    }//GEN-LAST:event_jPanel5MouseExited
-
-    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
-        jPanel5.setBackground(Color.red);
-    }//GEN-LAST:event_jPanel5MouseEntered
-
-    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
@@ -1070,43 +1119,6 @@ public class Invoice extends javax.swing.JFrame {
         System.out.println(evt.getKeyCode());
     }//GEN-LAST:event_txt_customerName1KeyPressed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        Home home = new Home();
-        home.setVisible(true);
-        this.dispose();
-
-    }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Invoice invoice = new Invoice();
-        invoice.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        Po po = new Po();
-        po.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        Suplier suplier = new Suplier();
-        suplier.setVisible(true);
-        this.dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        ItemManagement item = new ItemManagement();
-        item.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton11ActionPerformed
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        Customer customer = new Customer();
-        customer.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton12ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int selectedRow = jTable2.getSelectedRow();
         if (selectedRow > -1) {
@@ -1256,12 +1268,6 @@ public class Invoice extends javax.swing.JFrame {
         txt_inv_subtot.setText(subtotal + "");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        Reports report = new Reports();
-        report.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton13ActionPerformed
-
     private void txt_subtotFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_subtotFocusGained
         if (jComboBox1.getSelectedIndex() > 0) {
 
@@ -1329,6 +1335,61 @@ public class Invoice extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jComboBox1FocusLost
 
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jPanel5MouseClicked
+
+    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
+        jPanel5.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+    }//GEN-LAST:event_jPanel5MouseEntered
+
+    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
+
+    }//GEN-LAST:event_jPanel5MouseExited
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        Home home = new Home();
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        Invoice invoice = new Invoice();
+        invoice.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        Po po = new Po();
+        po.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        Suplier suplier = new Suplier();
+        suplier.setVisible(true);
+        this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        ItemRegistration item = new ItemRegistration();
+        item.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton22ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        Customer customer = new Customer();
+        customer.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        Reports report = new Reports();
+        report.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton13ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1340,7 +1401,7 @@ public class Invoice extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -1373,7 +1434,7 @@ public class Invoice extends javax.swing.JFrame {
             if (dataFetch.next()) {
                 count = Integer.parseInt(dataFetch.getString("x"));
                 count++;
-                // lbl_invoiceid.setText("In" + count);
+                 lbl_invoiceid.setText("In" + count);
                 txt_customer.grabFocus();
 
             }
@@ -1401,18 +1462,18 @@ public class Invoice extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1420,8 +1481,14 @@ public class Invoice extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1434,8 +1501,8 @@ public class Invoice extends javax.swing.JFrame {
     private javax.swing.JList<String> jList2;
     private javax.swing.JList<String> jList3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;

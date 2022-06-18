@@ -11,7 +11,9 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.ListModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,6 +30,8 @@ public class GRN extends javax.swing.JFrame {
         genaratepolist();
         genarateGrnId();
         jScrollPane2.setVisible(false);
+        jTable1.getTableHeader().setFont(new java.awt.Font("Nunito", 0, 12));
+        jTable2.getTableHeader().setFont(new java.awt.Font("Nunito", 0, 12));
     }
 
     /**
@@ -44,7 +48,6 @@ public class GRN extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
-        jPanel8 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         lbl_grnid = new javax.swing.JLabel();
@@ -82,23 +85,26 @@ public class GRN extends javax.swing.JFrame {
         rad_sup = new javax.swing.JRadioButton();
         lbl_subtotal = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton16 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
+        jButton22 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -107,9 +113,11 @@ public class GRN extends javax.swing.JFrame {
         jLayeredPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
         jLayeredPane2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setBackground(java.awt.Color.white);
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jList2.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jList2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jList2MouseClicked(evt);
@@ -122,29 +130,19 @@ public class GRN extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jList2);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 280, -1));
-
-        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 34, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 618, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 0, 36, 620));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 280, -1));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
 
-        jLabel20.setText("GRN Id :-");
+        jLabel20.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+        jLabel20.setText("GRN ID :-");
 
-        jLabel21.setText("Suplier Id :-");
+        lbl_grnid.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
 
+        jLabel21.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+        jLabel21.setText("Suplier ID :-");
+
+        lbl_suplier.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         lbl_suplier.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 lbl_suplierPropertyChange(evt);
@@ -157,14 +155,14 @@ public class GRN extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_grnid, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_suplier, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(806, Short.MAX_VALUE))
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_grnid, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_suplier, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(745, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,9 +172,18 @@ public class GRN extends javax.swing.JFrame {
             .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 30));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1106, 30));
 
-        txt_search.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txt_search.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+        txt_search.setText("Search");
+        txt_search.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_searchFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_searchFocusLost(evt);
+            }
+        });
         txt_search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_searchKeyPressed(evt);
@@ -185,9 +192,9 @@ public class GRN extends javax.swing.JFrame {
                 txt_searchKeyReleased(evt);
             }
         });
-        jPanel2.add(txt_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 280, 30));
+        jPanel2.add(txt_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 280, 30));
 
-        jList1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jList1.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jList1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jList1MouseClicked(evt);
@@ -197,15 +204,17 @@ public class GRN extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 290, 190));
 
+        jLabel1.setFont(new java.awt.Font("Nunito Black", 0, 12)); // NOI18N
         jLabel1.setText("Purchasing Orders");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 180, 20));
 
+        jTable1.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Item Id", "Item Name", "Qty On Hand", "Orderd Qty"
+                "Item ID", "Item Name", "Qty On Hand", "Orderd Qty"
             }
         ) {
             Class[] types = new Class [] {
@@ -238,14 +247,15 @@ public class GRN extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 600, 150));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 630, 150));
 
+        jTable2.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Item Id", "Item Name", "buying priice", "selling price", "Qty", "expire date", "waranty", "Total", "Suplier id"
+                "Item ID", "Item Name", "Buying Priice", "Selling Price", "Qty", "Expire Date", "Waranty", "Total", "Suplier ID"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -273,8 +283,9 @@ public class GRN extends javax.swing.JFrame {
             jTable2.getColumnModel().getColumn(8).setResizable(false);
         }
 
-        jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 900, 170));
+        jPanel2.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 930, 170));
 
+        txt_qty.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         txt_qty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_qtyActionPerformed(evt);
@@ -282,58 +293,73 @@ public class GRN extends javax.swing.JFrame {
         });
         jPanel2.add(txt_qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 140, 30));
 
+        txt_bprice.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         txt_bprice.addVetoableChangeListener(new java.beans.VetoableChangeListener() {
             public void vetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {
                 txt_bpriceVetoableChange(evt);
             }
         });
         jPanel2.add(txt_bprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 140, 30));
+
+        txt_sprice.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jPanel2.add(txt_sprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 140, 30));
 
+        jButton1.setFont(new java.awt.Font("Nunito Medium", 0, 12)); // NOI18N
         jButton1.setText("Remove All");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 220, 110, 30));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 220, 110, 30));
 
+        jButton2.setBackground(java.awt.Color.white);
+        jButton2.setFont(new java.awt.Font("Nunito Medium", 0, 12)); // NOI18N
         jButton2.setText("Edite");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 100, 110, 30));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 100, 110, 30));
 
+        jButton6.setFont(new java.awt.Font("Nunito Medium", 0, 12)); // NOI18N
         jButton6.setText("Remove");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 160, 110, 30));
+        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 160, 110, 30));
 
+        jButton7.setFont(new java.awt.Font("Nunito Medium", 0, 12)); // NOI18N
         jButton7.setText("Edite");
-        jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 440, 110, 30));
+        jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 440, 110, 30));
 
+        jButton8.setFont(new java.awt.Font("Nunito Medium", 0, 12)); // NOI18N
         jButton8.setText("Remove");
-        jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 510, 110, 30));
+        jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 510, 110, 30));
 
+        jButton9.setFont(new java.awt.Font("Nunito Medium", 0, 12)); // NOI18N
         jButton9.setText("Remove All");
-        jPanel2.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 580, 110, 30));
+        jPanel2.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 580, 110, 30));
 
+        jLabel2.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Warranty");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 280, 130, 20));
 
+        jLabel4.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Buying Price");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 140, 20));
 
+        jLabel5.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Selling Price");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 140, 20));
 
+        jLabel6.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Exp Date");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 140, 20));
 
+        jButton10.setFont(new java.awt.Font("Nunito Black", 1, 14)); // NOI18N
         jButton10.setText("Add Stock");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,13 +368,20 @@ public class GRN extends javax.swing.JFrame {
         });
         jPanel2.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, 340, 40));
         jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, 140, 30));
+
+        txt_itemId.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jPanel2.add(txt_itemId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 140, 30));
 
+        jLabel7.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Item Id");
+        jLabel7.setText("Item ID");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 140, 20));
+
+        jSpinner1.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 12, 1));
         jPanel2.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 300, 50, 30));
 
+        jComboBox1.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "days", "weeks", "months", "years", "life time" }));
         jComboBox1.setSelectedIndex(4);
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -358,36 +391,50 @@ public class GRN extends javax.swing.JFrame {
         });
         jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 300, 80, 30));
 
+        jLabel8.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Quntity");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, 140, 20));
 
         buttonGroup1.add(rad_itm);
+        rad_itm.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
         rad_itm.setSelected(true);
-        rad_itm.setText("item");
+        rad_itm.setText("Item");
         jPanel2.add(rad_itm, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, -1, 30));
 
         buttonGroup1.add(rad_sup);
+        rad_sup.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
         rad_sup.setText("Suplier");
         jPanel2.add(rad_sup, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, -1, 30));
 
-        lbl_subtotal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_subtotal.setFont(new java.awt.Font("Nunito ExtraBold", 1, 18)); // NOI18N
         lbl_subtotal.setText("0");
-        jPanel2.add(lbl_subtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 420, 90, 20));
+        lbl_subtotal.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel2.add(lbl_subtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 410, 90, 20));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Nunito ExtraBold", 1, 18)); // NOI18N
         jLabel10.setText("Subtotal");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 420, 70, 20));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 410, 90, 20));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/magnifying-glass.png"))); // NOI18N
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 40, 30, 30));
 
         jLayeredPane2.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 1106, 620));
 
-        jPanel4.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        jPanel4.setBackground(java.awt.Color.white);
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton3.setText("jButton3");
+        jButton3.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
+        jButton3.setText("Stock");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
 
+        jButton4.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton4.setText("Save");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -396,132 +443,16 @@ public class GRN extends javax.swing.JFrame {
         });
         jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
 
-        jButton5.setText("jButton3");
+        jButton5.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
+        jButton5.setText("Reset");
         jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 210, 50));
 
         jLayeredPane2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 689, 1106, 79));
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel9.setBackground(new java.awt.Color(16, 52, 166));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
-        jButton11.setText("jButton10");
-        jButton11.setContentAreaFilled(false);
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 110));
-
-        jButton12.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/invoice_icon_mini.png"))); // NOI18N
-        jButton12.setText("Invoice");
-        jButton12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton12.setIconTextGap(30);
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 240, 60));
-
-        jButton13.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/po_icon_mini.png"))); // NOI18N
-        jButton13.setText("P O");
-        jButton13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton13.setIconTextGap(30);
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 240, 60));
-
-        jButton14.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
-        jButton14.setText("New Suplier");
-        jButton14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton14.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton14.setIconTextGap(30);
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 240, 60));
-
-        jButton15.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_item_icon_mini.png"))); // NOI18N
-        jButton15.setText("New Item");
-        jButton15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton15.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton15.setIconTextGap(30);
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 240, 60));
-
-        jButton18.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_customer_mini.png"))); // NOI18N
-        jButton18.setText("New Customer");
-        jButton18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton18.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton18.setIconTextGap(30);
-        jButton18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton18ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
-
-        jButton19.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report__icon_mini.png"))); // NOI18N
-        jButton19.setText("reports");
-        jButton19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton19.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton19.setIconTextGap(30);
-        jButton19.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton19ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 240, 60));
-
-        jLayeredPane2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 261, 738));
-
-        jPanel7.setBackground(new java.awt.Color(102, 153, 255));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("G. R. N.");
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(967, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
-        );
-
-        jLayeredPane2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 1106, 40));
-
-        jPanel3.setBackground(new java.awt.Color(0, 102, 204));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel5.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel5.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel5MouseClicked(evt);
@@ -537,11 +468,125 @@ public class GRN extends javax.swing.JFrame {
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        jLabel12.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(255, 0, 0)));
         jPanel5.add(jLabel12);
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 0, 60, 30));
+        jPanel9.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 0, 60, 30));
 
-        jLayeredPane2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, -1));
+        jLabel9.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/paint-brush.png"))); // NOI18N
+        jLabel9.setText("MELO HARDWARE & PAINT HOUSE");
+        jPanel9.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 3, 330, 25));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/heder_image-1.png"))); // NOI18N
+        jPanel9.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 30));
+
+        jLayeredPane2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, -1));
+
+        jPanel7.setBackground(new java.awt.Color(106, 162, 186));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Nunito ExtraBold", 1, 24)); // NOI18N
+        jLabel3.setText("G. R. N");
+        jPanel7.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 330, 29));
+
+        jLayeredPane2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 1106, 40));
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
+        jButton16.setBorderPainted(false);
+        jButton16.setContentAreaFilled(false);
+        jButton16.setFocusPainted(false);
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 110));
+
+        jButton17.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/invoice_icon_mini.png"))); // NOI18N
+        jButton17.setText("Invoice");
+        jButton17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton17.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton17.setIconTextGap(30);
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 240, 60));
+
+        jButton20.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/po_icon_mini.png"))); // NOI18N
+        jButton20.setText("P O");
+        jButton20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton20.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton20.setIconTextGap(30);
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 240, 60));
+
+        jButton21.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
+        jButton21.setText("New Suplier");
+        jButton21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton21.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton21.setIconTextGap(30);
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 240, 60));
+
+        jButton22.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_item_icon_mini.png"))); // NOI18N
+        jButton22.setText("New Item");
+        jButton22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton22.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton22.setIconTextGap(30);
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 240, 60));
+
+        jButton12.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_customer_mini.png"))); // NOI18N
+        jButton12.setText("New Customer");
+        jButton12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton12.setIconTextGap(30);
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
+
+        jButton13.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report__icon_mini.png"))); // NOI18N
+        jButton13.setText("Reports");
+        jButton13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton13.setIconTextGap(30);
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 240, 60));
+
+        jLayeredPane2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 261, 738));
 
         getContentPane().add(jLayeredPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 768));
 
@@ -578,38 +623,27 @@ public class GRN extends javax.swing.JFrame {
                 if (oldStock) {
 
                     DB.iud("UPDATE stock SET qty = qty + '" + qty + "' WHERE stock_id = '" + stock_id + "'");
-                    DB.iud("INSERT INTO stock_details VALUES('" + count + "', '" + stock_id + "','" + qty + "',now(),'" + grn_id + "','update')");
+                    DB.iud("INSERT INTO grn_details VALUES('" + count + "', '" + stock_id + "','" + qty + "',now(),'" + grn_id + "','update')");
 
                 } else {
-                    DB.iud("INSERT INTO stock VALUES('" + stock_id + "','" + item_id + "','" + bprice + "','" + sprice + "','" + expdate + "','" + qty + "','" + Common.SystemData.getSystemUser() + "',1)");
+                    DB.iud("INSERT INTO stock VALUES('" + stock_id + "','" + item_id + "','" + bprice + "','" + sprice + "','" + expdate + "','" + qty + "','" + waranty + "','" + Common.SystemData.getSystemUser() + "',1)");
                     DB.iud("INSERT INTO grn_details VALUES('" + count + "', '" + stock_id + "','" + qty + "',now(),'" + grn_id + "','new stock')");
                 }
                 DB.iud("UPDATE quntity SET qty = qty + '" + qty + "' WHERE item_id = '" + item_id + "'");
+                checkPO(item_id);
+
                 dtm1.removeRow(0);
                 --rowCount;
             }
             subtotal = 0;
             lbl_subtotal.setText(subtotal + "");
-            JOptionPane.showMessageDialog(this, "all is well");
+            JOptionPane.showMessageDialog(this, "Sucsussfully Stock Added");
             lbl_suplier.setText(null);
             genarateGrnId();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jPanel5MouseClicked
-
-    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
-        jPanel5.setBackground(Color.red);
-    }//GEN-LAST:event_jPanel5MouseEntered
-
-    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
-        jPanel5.setBackground(new java.awt.Color(0, 102, 204));
-    }//GEN-LAST:event_jPanel5MouseExited
 
     private void txt_qtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_qtyActionPerformed
         // TODO add your handling code here:
@@ -779,7 +813,7 @@ public class GRN extends javax.swing.JFrame {
         if (rad_sup.isSelected()) {
             try {
 
-                ResultSet set1 = DB.search("SELECT id, fname, company FROM suplier WHERE company LIKE '" + search_text + "%" + "' ");
+                ResultSet set1 = DB.search("SELECT id, fname, company FROM suplier WHERE company LIKE '" + "%" + search_text + "%" + "' ");
 
                 Vector v = new Vector();
                 jScrollPane2.setVisible(false);
@@ -808,7 +842,7 @@ public class GRN extends javax.swing.JFrame {
 
             try {
 
-                ResultSet set2 = DB.search("SELECT id, name FROM item WHERE name LIKE '" + search_text + "%" + "' ");
+                ResultSet set2 = DB.search("SELECT id, name FROM item WHERE name LIKE '" + "%" + search_text + "%" + "' ");
                 Vector v = new Vector();
                 jScrollPane2.setVisible(false);
 
@@ -837,15 +871,143 @@ public class GRN extends javax.swing.JFrame {
     private void jList2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList2MouseClicked
         String selected_text = jList2.getSelectedValue();
         DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
-  int rowCount = jTable1.getRowCount();
-        if (rowCount >=1) {
-                while(rowCount > 0){
-                dtm1.removeRow(0); 
+        int rowCount = jTable1.getRowCount();
+        if (rowCount >= 1) {
+            dtm1.setRowCount(0);
+            lbl_suplier.setText("");
+
+        }
+
+        if (rad_itm.isSelected()) {
+            String item_id = selected_text.substring(selected_text.length() - 8, selected_text.length()).replace("-", "").trim();
+
+            try {
+                ResultSet set1 = DB.search("SELECT suplier, name FROM item WHERE id = '" + item_id + "' ");
+                if (set1.next()) {
+                    String suplier = set1.getString("suplier");
+                    String item_name = set1.getString("name");
+                    int dis = JOptionPane.showConfirmDialog(this, "Do you want to display all the items of suplier");
+                    if (dis == JOptionPane.YES_OPTION) {
+                        ResultSet set2 = DB.search("SELECT id, name FROM item WHERE suplier = '" + suplier + "' ");
+                        lbl_suplier.setText(suplier);
+
+                        while (set2.next()) {
+                            String id = set2.getString("id");
+                            String name = set2.getString("name");
+                            ResultSet rs_qty = DB.search("SELECT SUM(qty) as x FROM stock WHERE item_id = '" + id + "'");
+                            if (rs_qty.next()) {
+                                int onHand = rs_qty.getInt("x");
+                                Vector v = new Vector();
+
+                                v.add(id);
+                                v.add(name);
+                                v.add(onHand);
+                                v.add(0);
+
+                                dtm1.addRow(v);
+                                jScrollPane2.setVisible(false);
+
+                            }
+                        }
+
+                    } else if (dis == JOptionPane.NO_OPTION) {
+                        ResultSet rs_qty = DB.search("SELECT SUM(qty) as x FROM stock WHERE item_id = '" + item_id + "'");
+                        lbl_suplier.setText(suplier);
+                        if (rs_qty.next()) {
+                            int onHand = rs_qty.getInt("x");
+                            Vector v = new Vector();
+
+                            v.add(item_id);
+                            v.add(item_name);
+                            v.add(onHand);
+                            v.add(0);
+
+                            dtm1.addRow(v);
+                            jScrollPane2.setVisible(false);
+                        }
+
+                    }
+
                 }
-                 lbl_suplier.setText("");
-                
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
 
+        } else {
+            String sup_id = selected_text.substring(selected_text.length() - 8, selected_text.length()).replace("-", "").trim();
+            lbl_suplier.setText(sup_id);
+            try {
+                ResultSet set2 = DB.search("SELECT id, name FROM item WHERE suplier = '" + sup_id + "' ");
+                dtm1.setRowCount(0);
+                while (set2.next()) {
+                    String id = set2.getString("id");
+                    String name = set2.getString("name");
+                    ResultSet rs_qty = DB.search("SELECT SUM(qty) as x FROM stock WHERE item_id = '" + id + "'");
+                    if (rs_qty.next()) {
+                        int onHand = rs_qty.getInt("x");
+                        Vector v = new Vector();
+
+                        v.add(id);
+                        v.add(name);
+                        v.add(onHand);
+                        v.add(0);
+
+                        dtm1.addRow(v);
+                        jScrollPane2.setVisible(false);
+
+                    }
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+        txt_search.setText(null);
+
+//        if (rad_itm.isSelected()) {
+//            String item_id = selected_text.substring(selected_text.length() - 8, selected_text.length()).replace("-", "").trim();
+//            try {
+//                //   ResultSet set2 = DB.search("SELECT id, name FROM item WHERE id = '" + item_id + "' ");
+//
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//
+//        } else {
+//            String sup_id = selected_text.substring(selected_text.length() - 8, selected_text.length()).replace("-", "").trim();
+//
+//        }
+    }//GEN-LAST:event_jList2MouseClicked
+
+    private void txt_bpriceVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_txt_bpriceVetoableChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_bpriceVetoableChange
+
+    private void txt_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyPressed
+        if (jList2.isVisible()) {
+
+            if (evt.getKeyCode() == 40) {
+                jList2.grabFocus();
+                jList2.setSelectedIndex(0);
+            }
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_searchKeyPressed
+
+    private void jList2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jList2KeyPressed
+        if (evt.getKeyCode() == 10) {
+
+            String selected_text = jList2.getSelectedValue();
+            DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
+            int rowCount = jTable1.getRowCount();
+            if (rowCount >= 1) {
+                dtm1.setRowCount(0);
+                lbl_suplier.setText("");
+
+            }
             if (rad_itm.isSelected()) {
                 String item_id = selected_text.substring(selected_text.length() - 8, selected_text.length()).replace("-", "").trim();
 
@@ -855,6 +1017,7 @@ public class GRN extends javax.swing.JFrame {
                         String suplier = set1.getString("suplier");
                         String item_name = set1.getString("name");
                         int dis = JOptionPane.showConfirmDialog(this, "Do you want to display all the items of suplier");
+
                         if (dis == JOptionPane.YES_OPTION) {
                             ResultSet set2 = DB.search("SELECT id, name FROM item WHERE suplier = '" + suplier + "' ");
                             lbl_suplier.setText(suplier);
@@ -933,182 +1096,7 @@ public class GRN extends javax.swing.JFrame {
 
             }
             txt_search.setText(null);
-        
-//        if (rad_itm.isSelected()) {
-//            String item_id = selected_text.substring(selected_text.length() - 8, selected_text.length()).replace("-", "").trim();
-//            try {
-//                //   ResultSet set2 = DB.search("SELECT id, name FROM item WHERE id = '" + item_id + "' ");
-//
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//
-//        } else {
-//            String sup_id = selected_text.substring(selected_text.length() - 8, selected_text.length()).replace("-", "").trim();
-//
-//        }
-    }//GEN-LAST:event_jList2MouseClicked
 
-    private void txt_bpriceVetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_txt_bpriceVetoableChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_bpriceVetoableChange
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        Home home = new Home();
-        home.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton11ActionPerformed
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        Invoice invoice = new Invoice();
-        invoice.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton12ActionPerformed
-
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        Po po = new Po();
-        po.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton13ActionPerformed
-
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        Suplier suplier = new Suplier();
-        suplier.setVisible(true);
-        this.dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_jButton14ActionPerformed
-
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        ItemManagement item = new ItemManagement();
-        item.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton15ActionPerformed
-
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        Customer customer = new Customer();
-        customer.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton18ActionPerformed
-
-    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        Reports report = new Reports();
-        report.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton19ActionPerformed
-
-    private void txt_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyPressed
-        if (jList2.isVisible()) {
-
-            if (evt.getKeyCode() == 40) {
-                jList2.grabFocus();
-                jList2.setSelectedIndex(0);
-            }
-        }
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_searchKeyPressed
-
-    private void jList2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jList2KeyPressed
-        if (evt.getKeyCode() == 10) {
-            
-            String selected_text = jList2.getSelectedValue();
-            DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
-            int rowCount = jTable1.getRowCount();
-            if (rowCount >=1) {
-                while(rowCount > 0){
-                dtm1.removeRow(0); 
-                }
-                               lbl_suplier.setText("");
-                
-            }
-                if (rad_itm.isSelected()) {
-                    String item_id = selected_text.substring(selected_text.length() - 8, selected_text.length()).replace("-", "").trim();
-
-                    try {
-                        ResultSet set1 = DB.search("SELECT suplier, name FROM item WHERE id = '" + item_id + "' ");
-                        if (set1.next()) {
-                            String suplier = set1.getString("suplier");
-                            String item_name = set1.getString("name");
-                            int dis = JOptionPane.showConfirmDialog(this, "Do you want to display all the items of suplier");
-                           
-                            if (dis == JOptionPane.YES_OPTION) {
-                                ResultSet set2 = DB.search("SELECT id, name FROM item WHERE suplier = '" + suplier + "' ");
-                                lbl_suplier.setText(suplier);
-
-                                while (set2.next()) {
-                                    String id = set2.getString("id");
-                                    String name = set2.getString("name");
-                                    ResultSet rs_qty = DB.search("SELECT SUM(qty) as x FROM stock WHERE item_id = '" + id + "'");
-                                    if (rs_qty.next()) {
-                                        int onHand = rs_qty.getInt("x");
-                                        Vector v = new Vector();
-
-                                        v.add(id);
-                                        v.add(name);
-                                        v.add(onHand);
-                                        v.add(0);
-
-                                        dtm1.addRow(v);
-                                        jScrollPane2.setVisible(false);
-
-                                    }
-                                }
-
-                            } else if (dis == JOptionPane.NO_OPTION) {
-                                ResultSet rs_qty = DB.search("SELECT SUM(qty) as x FROM stock WHERE item_id = '" + item_id + "'");
-                                lbl_suplier.setText(suplier);
-                                if (rs_qty.next()) {
-                                    int onHand = rs_qty.getInt("x");
-                                    Vector v = new Vector();
-
-                                    v.add(item_id);
-                                    v.add(item_name);
-                                    v.add(onHand);
-                                    v.add(0);
-
-                                    dtm1.addRow(v);
-                                    jScrollPane2.setVisible(false);
-                                }
-
-                            }
-
-                        }
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-                } else {
-                    String sup_id = selected_text.substring(selected_text.length() - 8, selected_text.length()).replace("-", "").trim();
-                    lbl_suplier.setText(sup_id);
-                    try {
-                        ResultSet set2 = DB.search("SELECT id, name FROM item WHERE suplier = '" + sup_id + "' ");
-                        dtm1.setRowCount(0);
-                        while (set2.next()) {
-                            String id = set2.getString("id");
-                            String name = set2.getString("name");
-                            ResultSet rs_qty = DB.search("SELECT SUM(qty) as x FROM stock WHERE item_id = '" + id + "'");
-                            if (rs_qty.next()) {
-                                int onHand = rs_qty.getInt("x");
-                                Vector v = new Vector();
-
-                                v.add(id);
-                                v.add(name);
-                                v.add(onHand);
-                                v.add(0);
-
-                                dtm1.addRow(v);
-                                jScrollPane2.setVisible(false);
-
-                            }
-                        }
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-                }
-                txt_search.setText(null);
-            
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jList2KeyPressed
 
@@ -1117,24 +1105,99 @@ public class GRN extends javax.swing.JFrame {
         if (rowCount > 1) {
             DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
             dtm1.removeRow(jTable1.getSelectedRow());
-            
-        }else if(rowCount == 1){
+
+        } else if (rowCount == 1) {
             DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
             dtm1.removeRow(jTable1.getSelectedRow());
-        lbl_suplier.setText("");
+            lbl_suplier.setText("");
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          int rowCount = jTable1.getRowCount();
-          while(rowCount > 0){
+        int rowCount = jTable1.getRowCount();
+        while (rowCount > 0) {
             DefaultTableModel dtm1 = (DefaultTableModel) jTable1.getModel();
             dtm1.removeRow(0);
             rowCount--;
-          } 
-                lbl_suplier.setText("");
-  
+        }
+        lbl_suplier.setText("");
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jPanel5MouseClicked
+
+    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
+        jPanel5.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+    }//GEN-LAST:event_jPanel5MouseEntered
+
+    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
+
+    }//GEN-LAST:event_jPanel5MouseExited
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        Home home = new Home();
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        Invoice invoice = new Invoice();
+        invoice.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        Po po = new Po();
+        po.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        Suplier suplier = new Suplier();
+        suplier.setVisible(true);
+        this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_jButton21ActionPerformed
+
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        ItemRegistration item = new ItemRegistration();
+        item.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton22ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        Customer customer = new Customer();
+        customer.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        Reports report = new Reports();
+        report.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void txt_searchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_searchFocusGained
+        if (txt_search.getText().equals("Search")) {
+            txt_search.setText("");
+        }
+    }//GEN-LAST:event_txt_searchFocusGained
+
+    private void txt_searchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_searchFocusLost
+        if (txt_search.getText().isEmpty()) {
+            txt_search.setText("Search");
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_searchFocusLost
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        StockDetails stock = new StockDetails();
+        stock.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1147,7 +1210,7 @@ public class GRN extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -1173,9 +1236,15 @@ public class GRN extends javax.swing.JFrame {
 
     private void genaratepolist() {
         try {
-            ResultSet rs_polist = DB.search("SELECT po.id, suplier.fname, suplier.lname, suplier.company FROM po INNER JOIN suplier ON po.suplier = suplier.id WHERE po.status = 1");
+            
+             
+                     ResultSet rs_polist = DB.search("SELECT po.id, suplier.fname, suplier.lname, suplier.company FROM po INNER JOIN suplier ON po.suplier = suplier.id WHERE po.status = 1");
             Vector v = new Vector();
-
+        DefaultListModel list = new DefaultListModel();
+        list.removeAllElements();
+        jList1.setModel(list);
+           
+      
             while (rs_polist.next()) {
 
                 String po_id = rs_polist.getString("po.id");
@@ -1266,18 +1335,50 @@ public class GRN extends javax.swing.JFrame {
         return stockid;
     }
 
+    void checkPO(String id) {
+        String poID;
+        try {
+            ResultSet search = DB.search("SELECT po_item.po_id FROM po_item INNER JOIN po ON po_item.po_id = po.id WHERE po_item.itm_id = '" + id + "' AND po.status = '1' ");
+            if (search.next()) {
+                poID = search.getString("po_id");
+
+                int result = JOptionPane.showConfirmDialog(null, "Do you want to remove " + poID + " Purchase Order?");
+                switch (result) {
+                    case JOptionPane.YES_OPTION:
+                        DB.iud("UPDATE po SET status = '0' WHERE id = '" + poID + "' ");
+                        
+
+                        break;
+                    case JOptionPane.NO_OPTION:
+                        System.out.println("No");
+                        break;
+                    case JOptionPane.CANCEL_OPTION:
+                        System.out.println("Cancel");
+                        break;
+                    case JOptionPane.CLOSED_OPTION:
+                        System.out.println("Closed");
+                        break;
+                }
+                genaratepolist();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1289,7 +1390,9 @@ public class GRN extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -1299,17 +1402,17 @@ public class GRN extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

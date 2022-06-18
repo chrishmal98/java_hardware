@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.sql.ResultSet;
 import DB.DB;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,7 +25,14 @@ public class Suplier extends javax.swing.JFrame {
     public Suplier() {
         initComponents();
         genarateSuplierId();
-        jScrollPane3.setVisible(false);
+
+    }
+
+    Suplier(String id) {
+         initComponents();
+         loadSuplier(id);
+       
+
     }
 
     /**
@@ -36,20 +45,6 @@ public class Suplier extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane2 = new javax.swing.JLayeredPane();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel9 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -70,35 +65,25 @@ public class Suplier extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         lbl_supid = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jLabel3 = new javax.swing.JLabel();
-        txt_fname1 = new javax.swing.JTextField();
-        txt_lname1 = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        txt_company1 = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        txt_email1 = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        txt_mob3 = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
-        txt_mob4 = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jPanel12 = new javax.swing.JPanel();
-        jLabel27 = new javax.swing.JLabel();
-        lbl_supid2 = new javax.swing.JLabel();
-        txt_search = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
-        jButton11 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton10 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
 
@@ -111,10 +96,150 @@ public class Suplier extends javax.swing.JFrame {
         jLayeredPane2.setPreferredSize(new java.awt.Dimension(1366, 768));
         jLayeredPane2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(0, 102, 204));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
+        jLabel1.setText("First Name");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 81, 35));
+
+        txt_fname.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
+        txt_fname.setPreferredSize(new java.awt.Dimension(35, 0));
+        txt_fname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_fnameActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txt_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, 150, 35));
+
+        txt_lname.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
+        txt_lname.setPreferredSize(new java.awt.Dimension(35, 0));
+        jPanel2.add(txt_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 110, 150, 35));
+
+        jLabel13.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
+        jLabel13.setText("Last Name");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 110, 81, 35));
+
+        txt_company.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
+        txt_company.setPreferredSize(new java.awt.Dimension(35, 0));
+        jPanel2.add(txt_company, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, 440, 35));
+
+        jLabel14.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
+        jLabel14.setText("Company");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 81, 35));
+
+        txt_email.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
+        txt_email.setPreferredSize(new java.awt.Dimension(35, 0));
+        jPanel2.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 350, 440, 35));
+
+        jLabel17.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
+        jLabel17.setText("Email");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 81, 35));
+
+        jLabel15.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
+        jLabel15.setText("Mobile 1");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 81, 35));
+
+        txt_mob1.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
+        txt_mob1.setPreferredSize(new java.awt.Dimension(35, 0));
+        jPanel2.add(txt_mob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 270, 150, 35));
+
+        jLabel16.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
+        jLabel16.setText("Mobile 2");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 270, 81, 35));
+
+        txt_mob2.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
+        txt_mob2.setPreferredSize(new java.awt.Dimension(35, 0));
+        jPanel2.add(txt_mob2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 270, 150, 35));
+
+        jLabel18.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
+        jLabel18.setText("Adress");
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 430, 81, 35));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
+        jTextArea1.setRows(3);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 430, 440, 110));
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
+
+        jLabel20.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+        jLabel20.setText("Suplier ID :-");
+
+        lbl_supid.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_supid, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(920, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbl_supid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1106, 30));
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/middle line.png"))); // NOI18N
+        jLabel8.setOpaque(true);
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 10, 430));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/contract.png"))); // NOI18N
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 180, 200));
+
+        jPanel9.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1106, 620));
+
+        jPanel4.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton3.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
+        jButton3.setText("Search");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, 210, 50));
+
+        jButton4.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
+        jButton4.setText("Save");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
+
+        jButton5.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
+        jButton5.setText("Reset");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 210, 50));
+
+        jPanel9.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 619, 1106, 79));
+
+        jLayeredPane2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
+
+        jPanel10.setBackground(new java.awt.Color(16, 52, 166));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel5.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel5MouseClicked(evt);
@@ -126,21 +251,50 @@ public class Suplier extends javax.swing.JFrame {
                 jPanel5MouseExited(evt);
             }
         });
-        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel5.setLayout(new java.awt.GridLayout());
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        jLabel12.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(255, 0, 0)));
         jPanel5.add(jLabel12);
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 0, 60, 30));
+        jPanel10.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 0, 60, 30));
 
-        jLayeredPane2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 30));
+        jLabel9.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/paint-brush.png"))); // NOI18N
+        jLabel9.setText("MELO HARDWARE & PAINT HOUSE");
+        jPanel10.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 3, 330, 25));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/heder_image-1.png"))); // NOI18N
+        jPanel10.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 30));
+
+        jLayeredPane2.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, -1));
+
+        jPanel7.setBackground(new java.awt.Color(106, 162, 186));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Nunito ExtraBold", 1, 24)); // NOI18N
+        jLabel3.setText("Employee Registration");
+        jPanel7.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 330, 29));
+
+        jLayeredPane2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 1106, 40));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
+        jButton10.setBorderPainted(false);
+        jButton10.setContentAreaFilled(false);
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 110));
+
+        jButton1.setFont(new java.awt.Font("Nunito Black", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/invoice_icon_mini.png"))); // NOI18N
         jButton1.setText("Invoice");
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -153,7 +307,7 @@ public class Suplier extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 240, 60));
 
-        jButton2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Nunito Black", 1, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/po_icon_mini.png"))); // NOI18N
         jButton2.setText("P O");
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -166,20 +320,7 @@ public class Suplier extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 240, 60));
 
-        jButton6.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_item_icon_mini.png"))); // NOI18N
-        jButton6.setText("New Item");
-        jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton6.setIconTextGap(30);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 240, 60));
-
-        jButton7.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton7.setFont(new java.awt.Font("Nunito Black", 1, 14)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
         jButton7.setText("New Suplier");
         jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -192,326 +333,52 @@ public class Suplier extends javax.swing.JFrame {
         });
         jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 240, 60));
 
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
-        jButton10.setText("jButton10");
-        jButton10.setContentAreaFilled(false);
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        jButton6.setFont(new java.awt.Font("Nunito Black", 1, 14)); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_item_icon_mini.png"))); // NOI18N
+        jButton6.setText("New Item");
+        jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton6.setIconTextGap(30);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 110));
-
-        jButton14.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_customer_mini.png"))); // NOI18N
-        jButton14.setText("New Customer");
-        jButton14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton14.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton14.setIconTextGap(30);
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
-
-        jButton15.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report__icon_mini.png"))); // NOI18N
-        jButton15.setText("reports");
-        jButton15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton15.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton15.setIconTextGap(30);
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 240, 60));
-
-        jLayeredPane2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 261, 738));
-
-        jPanel7.setBackground(new java.awt.Color(102, 153, 255));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Suplier Registration");
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(907, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
-        );
-
-        jLayeredPane2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 1106, 40));
-
-        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
-
-        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("First Name");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 81, 35));
-
-        txt_fname.setPreferredSize(new java.awt.Dimension(35, 0));
-        txt_fname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_fnameActionPerformed(evt);
-            }
-        });
-        jPanel2.add(txt_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 150, 35));
-
-        txt_lname.setPreferredSize(new java.awt.Dimension(35, 0));
-        jPanel2.add(txt_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 100, 150, 35));
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel13.setText("Last Name");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, 81, 35));
-
-        txt_company.setPreferredSize(new java.awt.Dimension(35, 0));
-        jPanel2.add(txt_company, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 440, 35));
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel14.setText("Company");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 81, 35));
-
-        txt_email.setPreferredSize(new java.awt.Dimension(35, 0));
-        jPanel2.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 440, 35));
-
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel17.setText("Email");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 81, 35));
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel15.setText("Mobile 1");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 81, 35));
-
-        txt_mob1.setPreferredSize(new java.awt.Dimension(35, 0));
-        jPanel2.add(txt_mob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 150, 35));
-
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel16.setText("Mobile 2");
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 81, 35));
-
-        txt_mob2.setPreferredSize(new java.awt.Dimension(35, 0));
-        jPanel2.add(txt_mob2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 260, 150, 35));
-
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel18.setText("Adress");
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 81, 35));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 440, 110));
-
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
-
-        jLabel20.setText("Suplier Id :-");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_supid, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(952, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_supid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1106, 30));
-
-        jPanel9.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1106, 620));
-
-        jPanel4.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton3.setText("jButton3");
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, 210, 50));
-
-        jButton4.setText("Save");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
-
-        jButton5.setText("jButton3");
-        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 210, 50));
-
-        jPanel9.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 1060, 79));
-
-        jTabbedPane1.addTab("New", jPanel9);
-
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jList1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jList1KeyPressed(evt);
-            }
-        });
-        jScrollPane3.setViewportView(jList1);
-
-        jPanel11.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 330, -1));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("First Name");
-        jPanel11.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 81, 35));
-
-        txt_fname1.setPreferredSize(new java.awt.Dimension(35, 0));
-        txt_fname1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_fname1ActionPerformed(evt);
-            }
-        });
-        jPanel11.add(txt_fname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 150, 35));
-
-        txt_lname1.setPreferredSize(new java.awt.Dimension(35, 0));
-        jPanel11.add(txt_lname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, 150, 35));
-
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel19.setText("Last Name");
-        jPanel11.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 81, 35));
-
-        txt_company1.setPreferredSize(new java.awt.Dimension(35, 0));
-        jPanel11.add(txt_company1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 440, 35));
-
-        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel22.setText("Company");
-        jPanel11.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 81, 35));
-
-        txt_email1.setPreferredSize(new java.awt.Dimension(35, 0));
-        jPanel11.add(txt_email1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, 440, 35));
-
-        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel23.setText("Email");
-        jPanel11.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 81, 35));
-
-        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel24.setText("Mobile 1");
-        jPanel11.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 81, 35));
-
-        txt_mob3.setPreferredSize(new java.awt.Dimension(35, 0));
-        jPanel11.add(txt_mob3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 150, 35));
-
-        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel25.setText("Mobile 2");
-        jPanel11.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 81, 35));
-
-        txt_mob4.setPreferredSize(new java.awt.Dimension(35, 0));
-        jPanel11.add(txt_mob4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 290, 150, 35));
-
-        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel26.setText("Adress");
-        jPanel11.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, 81, 35));
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
-
-        jPanel11.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 450, 440, 110));
-
-        jPanel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
-
-        jLabel27.setText("Suplier Id :-");
-
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_supid2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(952, Short.MAX_VALUE))
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_supid2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        jPanel11.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1106, 30));
-
-        txt_search.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_searchKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_searchKeyReleased(evt);
-            }
-        });
-        jPanel11.add(txt_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 330, 30));
-
-        jPanel8.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 620));
-
-        jPanel10.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
-        jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
-        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton11.setText("jButton3");
-        jPanel10.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 210, 50));
-
-        jButton12.setText("Update");
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 240, 60));
+
+        jButton12.setFont(new java.awt.Font("Nunito Black", 1, 14)); // NOI18N
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_customer_mini.png"))); // NOI18N
+        jButton12.setText("New Customer");
+        jButton12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton12.setIconTextGap(30);
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
             }
         });
-        jPanel10.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
+        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 240, 60));
 
-        jButton13.setText("jButton3");
-        jPanel10.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 210, 50));
+        jButton13.setFont(new java.awt.Font("Nunito Black", 1, 14)); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_employee_icon-mini.png"))); // NOI18N
+        jButton13.setText("New Employee");
+        jButton13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton13.setIconTextGap(30);
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 240, 60));
 
-        jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 1060, 80));
-
-        jTabbedPane1.addTab("Update", jPanel8);
-
-        jLayeredPane2.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 1110, 700));
+        jLayeredPane2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 261, 738));
 
         getContentPane().add(jLayeredPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 768));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jPanel5MouseClicked
-
-    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
-        jPanel5.setBackground(Color.red);
-    }//GEN-LAST:event_jPanel5MouseEntered
-
-    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
-        jPanel5.setBackground(new java.awt.Color(0, 102, 204));
-    }//GEN-LAST:event_jPanel5MouseExited
 
     private void txt_fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fnameActionPerformed
         // TODO add your handling code here:
@@ -526,164 +393,125 @@ public class Suplier extends javax.swing.JFrame {
         String Company = txt_company.getText();
         String email = txt_email.getText();
         String addres = jTextArea1.getText();
-        try {
+        if (jButton4.getText().equals("Save")) {
 
-            DB.iud("INSERT INTO suplier VALUES ('" + id + "','" + fname + "','" + lname + "','" + Company + "','" + mob1 + "','" + mob2 + "','" + addres + "','" + email + "')");
-            JOptionPane.showMessageDialog(this, "sucsussfull... !");
+            try {
 
-            lbl_supid.setText(null);
-            txt_fname.setText(null);
-            txt_lname.setText(null);
-            txt_mob1.setText(null);
-            txt_mob2.setText(null);
-            txt_company.setText(null);
-            txt_email.setText(null);
-            jTextArea1.setText(null);
-            genarateSuplierId();
+                DB.iud("INSERT INTO suplier VALUES ('" + id + "','" + fname + "','" + lname + "','" + Company + "','" + mob1 + "','" + mob2 + "','" + addres + "','" + email + "')");
+                JOptionPane.showMessageDialog(this, "sucsussfull... !");
 
-        } catch (Exception e) {
-            e.printStackTrace();
+                lbl_supid.setText(null);
+                txt_fname.setText(null);
+                txt_lname.setText(null);
+                txt_mob1.setText(null);
+                txt_mob2.setText(null);
+                txt_company.setText(null);
+                txt_email.setText(null);
+                jTextArea1.setText(null);
+                genarateSuplierId();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                DB.iud("UPDATE suplier SET fname = '" + fname + "',lname = '" + lname + "',company = '" + Company + "',mobile1 = '" + mob1 + "',mobile2 = '" + mob2 + "',email = '" + email + "',address = '" + addres + "'  WHERE id = '" + id + "'");
+                               JOptionPane.showMessageDialog(this, "sucsussfull... !");
+ 
+                lbl_supid.setText(null);
+                txt_fname.setText(null);
+                txt_lname.setText(null);
+                txt_mob1.setText(null);
+                txt_mob2.setText(null);
+                txt_company.setText(null);
+                txt_email.setText(null);
+                jTextArea1.setText(null);
+                genarateSuplierId();
+                jButton4.setText("Save");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+
+            }
         }
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jPanel5MouseClicked
+
+    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
+        jPanel5.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+    }//GEN-LAST:event_jPanel5MouseEntered
+
+    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
+
+    }//GEN-LAST:event_jPanel5MouseExited
+
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+
         Home home = new Home();
         home.setVisible(true);
- this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     Invoice invoice = new Invoice();
-     invoice.setVisible(true);
-     this.dispose();
+        Invoice invoice = new Invoice();
+        invoice.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    Po po = new Po();
-    po.setVisible(true);
-    this.dispose();
+        Po po = new Po();
+        po.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-Suplier suplier = new Suplier();
-suplier.setVisible(true);
-this.dispose();// TODO add your handling code here:
+        Suplier suplier = new Suplier();
+        suplier.setVisible(true);
+        this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        ItemManagement item = new ItemManagement();
+        ItemRegistration item = new ItemRegistration();
         item.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void txt_fname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fname1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_fname1ActionPerformed
-
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-             String id = lbl_supid2.getText();
-        String fname = txt_fname1.getText();
-        String lname = txt_lname1.getText();
-        String mob1 = txt_mob3.getText();
-        String mob2 = txt_mob4.getText();
-        String Company = txt_company1.getText();
-        String email = txt_email1.getText();
-        String addres = jTextArea2.getText();
-        try {
-
-            DB.iud("UPDATE suplier SET fname ='"+fname+"', lname ='"+lname+"',company='"+Company+"', mobile1='"+mob1+"', mobile2 ='"+mob2+"',address='"+addres+"', email ='"+email+"'  WHERE id = '"+id+"'");
-            JOptionPane.showMessageDialog(this, "sucsussfull... !");
-
-            lbl_supid2.setText(null);
-            txt_fname1.setText(null);
-            txt_lname1.setText(null);
-            txt_mob3.setText(null);
-            txt_mob4.setText(null);
-            txt_company1.setText(null);
-            txt_email1.setText(null);
-            jTextArea2.setText(null);
-            genarateSuplierId();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_jButton12ActionPerformed
-
-    private void txt_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyReleased
-       String supname = txt_search.getText();
-        try {
-
-            ResultSet set1 = DB.search("SELECT id, fname, company FROM suplier WHERE company LIKE '" + supname + "%" + "' ");
-
-            Vector v = new Vector();
-            jScrollPane3.setVisible(false);
-
-            while (set1.next()) {
-
-                jScrollPane3.setVisible(true);
-                String id = set1.getString("id");
-                String name = set1.getString("fname");
-                String company = set1.getString("company");
-
-                String showname = company + " (" + name + ")" + "  -  " + id;
-                v.add(showname);
-                jList1.setListData(v);
-
-            }
-            if (txt_search.getText().equals("")) {
-                jScrollPane3.setVisible(false);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_txt_searchKeyReleased
-
-    private void txt_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyPressed
- if (evt.getKeyCode() == 40) {
-            jList1.grabFocus();
-
-            jList1.setSelectedIndex(0);
-
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_searchKeyPressed
-
-    private void jList1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jList1KeyPressed
-           if (evt.getKeyCode() == 10) {
-            jScrollPane3.setVisible(false);
-            String sname = jList1.getSelectedValue();
-          String supid = sname.substring(sname.length() - 8, sname.length()).replace("-", "").trim();
-               try {
-                ResultSet search = DB.search("SELECT * FROM suplier where id = '"+supid+"' ");
-                   
-                   if(search.next()){
-                   txt_fname1.setText(search.getString("fname"));
-                   txt_lname1.setText(search.getString("lname"));
-                   txt_company1.setText(search.getString("company"));
-                   txt_mob3.setText(search.getString("mobile1"));
-                   txt_mob4.setText(search.getString("mobile2"));
-                   txt_email1.setText(search.getString("email"));
-                   jTextArea2.setText(search.getString("address"));
-                   lbl_supid2.setText(supid);
-                   }
-                   txt_fname1.grabFocus();
-               } catch (Exception e) {
-               e.printStackTrace();
-               }
-        }
-    }//GEN-LAST:event_jList1KeyPressed
-
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         Customer customer = new Customer();
         customer.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton14ActionPerformed
+    }//GEN-LAST:event_jButton12ActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        Reports report = new Reports();
-        report.setVisible(true);
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+
+        Employee employee = new Employee();
+        employee.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton15ActionPerformed
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        lbl_supid.setText(null);
+        txt_fname.setText(null);
+        txt_lname.setText(null);
+        txt_mob1.setText(null);
+        txt_mob2.setText(null);
+        txt_company.setText(null);
+        txt_email.setText(null);
+        jTextArea1.setText(null);
+        genarateSuplierId();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+ SuplierSearch sups = new SuplierSearch();
+ sups.setVisible(true);
+ this.dispose();
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * et
@@ -698,7 +526,7 @@ this.dispose();// TODO add your handling code here:
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -723,14 +551,31 @@ this.dispose();// TODO add your handling code here:
         });
     }
 
+    void loadSuplier(String id) {
+        try {
+            ResultSet search = DB.search("SELECT * FROM suplier WHERE id = '" + id + "'");
+            if (search.next()) {
+                lbl_supid.setText(search.getString("id"));
+                txt_fname.setText(search.getString("fname"));
+                txt_lname.setText(search.getString("lname"));
+                txt_mob1.setText(search.getString("mobile1"));
+                txt_mob2.setText(search.getString("mobile2"));
+                txt_email.setText(search.getString("email"));
+                jTextArea1.setText(search.getString("address"));
+                txt_company.setText(search.getString("company"));
+
+                jButton3.setText("Search");
+                jButton4.setText("Update");
+            }
+        } catch (Exception e) {
+        }
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -738,6 +583,7 @@ this.dispose();// TODO add your handling code here:
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -745,51 +591,29 @@ this.dispose();// TODO add your handling code here:
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane2;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel lbl_supid;
-    private javax.swing.JLabel lbl_supid2;
     private javax.swing.JTextField txt_company;
-    private javax.swing.JTextField txt_company1;
     private javax.swing.JTextField txt_email;
-    private javax.swing.JTextField txt_email1;
     public static javax.swing.JTextField txt_fname;
-    private javax.swing.JTextField txt_fname1;
     private javax.swing.JTextField txt_lname;
-    private javax.swing.JTextField txt_lname1;
     private javax.swing.JTextField txt_mob1;
     private javax.swing.JTextField txt_mob2;
-    private javax.swing.JTextField txt_mob3;
-    private javax.swing.JTextField txt_mob4;
-    private javax.swing.JTextField txt_search;
     // End of variables declaration//GEN-END:variables
 
     private void genarateSuplierId() {

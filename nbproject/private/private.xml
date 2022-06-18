@@ -3,13 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/java/Hardware/src/Frames/Invoice.java</file>
-            <file>file:/D:/java/Hardware/src/Frames/Suplier.java</file>
-            <file>file:/D:/java/Hardware/src/Frames/Customer.java</file>
-            <file>file:/D:/java/Hardware/src/Frames/ItemManagement.java</file>
-            <file>file:/D:/java/Hardware/src/Frames/Reports.java</file>
-            <file>file:/D:/java/Hardware/src/Frames/Home.java</file>
-            <file>file:/D:/java/Hardware/src/Frames/GRN.java</file>
+            <file>file:/D:/java/Hardware/src/Frames/Login.java</file>
+            <file>file:/D:/java/Hardware/test/Mail.java</file>
         </group>
     </open-files>
 </project-private>
