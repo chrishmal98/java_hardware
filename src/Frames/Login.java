@@ -5,9 +5,11 @@
  */
 package Frames;
 
+
 import Common.SystemData;
 import DB.DB;
 import java.awt.Color;
+import java.awt.event.WindowEvent;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
@@ -30,7 +32,7 @@ public class Login extends javax.swing.JFrame {
         jPanel3.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         jPasswordField1.setEchoChar('\u25CF');
 
-        lbl_forgot.setVisible(false);
+       lbl_forgot.setVisible(false);
 
     }
 
@@ -109,7 +111,7 @@ public class Login extends javax.swing.JFrame {
         jTextField4.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jTextField4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
         jTextField4.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jPanel3.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 290, 40));
+        jPanel3.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 290, 30));
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setOpaque(true);
@@ -122,7 +124,7 @@ public class Login extends javax.swing.JFrame {
                 jPasswordField1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 290, 40));
+        jPanel3.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 290, 30));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 470, 440));
 
@@ -134,7 +136,7 @@ public class Login extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(16, 52, 166));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel5.setBackground(java.awt.Color.white);
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel5MouseClicked(evt);
@@ -174,7 +176,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
         // TODO add your handling code here:
-        this.dispose();
+       this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
@@ -239,12 +241,12 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void lbl_forgotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_forgotMouseClicked
-       
-        
+      setEmail();
+      if(sendMail){  
         PasswordReset reset = new PasswordReset();
         reset.setVisible(true);
         this.dispose();
-        
+      }
        
         
     }//GEN-LAST:event_lbl_forgotMouseClicked
@@ -323,5 +325,22 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lbl_forgot;
     // End of variables declaration//GEN-END:variables
+boolean sendMail ;
+    
+    void setEmail() {
+        try {
+            ResultSet search = DB.search("SELECT employee.email FROM employee INNER JOIN systemuser ON systemuser.emp_id = employee.id WHERE systemuser.id = '" + Common.SystemData.getSystemUser() + "'");
+            if (search.next()) {
+                String email = search.getString("email");
 
+                Common.SystemData.setEmail(email);
+                 sendMail = Common.Mail.sendMail(email);
+                 
+
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 }

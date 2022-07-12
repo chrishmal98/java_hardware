@@ -22,7 +22,7 @@ public class PasswordReset extends javax.swing.JFrame {
      */
     public PasswordReset() {
         initComponents();
-        setEmail();
+        lbl_email.setText(Common.SystemData.getEmail());
         jPasswordField1.setEnabled(false);
         jPasswordField2.setEnabled(false);
         btnSave.setEnabled(false);
@@ -499,20 +499,6 @@ public class PasswordReset extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     boolean image_p = true;
     boolean image_cp = true;    
-    void setEmail() {
-        try {
-            ResultSet search = DB.DB.search("SELECT employee.email FROM employee INNER JOIN systemuser ON systemuser.emp_id = employee.id WHERE systemuser.id = '" + Common.SystemData.getSystemUser() + "'");
-            if (search.next()) {
-                String email = search.getString("email");
-
-                lbl_email.setText(email);
-              Common.Mail.sendMail(email);
-
-            }
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
+   
 
 }

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ee6aa5bd-13de-4a61-959b-aa43948067ae">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.background.image.properties" value="true,true,0.1,-3,3,0,0,598,845"/>
+	<queryString>
+		<![CDATA[SELECT
+     stock.`stock_id` AS stock_id,
+     stock.`qty` AS qty,
+     stock.`item_id` AS item_id,
+     item.`name` AS name,
+     item.`mesure_unite` AS unite,
+     stock.`selling_price` AS stock_selling_price,
+     stock.`expdate` AS stock_expdate,
+     stock.`waranty` AS stock_waranty,
+     item.`catagory` AS item_catagory,
+     suplier.`company` AS suplier_company
+FROM
+     `item` item INNER JOIN `stock` stock ON item.`id` = stock.`item_id`
+     INNER JOIN `suplier` suplier ON item.`suplier` = suplier.`id`
+WHERE
+     item.stetus = 1
+     and stock.status = 1]]>
+	</queryString>
+	<field name="stock_id" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qty" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="item_id" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unite" class="java.lang.String"/>
+	<field name="stock_selling_price" class="java.lang.Integer"/>
+	<field name="stock_expdate" class="java.lang.String"/>
+	<field name="stock_waranty" class="java.lang.String"/>
+	<field name="item_catagory" class="java.lang.String"/>
+	<field name="suplier_company" class="java.lang.String"/>
+	<variable name="qty" class="java.lang.String"/>
+	<variable name="date" class="java.lang.String"/>
+	<background>
+		<band height="842">
+			<image>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="595" height="842" uuid="c65f39fb-169c-4b5e-9361-4027232be8e9"/>
+				<imageExpression><![CDATA["D:\\Hardware\\report_background_new.png"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="113" splitType="Stretch">
+			<staticText>
+				<reportElement x="484" y="93" width="44" height="20" uuid="770eb401-1062-4403-badb-b37385517511"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Date   :   ]]></text>
+			</staticText>
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="528" y="93" width="60" height="20" uuid="6d5d8799-fb3a-45e8-856c-a69f45787cdf"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="20" width="595" height="27" backcolor="#CCFFFF" uuid="c21881ec-f890-4145-bce8-c48ef5448a15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nunito ExtraBold" size="18"/>
+				</textElement>
+				<text><![CDATA[Stock Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="478" y="0" width="50" height="20" uuid="f0b05b3c-8004-450d-a268-389241d2ec8e"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Time   :   ]]></text>
+			</staticText>
+			<textField pattern="h.mm a">
+				<reportElement x="528" y="0" width="60" height="20" uuid="58fed34b-af0d-42d1-a96e-7fe572778975"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="198" y="13" width="50" height="20" backcolor="#6699FF" uuid="dc4e16b8-aed9-4920-830e-f87cd6d03e87"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nunito Black"/>
+				</textElement>
+				<text><![CDATA[Stock Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="13" y="13" width="50" height="20" backcolor="#6699FF" uuid="d42fcaeb-4826-4d81-b748-ecd309220e52"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nunito Black"/>
+				</textElement>
+				<text><![CDATA[Item Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="519" y="13" width="57" height="20" backcolor="#6699FF" uuid="325033fb-4866-4aa9-be2d-dcd744d334e4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nunito Black"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="63" y="13" width="135" height="20" backcolor="#6699FF" uuid="1a5255ac-5de3-464a-abd1-cd6338ea96ec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nunito Black" size="9"/>
+				</textElement>
+				<text><![CDATA[Item Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="248" y="13" width="94" height="20" backcolor="#6699FF" uuid="08aad07f-f645-478f-bf4a-4af97e333997"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nunito Black"/>
+				</textElement>
+				<text><![CDATA[Suplier]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="342" y="13" width="60" height="20" backcolor="#6699FF" uuid="b9c8c15b-0c13-4b8a-9eed-2b4c38e0fd37"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nunito Black"/>
+				</textElement>
+				<text><![CDATA[Exp Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="402" y="13" width="60" height="20" backcolor="#6699FF" uuid="4377136a-b085-41e9-8db1-84508820d084"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nunito Black"/>
+				</textElement>
+				<text><![CDATA[Waranty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="462" y="13" width="57" height="20" backcolor="#6699FF" uuid="ab046c63-bfbf-455d-82e6-635b880f1e5e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nunito Black"/>
+				</textElement>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="13" y="4" width="50" height="20" uuid="89d36e87-7948-463a-b056-2d0cb11e06df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{item_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="198" y="4" width="50" height="20" uuid="45414202-4e38-491b-a394-6a4a874b2de6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{stock_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="63" y="4" width="136" height="20" uuid="2168d4db-4550-4a52-8672-01bd1f48bd34"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="248" y="4" width="94" height="20" uuid="d88556b8-8613-47d0-8ab5-c6d9bc1fa7bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{suplier_company}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="402" y="4" width="60" height="20" uuid="108ce97f-85d6-487b-9294-e0b63d8563d1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{stock_waranty}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="342" y="4" width="60" height="20" uuid="84386d8f-4747-43c4-abdf-cf195f6f5c39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{stock_expdate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="519" y="4" width="57" height="20" uuid="135944a8-3f8c-437f-a0d8-c2bd825f4677"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{qty}+" "+$F{unite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="463" y="4" width="57" height="20" uuid="c43eb938-9c1a-4ade-b7dd-769398c38bf8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{stock_selling_price}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="62" y="0" width="1" height="25" forecolor="#CCCCCC" uuid="365ecfe4-fa38-4078-9492-c937b00654c3"/>
+			</line>
+			<line>
+				<reportElement x="197" y="0" width="1" height="25" forecolor="#CCCCCC" uuid="52d52a2e-25a9-4b06-8083-a5eecf6d348d"/>
+			</line>
+			<line>
+				<reportElement x="247" y="0" width="1" height="25" forecolor="#CCCCCC" uuid="7a5d1438-3c67-4327-9365-51dbd89dd932"/>
+			</line>
+			<line>
+				<reportElement x="342" y="0" width="1" height="25" forecolor="#CCCCCC" uuid="05cc65e3-f745-432c-b448-36e75f69cd54"/>
+			</line>
+			<line>
+				<reportElement x="462" y="0" width="1" height="25" forecolor="#CCCCCC" uuid="c1bd589c-52e5-4059-984e-ecb217bcfe45"/>
+			</line>
+			<line>
+				<reportElement x="518" y="0" width="1" height="25" forecolor="#CCCCCC" uuid="7c473e0d-45aa-4cd2-91c5-9f43da96ab54"/>
+			</line>
+			<line>
+				<reportElement x="575" y="0" width="1" height="25" forecolor="#CCCCCC" uuid="e7e4d38d-d9e1-430f-b280-715db8e00877"/>
+			</line>
+			<line>
+				<reportElement x="14" y="0" width="1" height="25" forecolor="#CCCCCC" uuid="c5ba258a-137d-43b2-a72b-ac9d04b2348b"/>
+			</line>
+			<line>
+				<reportElement x="402" y="0" width="1" height="25" forecolor="#CCCCCC" uuid="ca97f127-5755-4557-b515-cfedae1362a5"/>
+			</line>
+			<line>
+				<reportElement x="15" y="25" width="560" height="1" forecolor="#CCCCCC" uuid="d055080a-5c34-4379-bd9c-3e7996e12c47"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="50" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="468" y="0" width="80" height="20" uuid="1c850d5e-7cb3-4ce7-ab94-192953ad5982"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="548" y="0" width="40" height="20" uuid="64ecc95c-824e-4422-8590-8775b9ef8bf8"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="51" splitType="Stretch"/>
+	</summary>
+</jasperReport>

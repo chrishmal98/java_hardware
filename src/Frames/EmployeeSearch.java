@@ -5,10 +5,21 @@
  */
 package Frames;
 
+import DB.DB;
 import java.awt.Color;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -35,6 +46,7 @@ public class EmployeeSearch extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jButton8 = new javax.swing.JButton();
@@ -48,6 +60,9 @@ public class EmployeeSearch extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        Rep_save = new javax.swing.JRadioButton();
+        Rep_print = new javax.swing.JRadioButton();
+        Rep_show = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -223,6 +238,29 @@ public class EmployeeSearch extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/magnifying-glass.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 40, 30));
 
+        buttonGroup2.add(Rep_save);
+        Rep_save.setText("Save");
+        Rep_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Rep_saveActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Rep_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 595, -1, 20));
+
+        buttonGroup2.add(Rep_print);
+        Rep_print.setText("Print");
+        jPanel2.add(Rep_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 595, -1, 20));
+
+        buttonGroup2.add(Rep_show);
+        Rep_show.setSelected(true);
+        Rep_show.setText("Show");
+        Rep_show.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Rep_showActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Rep_show, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 595, -1, 20));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 71, 1106, 620));
 
         jPanel4.setBackground(java.awt.Color.white);
@@ -239,8 +277,7 @@ public class EmployeeSearch extends javax.swing.JFrame {
         jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
 
         jButton4.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
-        jButton4.setText("Save");
-        jButton4.setEnabled(false);
+        jButton4.setText("Generate Report");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -346,7 +383,7 @@ public class EmployeeSearch extends javax.swing.JFrame {
 
         jButton7.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
-        jButton7.setText("New Suplier");
+        jButton7.setText("New Supplier");
         jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton7.setIconTextGap(30);
@@ -416,6 +453,32 @@ int selectedRow = jTable1.getSelectedRow();
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
+          try {
+            String path = "D:\\java\\Hardware\\reports\\EmployeeRepport_landscape.jasper";
+            InputStream is1 = new FileInputStream(path);
+            JREmptyDataSource datasource = new JREmptyDataSource();
+            JasperPrint fillReport = JasperFillManager.fillReport(is1, null, DB.getNewConnection());
+            if (Rep_save.isSelected()) {
+                String filename = System.currentTimeMillis() + "Eemployee.pdf";
+                File file = new File("C:\\Users\\chris\\Pictures\\hardware\\");
+                file.mkdirs();
+
+                JasperExportManager.exportReportToPdfFile(fillReport, file.getAbsolutePath() +"\\\\"+ filename);
+                JOptionPane.showMessageDialog(this,"File save Sucsessfully, Location : "+ file.getAbsolutePath() +"\\\\"+ filename ,null, JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (Rep_print.isSelected()) {
+                JasperPrintManager.printReport(fillReport, false);
+                                System.out.println("print");
+
+            }
+            if (Rep_show.isSelected()) {
+                JasperViewer.viewReport(fillReport, false);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
@@ -539,7 +602,7 @@ int selectedRow = jTable1.getSelectedRow();
             dtm.setRowCount(0);
             try {
                 System.out.println("1");
-                ResultSet search = DB.DB.search("SELECT * FROM employee WHERE fname like '" + text + "%" + "' OR lname like '" + text + "%" + "' ");
+                ResultSet search = DB.search("SELECT * FROM employee WHERE fname like '" + text + "%" + "' OR lname like '" + text + "%" + "' ");
                 System.out.println("2");
 
                 while (search.next()) {
@@ -565,7 +628,7 @@ int selectedRow = jTable1.getSelectedRow();
             dtm.setRowCount(0);
             try {
 
-                ResultSet search = DB.DB.search("SELECT * FROM employee WHERE mobile like '" + text + "%" + "'");
+                ResultSet search = DB.search("SELECT * FROM employee WHERE mobile like '" + text + "%" + "'");
 
                 while (search.next()) {
 
@@ -590,7 +653,7 @@ int selectedRow = jTable1.getSelectedRow();
             dtm.setRowCount(0);
             try {
 
-                ResultSet search = DB.DB.search("SELECT * FROM employee WHERE nic like '" + text + "%" + "'");
+                ResultSet search = DB.search("SELECT * FROM employee WHERE nic like '" + text + "%" + "'");
 
                 while (search.next()) {
 
@@ -615,7 +678,7 @@ int selectedRow = jTable1.getSelectedRow();
             dtm.setRowCount(0);
             try {
 
-                ResultSet search = DB.DB.search("SELECT * FROM employee WHERE email like '" + text + "%" + "'");
+                ResultSet search = DB.search("SELECT * FROM employee WHERE email like '" + text + "%" + "'");
 
                 while (search.next()) {
 
@@ -667,6 +730,14 @@ int selectedRow = jTable1.getSelectedRow();
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void Rep_showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rep_showActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Rep_showActionPerformed
+
+    private void Rep_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rep_saveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Rep_saveActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -711,7 +782,11 @@ int selectedRow = jTable1.getSelectedRow();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton Rep_print;
+    private javax.swing.JRadioButton Rep_save;
+    private javax.swing.JRadioButton Rep_show;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -748,7 +823,7 @@ int selectedRow = jTable1.getSelectedRow();
 
     private void loadTable() {
         try {
-            ResultSet search = DB.DB.search("SELECT * FROM employee");
+            ResultSet search = DB.search("SELECT * FROM employee");
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             while (search.next()) {
                 Vector v = new Vector();

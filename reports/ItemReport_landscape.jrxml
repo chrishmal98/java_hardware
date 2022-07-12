@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ItemReport_landscape" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a13d7b79-461c-404d-a647-7c741fa1985b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="186"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="3be6388e-8f2c-43ad-baaa-984a8407281e">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     item.`id` AS item_id,
+     item.`name` AS item_name,
+     item.`brand` AS item_brand,
+     item.`catagory` AS item_catagory,
+     item.`mesure_unite` AS item_mesure_unite,
+     item.`stetus` AS item_stetus,
+     item.`waranty` AS item_waranty,
+     item.`isexpire` AS item_isexpire,
+     item.`lowqty` AS item_lowqty,
+     suplier.`company` AS suplier_company
+FROM
+     `suplier` suplier INNER JOIN `item` item ON suplier.`id` = item.`suplier`]]>
+		</queryString>
+		<field name="item_id" class="java.lang.String"/>
+		<field name="item_name" class="java.lang.String"/>
+		<field name="item_brand" class="java.lang.String"/>
+		<field name="item_catagory" class="java.lang.String"/>
+		<field name="item_mesure_unite" class="java.lang.String"/>
+		<field name="item_stetus" class="java.lang.Integer"/>
+		<field name="item_waranty" class="java.lang.Integer"/>
+		<field name="item_isexpire" class="java.lang.Integer"/>
+		<field name="item_lowqty" class="java.lang.Integer"/>
+		<field name="suplier_company" class="java.lang.String"/>
+		<group name="item_catagory">
+			<groupExpression><![CDATA[$F{item_catagory}]]></groupExpression>
+		</group>
+		<group name="item_brand">
+			<groupExpression><![CDATA[$F{item_brand}]]></groupExpression>
+		</group>
+		<group name="suplier_company">
+			<groupExpression><![CDATA[$F{suplier_company}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT
+     item.`id` AS item_id,
+     item.`name` AS item_name,
+     item.`brand` AS item_brand,
+     item.`catagory` AS item_catagory,
+     item.`suplier` AS item_suplier,
+     item.`mesure_unite` AS item_mesure_unite,
+     item.`waranty` AS item_waranty,
+     item.`isexpire` AS item_isexpire,
+     item.`lowqty` AS item_lowqty,
+     item.`stetus` AS item_stetus,
+     suplier.`company` AS suplier_company
+FROM
+     `suplier` suplier INNER JOIN `item` item ON suplier.`id` = item.`suplier`]]>
+	</queryString>
+	<field name="item_id" class="java.lang.String"/>
+	<field name="item_name" class="java.lang.String"/>
+	<field name="item_brand" class="java.lang.String"/>
+	<field name="item_catagory" class="java.lang.String"/>
+	<field name="item_suplier" class="java.lang.String"/>
+	<field name="item_mesure_unite" class="java.lang.String"/>
+	<field name="item_waranty" class="java.lang.Integer"/>
+	<field name="item_isexpire" class="java.lang.Integer"/>
+	<field name="item_lowqty" class="java.lang.Integer"/>
+	<field name="item_stetus" class="java.lang.Integer"/>
+	<field name="suplier_company" class="java.lang.String"/>
+	<variable name="Count" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{item_id}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<background>
+		<band height="595" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="842" height="595" uuid="c2958562-f670-4399-a611-5c43e08a4585"/>
+				<imageExpression><![CDATA["D:\\Hardware\\report_background_landscape.png"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="117" splitType="Stretch">
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="644" y="95" width="87" height="20" uuid="978aa3c1-f2bb-455f-a348-cd6c374d0854"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="764" y="95" width="55" height="20" uuid="b136b7b5-ef60-4e0b-a521-ab8cd0726967"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="611" y="95" width="33" height="20" uuid="744dc263-89ff-4a3e-a396-17bc97a07d5f"/>
+				<text><![CDATA[Date : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="731" y="95" width="33" height="20" uuid="e8db0d64-b591-4495-acc3-773bcffe8e89"/>
+				<text><![CDATA[Time : ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="19" y="0" width="800" height="35" uuid="20c2ee70-a0d9-439a-a016-d503592fcb1d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Nunito Black" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Item Report]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="51" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="19" y="0" width="800" height="47" uuid="c8d946e7-4f32-4175-8594-cd8378acfba6"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 1" uuid="9bddf29d-9c25-4d42-bfae-ca8590dc81e3">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="47" uuid="9fa73481-74a7-430d-8cd9-b1e7d687f403">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="47" height="30" uuid="f7b4b832-2425-4d6f-9f3c-b30841fa5494"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Id]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="47" height="17" uuid="60791c72-eedb-43d7-992a-0bf75927500a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{item_id}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="194" uuid="8ed83c07-e016-44a2-86c3-b564da1a9a0b">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="194" height="30" uuid="70d0fc0b-34c7-4247-90e4-899283955dee"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Name]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="194" height="17" uuid="977ec289-0d4d-4ecf-93b3-0472bb156e6c"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{item_name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="107" uuid="da0c0a1e-cd6a-4d98-a5df-3cee3d5377ce">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="107" height="30" uuid="ae4e4e4f-84fa-4d83-b6b7-b572f319489b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Brand]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="107" height="17" uuid="ab8c7a81-30c9-4407-a8ee-048658a4a307"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{item_brand}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="107" uuid="5dc96216-e75d-4c1e-a5d4-c2716f1a683d">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="107" height="30" uuid="917b8e6d-265f-4245-98e8-acd1aef249c9"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Catagory]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="107" height="17" uuid="ccaf20e6-905f-4ab3-86b6-cff5e08cf765"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{item_catagory}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="46" uuid="269f86f9-dcb7-46f2-ac15-ca23e463edb6">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="46" height="30" uuid="843864e6-7d9e-49e5-acdd-3fd4a9e71ce8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[M.Unit]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="46" height="17" uuid="feeb3362-cc44-453c-a810-86450992594e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{item_mesure_unite}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="55" uuid="d605542d-be72-4628-b64e-8a90fb3a6c05">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="55" height="30" uuid="a382bb2d-4d58-44ad-8317-f06162d247d4"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Waranty]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="55" height="17" uuid="e000fdf4-b2a6-456c-ac20-b52f9a514ad5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[(($F{item_waranty}.toString().equals("1")) ? "Available" : "No" )]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="47" uuid="94dd61eb-d295-47cb-937f-1d46e517103f">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="47" height="30" uuid="53ffe88e-d918-4f1b-a39e-82306ba2c5b3"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Is Expire]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="47" height="17" uuid="37b052bd-c30a-41db-a3d5-eb68833e0f3b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[(($F{item_isexpire}.toString().equals("1")) ? "Yes" : "No" )
+
+]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="57" uuid="04a31fe8-50ad-4c3b-b87d-93b99455b0b1">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="57" height="30" uuid="49368a12-3fcd-4d1b-9411-44d4f5da6e77"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Low Qty.N]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="57" height="17" uuid="8da0d87c-ed0b-4db7-9b10-8ede8101c862"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{item_lowqty}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="138" uuid="d97f4eef-ae91-4bb2-a608-f8492975750c">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="138" height="30" uuid="1da216b6-603a-418e-9a54-6915bd12f0d6"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Suplier]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="138" height="17" uuid="98cc9772-73ee-42fb-ac33-ed284128fd10"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{suplier_company}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="3" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="57" splitType="Stretch">
+			<textField>
+				<reportElement x="722" y="18" width="80" height="20" uuid="aef131b1-9051-451f-8566-e6b142d62cfa"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="802" y="18" width="40" height="20" uuid="331ed414-835b-46b8-a09f-58e796bf6d65"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="19" y="0" width="116" height="20" uuid="2f6a72a1-b00a-439e-a21d-ae3f8a03e01e"/>
+				<text><![CDATA[Total Number Of Items : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="135" y="0" width="55" height="20" uuid="01bcf49c-19ab-4443-8b17-e67dac424aef"/>
+				<textFieldExpression><![CDATA[$V{Count}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

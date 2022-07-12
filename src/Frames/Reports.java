@@ -7,6 +7,7 @@ package Frames;
 
 import DB.DB;
 import java.awt.Color;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -16,11 +17,18 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
+import javax.print.attribute.standard.Copies;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRTableModelDataSource;
 import net.sf.jasperreports.view.JasperViewer;
@@ -36,6 +44,8 @@ public class Reports extends javax.swing.JFrame {
      */
     public Reports() {
         initComponents();
+        Common.SystemLogger.initLogger(Customer.class).info("Report interface sign");
+
     }
 
     /**
@@ -47,6 +57,7 @@ public class Reports extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -55,7 +66,6 @@ public class Reports extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
@@ -65,8 +75,17 @@ public class Reports extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jLabel7 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton16 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        r_save = new javax.swing.JRadioButton();
+        r_show = new javax.swing.JRadioButton();
+        r_print = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
         jButton20 = new javax.swing.JButton();
         jButton21 = new javax.swing.JButton();
@@ -97,8 +116,8 @@ public class Reports extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Nunito Black", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Daily");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 570, 24));
+        jLabel1.setText("Daily Report");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 490, 24));
 
         jButton3.setBackground(java.awt.Color.white);
         jButton3.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
@@ -108,10 +127,10 @@ public class Reports extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 280, 40));
-        jPanel4.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 280, 40));
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 280, 40));
+        jPanel4.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 280, 40));
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, 570, 180));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 370, 490, 180));
 
         jPanel6.setBackground(java.awt.Color.white);
         jPanel6.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -120,7 +139,7 @@ public class Reports extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Nunito Black", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Stock Reports");
-        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 570, 24));
+        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 24));
 
         jButton14.setBackground(java.awt.Color.white);
         jButton14.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
@@ -130,19 +149,9 @@ public class Reports extends javax.swing.JFrame {
                 jButton14ActionPerformed(evt);
             }
         });
-        jPanel6.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 280, 40));
+        jPanel6.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 280, 40));
 
-        jButton15.setBackground(java.awt.Color.white);
-        jButton15.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
-        jButton15.setText("Low Qty");
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
-            }
-        });
-        jPanel6.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 280, 40));
-
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 570, 170));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 490, 100));
 
         jPanel8.setBackground(java.awt.Color.white);
         jPanel8.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -151,15 +160,15 @@ public class Reports extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Nunito Black", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Custom Reports");
-        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 570, 24));
+        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 490, 24));
 
         jDateChooser2.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
-        jPanel8.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 180, 40));
+        jPanel8.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 180, 40));
 
         jLabel5.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("To");
-        jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 90, 40));
+        jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 60, 40));
 
         jButton5.setBackground(java.awt.Color.white);
         jButton5.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
@@ -169,12 +178,12 @@ public class Reports extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel8.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 280, 40));
+        jPanel8.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 280, 40));
 
         jDateChooser3.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
-        jPanel8.add(jDateChooser3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 180, 40));
+        jPanel8.add(jDateChooser3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 180, 40));
 
-        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 430, 570, 230));
+        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 550, 490, 180));
 
         jPanel9.setBackground(new java.awt.Color(106, 162, 186));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -186,13 +195,85 @@ public class Reports extends javax.swing.JFrame {
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1106, 40));
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/contract.png"))); // NOI18N
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 180, 200));
+        jPanel7.setBackground(java.awt.Color.white);
+        jPanel7.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Nunito Black", 1, 14)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Detail Reports");
+        jPanel7.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 490, 24));
+
+        jButton16.setBackground(java.awt.Color.white);
+        jButton16.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+        jButton16.setText("Customer");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 160, 40));
+
+        jButton17.setBackground(java.awt.Color.white);
+        jButton17.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+        jButton17.setText("Employee");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 160, 40));
+
+        jButton18.setBackground(java.awt.Color.white);
+        jButton18.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+        jButton18.setText("Suplier");
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 160, 40));
+
+        jButton19.setBackground(java.awt.Color.white);
+        jButton19.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+        jButton19.setText("Item");
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 160, 40));
+
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, 490, 180));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/middle line.png"))); // NOI18N
         jLabel8.setOpaque(true);
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 10, 430));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 10, 430));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/contract.png"))); // NOI18N
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 180, 200));
+
+        buttonGroup1.add(r_save);
+        r_save.setFont(new java.awt.Font("Nunito Black", 0, 14)); // NOI18N
+        r_save.setText("save");
+        r_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                r_saveActionPerformed(evt);
+            }
+        });
+        jPanel2.add(r_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 480, -1, -1));
+
+        buttonGroup1.add(r_show);
+        r_show.setFont(new java.awt.Font("Nunito Black", 0, 14)); // NOI18N
+        r_show.setSelected(true);
+        r_show.setText("Show");
+        jPanel2.add(r_show, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, -1, -1));
+
+        buttonGroup1.add(r_print);
+        r_print.setFont(new java.awt.Font("Nunito Black", 0, 14)); // NOI18N
+        r_print.setText("Print");
+        jPanel2.add(r_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 480, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 1106, 738));
 
@@ -239,7 +320,7 @@ public class Reports extends javax.swing.JFrame {
 
         jButton23.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
         jButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
-        jButton23.setText("New Suplier");
+        jButton23.setText("New Supplier");
         jButton23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton23.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton23.setIconTextGap(30);
@@ -331,54 +412,110 @@ public class Reports extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        try {
-            Date date = jDateChooser1.getDate();
-            InputStream is = new FileInputStream("D:\\jasper reports\\hardware\\report2.jasper");
-            // String path = "D:\\jasper reports\\sadb1\\report3.jrxml";
-            // JasperReport compilereport = JasperCompileManager.compileReport(path);
-            JREmptyDataSource datasource = new JREmptyDataSource();
-            Map<String, Object> map = new HashMap<>();
+        if (Common.SystemData.getUtype().equals("Super Admin")) {
+            try {
+                Date date = jDateChooser1.getDate();
+                InputStream is = new FileInputStream("D:\\java\\Hardware\\reports\\DailysalsReport.jasper");
+                // String path = "D:\\jasper reports\\sadb1\\report3.jrxml";
+                // JasperReport compilereport = JasperCompileManager.compileReport(path);
+                JREmptyDataSource datasource = new JREmptyDataSource();
+                Map<String, Object> map = new HashMap<>();
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            map.put("date", sdf.format(date));
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                map.put("date", sdf.format(date));
 
-            JasperPrint fillReport = JasperFillManager.fillReport(is, map, DB.getNewConnection());
-            JasperViewer.viewReport(fillReport, false);
-        } catch (Exception e) {
-            e.printStackTrace();
+                JasperPrint fillReport = JasperFillManager.fillReport(is, map, DB.getNewConnection());
+
+                if (r_save.isSelected()) {
+                    String filename = System.currentTimeMillis() + "dailysals.pdf";
+                    File file = new File("C:\\Users\\chris\\Pictures\\hardware");
+                    file.mkdirs();
+
+                    JasperExportManager.exportReportToPdfFile(fillReport, file.getAbsolutePath() + "\\\\" + filename);
+                    JOptionPane.showMessageDialog(this, "File save Sucsessfully, Location : " + file.getAbsolutePath() + "\\\\" + filename, null, JOptionPane.INFORMATION_MESSAGE);
+                }
+                if (r_print.isSelected()) {
+                    JasperPrintManager.printReport(fillReport, false);
+                    System.out.println("print");
+
+                }
+                if (r_show.isSelected()) {
+                    JasperViewer.viewReport(fillReport, false);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Access Denied ", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+
         try {
-            String path = "D:\\jasper reports\\hardware\\report1.jasper";
+            String path = "D:\\java\\Hardware\\reports\\StockReport.jasper";
             InputStream is1 = new FileInputStream(path);
             JREmptyDataSource datasource = new JREmptyDataSource();
             JasperPrint fillReport = JasperFillManager.fillReport(is1, null, DB.getNewConnection());
-            JasperViewer.viewReport(fillReport, false);
+            if (r_save.isSelected()) {
+                String filename = System.currentTimeMillis() + "Stock.pdf";
+                File file = new File("C:\\Users\\chris\\Pictures\\hardware");
+                file.mkdirs();
+
+                JasperExportManager.exportReportToPdfFile(fillReport, file.getAbsolutePath() + "\\\\" + filename);
+                JOptionPane.showMessageDialog(this, "File save Sucsessfully, Location : " + file.getAbsolutePath() + "\\\\" + filename, null, JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (r_print.isSelected()) {
+                JasperPrintManager.printReport(fillReport, false);
+                System.out.println("print");
+
+            }
+            if (r_show.isSelected()) {
+                JasperViewer.viewReport(fillReport, false);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+      if (Common.SystemData.getUtype().equals("Super Admin")) {
         try {
             Date sDate = jDateChooser2.getDate();
             Date lDate = jDateChooser3.getDate();
-            InputStream is = new FileInputStream("D:\\jasper reports\\hardware\\report3.jasper");
+            InputStream is = new FileInputStream("D:\\java\\Hardware\\reports\\salesreport.jasper");
             // String path = "D:\\jasper reports\\sadb1\\report3.jrxml";
             // JasperReport compilereport = JasperCompileManager.compileReport(path);
             JREmptyDataSource datasource = new JREmptyDataSource();
             Map<String, Object> map = new HashMap<>();
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            map.put("sdate", sdf.format(sDate));
-            map.put("ldate", sdf.format(lDate));
+            map.put("date", sdf.format(sDate));
+            map.put("date2", sdf.format(lDate));
 
             JasperPrint fillReport = JasperFillManager.fillReport(is, map, DB.getNewConnection());
-            JasperViewer.viewReport(fillReport, false);
+            if (r_save.isSelected()) {
+                    String filename = System.currentTimeMillis() + "sallsreport.pdf";
+                    File file = new File("C:\\Users\\chris\\Pictures\\hardware");
+                    file.mkdirs();
+
+                    JasperExportManager.exportReportToPdfFile(fillReport, file.getAbsolutePath() + "\\\\" + filename);
+                    JOptionPane.showMessageDialog(this, "File save Sucsessfully, Location : " + file.getAbsolutePath() + "\\\\" + filename, null, JOptionPane.INFORMATION_MESSAGE);
+                }
+                if (r_print.isSelected()) {
+                    JasperPrintManager.printReport(fillReport, false);
+                    System.out.println("print");
+
+                }
+                if (r_show.isSelected()) {
+                    JasperViewer.viewReport(fillReport, false);
+                }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+      } else {
+            JOptionPane.showMessageDialog(this, "Access Denied ", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -437,9 +574,124 @@ public class Reports extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jPanel5MouseExited
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        try {
+            String path = "D:\\java\\Hardware\\reports\\customerReport_landscape.jasper";
+            InputStream is1 = new FileInputStream(path);
+            JREmptyDataSource datasource = new JREmptyDataSource();
+            JasperPrint fillReport = JasperFillManager.fillReport(is1, null, DB.getNewConnection());
+            if (r_save.isSelected()) {
+                String filename = System.currentTimeMillis() + "Customer.pdf";
+                File file = new File("C:\\Users\\chris\\Pictures\\hardware");
+                file.mkdirs();
+
+                JasperExportManager.exportReportToPdfFile(fillReport, file.getAbsolutePath() + "\\\\" + filename);
+                JOptionPane.showMessageDialog(this, "File save Sucsessfully, Location : " + file.getAbsolutePath() + "\\\\" + filename, null, JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (r_print.isSelected()) {
+                JasperPrintManager.printReport(fillReport, false);
+                System.out.println("print");
+
+            }
+            if (r_show.isSelected()) {
+                JasperViewer.viewReport(fillReport, false);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
+        try {
+            String path = "D:\\java\\Hardware\\reports\\EmployeeRepport_landscape.jasper";
+            InputStream is1 = new FileInputStream(path);
+            JREmptyDataSource datasource = new JREmptyDataSource();
+            JasperPrint fillReport = JasperFillManager.fillReport(is1, null, DB.getNewConnection());
+            if (r_save.isSelected()) {
+                String filename = System.currentTimeMillis() + "Employee.pdf";
+                File file = new File("C:\\Users\\chris\\Pictures\\hardware");
+                file.mkdirs();
+
+                JasperExportManager.exportReportToPdfFile(fillReport, file.getAbsolutePath() + "\\\\" + filename);
+                JOptionPane.showMessageDialog(this, "File save Sucsessfully, Location : " + file.getAbsolutePath() + "\\\\" + filename, null, JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (r_print.isSelected()) {
+                JasperPrintManager.printReport(fillReport, false);
+                System.out.println("print");
+
+            }
+            if (r_show.isSelected()) {
+                JasperViewer.viewReport(fillReport, false);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        try {
+            String path = "D:\\java\\Hardware\\reports\\SuplierReportLandscape.jasper";
+            InputStream is1 = new FileInputStream(path);
+            JREmptyDataSource datasource = new JREmptyDataSource();
+            JasperPrint fillReport = JasperFillManager.fillReport(is1, null, DB.getNewConnection());
+            if (r_save.isSelected()) {
+                String filename = System.currentTimeMillis() + "Suplier.pdf";
+                File file = new File("C:\\Users\\chris\\Pictures\\hardware");
+                file.mkdirs();
+
+                JasperExportManager.exportReportToPdfFile(fillReport, file.getAbsolutePath() + "\\\\" + filename);
+                JOptionPane.showMessageDialog(this, "File save Sucsessfully, Location : " + file.getAbsolutePath() + "\\\\" + filename, null, JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (r_print.isSelected()) {
+                JasperPrintManager.printReport(fillReport, false);
+                System.out.println("print");
+
+            }
+            if (r_show.isSelected()) {
+                JasperViewer.viewReport(fillReport, false);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        // TODO add your handling code here:
+        try {
+            String path = "D:\\java\\Hardware\\reports\\ItemReport_landscape.jasper";
+            InputStream is1 = new FileInputStream(path);
+            JREmptyDataSource datasource = new JREmptyDataSource();
+            JasperPrint fillReport = JasperFillManager.fillReport(is1, null, DB.getNewConnection());
+            if (r_save.isSelected()) {
+                String filename = System.currentTimeMillis() + "Item.pdf";
+                File file = new File("C:\\Users\\chris\\Pictures\\hardware");
+                file.mkdirs();
+
+                JasperExportManager.exportReportToPdfFile(fillReport, file.getAbsolutePath() + "\\\\" + filename);
+                JOptionPane.showMessageDialog(this, "File save Sucsessfully, Location : " + file.getAbsolutePath() + "\\\\" + filename, null, JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (r_print.isSelected()) {
+                JasperPrintManager.printReport(fillReport, false);
+                System.out.println("print");
+
+            }
+            if (r_show.isSelected()) {
+                JasperViewer.viewReport(fillReport, false);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void r_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_r_saveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_r_saveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -474,14 +726,18 @@ public class Reports extends javax.swing.JFrame {
                 new Reports().setVisible(true);
             }
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
@@ -497,6 +753,7 @@ public class Reports extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -508,9 +765,13 @@ public class Reports extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton r_print;
+    private javax.swing.JRadioButton r_save;
+    private javax.swing.JRadioButton r_show;
     // End of variables declaration//GEN-END:variables
 
 }

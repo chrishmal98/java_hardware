@@ -7,10 +7,19 @@ package Frames;
 
 import DB.DB;
 import java.awt.Color;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -25,6 +34,8 @@ public class StockDetails extends javax.swing.JFrame {
         initComponents();
         loadTable();
         jTable1.getTableHeader().setFont(new java.awt.Font("Nunito", 0, 15));
+        Common.SystemLogger.initLogger(Customer.class).info("stockDetail interface sign");
+
     }
 
     /**
@@ -36,6 +47,7 @@ public class StockDetails extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jPanel1 = new javax.swing.JPanel();
         jButton16 = new javax.swing.JButton();
@@ -66,6 +78,9 @@ public class StockDetails extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
+        rad_save = new javax.swing.JRadioButton();
+        rad_show = new javax.swing.JRadioButton();
+        rad_print = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -221,8 +236,7 @@ public class StockDetails extends javax.swing.JFrame {
         jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
 
         jButton4.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
-        jButton4.setText("Save");
-        jButton4.setEnabled(false);
+        jButton4.setText("Generate Report");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -342,6 +356,24 @@ public class StockDetails extends javax.swing.JFrame {
         });
         jPanel2.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 90, -1, -1));
 
+        buttonGroup1.add(rad_save);
+        rad_save.setText("Save");
+        jPanel2.add(rad_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 590, -1, -1));
+
+        buttonGroup1.add(rad_show);
+        rad_show.setSelected(true);
+        rad_show.setText("Show");
+        rad_show.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rad_showActionPerformed(evt);
+            }
+        });
+        jPanel2.add(rad_show, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 590, -1, -1));
+
+        buttonGroup1.add(rad_print);
+        rad_print.setText("Print");
+        jPanel2.add(rad_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 590, -1, -1));
+
         jLayeredPane1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 71, 1106, 620));
 
         getContentPane().add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 768));
@@ -406,7 +438,31 @@ public class StockDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel5MouseExited
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+ try {
+            String path = "D:\\java\\Hardware\\reports\\StockReport.jasper";
+            InputStream is1 = new FileInputStream(path);
+            JREmptyDataSource datasource = new JREmptyDataSource();
+            JasperPrint fillReport = JasperFillManager.fillReport(is1, null, DB.getNewConnection());
+            if (rad_save.isSelected()) {
+                String filename = System.currentTimeMillis() + "Stock.pdf";
+                File file = new File("C:\\Users\\chris\\Pictures\\hardware\\");
+                file.mkdirs();
 
+                JasperExportManager.exportReportToPdfFile(fillReport, file.getAbsolutePath() +"\\\\"+ filename);
+                JOptionPane.showMessageDialog(this,"File save Sucsessfully, Location : "+ file.getAbsolutePath() +"\\\\"+ filename ,null, JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (rad_print.isSelected()) {
+                JasperPrintManager.printReport(fillReport, false);
+                                System.out.println("print");
+
+            }
+            if (rad_show.isSelected()) {
+                JasperViewer.viewReport(fillReport, false);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -469,12 +525,13 @@ public class StockDetails extends javax.swing.JFrame {
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-        if (jCheckBox1.isSelected()) {
+      dtm.setRowCount(0);
+       if (jCheckBox1.isSelected()) {
             jTextField2.setEnabled(false);
             
              try {
-                 dtm.setRowCount(0);
-            ResultSet search = DB.search("SELECT  stock.stock_id AS A, stock.selling_price AS B, stock.expdate AS C, stock.qty AS D,stock.waranty AS E, item.name AS F, item.mesure_unite AS G, suplier.company AS H FROM stock INNER JOIN item ON stock.item_id = item.id INNER JOIN  suplier ON item.suplier = suplier.id INNER JOIN quntity ON item.id = quntity.id WHERE item.lowqty > quntity.qty");
+                 
+            ResultSet search = DB.search("SELECT  stock.stock_id AS A, stock.selling_price AS B, stock.expdate AS C, stock.qty AS D,stock.waranty AS E, item.name AS F, item.mesure_unite AS G, suplier.company AS H FROM stock INNER JOIN item ON stock.item_id = item.id INNER JOIN  suplier ON item.suplier = suplier.id INNER JOIN quntity ON item.id = quntity.item_id WHERE item.lowqty > quntity.qty");
 
             while (search.next()) {
                 Vector v = new Vector();
@@ -501,6 +558,10 @@ public class StockDetails extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
+    private void rad_showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rad_showActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rad_showActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -512,7 +573,7 @@ public class StockDetails extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -537,6 +598,7 @@ public class StockDetails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
@@ -567,6 +629,9 @@ public class StockDetails extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JRadioButton rad_print;
+    private javax.swing.JRadioButton rad_save;
+    private javax.swing.JRadioButton rad_show;
     // End of variables declaration//GEN-END:variables
 
     private void loadTable() {

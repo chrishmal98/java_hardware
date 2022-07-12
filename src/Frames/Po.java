@@ -32,6 +32,7 @@ public class Po extends javax.swing.JFrame {
         jTable1.getTableHeader().setFont(new java.awt.Font("Nunito", 0, 15));
         jTable2.getTableHeader().setFont(new java.awt.Font("Nunito", 0, 15));
         jList3.grabFocus();
+        Common.SystemLogger.initLogger(Customer.class).info("Po interface sign");
     }
 
     /**
@@ -48,7 +49,6 @@ public class Po extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList<>();
-        jLabel15 = new javax.swing.JLabel();
         txt_search = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -64,7 +64,7 @@ public class Po extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         rad_item = new javax.swing.JRadioButton();
         rad_suplier = new javax.swing.JRadioButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        Check_lowqty = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
@@ -106,9 +106,6 @@ public class Po extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jList3);
 
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 350, 120));
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 200, 110, 35));
 
         txt_search.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
         txt_search.setText("Search");
@@ -182,17 +179,18 @@ public class Po extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Item Id", "Brand Name", "Item Name", "On Hand"
+                "Item Id", "Brand Name", "Item Name", "On Hand", "Ordered Qty"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setRowHeight(20);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -210,6 +208,7 @@ public class Po extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(1).setResizable(false);
             jTable1.getColumnModel().getColumn(2).setResizable(false);
             jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(4).setResizable(false);
         }
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 1010, 190));
@@ -288,7 +287,7 @@ public class Po extends javax.swing.JFrame {
         buttonGroup1.add(rad_suplier);
         rad_suplier.setFont(new java.awt.Font("Nunito Black", 0, 12)); // NOI18N
         rad_suplier.setSelected(true);
-        rad_suplier.setText("Suplier");
+        rad_suplier.setText("Supplier");
         rad_suplier.setContentAreaFilled(false);
         rad_suplier.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -302,15 +301,15 @@ public class Po extends javax.swing.JFrame {
         });
         jPanel2.add(rad_suplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 30, -1, 30));
 
-        jCheckBox1.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
-        jCheckBox1.setText("Low Quntity ");
-        jCheckBox1.setContentAreaFilled(false);
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        Check_lowqty.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        Check_lowqty.setText("Low Quntity ");
+        Check_lowqty.setContentAreaFilled(false);
+        Check_lowqty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                Check_lowqtyActionPerformed(evt);
             }
         });
-        jPanel2.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 120, -1, -1));
+        jPanel2.add(Check_lowqty, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 120, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/magnifying-glass.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 40, 30, 30));
@@ -321,10 +320,17 @@ public class Po extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton3.setBackground(new java.awt.Color(204, 255, 255));
         jButton3.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jButton3.setText("Cancel");
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
 
+        jButton4.setBackground(new java.awt.Color(204, 255, 255));
         jButton4.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jButton4.setText("Save");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -332,10 +338,16 @@ public class Po extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
 
+        jButton5.setBackground(new java.awt.Color(204, 255, 255));
         jButton5.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jButton5.setText("Reset");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 210, 50));
 
         jLayeredPane2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 689, 1106, 79));
@@ -429,7 +441,7 @@ public class Po extends javax.swing.JFrame {
 
         jButton7.setFont(new java.awt.Font("Nunito Black", 1, 14)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
-        jButton7.setText("New Suplier");
+        jButton7.setText("New Supplier");
         jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton7.setIconTextGap(30);
@@ -488,238 +500,304 @@ public class Po extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+if(!lbl_supid.getText().isEmpty()){
         int rowCount = jTable2.getRowCount();
         DefaultTableModel dtm2 = (DefaultTableModel) jTable2.getModel();
-String systemuser = SystemData.getSystemUser();
-String poid =lbl_poid.getText();
-        
+        String systemuser = SystemData.getSystemUser();
+        String poid = lbl_poid.getText();
+
         try {
-            DB.iud("INSERT INTO po VALUES('"+poid+"','"+lbl_supid.getText()+"', now(), 1,'"+systemuser+"')");
-            
+            DB.iud("INSERT INTO po VALUES('" + poid + "','" + lbl_supid.getText() + "', now(), 1,'" + systemuser + "')");
+
             for (int i = 0; rowCount > i; i++) {
-               String itemid = dtm2.getValueAt(0, 0).toString();
-               String qty = dtm2.getValueAt(0, 2).toString();
-DB.iud("INSERT INTO po_item VALUES('"+poid+"','"+itemid+"','"+qty+"')");
-dtm2.removeRow(0);
+                String itemid = dtm2.getValueAt(0, 0).toString();
+                String qty = dtm2.getValueAt(0, 2).toString();
+                DB.iud("INSERT INTO po_item VALUES('" + poid + "','" + itemid + "','" + qty + "')");
+                dtm2.removeRow(0);
             }
-JOptionPane.showMessageDialog(this,"done");
-txt_search.setText(null);
-genaratePOId();
+            JOptionPane.showMessageDialog(this, "done");
+            txt_search.setText(null);
+            genaratePOId();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+}
 
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jList3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jList3KeyPressed
         if (evt.getKeyCode() == 10) {
-            if(rad_suplier.isSelected()){
-            String search_text = jList3.getSelectedValue();
-            jScrollPane3.setVisible(false);
-            txt_search.setText(search_text);
-            search_text = search_text.substring(search_text.length() - 8, search_text.length()).replace("-", "").trim();
-            System.out.println(search_text);
-            lbl_supid.setText(search_text);
-            String item;
+            if (rad_suplier.isSelected()) {
+                String search_text = jList3.getSelectedValue();
+                jScrollPane3.setVisible(false);
+                txt_search.setText(search_text);
+                search_text = search_text.substring(search_text.length() - 8, search_text.length()).replace("-", "").trim();
+                System.out.println(search_text);
+                lbl_supid.setText(search_text);
+                String item;
 
-            DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-            dtm.setRowCount(0);
-            try {
-                ResultSet rs_items = DB.search("SELECT id, name, brand,mesure_unite FROM item WHERE suplier = '" + search_text + "'");
-                while (rs_items.next()) {
-                    item = rs_items.getString("id");
-                    Vector v = new Vector();
+                DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+                dtm.setRowCount(0);
+                try {
+                    ResultSet rs_items = DB.search("SELECT id, name, brand,mesure_unite FROM item WHERE suplier = '" + search_text + "'");
+                    while (rs_items.next()) {
+                        item = rs_items.getString("id");
+                        Vector v = new Vector();
 
-                    String brandName = rs_items.getString("brand");
-                    String name = rs_items.getString("name");
+                        String brandName = rs_items.getString("brand");
+                        String name = rs_items.getString("name");
 
-                    String mesure = rs_items.getString("mesure_unite");
+                        String mesure = rs_items.getString("mesure_unite");
 
-                    ResultSet rs_qty = DB.search("SELECT SUM(qty) as x FROM stock WHERE item_id = '" + item + "'");
-                    int quntity = 0;
-                    if (rs_qty.next()) {
-                        quntity = rs_qty.getInt("x");
+                        ResultSet rs_qty = DB.search("SELECT SUM(qty) as x FROM stock WHERE item_id = '" + item + "'");
+                        int quntity = 0;
+                        if (rs_qty.next()) {
+                            quntity = rs_qty.getInt("x");
+                        }
+                        double preQty =0;
+                        ResultSet search = DB.search("SELECT po_item.qty FROM po_item INNER JOIN po ON po_item.po_id = po.id WHERE po_item.itm_id = '"+item+"' AND po.status = '1' ");
+                        if(search.next()){
+                        preQty = search.getDouble("qty");
+                        }
+
+                        v.add(item);
+                        v.add(brandName);
+                        v.add(name);
+
+                        v.add(quntity + " " + mesure);
+                        v.add(preQty);
+                        dtm.addRow(v);
+
                     }
 
-                    v.add(item);
-                    v.add(brandName);
-                    v.add(name);
-
-                    v.add(quntity + " " + mesure);
-                    dtm.addRow(v);
+                } catch (Exception e) {
+                    e.printStackTrace();
 
                 }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                
-            }
-            jTable1.grabFocus();
-             jTable1.setRowSelectionInterval(0, 0);
-            }else{
-                  String search_text = jList3.getSelectedValue();
-            jScrollPane3.setVisible(false);
-            txt_search.setText(search_text);
-            search_text = search_text.substring(search_text.length() - 8, search_text.length()).replace("-", "").trim();
-            System.out.println(search_text);
-             try {
-                 String suplier_id = null;     
-                 ResultSet supid = DB.search("SELECT suplier FROM item WHERE id = '"+search_text+"'");
-                         if(supid.next()){
-                         suplier_id = supid.getString("suplier");
-                         }
-            lbl_supid.setText(suplier_id);
-            String item;
-
-            DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-            dtm.setRowCount(0);
-                
-           
-                ResultSet rs_items = DB.search("SELECT id, name, brand,mesure_unite FROM item WHERE suplier = '" + suplier_id + "'");
-                while (rs_items.next()) {
-                    item = rs_items.getString("id");
-                    Vector v = new Vector();
-
-                    String brandName = rs_items.getString("brand");
-                    String name = rs_items.getString("name");
-
-                    String mesure = rs_items.getString("mesure_unite");
-
-                    ResultSet rs_qty = DB.search("SELECT SUM(qty) as x FROM stock WHERE item_id = '" + item + "'");
-                    int quntity = 0;
-                    if (rs_qty.next()) {
-                        quntity = rs_qty.getInt("x");
+                jTable1.grabFocus();
+                jTable1.setRowSelectionInterval(0, 0);
+            } else {
+                String search_text = jList3.getSelectedValue();
+                jScrollPane3.setVisible(false);
+                txt_search.setText(search_text);
+                search_text = search_text.substring(search_text.length() - 8, search_text.length()).replace("-", "").trim();
+                System.out.println(search_text);
+                try {
+                    String suplier_id = null;
+                    ResultSet supid = DB.search("SELECT suplier FROM item WHERE id = '" + search_text + "'");
+                    if (supid.next()) {
+                        suplier_id = supid.getString("suplier");
                     }
+                    lbl_supid.setText(suplier_id);
+                    String item;
 
-                    v.add(item);
-                    v.add(brandName);
-                    v.add(name);
+                    DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+                    dtm.setRowCount(0);
 
-                    v.add(quntity + " " + mesure);
-                    dtm.addRow(v);
+                    ResultSet rs_items = DB.search("SELECT id, name, brand,mesure_unite FROM item WHERE suplier = '" + suplier_id + "'");
+                    while (rs_items.next()) {
+                        item = rs_items.getString("id");
+                        Vector v = new Vector();
 
-                }
-                
+                        String brandName = rs_items.getString("brand");
+                        String name = rs_items.getString("name");
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            jTable1.grabFocus();
-             jTable1.setRowSelectionInterval(0, 0);
-            }
-            
+                        String mesure = rs_items.getString("mesure_unite");
 
-        }
-    }//GEN-LAST:event_jList3KeyPressed
+                        ResultSet rs_qty = DB.search("SELECT SUM(qty) as x FROM stock WHERE item_id = '" + item + "'");
+                        double preQty =0;
+                        ResultSet search = DB.search("SELECT po_item.qty FROM po_item INNER JOIN po ON po_item.po_id = po.id WHERE po_item.itm_id = '"+item+"' AND po.status = '1' ");
+                        if(search.next()){
+                        preQty = search.getDouble("qty");
+                        }
+                        
+                        int quntity = 0;
+                        if (rs_qty.next()) {
+                            quntity = rs_qty.getInt("x");
+                        }
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
-        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+                        v.add(item);
+                        v.add(brandName);
+                        v.add(name);
 
-            DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+                        v.add(quntity + " " + mesure);
+                        v.add(preQty);
+                        dtm.addRow(v);
 
-            int tableRowcount = jTable1.getSelectedRow();
-
-            String qty = JOptionPane.showInputDialog(this, "enter quntity..");
-
-            DefaultTableModel dtm_po = (DefaultTableModel) jTable2.getModel();
-            Vector v_po = new Vector();
-
-            String id = jTable1.getValueAt(tableRowcount, 0).toString();
-            String brand = jTable1.getValueAt(tableRowcount, 1).toString();
-            String name = jTable1.getValueAt(tableRowcount, 2).toString();
-            int totol = 0;
-
-            v_po.add(id);
-            v_po.add(brand + " " + name);
-            v_po.add(qty);
-            v_po.add(totol);
-            dtm_po.addRow(v_po);
-            dtm.removeRow(tableRowcount);
-
-        }
-    }//GEN-LAST:event_jTable1MouseClicked
-
-    private void txt_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyReleased
-       
-       String search_text = txt_search.getText();
-        if (rad_suplier.isSelected()) {
-            try {
-               
-               
-
-                    ResultSet set1 = DB.search("SELECT id, fname, company FROM suplier WHERE company LIKE '" + search_text + "%" + "' ");
-
-                    Vector v = new Vector();
-                    jScrollPane3.setVisible(false);
-
-                    while (set1.next()) {
-
-                        jScrollPane3.setVisible(true);
-                        String id = set1.getString("id");
-                        String name = set1.getString("fname");
-                        String company = set1.getString("company");
-
-                        String showname = company + " (" + name + ")" + "  -  " + id;
-                        v.add(showname);
-                        jList3.setListData(v);
-
-                    }
-                    if (txt_search.getText().equals("")) {
-                        jScrollPane3.setVisible(false);
                     }
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            
-        } else {
-           
-            try {
-                
-                
-                ResultSet set2 = DB.search("SELECT id, name FROM item WHERE name LIKE '" + search_text + "%" + "' ");
-                 Vector v = new Vector();
-                    jScrollPane3.setVisible(false);
-
-                    while (set2.next()) {
-
-                        jScrollPane3.setVisible(true);
-                        String id = set2.getString("id");
-                        String name = set2.getString("name");
-
-                        String showname = name + "  -  " + id;
-                        v.add(showname);
-                        jList3.setListData(v);
-
-                    }
-                    if (txt_search.getText().equals("")) {
-                        jScrollPane3.setVisible(false);
-                    }
-
-                
-                
-                
-            } catch (Exception e) {
-            e.printStackTrace();
+                jTable1.grabFocus();
+                jTable1.setRowSelectionInterval(0, 0);
             }
-            
-           
+
+        }
+    }//GEN-LAST:event_jList3KeyPressed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // Single click
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        int row = jTable1.getSelectedRow();
+        
+
+        String id = dtm.getValueAt(row, 0).toString();
+        if (Check_lowqty.isSelected()) {
+
+            try {
+                ResultSet search = DB.search("SELECT suplier FROM item WHERE id = '" + id + "'");
+                if (search.next()) {
+                    lbl_supid.setText(search.getString("suplier"));
+                }
+
+            } catch (Exception e) {
+            }
+        }
+        // duble click
+        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+
+            int tableRowcount = jTable1.getSelectedRow();
+
+            double totol = 0;
+            try {
+                ResultSet search = DB.search("select count('stock_id') as x from stock WHERE stock_id LIKE '" + id + "-ST%" + "'");
+                if (search.next()) {
+                    String stock_no = search.getString("x");
+                    String stockid = id + "-ST" + stock_no;
+                    ResultSet search1 = DB.search("SELECT cost_price FROM stock WHERE stock_id = '" + stockid + "'");
+                    if (search1.next()) {
+                        totol = search1.getDouble("cost_price");
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            int qty = Integer.parseInt(JOptionPane.showInputDialog(this, "enter quntity..",1));
+            System.out.println(qty);
+
+            DefaultTableModel dtm_po = (DefaultTableModel) jTable2.getModel();
+            Vector v_po = new Vector();
+
+            String brand = jTable1.getValueAt(tableRowcount, 1).toString();
+            String name = jTable1.getValueAt(tableRowcount, 2).toString();
+
+            double tot = qty * totol;
+            v_po.add(id);
+            v_po.add(brand + " " + name);
+            v_po.add(qty);
+            v_po.add(tot);
+            dtm_po.addRow(v_po);
+            dtm.removeRow(tableRowcount);
+            if (Check_lowqty.isSelected()) {
+ try {
+     String sup = lbl_supid.getText();
+                dtm.setRowCount(0);
+                ResultSet search = DB.search("SELECT item.id AS A, item.name AS B, item.brand AS C,quntity.qty AS D ,item.mesure_unite AS E FROM stock INNER JOIN item ON stock.item_id = item.id INNER JOIN  suplier ON item.suplier = suplier.id INNER JOIN quntity ON item.id = quntity.item_id WHERE item.lowqty > quntity.qty AND item.suplier = '"+sup+"' AND item.id != '"+id+"'");
+
+            while (search.next()) {
+                    Vector v = new Vector();
+                    String item11 = search.getString("A");
+                    String name11 = search.getString("B");
+                    String brand11 = search.getString("C");
+                    String qty11 = search.getString("D");
+                    String unit11 = search.getString("E");
+                     double preQty11 =0;
+                        ResultSet search1 = DB.search("SELECT po_item.qty FROM po_item INNER JOIN po ON po_item.po_id = po.id WHERE po_item.itm_id = '"+item11+"' AND po.status = '1' ");
+                        if(search1.next()){
+                        preQty11 = search1.getDouble("qty");
+                        }
+                        
+                    v.add(item11);
+                    v.add(name11);
+                    v.add(brand11);
+                    v.add(qty11 + unit11);
+                    v.add(preQty11 + unit11);
+
+                    dtm.addRow(v);
+
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            }
+
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void txt_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyReleased
+
+        String search_text = txt_search.getText();
+        if (rad_suplier.isSelected()) {
+            try {
+
+                ResultSet set1 = DB.search("SELECT id, fname, company FROM suplier WHERE company LIKE '" + search_text + "%" + "' ");
+
+                Vector v = new Vector();
+                jScrollPane3.setVisible(false);
+
+                while (set1.next()) {
+
+                    jScrollPane3.setVisible(true);
+                    String id = set1.getString("id");
+                    String name = set1.getString("fname");
+                    String company = set1.getString("company");
+
+                    String showname = company + " (" + name + ")" + "  -  " + id;
+                    v.add(showname);
+                    jList3.setListData(v);
+
+                }
+                if (txt_search.getText().equals("")) {
+                    jScrollPane3.setVisible(false);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else {
+
+            try {
+
+                ResultSet set2 = DB.search("SELECT id, name FROM item WHERE name LIKE '" + search_text + "%" + "' ");
+                Vector v = new Vector();
+                jScrollPane3.setVisible(false);
+
+                while (set2.next()) {
+
+                    jScrollPane3.setVisible(true);
+                    String id = set2.getString("id");
+                    String name = set2.getString("name");
+
+                    String showname = name + "  -  " + id;
+                    v.add(showname);
+                    jList3.setListData(v);
+
+                }
+                if (txt_search.getText().equals("")) {
+                    jScrollPane3.setVisible(false);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         }
 
     }//GEN-LAST:event_txt_searchKeyReleased
 
     private void txt_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyPressed
-            if(evt.getKeyCode() == 34 || evt.getKeyCode() == 33){
-            if(rad_item.isSelected()){
-            rad_suplier.setSelected(true);
-            }else{
-            rad_item.setSelected(true);
+        if (evt.getKeyCode() == 34 || evt.getKeyCode() == 33) {
+            if (rad_item.isSelected()) {
+                rad_suplier.setSelected(true);
+            } else {
+                rad_item.setSelected(true);
             }
-            }
+        }
         if (evt.getKeyCode() == 40) {
             jList3.grabFocus();
 
@@ -733,55 +811,54 @@ genaratePOId();
     }//GEN-LAST:event_txt_searchKeyPressed
 
     private void rad_itemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rad_itemMouseClicked
-      txt_search.grabFocus();
+        txt_search.grabFocus();
     }//GEN-LAST:event_rad_itemMouseClicked
 
     private void rad_suplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rad_suplierMouseClicked
-              txt_search.grabFocus();
+        txt_search.grabFocus();
 
     }//GEN-LAST:event_rad_suplierMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-             int selectedRow = jTable2.getSelectedRow();
+        int selectedRow = jTable2.getSelectedRow();
         if (selectedRow > -1) {
             try {
                 boolean key = true;
                 String showInputDialog = "0";
-                while(key){
-               showInputDialog = JOptionPane.showInputDialog(this, "enter new quntity");
-                if(showInputDialog.isEmpty()){
-                showInputDialog = "";
-                }
-                Pattern p = Pattern.compile("[A-Z,a-z,&%$#@!()*^]");
-		Matcher m = p.matcher(showInputDialog);
-		if (m.find()) {
-	     JOptionPane.showMessageDialog(null, "Please enter only numbers");
-		}else{
-                key= false;
-                }
+                while (key) {
+                    showInputDialog = JOptionPane.showInputDialog(this, "enter new quntity");
+                    if (showInputDialog.isEmpty()) {
+                        showInputDialog = "";
+                    }
+                    Pattern p = Pattern.compile("[A-Z,a-z,&%$#@!()*^]");
+                    Matcher m = p.matcher(showInputDialog);
+                    if (m.find()) {
+                        JOptionPane.showMessageDialog(null, "Please enter only numbers");
+                    } else {
+                        key = false;
+                    }
                 }
                 int number = Integer.parseInt(showInputDialog);
                 DefaultTableModel dtm = (DefaultTableModel) jTable2.getModel();
                 dtm.setValueAt(showInputDialog, selectedRow, 2);
-               
-               
+
                 String id = dtm.getValueAt(selectedRow, 0).toString();
                 int totol = 0;
-            try {
-                 ResultSet search = DB.search("select count('stock_id') as x from stock WHERE stock_id LIKE '" +id+ "-ST%"+ "'");
-                 if(search.next()){
-                   String stock_no = search.getString("x");
-                   String stockid = id + "-ST"+stock_no;
-                     ResultSet search1 = DB.search("SELECT cost_price FROM stock WHERE stock_id = '"+stockid+"'");
-                 if(search1.next()){
-                 totol = search1.getInt("cost_price");
-                 }
-                 }
-            } catch (Exception e) {
-            e.printStackTrace();
-            }
-              double tot = number * totol;
-              dtm.setValueAt(tot, selectedRow, 3);
+                try {
+                    ResultSet search = DB.search("select count('stock_id') as x from stock WHERE stock_id LIKE '" + id + "-ST%" + "'");
+                    if (search.next()) {
+                        String stock_no = search.getString("x");
+                        String stockid = id + "-ST" + stock_no;
+                        ResultSet search1 = DB.search("SELECT cost_price FROM stock WHERE stock_id = '" + stockid + "'");
+                        if (search1.next()) {
+                            totol = search1.getInt("cost_price");
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                double tot = number * totol;
+                dtm.setValueAt(tot, selectedRow, 3);
             } catch (Exception e) {
                 e.printStackTrace();
 //JOptionPane.showConfirmDialog(this, "Invalid Input", "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
@@ -797,66 +874,66 @@ genaratePOId();
     }//GEN-LAST:event_txt_searchActionPerformed
 
     private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
-        if(evt.getKeyCode() == 32){
-             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-
-            int tableRowcount = jTable1.getSelectedRow();
-          
-
-            DefaultTableModel dtm_po = (DefaultTableModel) jTable2.getModel();
-            Vector v_po = new Vector();
-
-            String id = jTable1.getValueAt(tableRowcount, 0).toString();
-            String brand = jTable1.getValueAt(tableRowcount, 1).toString();
-            String name = jTable1.getValueAt(tableRowcount, 2).toString();
-            int totol = 0;
-            try {
-                 ResultSet search = DB.search("select count('stock_id') as x from stock WHERE stock_id LIKE '" +id+ "-ST%"+ "'");
-                 if(search.next()){
-                   String stock_no = search.getString("x");
-                   String stockid = id + "-ST"+stock_no;
-                     ResultSet search1 = DB.search("SELECT cost_price FROM stock WHERE stock_id = '"+stockid+"'");
-                 if(search1.next()){
-                 totol = search1.getInt("cost_price");
-                 }
-                 }
-            } catch (Exception e) {
-            e.printStackTrace();
-            }
-              try {
-                int qty = Integer.parseInt(JOptionPane.showInputDialog(this, "enter quntity.."));
-            
-            
-            
-            
-            double tot = qty * totol;
-
-            v_po.add(id);
-            v_po.add(brand + " " + name);
-            v_po.add(qty);
-            v_po.add(tot);
-            dtm_po.addRow(v_po);
-            dtm.removeRow(tableRowcount);
-        } catch (Exception e) {
-              JOptionPane.showConfirmDialog(this, "Invalid Input", "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
-            }
-        }
+//        if(evt.getKeyCode() == 32){
+//             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+//
+//            int tableRowcount = jTable1.getSelectedRow();
+//          
+//
+//            DefaultTableModel dtm_po = (DefaultTableModel) jTable2.getModel();
+//            Vector v_po = new Vector();
+//
+//            String id = jTable1.getValueAt(tableRowcount, 0).toString();
+//            String brand = jTable1.getValueAt(tableRowcount, 1).toString();
+//            String name = jTable1.getValueAt(tableRowcount, 2).toString();
+//            double totol = 0;
+//            try {
+//                 ResultSet search = DB.search("select count('stock_id') as x from stock WHERE stock_id LIKE '" +id+ "-ST%"+ "'");
+//                 if(search.next()){
+//                   String stock_no = search.getString("x");
+//                   String stockid = id + "-ST"+stock_no;
+//                     ResultSet search1 = DB.search("SELECT cost_price FROM stock WHERE stock_id = '"+stockid+"'");
+//                 if(search1.next()){
+//                 totol = search1.getDouble("cost_price");
+//                 }
+//                 }
+//            } catch (Exception e) {
+//            e.printStackTrace();
+//            }
+//              try {
+//                int qty = Integer.parseInt(JOptionPane.showInputDialog(this, "enter quntity.."));
+//            
+//            
+//            
+//            
+//            double tot = qty * totol;
+//
+//            v_po.add(id);
+//            v_po.add(brand + " " + name);
+//            v_po.add(qty);
+//            v_po.add(tot);
+//            dtm_po.addRow(v_po);
+//            dtm.removeRow(tableRowcount);
+//        } catch (Exception e) {
+//              JOptionPane.showConfirmDialog(this, "Invalid Input", "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
+//            }
+//        }
     }//GEN-LAST:event_jTable1KeyPressed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-      int selectedRow = jTable2.getSelectedRow();
-        if(selectedRow > -1){
-      
-       ((DefaultTableModel) jTable2.getModel()).removeRow(selectedRow);
-       
+        int selectedRow = jTable2.getSelectedRow();
+        if (selectedRow > -1) {
+
+            ((DefaultTableModel) jTable2.getModel()).removeRow(selectedRow);
+
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-  DefaultTableModel dtm = (DefaultTableModel) jTable2.getModel();
-  dtm.setRowCount(0);
+        DefaultTableModel dtm = (DefaultTableModel) jTable2.getModel();
+        dtm.setRowCount(0);
 
-      
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
@@ -916,13 +993,53 @@ genaratePOId();
         this.dispose();
     }//GEN-LAST:event_jButton13ActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    private void Check_lowqtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Check_lowqtyActionPerformed
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        if (Check_lowqty.isSelected()) {
+
+            try {
+                dtm.setRowCount(0);
+                ResultSet search = DB.search("SELECT item.id AS A, item.name AS B, item.brand AS C,quntity.qty AS D ,item.mesure_unite AS E FROM stock INNER JOIN item ON stock.item_id = item.id INNER JOIN  suplier ON item.suplier = suplier.id INNER JOIN quntity ON item.id = quntity.item_id WHERE item.lowqty > quntity.qty");
+
+                while (search.next()) {
+                    Vector v = new Vector();
+                    String item = search.getString("A");
+                    String name = search.getString("B");
+                    String brand = search.getString("C");
+                    String qty = search.getString("D");
+                    String unit = search.getString("E");
+                     double preQty =0;
+                        ResultSet search1 = DB.search("SELECT po_item.qty FROM po_item INNER JOIN po ON po_item.po_id = po.id WHERE po_item.itm_id = '"+item+"' AND po.status = '1' ");
+                        if(search1.next()){
+                        preQty = search1.getDouble("qty");
+                        }
+                        
+                    v.add(item);
+                    v.add(name);
+                    v.add(brand);
+                    v.add(qty + unit);
+                    v.add(preQty + unit);
+
+                    dtm.addRow(v);
+
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            int rowCount = jTable1.getRowCount();
+            while (rowCount > 0) {
+                dtm.removeRow(0);
+                --rowCount;
+            }
+        }
+    }//GEN-LAST:event_Check_lowqtyActionPerformed
 
     private void txt_searchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_searchFocusGained
-        if( txt_search.getText().equals("Search")){
-        txt_search.setText("");
+        if (txt_search.getText().equals("Search")) {
+            txt_search.setText("");
         }
     }//GEN-LAST:event_txt_searchFocusGained
 
@@ -936,11 +1053,28 @@ genaratePOId();
 
     private void txt_searchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_searchFocusLost
         // TODO add your handling code here:
-        if(txt_search.getText().equals("")){
+        if (txt_search.getText().equals("")) {
             txt_search.setText("Search");
         }
-        
+
     }//GEN-LAST:event_txt_searchFocusLost
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        lbl_supid.setText("");
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel dtm1 = (DefaultTableModel) jTable2.getModel();
+        
+        dtm.setRowCount(0);
+        dtm1.setRowCount(0);
+         jList3.grabFocus();
+         Check_lowqty.setSelected(false);
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -993,6 +1127,7 @@ genaratePOId();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox Check_lowqty;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -1007,11 +1142,9 @@ genaratePOId();
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
@@ -1036,6 +1169,5 @@ genaratePOId();
     private javax.swing.JRadioButton rad_suplier;
     private javax.swing.JTextField txt_search;
     // End of variables declaration//GEN-END:variables
-
 
 }

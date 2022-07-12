@@ -7,9 +7,19 @@ package Frames;
 
 import DB.DB;
 import java.awt.Color;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -36,6 +46,7 @@ public class ItemSearch extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jButton8 = new javax.swing.JButton();
@@ -49,6 +60,9 @@ public class ItemSearch extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        rad_save = new javax.swing.JRadioButton();
+        rad_show = new javax.swing.JRadioButton();
+        rad_print = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -189,7 +203,7 @@ public class ItemSearch extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Name", "Brand ", "Category", "M.Unit", "Suplier", "Waranty ", "Expiry  "
+                "ID", "Name", "Brand ", "Category", "M.Unit", "Supplier", "Waranty ", "Expiry  "
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -226,10 +240,38 @@ public class ItemSearch extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(7).setPreferredWidth(30);
         }
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 1060, 410));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 1060, 410));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/magnifying-glass.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 100, 40, 30));
+
+        buttonGroup2.add(rad_save);
+        rad_save.setText("Save");
+        rad_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rad_saveActionPerformed(evt);
+            }
+        });
+        jPanel2.add(rad_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 590, -1, -1));
+
+        buttonGroup2.add(rad_show);
+        rad_show.setSelected(true);
+        rad_show.setText("Show");
+        rad_show.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rad_showActionPerformed(evt);
+            }
+        });
+        jPanel2.add(rad_show, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 590, -1, -1));
+
+        buttonGroup2.add(rad_print);
+        rad_print.setText("Print");
+        rad_print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rad_printActionPerformed(evt);
+            }
+        });
+        jPanel2.add(rad_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 590, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 71, 1106, 620));
 
@@ -247,8 +289,7 @@ public class ItemSearch extends javax.swing.JFrame {
         jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
 
         jButton4.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
-        jButton4.setText("Save");
-        jButton4.setEnabled(false);
+        jButton4.setText("Generate Report");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -354,7 +395,7 @@ public class ItemSearch extends javax.swing.JFrame {
 
         jButton7.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
-        jButton7.setText("New Suplier");
+        jButton7.setText("New Supplier");
         jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton7.setIconTextGap(30);
@@ -604,7 +645,31 @@ public class ItemSearch extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+  try {
+            String path = "D:\\java\\Hardware\\reports\\ItemReport_landscape.jasper";
+            InputStream is1 = new FileInputStream(path);
+            JREmptyDataSource datasource = new JREmptyDataSource();
+            JasperPrint fillReport = JasperFillManager.fillReport(is1, null, DB.getNewConnection());
+            if (rad_save.isSelected()) {
+                String filename = System.currentTimeMillis() + "Items.pdf";
+                File file = new File("C:\\Users\\chris\\Pictures\\hardware\\");
+                file.mkdirs();
 
+                JasperExportManager.exportReportToPdfFile(fillReport, file.getAbsolutePath() +"\\\\"+ filename);
+                JOptionPane.showMessageDialog(this,"File save Sucsessfully, Location : "+ file.getAbsolutePath() +"\\\\"+ filename ,null, JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (rad_print.isSelected()) {
+                JasperPrintManager.printReport(fillReport, false);
+                                System.out.println("print");
+
+            }
+            if (rad_show.isSelected()) {
+                JasperViewer.viewReport(fillReport, false);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -669,6 +734,18 @@ public class ItemSearch extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton13ActionPerformed
 
+    private void rad_showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rad_showActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rad_showActionPerformed
+
+    private void rad_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rad_saveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rad_saveActionPerformed
+
+    private void rad_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rad_printActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rad_printActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -706,6 +783,7 @@ public class ItemSearch extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -737,6 +815,9 @@ public class ItemSearch extends javax.swing.JFrame {
     private javax.swing.JRadioButton rad_brand;
     private javax.swing.JRadioButton rad_category;
     private javax.swing.JRadioButton rad_name;
+    private javax.swing.JRadioButton rad_print;
+    private javax.swing.JRadioButton rad_save;
+    private javax.swing.JRadioButton rad_show;
     private javax.swing.JRadioButton rad_sup;
     // End of variables declaration//GEN-END:variables
 

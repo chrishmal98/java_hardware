@@ -5,10 +5,23 @@
  */
 package Frames;
 
+import DB.DB;
 import java.awt.Color;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.ResultSet;
+import java.util.Properties;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -23,6 +36,8 @@ public class CustomerSearch extends javax.swing.JFrame {
         initComponents();
         loadTable();
         jTable1.getTableHeader().setFont(new java.awt.Font("Nunito", 0, 15));
+        Common.SystemLogger.initLogger(Customer.class).info("CustomeSearch interface sign");
+
     }
 
     /**
@@ -35,6 +50,7 @@ public class CustomerSearch extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jButton8 = new javax.swing.JButton();
@@ -48,6 +64,9 @@ public class CustomerSearch extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        rep_print = new javax.swing.JRadioButton();
+        rep_save = new javax.swing.JRadioButton();
+        rep_show = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
         jButton10 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -141,7 +160,6 @@ public class CustomerSearch extends javax.swing.JFrame {
         rad_name.setBackground(java.awt.Color.white);
         buttonGroup1.add(rad_name);
         rad_name.setFont(new java.awt.Font("Nunito Light", 0, 12)); // NOI18N
-        rad_name.setSelected(true);
         rad_name.setText("Name");
         rad_name.setOpaque(false);
         rad_name.setRequestFocusEnabled(false);
@@ -222,6 +240,29 @@ public class CustomerSearch extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/magnifying-glass.png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 40, 30));
 
+        buttonGroup2.add(rep_print);
+        rep_print.setText(" Print");
+        jPanel2.add(rep_print, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 600, -1, 20));
+
+        buttonGroup2.add(rep_save);
+        rep_save.setText("Save");
+        rep_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rep_saveActionPerformed(evt);
+            }
+        });
+        jPanel2.add(rep_save, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 600, -1, 20));
+
+        buttonGroup2.add(rep_show);
+        rep_show.setSelected(true);
+        rep_show.setText("Show");
+        rep_show.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rep_showActionPerformed(evt);
+            }
+        });
+        jPanel2.add(rep_show, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 600, -1, 20));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 71, 1106, 620));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
@@ -267,7 +308,7 @@ public class CustomerSearch extends javax.swing.JFrame {
 
         jButton7.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
-        jButton7.setText("New Suplier");
+        jButton7.setText("New Supplier");
         jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton7.setIconTextGap(30);
@@ -377,8 +418,7 @@ public class CustomerSearch extends javax.swing.JFrame {
         jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
 
         jButton4.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
-        jButton4.setText("Save");
-        jButton4.setEnabled(false);
+        jButton4.setText("Generate Report");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -426,7 +466,7 @@ public class CustomerSearch extends javax.swing.JFrame {
             dtm.setRowCount(0);
             try {
                 System.out.println("1");
-                ResultSet search = DB.DB.search("SELECT * FROM customer WHERE fname like '" + text + "%" + "' OR lname like '" + text + "%" + "' ");
+                ResultSet search = DB.search("SELECT * FROM customer WHERE fname like '" + text + "%" + "' OR lname like '" + text + "%" + "' ");
                 System.out.println("2");
 
                 while (search.next()) {
@@ -452,7 +492,7 @@ public class CustomerSearch extends javax.swing.JFrame {
             dtm.setRowCount(0);
             try {
 
-                ResultSet search = DB.DB.search("SELECT * FROM customer WHERE mobile like '" + text + "%" + "'");
+                ResultSet search = DB.search("SELECT * FROM customer WHERE mobile like '" + text + "%" + "'");
 
                 while (search.next()) {
 
@@ -477,7 +517,7 @@ public class CustomerSearch extends javax.swing.JFrame {
             dtm.setRowCount(0);
             try {
 
-                ResultSet search = DB.DB.search("SELECT * FROM customer WHERE nic like '" + text + "%" + "'");
+                ResultSet search = DB.search("SELECT * FROM customer WHERE nic like '" + text + "%" + "'");
 
                 while (search.next()) {
 
@@ -502,7 +542,7 @@ public class CustomerSearch extends javax.swing.JFrame {
             dtm.setRowCount(0);
             try {
 
-                ResultSet search = DB.DB.search("SELECT * FROM customer WHERE email like '" + text + "%" + "'");
+                ResultSet search = DB.search("SELECT * FROM customer WHERE email like '" + text + "%" + "'");
 
                 while (search.next()) {
 
@@ -532,39 +572,39 @@ public class CustomerSearch extends javax.swing.JFrame {
         //        String text = jTextField2.getText();
         //
         //        if (rad_name.isSelected()) {
-            //            dtm.setRowCount(0);
-            //            try {
-                //                System.out.println("1");
-                //                    ResultSet search = DB.DB.search("SELECT * FROM employee WHERE fname like '" +text+ "%"  +"' OR lname like '" +text + "%" +"' ");
-                //                           System.out.println("2");
-                //
-                //            while (search.next()) {
-                    //                                           System.out.println("3");
-                    //
-                    //                Vector v = new Vector();
-                    //                v.add(search.getString("fname") + " " + search.getString("lname"));
-                    //                v.add(search.getString("mobile"));
-                    //                v.add(search.getString("nic"));
-                    //                v.add(search.getString("gender"));
-                    //                v.add(search.getString("email"));
-                    //                v.add(search.getString("address"));
-                    //
-                    //                dtm.addRow(v);
-                    //
-                    //            }
-                //            } catch (Exception e) {
-                //            }
-            //
-            //        } else if (rad_mobile.isSelected()) {
-            //            dtm.setRowCount(0);
-            //
-            //        } else if (rad_niic.isSelected()) {
-            //            dtm.setRowCount(0);
-            //
-            //        } else if (rad_email.isSelected()) {
-            //            dtm.setRowCount(0);
-            //
-            //        }       // TODO add your handling code here:
+        //            dtm.setRowCount(0);
+        //            try {
+        //                System.out.println("1");
+        //                    ResultSet search = DB.DB.search("SELECT * FROM employee WHERE fname like '" +text+ "%"  +"' OR lname like '" +text + "%" +"' ");
+        //                           System.out.println("2");
+        //
+        //            while (search.next()) {
+        //                                           System.out.println("3");
+        //
+        //                Vector v = new Vector();
+        //                v.add(search.getString("fname") + " " + search.getString("lname"));
+        //                v.add(search.getString("mobile"));
+        //                v.add(search.getString("nic"));
+        //                v.add(search.getString("gender"));
+        //                v.add(search.getString("email"));
+        //                v.add(search.getString("address"));
+        //
+        //                dtm.addRow(v);
+        //
+        //            }
+        //            } catch (Exception e) {
+        //            }
+        //
+        //        } else if (rad_mobile.isSelected()) {
+        //            dtm.setRowCount(0);
+        //
+        //        } else if (rad_niic.isSelected()) {
+        //            dtm.setRowCount(0);
+        //
+        //        } else if (rad_email.isSelected()) {
+        //            dtm.setRowCount(0);
+        //
+        //        }       // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2KeyTyped
 
     private void rad_niicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rad_niicActionPerformed
@@ -645,7 +685,7 @@ public class CustomerSearch extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int selectedRow = jTable1.getSelectedRow();
-        if(selectedRow!= -1){
+        if (selectedRow != -1) {
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             String id = (String) dtm.getValueAt(selectedRow, 0);
             Customer customer = new Customer(id);
@@ -656,7 +696,31 @@ public class CustomerSearch extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try {
+            String path = "D:\\java\\Hardware\\reports\\customerReport_landscape.jasper";
+            InputStream is1 = new FileInputStream(path);
+            JREmptyDataSource datasource = new JREmptyDataSource();
+            JasperPrint fillReport = JasperFillManager.fillReport(is1, null, DB.getNewConnection());
+            if (rep_save.isSelected()) {
+                String filename = System.currentTimeMillis() + "Customer.pdf";
+                File file = new File("C:\\Users\\chris\\Pictures\\hardware");
+                file.mkdirs();
 
+                JasperExportManager.exportReportToPdfFile(fillReport, file.getAbsolutePath() +"\\\\"+ filename);
+                JOptionPane.showMessageDialog(this,"File save Sucsessfully, Location : "+ file.getAbsolutePath() +"\\\\"+ filename ,null, JOptionPane.INFORMATION_MESSAGE);
+            }
+            if (rep_print.isSelected()) {
+                JasperPrintManager.printReport(fillReport, false);
+                                System.out.println("print");
+
+            }
+            if (rep_show.isSelected()) {
+                JasperViewer.viewReport(fillReport, false);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -665,16 +729,25 @@ public class CustomerSearch extends javax.swing.JFrame {
         customer.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
- void radFocus() {
+
+    private void rep_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rep_saveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rep_saveActionPerformed
+
+    private void rep_showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rep_showActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rep_showActionPerformed
+    void radFocus() {
         if (!jTextField2.getText().equals("Search")) {
             jTextField2.setText("");
             jTextField2.grabFocus();
         }
 
     }
-       private void loadTable() {
+
+    private void loadTable() {
         try {
-            ResultSet search = DB.DB.search("SELECT * FROM customer ORDER BY id ASC");
+            ResultSet search = DB.search("SELECT * FROM customer ORDER BY id ASC");
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             while (search.next()) {
                 Vector v = new Vector();
@@ -694,6 +767,7 @@ public class CustomerSearch extends javax.swing.JFrame {
         }
 
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -728,6 +802,7 @@ public class CustomerSearch extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -760,5 +835,11 @@ public class CustomerSearch extends javax.swing.JFrame {
     private javax.swing.JRadioButton rad_mobile;
     private javax.swing.JRadioButton rad_name;
     private javax.swing.JRadioButton rad_niic;
+    private javax.swing.JRadioButton rep_print;
+    private javax.swing.JRadioButton rep_save;
+    private javax.swing.JRadioButton rep_show;
     // End of variables declaration//GEN-END:variables
+
+
+
 }

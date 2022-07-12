@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="customerReport_landscape" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a7b2c818-04b4-4736-8578-6a7399e16b3f">
+	<property name="ireport.zoom" value="1.6105100000000014"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#BFE7FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E6F5FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#CCCCCC"/>
+		</box>
+	</style>
+	<subDataset name="dateSet1" uuid="b1a572c3-0680-4dc3-9bda-7bcf4b825a11">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     customer.`mobile` AS customer_mobile,
+     customer.`id` AS customer_id,
+     customer.`fname` AS customer_fname,
+     customer.`lname` AS customer_lname,
+     customer.`nic` AS customer_nic,
+     customer.`email` AS customer_email,
+     customer.`address` AS customer_address,
+     customer.`gender` AS customer_gender
+FROM
+     `customer` customer]]>
+		</queryString>
+		<field name="customer_fname" class="java.lang.String"/>
+		<field name="customer_lname" class="java.lang.String"/>
+		<field name="customer_mobile" class="java.lang.String"/>
+		<field name="customer_id" class="java.lang.String"/>
+		<field name="customer_nic" class="java.lang.String"/>
+		<field name="customer_email" class="java.lang.String"/>
+		<field name="customer_address" class="java.lang.String"/>
+		<field name="customer_gender" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="New Dataset 1" uuid="39351463-8c76-40d1-9f4a-b8a52527fc6b">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     customer.`mobile` AS customer_mobile,
+     customer.`id` AS customer_id,
+     customer.`fname` AS customer_fname,
+     customer.`lname` AS customer_lname,
+     customer.`nic` AS customer_nic,
+     customer.`email` AS customer_email,
+     customer.`address` AS customer_address,
+     customer.`gender` AS customer_gender
+FROM
+     `customer` customer]]>
+		</queryString>
+		<field name="customer_mobile" class="java.lang.String"/>
+		<field name="customer_id" class="java.lang.String"/>
+		<field name="customer_fname" class="java.lang.String"/>
+		<field name="customer_lname" class="java.lang.String"/>
+		<field name="customer_nic" class="java.lang.String"/>
+		<field name="customer_email" class="java.lang.String"/>
+		<field name="customer_address" class="java.lang.String"/>
+		<field name="customer_gender" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="New Dataset 2" uuid="fdf42ee4-309e-4532-91e8-1a195c275ae9">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     customer.`mobile` AS customer_mobile,
+     customer.`id` AS customer_id,
+     customer.`fname` AS customer_fname,
+     customer.`lname` AS customer_lname,
+     customer.`nic` AS customer_nic,
+     customer.`email` AS customer_email,
+     customer.`address` AS customer_address,
+     customer.`gender` AS customer_gender
+FROM
+     `customer` customer]]>
+		</queryString>
+		<field name="customer_mobile" class="java.lang.String"/>
+		<field name="customer_id" class="java.lang.String"/>
+		<field name="customer_fname" class="java.lang.String"/>
+		<field name="customer_lname" class="java.lang.String"/>
+		<field name="customer_nic" class="java.lang.String"/>
+		<field name="customer_email" class="java.lang.String"/>
+		<field name="customer_address" class="java.lang.String"/>
+		<field name="customer_gender" class="java.lang.String"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT
+     customer.`mobile` AS customer_mobile,
+     customer.`id` AS customer_id,
+     customer.`fname` AS customer_fname,
+     customer.`lname` AS customer_lname,
+     customer.`nic` AS customer_nic,
+     customer.`email` AS customer_email,
+     customer.`address` AS customer_address,
+     customer.`gender` AS customer_gender
+FROM
+     `customer` customer]]>
+	</queryString>
+	<field name="customer_mobile" class="java.lang.String"/>
+	<field name="customer_id" class="java.lang.String"/>
+	<field name="customer_fname" class="java.lang.String"/>
+	<field name="customer_lname" class="java.lang.String"/>
+	<field name="customer_nic" class="java.lang.String"/>
+	<field name="customer_email" class="java.lang.String"/>
+	<field name="customer_address" class="java.lang.String"/>
+	<field name="customer_gender" class="java.lang.String"/>
+	<variable name="count" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[new java.lang.Integer(1)]]></variableExpression>
+		<initialValueExpression><![CDATA[new java.lang.Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="customer_count" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{customer_id}]]></variableExpression>
+	</variable>
+	<background>
+		<band height="595" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="842" height="595" uuid="7931b791-ba51-4d8b-a64e-abc35cc48557"/>
+				<imageExpression><![CDATA["D:\\Hardware\\report_background_landscape.png"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="118" splitType="Stretch">
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="679" y="98" width="57" height="20" uuid="afbce718-c36a-499d-87df-9e304c96e9d0"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="635" y="98" width="44" height="20" uuid="7bc950ea-4ec5-4d68-8530-211fed1cd1b7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Date : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="738" y="98" width="44" height="20" uuid="00f9b4aa-437f-4993-8a20-0c5829e56218"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Time : ]]></text>
+			</staticText>
+			<textField pattern="h.mm a">
+				<reportElement x="782" y="98" width="49" height="20" uuid="3d8176ac-9099-4f7a-b82d-f4bafb75bb49"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="324" y="0" width="202" height="28" uuid="e72e4576-7c42-4f7e-8a0a-934aed77ac83"/>
+				<textElement textAlignment="Center">
+					<font fontName="Nunito ExtraBold" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Report]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="67" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 3" style="table 3" x="12" y="0" width="819" height="62" uuid="5cbd6e24-44e4-4657-9921-37e0329a2b8b"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 2" uuid="ae1ea789-ccb1-4176-ab22-2446ec292902">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="58" uuid="6f08750c-c3d0-4671-bf36-ff267ddfaa7f">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="58" height="30" uuid="e8861a0b-d098-4e63-b0bd-2e7207a1f7e4"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Nunito Black" size="14" isBold="false"/>
+								</textElement>
+								<text><![CDATA[Id]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="58" height="29" uuid="d1aa563e-7d67-468e-829a-32bdc62237d3"/>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{customer_id}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="147" uuid="f874fe02-355d-4c64-8573-55e5c2ddf7fb">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="147" height="30" uuid="00c818c4-e5b4-4d55-81bf-d587f1583f29"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Nunito Black" size="14" isBold="false"/>
+								</textElement>
+								<text><![CDATA[Name]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="147" height="29" uuid="e228d691-4ce8-4126-a14e-675a3db1a87e"/>
+								<textElement verticalAlignment="Top">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{customer_fname}+ " " + $F{customer_lname}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="107" uuid="fd8d506a-e94d-4c32-88ae-0892214cbdf7">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="107" height="30" uuid="c671ee46-14b9-4149-9234-823b707889b1"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Nunito Black" size="14" isBold="false"/>
+								</textElement>
+								<text><![CDATA[Nic]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="107" height="29" uuid="bab7f387-1c7e-473a-921e-b765a6fccbc5"/>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{customer_nic}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="138" uuid="7ad9ba3f-468d-4ccd-92f3-3a994864ebb1">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="138" height="30" uuid="ae10b068-1f92-47a4-a217-49dfe4b98571"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Nunito Black" size="14" isBold="false"/>
+								</textElement>
+								<text><![CDATA[Email]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="138" height="29" uuid="9c000ea8-0117-4d85-b7cf-273c285ca78b"/>
+								<textElement verticalAlignment="Top">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{customer_email}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="240" uuid="db2a7ad1-a83c-4425-9abe-eba2afa50039">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="240" height="30" uuid="bf775698-04ce-466a-ba51-b4993a71a116"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Nunito Black" size="14" isBold="false"/>
+								</textElement>
+								<text><![CDATA[Address]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="240" height="29" uuid="3c097629-dab1-4e3e-a6b0-21ab4a654cb6"/>
+								<textElement verticalAlignment="Top">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{customer_address}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="46" uuid="16b1754a-6bec-4358-9c9d-bdf2e0b015dd">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="45" height="30" uuid="b84b5419-9e35-498c-8d98-38b2b493847c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Nunito Black" size="14" isBold="false"/>
+								</textElement>
+								<text><![CDATA[Sex]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="45" height="29" uuid="7a8c6ec3-5bdb-49a6-b910-fceff999d850"/>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{customer_gender}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="82" uuid="ad5f58fe-35df-4af7-95cb-c2bbf2b6cf39">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="82" height="30" uuid="e874cc67-27de-4343-89ee-559fcc9533e0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Nunito Black" size="14" isBold="false"/>
+								</textElement>
+								<text><![CDATA[Mobile]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="82" height="29" uuid="e138469e-24a3-417c-8d5a-15bd16b87ff9"/>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{customer_mobile}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="5" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="38" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="736" y="20" width="66" height="20" uuid="84a8ae35-f252-479a-99a5-e585fd84b34d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="802" y="20" width="40" height="20" uuid="62eef0cf-8ec7-467d-8bf5-ce3733ba4a73"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="13" y="0" width="130" height="20" uuid="3571e3d8-463f-4d66-b3e6-64c3b06b55fa"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Total Number Of Customers :]]></text>
+			</staticText>
+			<textField evaluationTime="Report" pattern="">
+				<reportElement x="143" y="0" width="48" height="20" uuid="1ea0bc2a-6086-4e53-b5d4-44520bfa2def"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{customer_count}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

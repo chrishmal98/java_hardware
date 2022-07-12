@@ -8,6 +8,7 @@ package Frames;
 import DB.DB;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.FocusEvent;
 import java.io.File;
 import java.sql.ResultSet;
 import java.util.Vector;
@@ -15,9 +16,6 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import mondrian.util.Base64;
-import org.apache.tools.ant.taskdefs.Sleep;
 
 /**
  *
@@ -32,6 +30,8 @@ public class ItemRegistration extends javax.swing.JFrame {
         initComponents();
         listfold();
         genarateItemId();
+        Common.SystemLogger.initLogger(Customer.class).info("ItemRegistretion interface sign");
+
 
     }
 
@@ -61,6 +61,9 @@ public class ItemRegistration extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
+        txt_name = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        name_list = new javax.swing.JList<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -68,7 +71,6 @@ public class ItemRegistration extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
-        txt_name = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txt_suplier = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -98,6 +100,7 @@ public class ItemRegistration extends javax.swing.JFrame {
         txt_lowqty = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -134,7 +137,7 @@ public class ItemRegistration extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 210, 50));
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
 
         jButton4.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton4.setText("Save");
@@ -143,16 +146,40 @@ public class ItemRegistration extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 210, 50));
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
 
         jButton5.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton5.setText("Clear");
-        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 210, 50));
+        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 210, 50));
 
         jLayeredPane2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 689, 1106, 79));
 
         jPanel9.setBackground(java.awt.Color.white);
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txt_name.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
+        txt_name.setPreferredSize(new java.awt.Dimension(35, 0));
+        txt_name.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_nameFocusLost(evt);
+            }
+        });
+        txt_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nameActionPerformed(evt);
+            }
+        });
+        txt_name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_nameKeyReleased(evt);
+            }
+        });
+        jPanel9.add(txt_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 250, 35));
+
+        name_list.setFont(new java.awt.Font("Nunito Light", 0, 16)); // NOI18N
+        jScrollPane4.setViewportView(name_list);
+
+        jPanel9.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 250, 90));
 
         jScrollPane1.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
 
@@ -209,21 +236,17 @@ public class ItemRegistration extends javax.swing.JFrame {
         jLabel1.setText(" Item Name");
         jPanel9.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 100, 35));
 
-        txt_name.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
-        txt_name.setPreferredSize(new java.awt.Dimension(35, 0));
-        txt_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nameActionPerformed(evt);
-            }
-        });
-        jPanel9.add(txt_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 250, 35));
-
         jLabel4.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
         jLabel4.setText("Brand");
         jPanel9.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 100, 35));
 
         txt_suplier.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
         txt_suplier.setPreferredSize(new java.awt.Dimension(35, 0));
+        txt_suplier.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_suplierFocusLost(evt);
+            }
+        });
         txt_suplier.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_suplierMouseClicked(evt);
@@ -271,7 +294,7 @@ public class ItemRegistration extends javax.swing.JFrame {
         jPanel9.add(txt_catagory, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 250, 35));
 
         jLabel7.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
-        jLabel7.setText("Suplier");
+        jLabel7.setText("Supplier");
         jPanel9.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 100, 35));
 
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Image", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Nunito SemiBold", 1, 14))); // NOI18N
@@ -352,7 +375,7 @@ public class ItemRegistration extends javax.swing.JFrame {
         jPanel9.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 430, 100, 35));
 
         jComboBox1.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "unit", "kg", "g", "ft", "inch", "cube", "l", "ml" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "unit", "kg", "g", "mg", "m", "mm", "ft", "inch", "cm", "cube", "l", "ml", " " }));
         jComboBox1.setOpaque(false);
         jPanel9.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 430, 250, 35));
 
@@ -427,6 +450,14 @@ public class ItemRegistration extends javax.swing.JFrame {
                 txt_lowqtyActionPerformed(evt);
             }
         });
+        txt_lowqty.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_lowqtyKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_lowqtyKeyReleased(evt);
+            }
+        });
         jPanel9.add(txt_lowqty, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 520, 110, 25));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
@@ -438,6 +469,14 @@ public class ItemRegistration extends javax.swing.JFrame {
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/middle line.png"))); // NOI18N
         jLabel17.setOpaque(true);
         jPanel9.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 10, 430));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plus.png"))); // NOI18N
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+        });
+        jPanel9.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 354, 40, 40));
 
         jLayeredPane2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 69, 1104, 620));
 
@@ -527,7 +566,7 @@ public class ItemRegistration extends javax.swing.JFrame {
 
         jButton7.setFont(new java.awt.Font("Nunito Black", 1, 14)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
-        jButton7.setText("New Suplier");
+        jButton7.setText("New Supplier");
         jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton7.setIconTextGap(30);
@@ -735,6 +774,7 @@ public class ItemRegistration extends javax.swing.JFrame {
             jScrollPane3.setVisible(false);
             String sname = jList3.getSelectedValue();
             txt_suplier.setText(sname);
+            txt_suplier.grabFocus();
             jComboBox1.grabFocus();
 
         }
@@ -791,95 +831,114 @@ public class ItemRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_jList1MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        String id = lbl_itmid.getText();
-        String name = txt_name.getText();
-        String brand = txt_brand.getText();
-        String catagory = txt_catagory.getText();
-        String suplier = txt_suplier.getText();
-        String munite = jComboBox1.getSelectedItem().toString();
-        String barcode = txt_barcode.getText();
-        String waranty = no_Option.isSelected() ? "0" : "1";
-        String expiry = no_Option1.isSelected() ? "0" : "1";
-        int low_qty = Integer.parseInt(txt_lowqty.getText());
-
-        try {
-            if (brand.equals("")) {
-                brand = "No Brand";
+        if (validInput()) {
+            String id = lbl_itmid.getText();
+            String name = txt_name.getText();
+            String brand = txt_brand.getText();
+            String catagory = txt_catagory.getText();
+            String suplier = txt_suplier.getText();
+            String munite = jComboBox1.getSelectedItem().toString();
+            String barcode = txt_barcode.getText();
+            String waranty = no_Option.isSelected() ? "0" : "1";
+            String expiry = no_Option1.isSelected() ? "0" : "1";
+            String lowQty = txt_lowqty.getText();
+            if (lowQty.isEmpty()) {
+                lowQty = "0";
             }
-            ResultSet set1 = DB.search("SELECT name FROM brand WHERE name = '" + brand + "' ");
-            if (!set1.next()) {
-                //if you want to add description to brand use here
-                DB.iud("INSERT INTO brand VALUES ('" + brand + "')");
-            }
+            int low_qty = Integer.parseInt(lowQty);
 
-            ResultSet set2 = DB.search("SELECT name FROM catagory WHERE name = '" + catagory + "' ");
-            if (!set2.next()) {
-                //if you want to add description to brand use here
-                DB.iud("INSERT INTO catagory VALUES ('" + catagory + "')");
-            }
-
-            String supid = suplier.substring(suplier.length() - 8, suplier.length()).replace("-", "").trim();
-
-            ResultSet set3 = DB.search("SELECT id FROM suplier WHERE id = '" + supid + "' ");
-            if (!set3.next()) {
-                Suplier sup = new Suplier();
-                Thread t = new Thread() {
-                    @Override
-                    public void run() {
-
-                        sup.setVisible(true);
-
-                        txt_suplier.setText(null);
-
-                    }
-
-                };
-                JOptionPane.showMessageDialog(this, "save new suplier");
-                t.start();
-                sup.toFront();
-                sup.requestFocus();
-
-            } else {
-                if (jButton4.getText().equals("Save")) {
-                    DB.iud("INSERT INTO item VALUES ('" + id + "','" + name + "','" + brand + "','" + path + "','" + barcode + "','" + catagory + "','" + supid + "','" + munite + "',1,'" + waranty + "','" + expiry + "','" + low_qty + "')");
-                    DB.iud("INSERT INTO quntity VALUES ('" + id + "','" + 0.0 + "')");
-                    JOptionPane.showMessageDialog(this, "Sucsussfully Saved... !");
-
-                    txt_name.setText(null);
-                    txt_brand.setText(null);
-                    txt_catagory.setText(null);
-                    txt_suplier.setText(null);
-                    txt_lowqty.setText(null);
-                    jComboBox1.setSelectedIndex(0);
-                    txt_barcode.setText(null);
-                    no_Option.setSelected(true);
-                    path = null;
-                    lbl_image.setIcon(null);
-                    genarateItemId();
-                } else {
-
-                     DB.iud("UPDATE item SET name = '" + name + "', brand ='" + brand + "', image = '" + path + "',barcode = '" + barcode + "',catagory = '" + catagory + "',suplier = '" + supid + "', mesure_unite = '" + munite + "',waranty = '" + waranty + "',isexpire = '" + expiry + "',lowqty = '" + low_qty + "' WHERE id = '"+id+"'");
-                   
-                    JOptionPane.showMessageDialog(this, "Sucsussfully Updated... !");
-
-                    txt_name.setText(null);
-                    txt_brand.setText(null);
-                    txt_catagory.setText(null);
-                    txt_suplier.setText(null);
-                    txt_lowqty.setText(null);
-                    jComboBox1.setSelectedIndex(0);
-                    txt_barcode.setText(null);
-                    no_Option.setSelected(true);
-                    path = null;
-                    lbl_image.setIcon(null);
-                    jButton4.setText("Save");
-                    genarateItemId();
+            try {
+                if (brand.isEmpty()) {
+                    brand = "No Brand";
                 }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+                if (catagory.isEmpty()) {
+                    brand = "No Catagory";
+                }
+                ResultSet set1 = DB.search("SELECT name FROM brand WHERE name = '" + brand + "' ");
+                if (!set1.next()) {
+                    //if you want to add description to brand use here
+                    DB.iud("INSERT INTO brand VALUES ('" + brand + "')");
+                }
 
+                ResultSet set2 = DB.search("SELECT name FROM catagory WHERE name = '" + catagory + "' ");
+                if (!set2.next()) {
+                    //if you want to add description to brand use here
+                    DB.iud("INSERT INTO catagory VALUES ('" + catagory + "')");
+                }
+                String supid;
+                if (suplier.length() > 8) {
+                    supid = suplier.substring(suplier.length() - 8, suplier.length()).replace("-", "").trim();
+                } else {
+                    supid = "No Id";
+                }
+
+                ResultSet set3 = DB.search("SELECT id FROM suplier WHERE id = '" + supid + "' ");
+                if (!set3.next()) {
+                    Suplier sup = new Suplier();
+                    Thread t = new Thread() {
+                        @Override
+                        public void run() {
+
+                            sup.setVisible(true);
+
+                            txt_suplier.setText(null);
+
+                        }
+
+                    };
+                    JOptionPane.showMessageDialog(this, "save new suplier");
+                    t.start();
+                    sup.toFront();
+                    sup.requestFocus();
+
+                } else {
+                    if (jButton4.getText().equals("Save")) {
+                        if (txt_name.getForeground().equals(Color.black)) {
+                            DB.iud("INSERT INTO item VALUES ('" + id + "','" + name + "','" + brand + "','" + path + "','" + barcode + "','" + catagory + "','" + supid + "','" + munite + "',1,'" + waranty + "','" + expiry + "','" + low_qty + "')");
+                            DB.iud("INSERT INTO quntity VALUES ('" + id + "','" + 0.0 + "')");
+                            JOptionPane.showMessageDialog(this, "Sucsussfully Saved... !");
+
+                            txt_name.setText(null);
+                            txt_brand.setText(null);
+                            txt_catagory.setText(null);
+                            txt_suplier.setText(null);
+                            txt_lowqty.setText(null);
+                            jComboBox1.setSelectedIndex(0);
+                            txt_barcode.setText(null);
+                            no_Option.setSelected(true);
+                            path = null;
+                            lbl_image.setIcon(null);
+                            genarateItemId();
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Enter Unique Value for the Item Name", "error!,", JOptionPane.ERROR_MESSAGE);
+
+                        }
+                    } else {
+
+                        DB.iud("UPDATE item SET name = '" + name + "', brand ='" + brand + "', image = '" + path + "',barcode = '" + barcode + "',catagory = '" + catagory + "',suplier = '" + supid + "', mesure_unite = '" + munite + "',waranty = '" + waranty + "',isexpire = '" + expiry + "',lowqty = '" + low_qty + "' WHERE id = '" + id + "'");
+
+                        JOptionPane.showMessageDialog(this, "Sucsussfully Updated... !");
+
+                        txt_name.setText(null);
+                        txt_brand.setText(null);
+                        txt_catagory.setText(null);
+                        txt_suplier.setText(null);
+                        txt_lowqty.setText(null);
+                        jComboBox1.setSelectedIndex(0);
+                        txt_barcode.setText(null);
+                        no_Option.setSelected(true);
+                        path = null;
+                        lbl_image.setIcon(null);
+                        jButton4.setText("Save");
+                        genarateItemId();
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid Data Input", "Error!", JOptionPane.ERROR_MESSAGE);
+        }
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -901,6 +960,8 @@ public class ItemRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_catagoryActionPerformed
 
     private void txt_suplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_suplierActionPerformed
+     
+        
         jComboBox1.grabFocus();
     }//GEN-LAST:event_txt_suplierActionPerformed
 
@@ -967,6 +1028,90 @@ public class ItemRegistration extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void txt_nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nameKeyReleased
+        String name = txt_name.getText();
+        Vector v = new Vector();
+        jScrollPane4.setVisible(false);
+        txt_name.setForeground(Color.black);
+
+        try {
+            ResultSet search = DB.search("SELECT name FROM item WHERE name like '" + name + "%" + "'");
+            while (search.next()) {
+                jScrollPane4.setVisible(true);
+                txt_name.setForeground(Color.red);
+
+                v.add(search.getString("name"));
+                name_list.setListData(v);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }//GEN-LAST:event_txt_nameKeyReleased
+
+    private void txt_nameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_nameFocusLost
+        jScrollPane4.setVisible(false);
+        String name = txt_name.getText();
+        name = name.trim();
+        try {
+            ResultSet search = DB.search("SELECT name FROM item WHERE name = '" + name + "'");
+
+            if (search.next()) {
+                txt_name.setForeground(Color.red);
+            } else {
+                txt_name.setForeground(Color.black);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nameFocusLost
+
+    private void txt_suplierFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_suplierFocusLost
+
+        String supid = txt_suplier.getText();
+        try {
+            if (supid.length() > 8) {
+                supid = supid.substring(supid.length() - 8, supid.length()).replace("-", "").trim();
+            }
+            ResultSet set3 = DB.search("SELECT id FROM suplier WHERE id = '" + supid + "' ");
+            if (set3.next()) {
+                txt_suplier.setForeground(Color.black);
+            } else {
+                txt_suplier.setForeground(Color.red);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_txt_suplierFocusLost
+
+    private void txt_lowqtyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_lowqtyKeyReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txt_lowqtyKeyReleased
+
+    private void txt_lowqtyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_lowqtyKeyPressed
+       
+    String value = txt_lowqty.getText();
+        System.out.println(    evt.getKeyCode());    
+    if (evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9'|| evt.getKeyCode()==8) {
+        txt_lowqty.setEditable(true);
+        
+    } else {
+        txt_lowqty.setEditable(false);
+        
+    }
+
+    }//GEN-LAST:event_txt_lowqtyKeyPressed
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+
+Suplier sup = new Suplier(true);
+sup.setVisible(true);
+    }//GEN-LAST:event_jLabel18MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1007,6 +1152,7 @@ public class ItemRegistration extends javax.swing.JFrame {
         jScrollPane1.setVisible(false);
         jScrollPane2.setVisible(false);
         jScrollPane3.setVisible(false);
+        jScrollPane4.setVisible(false);
 
     }
 
@@ -1125,6 +1271,7 @@ public class ItemRegistration extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
@@ -1149,8 +1296,10 @@ public class ItemRegistration extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lbl_image;
     private javax.swing.JLabel lbl_itmid;
+    private javax.swing.JList<String> name_list;
     private javax.swing.JRadioButton no_Option;
     private javax.swing.JRadioButton no_Option1;
     private javax.swing.JTextField txt_barcode;
@@ -1158,7 +1307,7 @@ public class ItemRegistration extends javax.swing.JFrame {
     private javax.swing.JTextField txt_catagory;
     private javax.swing.JTextField txt_lowqty;
     private javax.swing.JTextField txt_name;
-    private javax.swing.JTextField txt_suplier;
+    public static javax.swing.JTextField txt_suplier;
     private javax.swing.JRadioButton yes_Optioon;
     private javax.swing.JRadioButton yes_Optioon1;
     // End of variables declaration//GEN-END:variables
@@ -1166,4 +1315,14 @@ public class ItemRegistration extends javax.swing.JFrame {
     String path;
     String path1;
 
+    private boolean validInput() {
+        String suplier = txt_suplier.getText();
+        String name = txt_name.getText();
+        if (suplier.isEmpty() || name.isEmpty() || txt_suplier.getForeground().equals(Color.red)) {
+            return false;
+        } else {
+            return true;
+
+        }
+    }
 }

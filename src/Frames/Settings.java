@@ -28,9 +28,26 @@ public class Settings extends javax.swing.JFrame {
         loadTable();
         jTable1.getTableHeader().setFont(new java.awt.Font("Nunito", 0, 15));
         jTable2.getTableHeader().setFont(new java.awt.Font("Nunito", 0, 15));
+Common.SystemLogger.initLogger(Customer.class).info("ItemManagement interface sign");
 
     }
+      public Settings(String id,int index) {
+        initComponents();
 
+        loadTable();
+        jTable1.getTableHeader().setFont(new java.awt.Font("Nunito", 0, 15));
+        jTable2.getTableHeader().setFont(new java.awt.Font("Nunito", 0, 15));
+       invoiceid = id;
+       invoiceIndex = index;
+       fromInvoice = true;
+       Common.SystemLogger.initLogger(Customer.class).info("ItemManagement interface sign");
+
+             
+
+    }
+      String invoiceid;
+      int invoiceIndex;
+              
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,6 +87,7 @@ public class Settings extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
@@ -130,6 +148,28 @@ public class Settings extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        w_txt_search = new javax.swing.JTextField();
+        w_rad_name = new javax.swing.JRadioButton();
+        w_rad_cat = new javax.swing.JRadioButton();
+        w_rad_sup = new javax.swing.JRadioButton();
+        w_rad_brand = new javax.swing.JRadioButton();
+        jLabel34 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
+        jLabel35 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTable6 = new javax.swing.JTable();
+        jLabel36 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel37 = new javax.swing.JLabel();
+        txt_Waranty_old = new javax.swing.JTextField();
+        jLabel38 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
@@ -214,7 +254,18 @@ public class Settings extends javax.swing.JFrame {
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.RIGHT);
         jTabbedPane1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jTabbedPane1.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+        jTabbedPane1.setName("b2"); // NOI18N
         jTabbedPane1.setOpaque(true);
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
+        jTabbedPane1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTabbedPane1KeyReleased(evt);
+            }
+        });
 
         jPanel4.setBackground(java.awt.Color.white);
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -249,7 +300,7 @@ public class Settings extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Item ID", "Item Name", "On Hand", "Category", "Suplier", "Brand"
+                "Item ID", "Item Name", "On Hand", "Category", "Supplier", "Brand"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -318,7 +369,7 @@ public class Settings extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 630, 160, 40));
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 630, 160, 40));
 
         jButton2.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton2.setText("Save");
@@ -327,7 +378,7 @@ public class Settings extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 630, 160, 40));
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 630, 160, 40));
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/magnifying-glass.png"))); // NOI18N
         jPanel4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 90, 30, 30));
@@ -352,7 +403,7 @@ public class Settings extends javax.swing.JFrame {
 
         buttonGroup1.add(rad_sup);
         rad_sup.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
-        rad_sup.setText("Suplier");
+        rad_sup.setText("Supplier");
         rad_sup.setContentAreaFilled(false);
         rad_sup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -374,7 +425,6 @@ public class Settings extends javax.swing.JFrame {
 
         buttonGroup3.add(rad_stock);
         rad_stock.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
-        rad_stock.setSelected(true);
         rad_stock.setText("By Stock");
         jPanel4.add(rad_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 50, 90, -1));
 
@@ -428,6 +478,7 @@ public class Settings extends javax.swing.JFrame {
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 100, 20));
 
         jTabbedPane1.addTab("Price Change", jPanel4);
+        jPanel4.getAccessibleContext().setAccessibleName("price");
 
         jPanel9.setBackground(java.awt.Color.white);
         jPanel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -588,7 +639,6 @@ public class Settings extends javax.swing.JFrame {
 
         buttonGroup2.add(rad_name1);
         rad_name1.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
-        rad_name1.setSelected(true);
         rad_name1.setText("Name");
         rad_name1.setContentAreaFilled(false);
         jPanel9.add(rad_name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 93, 23));
@@ -677,7 +727,7 @@ public class Settings extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel9.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 440, 70, 60));
+        jPanel9.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 420, 70, 40));
 
         jButton5.setText("Edite");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -685,7 +735,7 @@ public class Settings extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel9.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 370, 70, 60));
+        jPanel9.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 370, 70, 40));
 
         jLabel24.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
         jLabel24.setText("Add New Mesure Unit");
@@ -734,7 +784,241 @@ public class Settings extends javax.swing.JFrame {
         jLabel33.setText("1000");
         jPanel9.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 590, 50, -1));
 
-        jTabbedPane1.addTab("Sub Item", jPanel9);
+        jButton3.setText("Delete");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 473, 70, 30));
+
+        jTabbedPane1.addTab("Sub M Unit", jPanel9);
+        jPanel9.getAccessibleContext().setAccessibleName("sub");
+
+        jPanel3.setBackground(java.awt.Color.white);
+        jPanel3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPanel3FocusGained(evt);
+            }
+        });
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+        });
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel29.setBackground(new java.awt.Color(106, 162, 186));
+        jLabel29.setFont(new java.awt.Font("Nunito Black", 0, 14)); // NOI18N
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setText("Warranty Change ");
+        jLabel29.setOpaque(true);
+        jPanel3.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 30));
+
+        w_txt_search.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+        w_txt_search.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
+        w_txt_search.setText("Search");
+        w_txt_search.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        w_txt_search.setOpaque(false);
+        w_txt_search.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                w_txt_searchFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                w_txt_searchFocusLost(evt);
+            }
+        });
+        w_txt_search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                w_txt_searchKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                w_txt_searchKeyReleased(evt);
+            }
+        });
+        jPanel3.add(w_txt_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 430, 40));
+
+        buttonGroup4.add(w_rad_name);
+        w_rad_name.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        w_rad_name.setSelected(true);
+        w_rad_name.setText("Name");
+        w_rad_name.setContentAreaFilled(false);
+        jPanel3.add(w_rad_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 93, 23));
+
+        buttonGroup4.add(w_rad_cat);
+        w_rad_cat.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        w_rad_cat.setText("Category");
+        w_rad_cat.setContentAreaFilled(false);
+        jPanel3.add(w_rad_cat, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 93, 23));
+
+        buttonGroup4.add(w_rad_sup);
+        w_rad_sup.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        w_rad_sup.setText("Suplier");
+        w_rad_sup.setContentAreaFilled(false);
+        w_rad_sup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                w_rad_supActionPerformed(evt);
+            }
+        });
+        jPanel3.add(w_rad_sup, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 50, 93, 23));
+
+        buttonGroup4.add(w_rad_brand);
+        w_rad_brand.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        w_rad_brand.setText("Brand");
+        w_rad_brand.setContentAreaFilled(false);
+        w_rad_brand.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                w_rad_brandActionPerformed(evt);
+            }
+        });
+        jPanel3.add(w_rad_brand, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, 93, 23));
+
+        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/magnifying-glass.png"))); // NOI18N
+        jPanel3.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 30, 30));
+
+        jTable5.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Item ID", "Item Name", "On Hand", "Category", "Suplier", "Brand"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable5.setGridColor(new java.awt.Color(153, 204, 255));
+        jTable5.setRowHeight(20);
+        jTable5.getTableHeader().setReorderingAllowed(false);
+        jTable5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable5MouseClicked(evt);
+            }
+        });
+        jTable5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable5KeyPressed(evt);
+            }
+        });
+        jScrollPane6.setViewportView(jTable5);
+        if (jTable5.getColumnModel().getColumnCount() > 0) {
+            jTable5.getColumnModel().getColumn(0).setResizable(false);
+            jTable5.getColumnModel().getColumn(1).setResizable(false);
+            jTable5.getColumnModel().getColumn(1).setPreferredWidth(300);
+            jTable5.getColumnModel().getColumn(2).setResizable(false);
+            jTable5.getColumnModel().getColumn(3).setResizable(false);
+            jTable5.getColumnModel().getColumn(3).setPreferredWidth(120);
+            jTable5.getColumnModel().getColumn(4).setResizable(false);
+            jTable5.getColumnModel().getColumn(4).setPreferredWidth(150);
+            jTable5.getColumnModel().getColumn(5).setResizable(false);
+            jTable5.getColumnModel().getColumn(5).setPreferredWidth(120);
+        }
+
+        jPanel3.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 940, 200));
+
+        jLabel35.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
+        jLabel35.setText("Items");
+        jPanel3.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 100, 20));
+
+        jTable6.setFont(new java.awt.Font("Nunito Black", 0, 14)); // NOI18N
+        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Stock ID", "Name", "Quntityl", "Warranty", "Price"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable6MouseClicked(evt);
+            }
+        });
+        jScrollPane7.setViewportView(jTable6);
+        if (jTable6.getColumnModel().getColumnCount() > 0) {
+            jTable6.getColumnModel().getColumn(0).setResizable(false);
+            jTable6.getColumnModel().getColumn(1).setResizable(false);
+            jTable6.getColumnModel().getColumn(1).setPreferredWidth(200);
+            jTable6.getColumnModel().getColumn(2).setResizable(false);
+            jTable6.getColumnModel().getColumn(3).setResizable(false);
+            jTable6.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        jPanel3.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 860, 110));
+
+        jLabel36.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
+        jLabel36.setText("Stocks");
+        jPanel3.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 100, 20));
+
+        jSpinner1.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 12, 1));
+        jSpinner1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jSpinner1KeyPressed(evt);
+            }
+        });
+        jPanel3.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 530, 50, 30));
+
+        jComboBox1.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "days", "weeks", "months", "years", "life time" }));
+        jComboBox1.setSelectedIndex(4);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 530, 80, 30));
+
+        jLabel37.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel37.setText("New Warranty Period");
+        jPanel3.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 560, 130, 20));
+
+        txt_Waranty_old.setFont(new java.awt.Font("Nunito Black", 0, 14)); // NOI18N
+        txt_Waranty_old.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_Waranty_old.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txt_Waranty_old.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel3.add(txt_Waranty_old, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 530, 170, 30));
+
+        jLabel38.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel38.setText("Warranty period");
+        jPanel3.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 560, 170, 30));
+
+        jButton6.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
+        jButton6.setText("Cancel");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 630, 160, 40));
+
+        jButton7.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
+        jButton7.setText("Save");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 630, 160, 40));
+
+        jTabbedPane1.addTab("WTY Change", jPanel3);
+        jPanel3.getAccessibleContext().setAccessibleName("wty");
 
         jPanel2.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1106, 698));
 
@@ -827,7 +1111,7 @@ public class Settings extends javax.swing.JFrame {
 
         jButton21.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
         jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
-        jButton21.setText("New Suplier");
+        jButton21.setText("New Supplier");
         jButton21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton21.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton21.setIconTextGap(30);
@@ -1064,7 +1348,7 @@ public class Settings extends javax.swing.JFrame {
                     String id = search.getString("stock_id");
                     String name = search.getString("name");
                     String qty = search.getString("qty");
-                    String price = search.getString("selling_price");
+                
                     String brand = search.getString("brand");
                     String category = search.getString("catagory");
                     String m_unite = search.getString("mesure_unite");
@@ -1074,7 +1358,7 @@ public class Settings extends javax.swing.JFrame {
                     v.add(id);
                     v.add(name);
                     v.add(qty + " " + m_unite);
-                    v.add(price);
+                   
                     v.add(category);
                     v.add(company);
                     v.add(brand);
@@ -1096,7 +1380,7 @@ public class Settings extends javax.swing.JFrame {
                     String id = search.getString("stock_id");
                     String name = search.getString("name");
                     String qty = search.getString("qty");
-                    String price = search.getString("selling_price");
+                    
                     String brand = search.getString("brand");
                     String category = search.getString("catagory");
                     String m_unite = search.getString("mesure_unite");
@@ -1106,7 +1390,7 @@ public class Settings extends javax.swing.JFrame {
                     v.add(id);
                     v.add(name);
                     v.add(qty + " " + m_unite);
-                    v.add(price);
+                   
                     v.add(category);
                     v.add(company);
                     v.add(brand);
@@ -1128,7 +1412,7 @@ public class Settings extends javax.swing.JFrame {
                     String id = search.getString("stock_id");
                     String name = search.getString("name");
                     String qty = search.getString("qty");
-                    String price = search.getString("selling_price");
+                    
                     String brand = search.getString("brand");
                     String category = search.getString("catagory");
                     String m_unite = search.getString("mesure_unite");
@@ -1138,7 +1422,7 @@ public class Settings extends javax.swing.JFrame {
                     v.add(id);
                     v.add(name);
                     v.add(qty + " " + m_unite);
-                    v.add(price);
+                    
                     v.add(category);
                     v.add(company);
                     v.add(brand);
@@ -1161,7 +1445,7 @@ public class Settings extends javax.swing.JFrame {
                     String id = search.getString("stock_id");
                     String name = search.getString("name");
                     String qty = search.getString("qty");
-                    String price = search.getString("selling_price");
+                    
                     String brand = search.getString("brand");
                     String category = search.getString("catagory");
                     String m_unite = search.getString("mesure_unite");
@@ -1171,7 +1455,7 @@ public class Settings extends javax.swing.JFrame {
                     v.add(id);
                     v.add(name);
                     v.add(qty + " " + m_unite);
-                    v.add(price);
+                    
                     v.add(category);
                     v.add(company);
                     v.add(brand);
@@ -1232,13 +1516,13 @@ public class Settings extends javax.swing.JFrame {
             dtm.setRowCount(0);
             try {
 
-                ResultSet search = DB.search("SELECT item.name, item.brand, item.catagory, item.mesure_unite , suplier.company, stock.stock_id,stock.qty, stock.selling_price  FROM item INNER JOIN suplier ON item.suplier = suplier.id INNER JOIN stock ON stock.item_id = item.id  WHERE item.name LIKE '" + "%" + text + "%" + "'");
+                ResultSet search = DB.search("SELECT item.id, item.name, item.brand, item.catagory, item.mesure_unite , suplier.company, stock.qty, stock.selling_price  FROM item INNER JOIN suplier ON item.suplier = suplier.id INNER JOIN stock ON stock.item_id = item.id  WHERE item.name LIKE '" + "%" + text + "%" + "'");
 
                 while (search.next()) {
-                    String id = search.getString("stock_id");
+                    String id = search.getString("id");
                     String name = search.getString("name");
                     String qty = search.getString("qty");
-                    String price = search.getString("selling_price");
+                    //String price = search.getString("selling_price");
                     String brand = search.getString("brand");
                     String category = search.getString("catagory");
                     String m_unite = search.getString("mesure_unite");
@@ -1248,7 +1532,7 @@ public class Settings extends javax.swing.JFrame {
                     v.add(id);
                     v.add(name);
                     v.add(qty + " " + m_unite);
-                    v.add(price);
+                   
                     v.add(category);
                     v.add(company);
                     v.add(brand);
@@ -1280,7 +1564,6 @@ public class Settings extends javax.swing.JFrame {
                     v.add(id);
                     v.add(name);
                     v.add(qty + " " + m_unite);
-                    v.add(price);
                     v.add(category);
                     v.add(company);
                     v.add(brand);
@@ -1312,7 +1595,6 @@ public class Settings extends javax.swing.JFrame {
                     v.add(id);
                     v.add(name);
                     v.add(qty + " " + m_unite);
-                    v.add(price);
                     v.add(category);
                     v.add(company);
                     v.add(brand);
@@ -1335,7 +1617,7 @@ public class Settings extends javax.swing.JFrame {
                     String id = search.getString("stock_id");
                     String name = search.getString("name");
                     String qty = search.getString("qty");
-                    String price = search.getString("selling_price");
+                   
                     String brand = search.getString("brand");
                     String category = search.getString("catagory");
                     String m_unite = search.getString("mesure_unite");
@@ -1345,7 +1627,6 @@ public class Settings extends javax.swing.JFrame {
                     v.add(id);
                     v.add(name);
                     v.add(qty + " " + m_unite);
-                    v.add(price);
                     v.add(category);
                     v.add(company);
                     v.add(brand);
@@ -1419,7 +1700,11 @@ public class Settings extends javax.swing.JFrame {
                     SMP_unite.setText("");
                     Sub_price.setText("");
                     sub_price_unite.setText("");
-
+                    if(fromInvoice){
+                        
+                        Invoice.comboRecall(invoiceid);
+                    this.dispose();
+                    }
                     String item_id = dtm.getValueAt(row, 0).toString();
                     if (row != -1) {
                         loadTable4(item_id);
@@ -1447,7 +1732,11 @@ public class Settings extends javax.swing.JFrame {
                     Sub_price.setText("");
                     sub_price_unite.setText("");
                     btn_save1.setText("Save");
-
+                    if(fromInvoice){
+                   
+                    Invoice.comboRecall(invoiceid);
+                    this.dispose();
+                    } 
                     String item_id = dtm.getValueAt(row, 0).toString();
                     if (row != -1) {
                         loadTable4(item_id);
@@ -1545,6 +1834,315 @@ public class Settings extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        DefaultTableModel dtm = (DefaultTableModel) jTable4.getModel();
+        int selectedRow = jTable4.getSelectedRow();
+        String id = dtm.getValueAt(selectedRow, 0).toString();
+        if(!id.equals("Main Unit")){
+        int lastno = Integer.parseInt(id.substring(id.length()-1,id.length()));
+        String id_space = id.substring(0,id.length()-1);
+        
+        String item_id;
+        try {
+           
+            DB.iud("DELETE FROM sub_item WHERE sub_id = '"+id+"'");
+            ++lastno;
+            String id1 = id_space + lastno;
+            ResultSet search = DB.search("SELECT item_id FROM sub_item WHERE sub_id = '"+id1+"'"  );
+            if(search.next()){
+            item_id = search.getString("item_id");
+                ResultSet search1 = DB.search("SELECT COUNT(item_id) AS X FROM sub_item WHERE item_id = '"+item_id+"'");
+            if(search1.next()){
+                int total_items = search1.getInt("X");
+                int itretor = total_items - lastno +1;
+                
+                while(itretor >=0){
+                   String id2 = id_space +lastno;
+                    System.out.println("id2  " + id2);
+                   --lastno;
+                   String id3 = id_space +lastno;
+                                       System.out.println("id3  " + id3);
+
+                DB.iud("UPDATE sub_item SET sub_id = '"+id3+"' WHERE sub_id ='"+id2+"'");
+                lastno = lastno+2;
+                    --itretor;
+                }
+              
+            }
+            
+            }
+            String[] ids =id.split("-");
+              loadTable4(ids[0]);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        }
+       
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void w_txt_searchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_w_txt_searchFocusGained
+     if (w_txt_search.getText().equals("Search")) {
+            w_txt_search.setText("");
+        }        
+    }//GEN-LAST:event_w_txt_searchFocusGained
+
+    private void w_txt_searchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_w_txt_searchFocusLost
+         if (w_txt_search.getCaretPosition() == 0) {
+            w_txt_search.setText("Search");
+        }
+    }//GEN-LAST:event_w_txt_searchFocusLost
+
+    private void w_txt_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_w_txt_searchKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_w_txt_searchKeyPressed
+
+    private void w_txt_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_w_txt_searchKeyReleased
+       DefaultTableModel dtm = (DefaultTableModel) jTable5.getModel();
+
+        String text = w_txt_search.getText();
+
+        if (w_rad_name.isSelected()) {
+            dtm.setRowCount(0);
+            try {
+
+                ResultSet search = DB.search("SELECT item.id, item.name, item.brand, item.catagory, item.mesure_unite , suplier.company, stock.qty, stock.selling_price  FROM item INNER JOIN suplier ON item.suplier = suplier.id INNER JOIN stock ON stock.item_id = item.id  WHERE item.name LIKE '" + "%" + text + "%" + "' AND  item.waranty = '1'");
+
+                while (search.next()) {
+                    String id = search.getString("id");
+                    String name = search.getString("name");
+                    String qty = search.getString("qty");
+                    //String price = search.getString("selling_price");
+                    String brand = search.getString("brand");
+                    String category = search.getString("catagory");
+                    String m_unite = search.getString("mesure_unite");
+                    String company = search.getString("company");
+
+                    Vector v = new Vector();
+                    v.add(id);
+                    v.add(name);
+                    v.add(qty + " " + m_unite);
+                   
+                    v.add(category);
+                    v.add(company);
+                    v.add(brand);
+
+                    dtm.addRow(v);
+
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else if (w_rad_sup.isSelected()) {
+            dtm.setRowCount(0);
+            try {
+                ResultSet search = DB.search("SELECT item.name, item.brand, item.catagory, item.mesure_unite , suplier.company, stock.stock_id,stock.qty, stock.selling_price  FROM item INNER JOIN suplier ON item.suplier = suplier.id INNER JOIN stock ON stock.item_id = item.id WHERE suplier.company LIKE '" + "%" + text + "%" + "' AND  item.waranty = '1'");
+
+                while (search.next()) {
+                    String id = search.getString("stock_id");
+                    String name = search.getString("name");
+                    String qty = search.getString("qty");
+                    String price = search.getString("selling_price");
+                    String brand = search.getString("brand");
+                    String category = search.getString("catagory");
+                    String m_unite = search.getString("mesure_unite");
+                    String company = search.getString("company");
+
+                    Vector v = new Vector();
+                    v.add(id);
+                    v.add(name);
+                    v.add(qty + " " + m_unite);
+                    v.add(category);
+                    v.add(company);
+                    v.add(brand);
+
+                    dtm.addRow(v);
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+
+        } else if (w_rad_brand.isSelected()) {
+            dtm.setRowCount(0);
+            try {
+                ResultSet search = DB.search("SELECT item.name, item.brand, item.catagory, item.mesure_unite , suplier.company,stock.stock_id, stock.qty, stock.selling_price  FROM item INNER JOIN suplier ON item.suplier = suplier.id INNER JOIN stock ON stock.item_id = item.id  WHERE item.brand LIKE '" + "%" + text + "%" + "' AND  item.waranty = '1'");
+
+                while (search.next()) {
+                    String id = search.getString("stock_id");
+                    String name = search.getString("name");
+                    String qty = search.getString("qty");
+                    String price = search.getString("selling_price");
+                    String brand = search.getString("brand");
+                    String category = search.getString("catagory");
+                    String m_unite = search.getString("mesure_unite");
+                    String company = search.getString("company");
+
+                    Vector v = new Vector();
+                    v.add(id);
+                    v.add(name);
+                    v.add(qty + " " + m_unite);
+                    v.add(category);
+                    v.add(company);
+                    v.add(brand);
+
+                    dtm.addRow(v);
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+
+        } else if (w_rad_cat.isSelected()) {
+            dtm.setRowCount(0);
+            try {
+
+                ResultSet search = DB.search("SELECT item.name, item.brand, item.catagory, item.mesure_unite , suplier.company, stock.stock_id, stock.qty, stock.selling_price  FROM item INNER JOIN suplier ON item.suplier = suplier.id INNER JOIN stock ON stock.item_id = item.id  WHERE item.catagory LIKE '" + "%" + text + "%" + "' AND  item.waranty = '1'");
+
+                while (search.next()) {
+                    String id = search.getString("stock_id");
+                    String name = search.getString("name");
+                    String qty = search.getString("qty");
+                   
+                    String brand = search.getString("brand");
+                    String category = search.getString("catagory");
+                    String m_unite = search.getString("mesure_unite");
+                    String company = search.getString("company");
+
+                    Vector v = new Vector();
+                    v.add(id);
+                    v.add(name);
+                    v.add(qty + " " + m_unite);
+                    v.add(category);
+                    v.add(company);
+                    v.add(brand);
+
+                    dtm.addRow(v);
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+
+        }  
+    }//GEN-LAST:event_w_txt_searchKeyReleased
+
+    private void w_rad_supActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_w_rad_supActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_w_rad_supActionPerformed
+
+    private void w_rad_brandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_w_rad_brandActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_w_rad_brandActionPerformed
+
+    private void jTabbedPane1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTabbedPane1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane1KeyReleased
+
+    private void jTable5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable5MouseClicked
+          DefaultTableModel dtm = (DefaultTableModel) jTable5.getModel();
+        int row = jTable5.getSelectedRow();
+        String item_id = dtm.getValueAt(row, 0).toString();
+        if (row != -1) {
+            loadTable5(item_id);
+        }
+    }//GEN-LAST:event_jTable5MouseClicked
+
+    private void jTable5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable5KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable5KeyPressed
+
+    private void jTable6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable6MouseClicked
+     DefaultTableModel dtm6 = (DefaultTableModel) jTable6.getModel();
+        int selectedRow = jTable6.getSelectedRow();
+        txt_Waranty_old.setText(dtm6.getValueAt(selectedRow, 3).toString());
+        jSpinner1.grabFocus();
+        
+
+
+    }//GEN-LAST:event_jTable6MouseClicked
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        if(jTabbedPane1.getSelectedIndex()  ==  2){
+              DefaultTableModel dtm = (DefaultTableModel) jTable5.getModel();
+
+        try {
+
+            ResultSet search = DB.search("SELECT item.id, item.name, item.brand, item.catagory, item.mesure_unite , suplier.company, quntity.qty  FROM item INNER JOIN suplier ON item.suplier = suplier.id INNER JOIN quntity ON quntity.item_id = item.id where item.waranty = '1' ");
+
+            while (search.next()) {
+                String id = search.getString("id");
+                String name = search.getString("name");
+                String qty = search.getString("qty");
+
+                String brand = search.getString("brand");
+                String category = search.getString("catagory");
+                String m_unite = search.getString("mesure_unite");
+                String company = search.getString("company");
+
+                Vector v = new Vector();
+                v.add(id);
+                v.add(name);
+                v.add(qty + " " + m_unite);
+
+                v.add(category);
+                v.add(company);
+                v.add(brand);
+
+                dtm.addRow(v);
+                
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        
+        }   
+           
+
+        
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void jPanel3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel3FocusGained
+     
+        
+    }//GEN-LAST:event_jPanel3FocusGained
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        System.out.println("yes!");
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void jSpinner1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jSpinner1KeyPressed
+
+    }//GEN-LAST:event_jSpinner1KeyPressed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+                     DefaultTableModel dtm6 = (DefaultTableModel) jTable6.getModel();
+
+        txt_Waranty_old.setText("");
+       jSpinner1.setValue(0);
+       jComboBox1.setSelectedIndex(0);
+       dtm6.setRowCount(0);
+       
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1607,6 +2205,7 @@ public class Settings extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
@@ -1616,8 +2215,12 @@ public class Settings extends javax.swing.JFrame {
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1639,11 +2242,17 @@ public class Settings extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1654,6 +2263,7 @@ public class Settings extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -1664,11 +2274,16 @@ public class Settings extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTable5;
+    private javax.swing.JTable jTable6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -1700,11 +2315,20 @@ public class Settings extends javax.swing.JFrame {
     private javax.swing.JRadioButton rad_sup1;
     private javax.swing.JTextField sub_price_unite;
     private javax.swing.JTextField txt_Oprice;
+    private javax.swing.JTextField txt_Waranty_old;
     private javax.swing.JTextField txt_nPrice;
     private javax.swing.JTextField txt_search;
     private javax.swing.JTextField txt_search1;
+    private javax.swing.JRadioButton w_rad_brand;
+    private javax.swing.JRadioButton w_rad_cat;
+    private javax.swing.JRadioButton w_rad_name;
+    private javax.swing.JRadioButton w_rad_sup;
+    private javax.swing.JTextField w_txt_search;
     // End of variables declaration//GEN-END:variables
-private void loadTable4(String item_id) {
+    Boolean fromInvoice = false;
+    
+    
+    private void loadTable4(String item_id) {
         try {
 
             DefaultTableModel dtm1 = (DefaultTableModel) jTable4.getModel();
@@ -1784,6 +2408,35 @@ private void loadTable4(String item_id) {
 
             }
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void loadTable5(String item_id) {
+               DefaultTableModel dtm5 = (DefaultTableModel) jTable5.getModel();
+               DefaultTableModel dtm6 = (DefaultTableModel) jTable6.getModel();
+
+        dtm6.setRowCount(0);
+
+        int selectedRow = jTable5.getSelectedRow();
+
+        
+        String name = dtm5.getValueAt(selectedRow, 1).toString();
+
+        try {
+            ResultSet search = DB.search("SELECT stock_id, waranty, qty, selling_price FROM stock WHERE item_id = '" + item_id + "' AND status = '1'");
+            while (search.next()) {
+                Vector v = new Vector();
+                v.add(search.getString("stock_id"));
+                v.add(name);
+                v.add(search.getString("qty"));
+                v.add(search.getString("waranty"));
+                v.add(search.getString("selling_price"));
+                dtm6.addRow(v);
+
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

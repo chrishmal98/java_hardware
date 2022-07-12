@@ -29,7 +29,7 @@ public class TabData {
     private static String[] txt_dprice = new String[7];
     private static String[] txt_qty = new String[7];
     private static String[] txt_subtotal = new String[7];
-    private static String[] txt_warantyNum = new String[7];
+    
     private static int[] comboIndex = new int[7];
 
   
@@ -102,9 +102,7 @@ public class TabData {
         return txt_subtotal[num];
     }
 
-    public static String getTxt_warantyNum(int num) {
-        return txt_warantyNum[num];
-    }
+    
 
     public static Object getT2_count(int num) {
         return t2_count[num];
@@ -210,9 +208,7 @@ public class TabData {
         TabData.txt_subtotal[count] = txt_subtotal;
     }
 
-    public static void setTxt_warantyNum(String txt_warantyNum) {
-        TabData.txt_warantyNum[count] = txt_warantyNum;
-    }
+    
 
     public static void setT2_count(Vector v) {
         TabData.t2_count[count] = v;
@@ -281,7 +277,7 @@ public class TabData {
             txt_dprice[index] = txt_dprice[index + 1];
             txt_qty[index] = txt_qty[index + 1];
             txt_subtotal[index] = txt_subtotal[index + 1];
-            txt_warantyNum[index] = txt_warantyNum[index + 1];
+            
             t2_count[index] = t2_count[index + 1];
             t2_id[index] = t2_id[index + 1];
             t2_ItemName[index] = t2_ItemName[index + 1];

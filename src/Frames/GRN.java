@@ -32,6 +32,8 @@ public class GRN extends javax.swing.JFrame {
         jScrollPane2.setVisible(false);
         jTable1.getTableHeader().setFont(new java.awt.Font("Nunito", 0, 12));
         jTable2.getTableHeader().setFont(new java.awt.Font("Nunito", 0, 12));
+        Common.SystemLogger.initLogger(Customer.class).info("grn interface sign");
+
     }
 
     /**
@@ -140,7 +142,7 @@ public class GRN extends javax.swing.JFrame {
         lbl_grnid.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
 
         jLabel21.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
-        jLabel21.setText("Suplier ID :-");
+        jLabel21.setText("Supplier ID :-");
 
         lbl_suplier.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         lbl_suplier.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -291,9 +293,19 @@ public class GRN extends javax.swing.JFrame {
                 txt_qtyActionPerformed(evt);
             }
         });
+        txt_qty.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_qtyKeyPressed(evt);
+            }
+        });
         jPanel2.add(txt_qty, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 140, 30));
 
         txt_bprice.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+        txt_bprice.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_bpriceKeyPressed(evt);
+            }
+        });
         txt_bprice.addVetoableChangeListener(new java.beans.VetoableChangeListener() {
             public void vetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {
                 txt_bpriceVetoableChange(evt);
@@ -302,6 +314,11 @@ public class GRN extends javax.swing.JFrame {
         jPanel2.add(txt_bprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 140, 30));
 
         txt_sprice.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+        txt_sprice.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_spriceKeyPressed(evt);
+            }
+        });
         jPanel2.add(txt_sprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 300, 140, 30));
 
         jButton1.setFont(new java.awt.Font("Nunito Medium", 0, 12)); // NOI18N
@@ -369,6 +386,7 @@ public class GRN extends javax.swing.JFrame {
         jPanel2.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, 340, 40));
         jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, 140, 30));
 
+        txt_itemId.setEditable(false);
         txt_itemId.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jPanel2.add(txt_itemId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 140, 30));
 
@@ -379,6 +397,11 @@ public class GRN extends javax.swing.JFrame {
 
         jSpinner1.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 12, 1));
+        jSpinner1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jSpinner1KeyPressed(evt);
+            }
+        });
         jPanel2.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 300, 50, 30));
 
         jComboBox1.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
@@ -404,7 +427,7 @@ public class GRN extends javax.swing.JFrame {
 
         buttonGroup1.add(rad_sup);
         rad_sup.setFont(new java.awt.Font("Nunito", 1, 12)); // NOI18N
-        rad_sup.setText("Suplier");
+        rad_sup.setText("Supplier");
         jPanel2.add(rad_sup, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, -1, 30));
 
         lbl_subtotal.setFont(new java.awt.Font("Nunito ExtraBold", 1, 18)); // NOI18N
@@ -432,7 +455,7 @@ public class GRN extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
 
         jButton4.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton4.setText("Save");
@@ -441,7 +464,7 @@ public class GRN extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
 
         jButton5.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton5.setText("Reset");
@@ -536,7 +559,7 @@ public class GRN extends javax.swing.JFrame {
 
         jButton21.setFont(new java.awt.Font("Nunito", 1, 18)); // NOI18N
         jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
-        jButton21.setText("New Suplier");
+        jButton21.setText("New Supplier");
         jButton21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton21.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton21.setIconTextGap(30);
@@ -1199,6 +1222,64 @@ public class GRN extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void txt_bpriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_bpriceKeyPressed
+        // TODO add your handling code here:
+        
+
+        if (evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9' || evt.getKeyCode() == 8 ||evt.getKeyCode() == 110) {
+
+            if (txt_bprice.getText().contains(".") && evt.getKeyCode() == 110) {
+                txt_bprice.setEditable(false);
+
+            } else {
+                txt_bprice.setEditable(true);
+            }
+
+        } else {
+            txt_bprice.setEditable(false);
+        }
+
+
+    }//GEN-LAST:event_txt_bpriceKeyPressed
+
+    private void txt_spriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_spriceKeyPressed
+      
+        if (evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9' || evt.getKeyCode() == 8 ||evt.getKeyCode() == 110) {
+
+            if (txt_sprice.getText().contains(".") && evt.getKeyCode() == 110) {
+                txt_sprice.setEditable(false);
+
+            } else {
+                txt_sprice.setEditable(true);
+            }
+
+        } else {
+            txt_sprice.setEditable(false);
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_spriceKeyPressed
+
+    private void txt_qtyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_qtyKeyPressed
+  if (evt.getKeyChar() >= '0' && evt.getKeyChar() <= '9' || evt.getKeyCode() == 8 ||evt.getKeyCode() == 110) {
+
+            if (txt_qty.getText().contains(".") && evt.getKeyCode() == 110) {
+                txt_qty.setEditable(false);
+
+            } else {
+                txt_qty.setEditable(true);
+            }
+
+        } else {
+            txt_qty.setEditable(false);
+        }        
+// TODO add your handling code here:
+    }//GEN-LAST:event_txt_qtyKeyPressed
+
+    private void jSpinner1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jSpinner1KeyPressed
+       
+    }//GEN-LAST:event_jSpinner1KeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -1236,15 +1317,13 @@ public class GRN extends javax.swing.JFrame {
 
     private void genaratepolist() {
         try {
-            
-             
-                     ResultSet rs_polist = DB.search("SELECT po.id, suplier.fname, suplier.lname, suplier.company FROM po INNER JOIN suplier ON po.suplier = suplier.id WHERE po.status = 1");
+
+            ResultSet rs_polist = DB.search("SELECT po.id, suplier.fname, suplier.lname, suplier.company FROM po INNER JOIN suplier ON po.suplier = suplier.id WHERE po.status = 1");
             Vector v = new Vector();
-        DefaultListModel list = new DefaultListModel();
-        list.removeAllElements();
-        jList1.setModel(list);
-           
-      
+            DefaultListModel list = new DefaultListModel();
+            list.removeAllElements();
+            jList1.setModel(list);
+
             while (rs_polist.next()) {
 
                 String po_id = rs_polist.getString("po.id");
@@ -1346,7 +1425,6 @@ public class GRN extends javax.swing.JFrame {
                 switch (result) {
                     case JOptionPane.YES_OPTION:
                         DB.iud("UPDATE po SET status = '0' WHERE id = '" + poID + "' ");
-                        
 
                         break;
                     case JOptionPane.NO_OPTION:

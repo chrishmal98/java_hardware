@@ -23,12 +23,21 @@ public class Employee extends javax.swing.JFrame {
     public Employee() {
         initComponents();
         genarateEmployeeId();
-
+ V_nic.setVisible(false);
+         v_mobile.setVisible(false);
+        v_email.setVisible(false);
+Common.SystemLogger.initLogger(Customer.class).info("Employee interface sign");
     }
 
     Employee(String id) {
         initComponents();
         loadEmployee(id);
+        V_nic.setVisible(false);
+         v_mobile.setVisible(false);
+        v_email.setVisible(false);
+        Common.SystemLogger.initLogger(Customer.class).info("Employee interface sign");
+
+
 
     }
 
@@ -87,6 +96,9 @@ public class Employee extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        V_nic = new javax.swing.JLabel();
+        v_mobile = new javax.swing.JLabel();
+        v_email = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -243,7 +255,7 @@ public class Employee extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
 
         jButton4.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton4.setText("Save");
@@ -252,7 +264,7 @@ public class Employee extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
 
         jButton5.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton5.setText("Reset");
@@ -292,6 +304,11 @@ public class Employee extends javax.swing.JFrame {
 
         txt_email.setFont(new java.awt.Font("Nunito Medium", 0, 16)); // NOI18N
         txt_email.setPreferredSize(new java.awt.Dimension(35, 0));
+        txt_email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_emailKeyReleased(evt);
+            }
+        });
         jPanel2.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, 440, 35));
 
         jLabel17.setFont(new java.awt.Font("Nunito Light", 0, 18)); // NOI18N
@@ -304,6 +321,11 @@ public class Employee extends javax.swing.JFrame {
 
         txt_nic.setFont(new java.awt.Font("Nunito Medium", 0, 16)); // NOI18N
         txt_nic.setPreferredSize(new java.awt.Dimension(35, 0));
+        txt_nic.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_nicKeyReleased(evt);
+            }
+        });
         jPanel2.add(txt_nic, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 150, 35));
 
         jLabel16.setFont(new java.awt.Font("Nunito Light", 0, 18)); // NOI18N
@@ -312,6 +334,11 @@ public class Employee extends javax.swing.JFrame {
 
         txt_mob.setFont(new java.awt.Font("Nunito Medium", 0, 16)); // NOI18N
         txt_mob.setPreferredSize(new java.awt.Dimension(35, 0));
+        txt_mob.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_mobKeyReleased(evt);
+            }
+        });
         jPanel2.add(txt_mob, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 190, 150, 35));
 
         jLabel18.setFont(new java.awt.Font("Nunito Light", 0, 18)); // NOI18N
@@ -398,6 +425,15 @@ public class Employee extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/contract.png"))); // NOI18N
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 180, 200));
 
+        V_nic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/check-mark.png"))); // NOI18N
+        jPanel2.add(V_nic, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 190, 30, 30));
+
+        v_mobile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/check-mark.png"))); // NOI18N
+        jPanel2.add(v_mobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 190, 30, 30));
+
+        v_email.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/check-mark.png"))); // NOI18N
+        jPanel2.add(v_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 270, 30, 30));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 71, 1106, 620));
 
         pack();
@@ -470,39 +506,48 @@ public class Employee extends javax.swing.JFrame {
         String email = txt_email.getText();
         String addres = jTextArea1.getText();
         String sex = male_option.isSelected() ? "Male" : "Female";
+        if (formValidation()) {
+            if (jButton4.getText().equals("Save")) {
+                try {
 
-        if (jButton4.getText().equals("Save")) {
-            try {
+                    DB.iud("INSERT INTO employee VALUES ('" + id + "','" + fname + "','" + lname + "','" + mob + "','" + nic + "','" + email + "','" + addres + "', '" + sex + "', 1 )");
+                    JOptionPane.showMessageDialog(this, "sucsussfull... !");
 
-                DB.iud("INSERT INTO employee VALUES ('" + id + "','" + fname + "','" + lname + "','" + mob + "','" + nic + "','" + email + "','" + addres + "', '" + sex + "', 1 )");
-                JOptionPane.showMessageDialog(this, "sucsussfull... !");
+                    txt_fname.setText(null);
+                    txt_lname.setText(null);
+                    txt_nic.setText(null);
+                    txt_mob.setText(null);
+                    txt_email.setText(null);
+                    jTextArea1.setText(null);
+                    male_option.setSelected(true);
+                    V_nic.setVisible(false);
+         v_mobile.setVisible(false);
+        v_email.setVisible(false);
 
-                txt_fname.setText(null);
-                txt_lname.setText(null);
-                txt_nic.setText(null);
-                txt_mob.setText(null);
-                txt_email.setText(null);
-                jTextArea1.setText(null);
-                male_option.setSelected(true);
-                genarateEmployeeId();
+                    genarateEmployeeId();
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
-            try {
-                DB.iud("UPDATE employee SET fname = '"+fname+"',lname = '"+lname+"',mobile = '"+mob+"',nic = '"+nic+"',email = '"+email+"',address = '"+addres+"' ,gender = '"+sex+"' WHERE id = '"+id+"'");
-          JOptionPane.showMessageDialog(this, "sucsussfull... !");
-                txt_fname.setText(null);
-                txt_lname.setText(null);
-                txt_nic.setText(null);
-                txt_mob.setText(null);
-                txt_email.setText(null);
-                jTextArea1.setText(null);
-                male_option.setSelected(true);
-                genarateEmployeeId();
-                jButton4.setText("Save");
-            } catch (Exception e) {
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                try {
+                    DB.iud("UPDATE employee SET fname = '" + fname + "',lname = '" + lname + "',mobile = '" + mob + "',nic = '" + nic + "',email = '" + email + "',address = '" + addres + "' ,gender = '" + sex + "' WHERE id = '" + id + "'");
+                    JOptionPane.showMessageDialog(this, "sucsussfull... !");
+                    txt_fname.setText(null);
+                    txt_lname.setText(null);
+                    txt_nic.setText(null);
+                    txt_mob.setText(null);
+                    txt_email.setText(null);
+                    jTextArea1.setText(null);
+                    male_option.setSelected(true);
+                    V_nic.setVisible(false);
+         v_mobile.setVisible(false);
+        v_email.setVisible(false);
+
+                    genarateEmployeeId();
+                    jButton4.setText("Save");
+                } catch (Exception e) {
+                }
             }
         }
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -542,22 +587,63 @@ public class Employee extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-EmployeeSearch emp = new EmployeeSearch();
-emp.setVisible(true);
-this.dispose();
+        EmployeeSearch emp = new EmployeeSearch();
+        emp.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-     txt_fname.setText(null);
-                txt_lname.setText(null);
-                txt_nic.setText(null);
-                txt_mob.setText(null);
-                txt_email.setText(null);
-                jTextArea1.setText(null);
-                male_option.setSelected(true);
-                genarateEmployeeId();
-                jButton4.setText("Save");       // TODO add your handling code here:
+        txt_fname.setText(null);
+        txt_lname.setText(null);
+        txt_nic.setText(null);
+        txt_mob.setText(null);
+        txt_email.setText(null);
+        jTextArea1.setText(null);
+        male_option.setSelected(true);
+        genarateEmployeeId();
+        jButton4.setText("Save");       // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void txt_nicKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nicKeyReleased
+         String nic = txt_nic.getText();
+        if (nic.matches(Common.SystemData.getNic2())) {
+
+            txt_nic.setForeground(Color.BLACK);
+            V_nic.setVisible(true);
+        } else {
+            txt_nic.setForeground(Color.red);
+            V_nic.setVisible(false);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nicKeyReleased
+
+    private void txt_mobKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_mobKeyReleased
+ 
+   String mob = txt_mob.getText();
+        if (mob.matches(Common.SystemData.getMob())) {
+
+            txt_mob.setForeground(Color.BLACK);
+            v_mobile.setVisible(true);
+        } else {
+            txt_nic.setForeground(Color.red);
+            v_mobile.setVisible(false);
+        }        
+// TODO add your handling code here:
+    }//GEN-LAST:event_txt_mobKeyReleased
+
+    private void txt_emailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emailKeyReleased
+        // TODO add your handling code here:
+        
+        String email = txt_email.getText();
+        if (email.matches(Common.SystemData.getEMAIL_PATTERN())) {
+
+            txt_email.setForeground(Color.BLACK);
+            v_email.setVisible(true);
+        } else {
+            txt_email.setForeground(Color.red);
+            v_email.setVisible(false);
+        } 
+    }//GEN-LAST:event_txt_emailKeyReleased
 
     /**
      * @param args the command line arguments
@@ -636,6 +722,7 @@ this.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel V_nic;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton female_option;
     private javax.swing.JButton jButton1;
@@ -682,5 +769,38 @@ this.dispose();
     private javax.swing.JTextField txt_lname;
     private javax.swing.JTextField txt_mob;
     private javax.swing.JTextField txt_nic;
+    private javax.swing.JLabel v_email;
+    private javax.swing.JLabel v_mobile;
     // End of variables declaration//GEN-END:variables
+
+    private boolean formValidation() {
+        String fname = txt_fname.getText();
+        String lname = txt_lname.getText();
+        String mob = txt_mob.getText();
+        String nic = txt_nic.getText();
+
+        String address = jTextArea1.getText();
+        String email = txt_email.getText();
+
+        if (fname.isEmpty() || lname.isEmpty() || mob.isEmpty() || nic.isEmpty() || address.isEmpty() || email.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Fill All Requierd Fields ", "Error!", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (txt_mob.getForeground().equals(Color.red)) {
+            JOptionPane.showMessageDialog(this, "Enter Valid Mbile Number", "Error!", JOptionPane.ERROR_MESSAGE);
+            return false;
+
+        } else if (txt_nic.getForeground().equals(Color.red)) {
+            JOptionPane.showMessageDialog(this, "Enter valid NIC Number", "Error!", JOptionPane.ERROR_MESSAGE);
+            return false;
+
+        }else if (txt_email.getForeground().equals(Color.red)) {
+            JOptionPane.showMessageDialog(this, "Enter valid Email Address", "Error!", JOptionPane.ERROR_MESSAGE);
+            return false;
+
+        }
+        else {
+            return true;
+        }
+    }
+
 }

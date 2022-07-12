@@ -27,7 +27,10 @@ public class SystemUser extends javax.swing.JFrame {
         jPanel5.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
 
         genaratesystemId();
+        
         loadCombox();
+        Common.SystemLogger.initLogger(Customer.class).info("SystemUser interface sign");
+
     }
 
     /**
@@ -99,7 +102,7 @@ public class SystemUser extends javax.swing.JFrame {
             }
         });
         jPanel4.add(jButton3);
-        jButton3.setBounds(850, 20, 210, 50);
+        jButton3.setBounds(30, 20, 210, 50);
 
         jButton4.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton4.setText("Save");
@@ -109,7 +112,7 @@ public class SystemUser extends javax.swing.JFrame {
             }
         });
         jPanel4.add(jButton4);
-        jButton4.setBounds(30, 20, 210, 50);
+        jButton4.setBounds(850, 20, 210, 50);
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 619, 1106, 79));
 
@@ -259,7 +262,7 @@ public class SystemUser extends javax.swing.JFrame {
 
         jButton7.setFont(new java.awt.Font("Nunito Black", 1, 14)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
-        jButton7.setText("New Suplier");
+        jButton7.setText("New Supplier");
         jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton7.setIconTextGap(30);

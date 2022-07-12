@@ -25,13 +25,33 @@ public class Suplier extends javax.swing.JFrame {
     public Suplier() {
         initComponents();
         genarateSuplierId();
+        v1.setVisible(false);
+        v2.setVisible(false);
+        v3.setVisible(false);
+        Common.SystemLogger.initLogger(Customer.class).info("supplier interface sign");
 
     }
 
     Suplier(String id) {
-         initComponents();
-         loadSuplier(id);
-       
+        initComponents();
+        loadSuplier(id);
+        v1.setVisible(false);
+        v2.setVisible(false);
+        v3.setVisible(false);
+        Common.SystemLogger.initLogger(Customer.class).info("supplier interface sign");
+
+
+    }
+
+    Suplier(boolean id) {
+        initComponents();
+        genarateSuplierId();
+        fromItemR = id;
+        v1.setVisible(false);
+        v2.setVisible(false);
+        v3.setVisible(false);
+        Common.SystemLogger.initLogger(Customer.class).info("supplier interface sign");
+
 
     }
 
@@ -67,6 +87,9 @@ public class Suplier extends javax.swing.JFrame {
         lbl_supid = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        v3 = new javax.swing.JLabel();
+        v1 = new javax.swing.JLabel();
+        v2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -124,6 +147,11 @@ public class Suplier extends javax.swing.JFrame {
 
         txt_company.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
         txt_company.setPreferredSize(new java.awt.Dimension(35, 0));
+        txt_company.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_companyKeyReleased(evt);
+            }
+        });
         jPanel2.add(txt_company, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, 440, 35));
 
         jLabel14.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
@@ -132,6 +160,11 @@ public class Suplier extends javax.swing.JFrame {
 
         txt_email.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
         txt_email.setPreferredSize(new java.awt.Dimension(35, 0));
+        txt_email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_emailKeyReleased(evt);
+            }
+        });
         jPanel2.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 350, 440, 35));
 
         jLabel17.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
@@ -144,6 +177,11 @@ public class Suplier extends javax.swing.JFrame {
 
         txt_mob1.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
         txt_mob1.setPreferredSize(new java.awt.Dimension(35, 0));
+        txt_mob1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_mob1KeyReleased(evt);
+            }
+        });
         jPanel2.add(txt_mob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 270, 150, 35));
 
         jLabel16.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
@@ -152,6 +190,11 @@ public class Suplier extends javax.swing.JFrame {
 
         txt_mob2.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
         txt_mob2.setPreferredSize(new java.awt.Dimension(35, 0));
+        txt_mob2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_mob2KeyReleased(evt);
+            }
+        });
         jPanel2.add(txt_mob2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 270, 150, 35));
 
         jLabel18.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
@@ -168,7 +211,7 @@ public class Suplier extends javax.swing.JFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
 
         jLabel20.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
-        jLabel20.setText("Suplier ID :-");
+        jLabel20.setText("Supplier ID :-");
 
         lbl_supid.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
 
@@ -199,6 +242,15 @@ public class Suplier extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/contract.png"))); // NOI18N
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 180, 200));
 
+        v3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/check-mark.png"))); // NOI18N
+        jPanel2.add(v3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 350, 40, 40));
+
+        v1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/check-mark.png"))); // NOI18N
+        jPanel2.add(v1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 264, 40, 40));
+
+        v2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/check-mark.png"))); // NOI18N
+        jPanel2.add(v2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 270, 40, 40));
+
         jPanel9.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1106, 620));
 
         jPanel4.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
@@ -212,7 +264,7 @@ public class Suplier extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, 210, 50));
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
 
         jButton4.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton4.setText("Save");
@@ -221,7 +273,7 @@ public class Suplier extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 50));
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
 
         jButton5.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton5.setText("Reset");
@@ -251,7 +303,7 @@ public class Suplier extends javax.swing.JFrame {
                 jPanel5MouseExited(evt);
             }
         });
-        jPanel5.setLayout(new java.awt.GridLayout());
+        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
@@ -275,7 +327,7 @@ public class Suplier extends javax.swing.JFrame {
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Nunito ExtraBold", 1, 24)); // NOI18N
-        jLabel3.setText("Employee Registration");
+        jLabel3.setText("Supplier Registration");
         jPanel7.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 330, 29));
 
         jLayeredPane2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 1106, 40));
@@ -322,7 +374,7 @@ public class Suplier extends javax.swing.JFrame {
 
         jButton7.setFont(new java.awt.Font("Nunito Black", 1, 14)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon_mini.png"))); // NOI18N
-        jButton7.setText("New Suplier");
+        jButton7.setText("New Supplier");
         jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton7.setIconTextGap(30);
@@ -393,45 +445,59 @@ public class Suplier extends javax.swing.JFrame {
         String Company = txt_company.getText();
         String email = txt_email.getText();
         String addres = jTextArea1.getText();
-        if (jButton4.getText().equals("Save")) {
+        String toInvoice = Company + "  -  " + id;
 
-            try {
+        if (formValidate()) {
+            if (jButton4.getText().equals("Save")) {
 
-                DB.iud("INSERT INTO suplier VALUES ('" + id + "','" + fname + "','" + lname + "','" + Company + "','" + mob1 + "','" + mob2 + "','" + addres + "','" + email + "')");
-                JOptionPane.showMessageDialog(this, "sucsussfull... !");
+                try {
 
-                lbl_supid.setText(null);
-                txt_fname.setText(null);
-                txt_lname.setText(null);
-                txt_mob1.setText(null);
-                txt_mob2.setText(null);
-                txt_company.setText(null);
-                txt_email.setText(null);
-                jTextArea1.setText(null);
-                genarateSuplierId();
+                    DB.iud("INSERT INTO suplier VALUES ('" + id + "','" + fname + "','" + lname + "','" + Company + "','" + mob1 + "','" + mob2 + "','" + addres + "','" + email + "')");
+                    JOptionPane.showMessageDialog(this, "sucsussfull... !");
 
-            } catch (Exception e) {
-                e.printStackTrace();
+                    lbl_supid.setText(null);
+                    txt_fname.setText(null);
+                    txt_lname.setText(null);
+                    txt_mob1.setText(null);
+                    txt_mob2.setText(null);
+                    txt_company.setText(null);
+                    txt_email.setText(null);
+                    jTextArea1.setText(null);
+                    v1.setVisible(false);
+                    v2.setVisible(false);
+                    v3.setVisible(false);
+                    genarateSuplierId();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                try {
+                    DB.iud("UPDATE suplier SET fname = '" + fname + "',lname = '" + lname + "',company = '" + Company + "',mobile1 = '" + mob1 + "',mobile2 = '" + mob2 + "',email = '" + email + "',address = '" + addres + "'  WHERE id = '" + id + "'");
+                    JOptionPane.showMessageDialog(this, "sucsussfull... !");
+
+                    lbl_supid.setText(null);
+                    txt_fname.setText(null);
+                    txt_lname.setText(null);
+                    txt_mob1.setText(null);
+                    txt_mob2.setText(null);
+                    txt_company.setText(null);
+                    txt_email.setText(null);
+                    jTextArea1.setText(null);
+                    v1.setVisible(false);
+                    v2.setVisible(false);
+                    v3.setVisible(false);
+                    genarateSuplierId();
+                    jButton4.setText("Save");
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+
+                }
             }
-        } else {
-            try {
-                DB.iud("UPDATE suplier SET fname = '" + fname + "',lname = '" + lname + "',company = '" + Company + "',mobile1 = '" + mob1 + "',mobile2 = '" + mob2 + "',email = '" + email + "',address = '" + addres + "'  WHERE id = '" + id + "'");
-                               JOptionPane.showMessageDialog(this, "sucsussfull... !");
- 
-                lbl_supid.setText(null);
-                txt_fname.setText(null);
-                txt_lname.setText(null);
-                txt_mob1.setText(null);
-                txt_mob2.setText(null);
-                txt_company.setText(null);
-                txt_email.setText(null);
-                jTextArea1.setText(null);
-                genarateSuplierId();
-                jButton4.setText("Save");
-            } catch (Exception ex) {
-                ex.printStackTrace();
-
-            }
+        }
+        if (fromItemR) {
+            ItemRegistration.txt_suplier.setText(toInvoice);
+            this.dispose();
         }
 
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -507,11 +573,53 @@ public class Suplier extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
- SuplierSearch sups = new SuplierSearch();
- sups.setVisible(true);
- this.dispose();
+        SuplierSearch sups = new SuplierSearch();
+        sups.setVisible(true);
+        this.dispose();
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txt_companyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_companyKeyReleased
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_txt_companyKeyReleased
+
+    private void txt_mob1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_mob1KeyReleased
+        // TODO add your handling code here:
+        String mob1 = txt_mob1.getText();
+        if (mob1.matches(Common.SystemData.getMob())) {
+            v1.setVisible(true);
+            txt_mob1.setForeground(Color.black);
+        } else {
+            v1.setVisible(false);
+            txt_mob1.setForeground(Color.red);
+        }
+    }//GEN-LAST:event_txt_mob1KeyReleased
+
+    private void txt_mob2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_mob2KeyReleased
+        String mob1 = txt_mob2.getText();
+        if (mob1.matches(Common.SystemData.getMob())) {
+            v2.setVisible(true);
+            txt_mob2.setForeground(Color.black);
+        } else {
+            v2.setVisible(false);
+            txt_mob2.setForeground(Color.red);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_mob2KeyReleased
+
+    private void txt_emailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emailKeyReleased
+        // TODO add your handling code here:
+        String email = txt_email.getText();
+        if (email.matches(Common.SystemData.getEMAIL_PATTERN())) {
+            v3.setVisible(true);
+            txt_email.setForeground(Color.black);
+        } else {
+            v3.setVisible(false);
+            txt_email.setForeground(Color.red);
+        }
+    }//GEN-LAST:event_txt_emailKeyReleased
 
     /**
      * et
@@ -614,7 +722,11 @@ public class Suplier extends javax.swing.JFrame {
     private javax.swing.JTextField txt_lname;
     private javax.swing.JTextField txt_mob1;
     private javax.swing.JTextField txt_mob2;
+    private javax.swing.JLabel v1;
+    private javax.swing.JLabel v2;
+    private javax.swing.JLabel v3;
     // End of variables declaration//GEN-END:variables
+boolean fromItemR = false;
 
     private void genarateSuplierId() {
         try {
@@ -627,6 +739,31 @@ public class Suplier extends javax.swing.JFrame {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private boolean formValidate() {
+        String fname = txt_fname.getText();
+        String lname = txt_lname.getText();
+        String mob1 = txt_mob1.getText();
+        String mob2 = txt_mob2.getText();
+        String company = txt_company.getText();
+        String address = jTextArea1.getText();
+        String email = txt_email.getText();
+
+        if (fname.isEmpty() || lname.isEmpty() || mob1.isEmpty() || mob2.isEmpty() || company.isEmpty() || address.isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "Fill All Requierd Fields ", "Error!", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (!email.isEmpty() && txt_email.getForeground().equals(Color.red)) {
+            JOptionPane.showMessageDialog(this, "Email is Not Valid ", "Error!", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (txt_mob1.getForeground().equals(Color.red) || txt_mob2.getForeground().equals(Color.red)) {
+            JOptionPane.showMessageDialog(this, "Enter valid mobile Number", "Error!", JOptionPane.ERROR_MESSAGE);
+            return false;
+
+        } else {
+            return true;
         }
     }
 

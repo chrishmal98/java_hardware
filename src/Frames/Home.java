@@ -9,8 +9,10 @@ import Common.SystemData;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
@@ -28,7 +30,8 @@ public class Home extends javax.swing.JFrame {
         setDateAndTime();
          lbl_utype.setText(SystemData.getUtype());
        lbl_uname.setText(SystemData.getName());
-       
+       Common.SystemLogger.initLogger(Customer.class).info("Home interface sign");
+
     }
 
    
@@ -76,25 +79,24 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_time.setBackground(new java.awt.Color(168, 250, 240));
+        lbl_time.setBackground(new java.awt.Color(221, 247, 243));
         lbl_time.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbl_time.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_time.setOpaque(true);
         jPanel1.add(lbl_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 160, 30));
 
-        lbl_date.setBackground(new java.awt.Color(168, 250, 240));
+        lbl_date.setBackground(new java.awt.Color(221, 247, 243));
         lbl_date.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbl_date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_date.setOpaque(true);
         jPanel1.add(lbl_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, 160, 20));
 
-        lbl_day.setBackground(new java.awt.Color(168, 250, 240));
+        lbl_day.setBackground(new java.awt.Color(221, 247, 243));
         lbl_day.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbl_day.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_day.setOpaque(true);
@@ -125,7 +127,7 @@ public class Home extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 280, 210, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 280, 210, 40));
 
         jButton5.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         jButton5.setFont(new java.awt.Font("Nunito Medium", 1, 16)); // NOI18N
@@ -138,11 +140,11 @@ public class Home extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 210, 40));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 210, 40));
 
         jButton6.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         jButton6.setFont(new java.awt.Font("Nunito Medium", 1, 16)); // NOI18N
-        jButton6.setText("New Suplier");
+        jButton6.setText("New Supplier");
         jButton6.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 0, 0, 0, new java.awt.Color(0, 12, 18)));
         jButton6.setContentAreaFilled(false);
         jButton6.setFocusPainted(false);
@@ -151,7 +153,7 @@ public class Home extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 210, 40));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 500, 210, 40));
 
         jButton7.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         jButton7.setFont(new java.awt.Font("Nunito Medium", 1, 16)); // NOI18N
@@ -164,7 +166,7 @@ public class Home extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 500, 210, 40));
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 500, 210, 40));
 
         jButton8.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         jButton8.setFont(new java.awt.Font("Nunito Medium", 1, 16)); // NOI18N
@@ -177,7 +179,7 @@ public class Home extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 500, 210, 40));
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 500, 210, 40));
 
         jButton14.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         jButton14.setFont(new java.awt.Font("Nunito Medium", 1, 16)); // NOI18N
@@ -203,7 +205,7 @@ public class Home extends javax.swing.JFrame {
                 jButton15ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, 210, 40));
+        getContentPane().add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 210, 40));
 
         jButton16.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         jButton16.setFont(new java.awt.Font("Nunito Medium", 1, 16)); // NOI18N
@@ -216,7 +218,7 @@ public class Home extends javax.swing.JFrame {
                 jButton16ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 210, 40));
+        getContentPane().add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, 210, 40));
 
         jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/grn_icon_1.png"))); // NOI18N
         jButton17.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
@@ -230,42 +232,42 @@ public class Home extends javax.swing.JFrame {
         jButton18.setContentAreaFilled(false);
         jButton18.setFocusable(false);
         jButton18.setRequestFocusEnabled(false);
-        getContentPane().add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 210, 90));
+        getContentPane().add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 210, 90));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report__icon.png"))); // NOI18N
         jButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
         jButton3.setContentAreaFilled(false);
         jButton3.setFocusable(false);
         jButton3.setRequestFocusEnabled(false);
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 190, 210, 90));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 190, 210, 90));
 
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_customer.png"))); // NOI18N
         jButton13.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
         jButton13.setContentAreaFilled(false);
         jButton13.setFocusable(false);
         jButton13.setRequestFocusEnabled(false);
-        getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 210, 90));
+        getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 210, 90));
 
         jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_suplier_icon.png"))); // NOI18N
         jButton21.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
         jButton21.setContentAreaFilled(false);
         jButton21.setFocusable(false);
         jButton21.setRequestFocusEnabled(false);
-        getContentPane().add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 210, 90));
+        getContentPane().add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, 210, 90));
 
         jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_systemuser_icon.png"))); // NOI18N
         jButton22.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
         jButton22.setContentAreaFilled(false);
         jButton22.setFocusable(false);
         jButton22.setRequestFocusEnabled(false);
-        getContentPane().add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, 210, 90));
+        getContentPane().add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 410, 210, 90));
 
         jButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_employee_icon.png"))); // NOI18N
         jButton23.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
         jButton23.setContentAreaFilled(false);
         jButton23.setFocusable(false);
         jButton23.setRequestFocusEnabled(false);
-        getContentPane().add(jButton23, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 410, 210, 90));
+        getContentPane().add(jButton23, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 410, 210, 90));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/invoice_icon.png"))); // NOI18N
         jButton4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
@@ -277,7 +279,7 @@ public class Home extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 190, 90));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 210, 90));
 
         jButton24.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         jButton24.setFont(new java.awt.Font("Nunito Medium", 1, 14)); // NOI18N
@@ -285,6 +287,11 @@ public class Home extends javax.swing.JFrame {
         jButton24.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 0, 0, new java.awt.Color(0, 0, 0)));
         jButton24.setContentAreaFilled(false);
         jButton24.setFocusPainted(false);
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 720, 150, 40));
 
         jButton25.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
@@ -293,6 +300,11 @@ public class Home extends javax.swing.JFrame {
         jButton25.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 0, 0, new java.awt.Color(0, 0, 0)));
         jButton25.setContentAreaFilled(false);
         jButton25.setFocusPainted(false);
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 720, 150, 40));
 
         jButton26.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
@@ -306,18 +318,18 @@ public class Home extends javax.swing.JFrame {
                 jButton26ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 500, 210, 40));
+        getContentPane().add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 210, 40));
 
         jButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new_item_icon.png"))); // NOI18N
         jButton27.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
         jButton27.setContentAreaFilled(false);
         jButton27.setFocusable(false);
         jButton27.setRequestFocusEnabled(false);
-        getContentPane().add(jButton27, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 410, 210, 90));
+        getContentPane().add(jButton27, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 210, 90));
 
         jButton28.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
         jButton28.setFont(new java.awt.Font("Nunito Medium", 1, 16)); // NOI18N
-        jButton28.setText("Settings");
+        jButton28.setText("Item Management");
         jButton28.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 0, 0, 0, new java.awt.Color(0, 12, 18)));
         jButton28.setContentAreaFilled(false);
         jButton28.setFocusPainted(false);
@@ -326,7 +338,7 @@ public class Home extends javax.swing.JFrame {
                 jButton28ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton28, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 280, 210, 40));
+        getContentPane().add(jButton28, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 280, 210, 40));
 
         jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/settings_icon1.png"))); // NOI18N
         jButton29.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 0, 1));
@@ -338,7 +350,7 @@ public class Home extends javax.swing.JFrame {
                 jButton29ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton29, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 190, 210, 90));
+        getContentPane().add(jButton29, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 190, 210, 90));
 
         jButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/log Out_icon.png"))); // NOI18N
         jButton30.setContentAreaFilled(false);
@@ -348,7 +360,7 @@ public class Home extends javax.swing.JFrame {
         jButton31.setContentAreaFilled(false);
         getContentPane().add(jButton31, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 150, 60));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gradiant-0005.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gradiant-0006.png"))); // NOI18N
         jLabel1.setFocusable(false);
         jLabel1.setRequestFocusEnabled(false);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1370, 740));
@@ -394,9 +406,14 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+       if(Common.SystemData.getUtype().equals("Super Admin")){
         SystemUser systemuser = new SystemUser();
         systemuser.setVisible(true);
         this.dispose();
+       }
+       else{
+        JOptionPane.showMessageDialog(this, "Access Denied ", "Error!", JOptionPane.ERROR_MESSAGE);
+       }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
@@ -464,7 +481,8 @@ public class Home extends javax.swing.JFrame {
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
         // TODO add your handling code here:
-        this.dispose();
+      //  this.dispose();
+        this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
@@ -478,6 +496,18 @@ public class Home extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         System.out.println("Clicked");       // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        // TODO add your handling code here:
+        Login l = new Login();
+        l.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+ this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton25ActionPerformed
 
     /**
      * @param args the command line arguments
