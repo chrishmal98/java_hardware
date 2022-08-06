@@ -111,6 +111,11 @@ public class Login extends javax.swing.JFrame {
         jTextField4.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jTextField4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
         jTextField4.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 290, 30));
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
@@ -194,7 +199,7 @@ public class Login extends javax.swing.JFrame {
         String pword = new String(jPasswordField1.getPassword());
 
         try {
-            ResultSet search = DB.search("SELECT systemuser.username, systemuser.password, systemuser.usertype, systemuser.id, employee.fname, employee.lname FROM systemuser INNER JOIN employee ON systemuser.emp_id = employee.id  WHERE systemuser.username = '" + uname + "'");
+            ResultSet search = DB.search("SELECT systemuser.username, systemuser.password, systemuser.usertype, systemuser.id, employee.fname, employee.lname FROM systemuser INNER JOIN employee ON systemuser.emp_id = employee.id  WHERE systemuser.username = '" + uname + "' AND employee.status = '1'");
 
             if (search.next()) {
                 String userName = search.getString("username");
@@ -237,7 +242,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
+ jButton1.grabFocus();
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void lbl_forgotMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_forgotMouseClicked
@@ -250,6 +255,10 @@ public class Login extends javax.swing.JFrame {
        
         
     }//GEN-LAST:event_lbl_forgotMouseClicked
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+jPasswordField1.grabFocus();
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
     /**
      * @param args the command line arguments

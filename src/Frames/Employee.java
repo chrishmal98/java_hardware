@@ -625,7 +625,7 @@ Common.SystemLogger.initLogger(Customer.class).info("Employee interface sign");
             txt_mob.setForeground(Color.BLACK);
             v_mobile.setVisible(true);
         } else {
-            txt_nic.setForeground(Color.red);
+            txt_mob.setForeground(Color.red);
             v_mobile.setVisible(false);
         }        
 // TODO add your handling code here:

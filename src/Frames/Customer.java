@@ -700,7 +700,9 @@ public class Customer extends javax.swing.JFrame {
 
     private void txt_nicKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nicKeyReleased
         String nic = txt_nic.getText();
-        if (nic.matches(Common.SystemData.getNic2())) {
+        
+        boolean validate = checkNic(nic);
+        if (validate) {
 
             txt_nic.setForeground(Color.BLACK);
             check_nic.setVisible(true);
@@ -851,5 +853,10 @@ public class Customer extends javax.swing.JFrame {
     private javax.swing.JTextField txt_nic;
     // End of variables declaration//GEN-END:variables
 boolean fromInvoice = false;
+
+boolean checkNic(String nic){
+boolean value = nic.matches(Common.SystemData.getNic2());
+  return value;
+}
 
 }

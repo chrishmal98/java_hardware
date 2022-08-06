@@ -232,7 +232,12 @@ public class StockDetails extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton3.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
-        jButton3.setText("Stock");
+        jButton3.setText("Back");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 210, 50));
 
         jButton4.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
@@ -246,6 +251,7 @@ public class StockDetails extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Nunito", 0, 18)); // NOI18N
         jButton5.setText("Reset");
+        jButton5.setEnabled(false);
         jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 210, 50));
 
         jLayeredPane1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 689, 1106, 79));
@@ -561,6 +567,13 @@ public class StockDetails extends javax.swing.JFrame {
     private void rad_showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rad_showActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rad_showActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        GRN d = new GRN();
+        d.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

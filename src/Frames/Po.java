@@ -173,7 +173,7 @@ public class Po extends javax.swing.JFrame {
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1106, 30));
 
         jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
-        jTable1.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -559,6 +559,7 @@ if(!lbl_supid.getText().isEmpty()){
                         double preQty =0;
                         ResultSet search = DB.search("SELECT po_item.qty FROM po_item INNER JOIN po ON po_item.po_id = po.id WHERE po_item.itm_id = '"+item+"' AND po.status = '1' ");
                         if(search.next()){
+                            
                         preQty = search.getDouble("qty");
                         }
 
@@ -1006,7 +1007,9 @@ if(!lbl_supid.getText().isEmpty()){
                     String item = search.getString("A");
                     String name = search.getString("B");
                     String brand = search.getString("C");
-                    String qty = search.getString("D");
+                   ;
+                      String qty = String.format("%.2f", search.getDouble("D"));
+                      
                     String unit = search.getString("E");
                      double preQty =0;
                         ResultSet search1 = DB.search("SELECT po_item.qty FROM po_item INNER JOIN po ON po_item.po_id = po.id WHERE po_item.itm_id = '"+item+"' AND po.status = '1' ");

@@ -8,6 +8,7 @@ package Frames;
 import Common.SystemData;
 import Common.TabData;
 import DB.DB;
+import groovy.swing.binding.JComboBoxMetaMethods;
 import java.awt.Color;
 import java.awt.Component;
 import java.io.FileInputStream;
@@ -26,6 +27,9 @@ import javax.swing.table.DefaultTableModel;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.SwingUtilities;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperPrintManager;
@@ -111,7 +115,7 @@ public class Invoice extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         txt_id = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel22 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -120,6 +124,7 @@ public class Invoice extends javax.swing.JFrame {
         lbl_add_cus = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         rad_show = new javax.swing.JRadioButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -402,12 +407,12 @@ public class Invoice extends javax.swing.JFrame {
                 txt_inv_nettotKeyPressed(evt);
             }
         });
-        jPanel2.add(txt_inv_nettot, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 550, 120, 30));
+        jPanel2.add(txt_inv_nettot, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 550, 150, 30));
 
         jLabel7.setFont(new java.awt.Font("Nunito ExtraBold", 0, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Net Total");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 530, 120, 20));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, 150, 20));
 
         jLabel9.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -431,7 +436,7 @@ public class Invoice extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 0, 0));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Balance");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 530, 120, 20));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 530, 150, 20));
 
         txt_inv_balance.setEditable(false);
         txt_inv_balance.setFont(new java.awt.Font("Nunito Black", 0, 19)); // NOI18N
@@ -446,7 +451,7 @@ public class Invoice extends javax.swing.JFrame {
                 txt_inv_balanceKeyPressed(evt);
             }
         });
-        jPanel2.add(txt_inv_balance, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 550, 120, 30));
+        jPanel2.add(txt_inv_balance, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 550, 150, 30));
 
         txt_inv_dis.setFont(new java.awt.Font("Nunito", 1, 14)); // NOI18N
         txt_inv_dis.addActionListener(new java.awt.event.ActionListener() {
@@ -473,12 +478,12 @@ public class Invoice extends javax.swing.JFrame {
                 txt_inv_subtotKeyPressed(evt);
             }
         });
-        jPanel2.add(txt_inv_subtot, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 120, 30));
+        jPanel2.add(txt_inv_subtot, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 150, 30));
 
         jLabel8.setFont(new java.awt.Font("Nunito ExtraBold", 0, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Sub Total");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 120, 20));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 150, 20));
 
         jButton1.setFont(new java.awt.Font("Nunito", 1, 13)); // NOI18N
         jButton1.setText("Remove all");
@@ -537,6 +542,7 @@ public class Invoice extends javax.swing.JFrame {
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 30, 140, 20));
 
         txt_id.setEditable(false);
+        txt_id.setBackground(java.awt.Color.white);
         txt_id.setFont(new java.awt.Font("Nunito", 0, 13)); // NOI18N
         jPanel2.add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 110, 30));
 
@@ -547,41 +553,22 @@ public class Invoice extends javax.swing.JFrame {
             }
         });
 
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tabs.png"))); // NOI18N
+        jLabel22.setIconTextGap(0);
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 34, Short.MAX_VALUE)
+            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 48, Short.MAX_VALUE)
+            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 30, 36, 50));
-
-        jComboBox1.setFont(new java.awt.Font("Nunito", 0, 13)); // NOI18N
-        jComboBox1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jComboBox1FocusLost(evt);
-            }
-        });
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        jComboBox1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jComboBox1PropertyChange(evt);
-            }
-        });
-        jComboBox1.addVetoableChangeListener(new java.beans.VetoableChangeListener() {
-            public void vetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {
-                jComboBox1VetoableChange(evt);
-            }
-        });
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 240, 110, 30));
 
         jLabel14.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -629,6 +616,13 @@ public class Invoice extends javax.swing.JFrame {
             }
         });
         jPanel2.add(rad_show, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 590, -1, -1));
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 240, 110, 30));
 
         jLayeredPane2.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 1106, 620));
 
@@ -811,7 +805,7 @@ public class Invoice extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-if(!txt_inv_subtot.getText().isEmpty()){
+if(!txt_inv_balance.getText().isEmpty()){
         try {
             String invoice = genarateInvoiceId();
             String costomer = txt_customer.getText();
@@ -829,7 +823,9 @@ if(!txt_inv_subtot.getText().isEmpty()){
             String payment = txt_inv_payment.getText();
             String balance = txt_inv_balance.getText();
             String is_subunite = "no";
-
+            
+           
+            
             DB.iud("INSERT INTO invoice VALUES('" + invoice + "','" + costomer + "','" + total + "','" + discount + "','" + nettotal + "','" + payment + "','" + balance + "',now(),'" + SystemData.getSystemUser() + "',CURRENT_TIMESTAMP ) ");
             int count = jTable2.getRowCount();
             DefaultTableModel dtm2 = (DefaultTableModel) jTable2.getModel();
@@ -851,7 +847,6 @@ if(!txt_inv_subtot.getText().isEmpty()){
                         double x = search.getDouble("sub_unite");
 
                         is_subunite = search.getString("sub_id");
-
                         qty = qty / x;
                     }
                 }
@@ -1033,12 +1028,47 @@ if(!txt_inv_subtot.getText().isEmpty()){
                 txt_dis.setText("");
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Please Select an Item", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "invalid Input", "Error!", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_txt_disActionPerformed
 
     private void txt_qtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_qtyActionPerformed
+      DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        int selectedRow = jTable1.getSelectedRow();
+        double maxvalue = Double.parseDouble(dtm.getValueAt(selectedRow, 4).toString());
+        int combIndex = jComboBox1.getSelectedIndex();
+        String combName = jComboBox1.getSelectedItem().toString();
+        double qty = 1;
+       String v1 = txt_qty.getText();
+        if(!v1.isEmpty()){
+        qty  = Double.parseDouble(v1);
+        }
+        
+        
+         if (combIndex != 0) {
+          try {
+              ResultSet search = DB.search("SELECT sub_unite, sub_id FROM sub_item WHERE sub_unite_name = '" + combName + "'");
+              if (search.next()) {
+                  
+                  double x = search.getDouble("sub_unite");
+                  
+                  
+                  
+                  qty = qty / x;
+              }
+          } catch (Exception ex) {
+              Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
+          }
+                }
+        
+        
+        
+       
+        
+        if(qty <= maxvalue ){
+      
+        
         if (!txt_id.getText().isEmpty()) {
             String txtqty = txt_qty.getText();
             if (txtqty.isEmpty()) {
@@ -1049,20 +1079,25 @@ if(!txt_inv_subtot.getText().isEmpty()){
                 int unite_no = jComboBox1.getSelectedIndex();
 
                 double price = Double.parseDouble(txt_dPrice.getText());
-                double qty = Double.parseDouble(txt_qty.getText());
-                double total = price * qty;
+                 double qty1  = Double.parseDouble(txt_qty.getText());
+                double total = price * qty1;
                 txt_subtot.setText(total + "");
                 txt_subtot.grabFocus();
-
-            
+                
+buy_qty = maxvalue-qty;
+         
         } else {
             JOptionPane.showMessageDialog(this, "Please Select an Item", "Error!", JOptionPane.ERROR_MESSAGE);
         }
+        }else{
+                    JOptionPane.showMessageDialog(this, "Invalid Quntity", "Error!", JOptionPane.ERROR_MESSAGE);
+                    txt_qty.grabFocus();
 
+        }
     }//GEN-LAST:event_txt_qtyActionPerformed
 
     private void txt_subtotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_subtotActionPerformed
-        if (!txt_id.getText().isEmpty()) {
+        if (!txt_id.getText().isEmpty() && !txt_subtot.getText().contains("-")) {
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             int row = jTable1.getSelectedRow();
             DefaultTableModel dtm1 = (DefaultTableModel) jTable2.getModel();
@@ -1085,23 +1120,34 @@ if(!txt_inv_subtot.getText().isEmpty()){
             double total = Double.parseDouble(txt_subtot.getText());
             v.add(total);
             dtm1.addRow(v);
+            int selectedRow = jTable1.getSelectedRow();
+            dtm.setValueAt(buy_qty, selectedRow, 4);
+            buy_qty = 0;
+
             subtotal = subtotal + total;
             txt_inv_subtot.setText(subtotal + "");
             txt_search.setText(null);
+         
 
             txt_search.grabFocus();
-
             txt_id.setText(null);
-            txt_dis.setText(null);
+            txt_dis.setText("0");
             txt_dPrice.setText(null);
             txt_qty.setText(null);
             txt_subtot.setText(null);
-            jComboBox1.removeAllItems();
+            
+           
+            
             unitPrice = 0.0;
             uniteIndex = 0;
             availableQty = 0.0;
         } else {
             JOptionPane.showMessageDialog(this, "Please Select an Item", "Error!", JOptionPane.ERROR_MESSAGE);
+            txt_dis.setText("0");
+            txt_dPrice.setText("");
+            txt_qty.setText("");
+            txt_subtot.setText("");
+            jComboBox1.setSelectedIndex(0);
         }
 
     }//GEN-LAST:event_txt_subtotActionPerformed
@@ -1163,7 +1209,7 @@ if(!txt_inv_subtot.getText().isEmpty()){
         
         double payment = Double.parseDouble(txt_inv_payment.getText());
         double nettot = Double.parseDouble(txt_inv_nettot.getText());
-        if(nettot < payment){
+        if(nettot <= payment){
         double balance = payment - nettot;
         txt_inv_balance.setText(balance + "");
         txt_inv_balance.grabFocus();
@@ -1216,6 +1262,7 @@ if(!txt_inv_subtot.getText().isEmpty()){
                         qty = qty / x;
                     }
                 }
+                
 
                 String itm_id[] = stock_id.split("-");
                 double itm_discount = uprice - dprice;
@@ -1290,6 +1337,7 @@ if(!txt_inv_subtot.getText().isEmpty()){
     }//GEN-LAST:event_txt_searchKeyPressed
 
     private void jList1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jList1KeyPressed
+      
         if (evt.getKeyCode() == 10) {
             if (!jList1.isSelectionEmpty()) {
                 String value = jList1.getSelectedValue();
@@ -1340,6 +1388,7 @@ if(!txt_inv_subtot.getText().isEmpty()){
                                     jComboBox1.addItem(search2.getString("sub_unite_name"));
 
                                 }
+                                jComboBox1.setSelectedIndex(0);
                             }
                         }
 
@@ -1358,7 +1407,7 @@ if(!txt_inv_subtot.getText().isEmpty()){
 
             int row = jTable1.getSelectedRow();
             txt_id.setText(dtm.getValueAt(row, 0).toString());
-            txt_id.setVisible(false);
+            txt_id.setEnabled(false);
             txt_dis.grabFocus();
 
         }
@@ -1425,7 +1474,10 @@ if(!txt_inv_subtot.getText().isEmpty()){
     }//GEN-LAST:event_jList3MousePressed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+Invoice invoice = new Invoice();
+invoice.setVisible(true);
+this.dispose();
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -1521,64 +1573,6 @@ if(!txt_inv_subtot.getText().isEmpty()){
 
         }
     }//GEN-LAST:event_txt_subtotFocusGained
-
-    private void jComboBox1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBox1PropertyChange
-
-    }//GEN-LAST:event_jComboBox1PropertyChange
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-
-        if (!txt_dis.getText().isEmpty()) {
-
-            int unite_no = jComboBox1.getSelectedIndex();
-            String unite = jComboBox1.getSelectedItem().toString();
-
-            if (unite_no == 0) {
-
-                DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-
-                int row = jTable1.getSelectedRow();
-                double price = Double.parseDouble(dtm.getValueAt(row, 2).toString());
-                double discount = Double.parseDouble(txt_dis.getText());
-                double disPrice = price - discount;
-                txt_dPrice.setText(disPrice + "");
-
-            } else {
-
-                uniteIndex = unite_no;
-                try {
-                    if (!unite.equals(null)) {
-                        ResultSet search = DB.search("SELECT selling_Price,sub_unite FROM sub_item WHERE sub_unite_name = '" + unite + "'");
-                        if (search.next()) {
-                            double price = search.getDouble("selling_Price");
-                            double sub_unite = search.getDouble("sub_unite");
-                            System.out.println("sub_unite --" + sub_unite);
-
-                            unitPrice = price;
-                            int discount = Integer.parseInt(txt_dis.getText());
-                            txt_dPrice.setText((price - discount) + "");
-                            txt_subtot.setText("");
-
-                        }
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            txt_qty.grabFocus();
-        }
-
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jComboBox1VetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_jComboBox1VetoableChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1VetoableChange
-
-    private void jComboBox1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusLost
-
-
-    }//GEN-LAST:event_jComboBox1FocusLost
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
         // TODO add your handling code here:
@@ -1799,6 +1793,65 @@ if(!txt_inv_subtot.getText().isEmpty()){
         }
     }//GEN-LAST:event_txt_inv_balanceKeyPressed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    
+        if (!txt_dis.getText().isEmpty()) {
+            int comboCount = jComboBox1.getItemCount();
+            if(comboCount == 0){
+            jComboBox1.addItem("");
+            }
+            int unite_no = jComboBox1.getSelectedIndex();
+            if(unite_no == -1){
+            jComboBox1.setSelectedIndex(0);
+            }
+            
+            String unite = jComboBox1.getSelectedItem().toString();
+
+            if (unite_no == 0) {
+
+                DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+
+                int row = jTable1.getSelectedRow();
+                double price = Double.parseDouble(dtm.getValueAt(row, 2).toString());
+                double discount = Double.parseDouble(txt_dis.getText());
+                double disPrice = price - discount;
+                txt_dPrice.setText(disPrice + "");
+
+            } else {
+
+                uniteIndex = unite_no;
+                try {
+                    if (!unite.equals(null)) {
+                        ResultSet search = DB.search("SELECT selling_Price,sub_unite FROM sub_item WHERE sub_unite_name = '" + unite + "'");
+                        if (search.next()) {
+                            double price = search.getDouble("selling_Price");
+                            double sub_unite = search.getDouble("sub_unite");
+                            System.out.println("sub_unite --" + sub_unite);
+
+                            unitPrice = price;
+                            int discount = Integer.parseInt(txt_dis.getText());
+                            txt_dPrice.setText((price - discount) + "");
+                            txt_subtot.setText("");
+
+                        }
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            txt_subtot.setText("");
+            txt_qty.grabFocus();
+            
+        }
+        int itemCount = jComboBox1.getItemCount();
+        if(itemCount != 0){
+        if(jComboBox1.getItemAt(0).equals("")){
+        jComboBox1.removeItemAt(0);
+        }
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1898,6 +1951,7 @@ if(!txt_inv_subtot.getText().isEmpty()){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1947,6 +2001,7 @@ if(!txt_inv_subtot.getText().isEmpty()){
     double subtotal = 0.0;
     double unitPrice = 0.0;
     double availableQty = 0.0;
+    double buy_qty = 0.0;
 
     int uniteIndex = 0;
     int button_number = 1;

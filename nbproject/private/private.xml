@@ -3,17 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/java/Hardware/src/Frames/Invoice.java</file>
             <file>file:/D:/java/Hardware/src/Frames/EmployeeSearch.java</file>
-            <file>file:/D:/java/Hardware/src/Frames/ItemRegistration.java</file>
-            <file>file:/D:/java/Hardware/src/Frames/Settings.java</file>
-            <file>file:/D:/java/Hardware/src/Common/Mail.java</file>
-            <file>file:/D:/java/Hardware/src/Frames/Login.java</file>
+            <file>file:/D:/java/Hardware/src/Frames/Invoice.java</file>
+            <file>file:/D:/java/Hardware/src/Frames/SuplierSearch.java</file>
             <file>file:/D:/java/Hardware/src/Frames/Customer.java</file>
-            <file>file:/D:/java/Hardware/src/DB/DB.java</file>
-            <file>file:/D:/java/Hardware/src/Frames/ItemSearch.java</file>
-            <file>file:/D:/java/Hardware/src/Frames/StockDetails.java</file>
-            <file>file:/D:/java/Hardware/src/Frames/CustomerSearch.java</file>
+            <file>file:/D:/java/Hardware/src/Common/SystemMethods.java</file>
+            <file>file:/D:/java/Hardware/src/Frames/Employee.java</file>
+            <file>file:/D:/java/Hardware/src/Common/SystemData.java</file>
+            <file>file:/D:/java/Hardware/src/Common/TabData.java</file>
+            <file>file:/D:/java/Hardware/src/Frames/SystemUser.java</file>
             <file>file:/D:/java/Hardware/src/Frames/Home.java</file>
         </group>
     </open-files>

@@ -7,6 +7,7 @@ package Common;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -14,6 +15,7 @@ import java.security.NoSuchAlgorithmException;
  */
 public class SystemMethods {
     
+    public final static DecimalFormat df = new DecimalFormat("0.00");
     
      public static String encription(String password) {
         String encryptedpassword = "";
@@ -33,6 +35,9 @@ public class SystemMethods {
         }
         return encryptedpassword;
     }
+     
+     
+     
     
     
 }

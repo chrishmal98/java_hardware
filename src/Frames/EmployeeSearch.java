@@ -12,6 +12,8 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.ResultSet;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JREmptyDataSource;
@@ -63,6 +65,7 @@ public class EmployeeSearch extends javax.swing.JFrame {
         Rep_save = new javax.swing.JRadioButton();
         Rep_print = new javax.swing.JRadioButton();
         Rep_show = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -260,6 +263,15 @@ public class EmployeeSearch extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Rep_show, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 595, -1, 20));
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete (3).png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 530, 50, 40));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 71, 1106, 620));
 
@@ -738,6 +750,38 @@ int selectedRow = jTable1.getSelectedRow();
         // TODO add your handling code here:
     }//GEN-LAST:event_Rep_saveActionPerformed
 
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+       if(Common.SystemData.getUtype().equals("Super Admin")){
+        
+        int selectedRow = jTable1.getSelectedRow();
+       if(selectedRow != -1){
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+            String empid = dtm.getValueAt(selectedRow, 0).toString();
+            if(!empid.equals("EMP1")){
+            try {
+                DB.iud("UPDATE employee SET status = '0' WHERE id = '"+empid+"'");
+                            JOptionPane.showMessageDialog(this, "Succsussfull !..");
+
+                
+            } catch (Exception ex) {
+                Logger.getLogger(EmployeeSearch.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            }else{
+            JOptionPane.showMessageDialog(this, "can't Delete Super user");
+            }
+            
+              }else{
+       JOptionPane.showMessageDialog(this, "Plz.. Select an Employee");
+       }
+        loadTable();
+        
+         }
+       else{
+        JOptionPane.showMessageDialog(this, "Access Denied ", "Error!", JOptionPane.ERROR_MESSAGE);
+       }
+    }//GEN-LAST:event_jLabel2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -803,6 +847,7 @@ int selectedRow = jTable1.getSelectedRow();
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -823,8 +868,9 @@ int selectedRow = jTable1.getSelectedRow();
 
     private void loadTable() {
         try {
-            ResultSet search = DB.search("SELECT * FROM employee");
+            ResultSet search = DB.search("SELECT * FROM employee where status = '1'");
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+            dtm.setRowCount(0);
             while (search.next()) {
                 Vector v = new Vector();
                 v.add(search.getString("id"));
